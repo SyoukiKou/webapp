@@ -1,5 +1,5 @@
 {
-  "name": "hakuten-website",
+  "name": "thehearth-website",
   "type": "module",
   "scripts": {
     "dev": "vite",

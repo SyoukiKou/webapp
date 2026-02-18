@@ -246,6 +246,10 @@
   const workItems = document.querySelectorAll('.work-item');
   const worksGrid = document.getElementById('worksGrid');
 
+  if (worksGrid) {
+    worksGrid.classList.remove('grid-with-featured');
+  }
+
   filterBtns.forEach(btn => {
     btn.addEventListener('click', function () {
       const filter = this.dataset.filter;
@@ -258,9 +262,8 @@
       this.classList.add('active');
       this.setAttribute('aria-selected', 'true');
 
-      // Featured grid layout
       if (worksGrid) {
-        worksGrid.classList.toggle('grid-with-featured', filter === 'all');
+        worksGrid.classList.remove('grid-with-featured');
       }
 
       // Filter items

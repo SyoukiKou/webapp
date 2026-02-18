@@ -1,10 +1,6 @@
-# 株式会社博展 HAKUTEN | Communication Design®
+# 株式会社The Hearth
 
-博展公式サイト（https://www.hakuten.co.jp/）の忠実な再現版です。
-
-## 🌐 デモ
-
-サンドボックス: https://3000-i9v7ace75xq9ssgjnxubl-cbeee0f9.sandbox.novita.ai
+The Hearthの公式サイトです。
 
 ## ✨ 実装済み機能
 
@@ -84,11 +80,6 @@ npx wrangler pages dev dist --port 3000
 現在はモックデータを使用しています。実際の運用では：
 - Cloudflare D1 (SQLite) や KV でデータを管理
 - APIエンドポイント: `/api/works`, `/api/news`, `/api/story`
-
-## 🔗 参考
-
-- 元サイト: https://www.hakuten.co.jp/
-- 株式会社博展: Communication Design® - 体験価値の創造を通じて、企業・団体のコミュニケーションをデザイン
 
 ---
 

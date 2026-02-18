@@ -87,34 +87,34 @@ const worksData = [
 // News data
 const newsData = [
   {
-    date: '2026.02.14',
+    date: '2026.02.19',
     category: 'News',
-    title: '博展グループ、2025年12月期連結決算発表（売上高188億円）'
+    title: '弊社のホームページをリニューアルしました。'
   },
   {
-    date: '2026.01.22',
-    category: 'Award',
-    title: 'ORGATEC TOKYO 2025にてグランプリをはじめとする史上初のダブル受賞を達成'
-  },
-  {
-    date: '2025.12.10',
+    date: '2025.11.01',
     category: 'Event',
-    title: '博展の1年間のクリエイティブの集大成「Hakuten Open Studio 2025」を開催'
+    title: '未知の価値に挑戦するプログラム【SHIBUYA QWS チャレンジ #25】に採択されました。'
   },
   {
-    date: '2025.04.13',
+    date: '2025.10.18',
     category: 'Project',
-    title: '大阪・関西万博（EXPO2025）「未来の都市」パビリオン、4月13日より出展開始'
+    title: '公益財団法人Soilが主催する、社会課題解決を支援する助成プログラムSoil100に採択されました。'
   },
   {
-    date: '2025.03.19',
-    category: 'Press',
-    title: '博展・デジタルエクスペリエンス、AIを活用した展示会効果測定サービスを新たに開始'
+    date: '2025.10.27',
+    category: 'News',
+    title: '弊社のホームページが完成しました。'
   },
   {
-    date: '2025.01.14',
+    date: '2025.10.05',
     category: 'Press',
-    title: '「パケテン」が累計ユーザー数5,000社を突破。展示会ブース設計・施工のオンライン受注を加速'
+    title: '異才を持つ学生が社会課題を解決するUT-LABの公認プロジェクトに採択されました。'
+  },
+  {
+    date: '2025.02.21',
+    category: 'Award',
+    title: '第7回 WASEDA Demo Dayにてリザプロ賞を受賞しました。'
   }
 ]
 
@@ -155,10 +155,9 @@ const heroSlides = [
 ]
 
 const tickerItems = [
-  'Exhibition', 'Event Promotion', 'Private Show', 'Showroom',
-  'Digital Contents', 'Space Design', 'Pavilion', 'Store Display',
-  'Communication Design®', 'Experience Design', 'Brand Activation',
-  'Sustainability'
+  'Painting', 'Sculpture', 'Crafts', 'Photography',
+  'Design', 'Music', 'Theater', 'Literature',
+  'Media Arts', 'Video', 'Contemporary Art', 'Installation'
 ]
 
 // Main HTML page
@@ -177,7 +176,7 @@ app.get('/', (c) => {
   `).join('')
 
   const worksHTML = worksData.map((work, i) => `
-    <article class="work-item ${work.featured ? 'work-featured' : ''}" data-category="${work.category}">
+    <article class="work-item" data-category="${work.category}">
       <a href="#" class="work-link">
         <div class="work-img-wrap">
           <img src="${work.img}" alt="${work.title}" class="work-img" loading="lazy">
@@ -220,9 +219,9 @@ app.get('/', (c) => {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>株式会社博展 HAKUTEN | Communication Design®</title>
+  <title>The Hearth | 芸術と脳科学の融合を社会実装する</title>
   <meta name="description" content="体験価値の創造を通じて、企業・団体のコミュニケーションをデザインしています。イベントプロモーション、プライベートショー、展示会、ショールーム等の企画・制作。">
-  <meta property="og:title" content="株式会社博展 HAKUTEN | Communication Design®">
+  <meta property="og:title" content="The Hearth | 芸術と脳科学の融合を社会実装する">
   <meta property="og:description" content="体験価値の創造を通じて、企業・団体のコミュニケーションをデザインしています。">
   <meta property="og:type" content="website">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -237,17 +236,11 @@ app.get('/', (c) => {
   <div id="loading">
     <div class="loading-inner">
       <div class="loading-logo">
-        <span class="loading-h">H</span><span class="loading-rest">AKUTEN</span>
+        <span class="loading-h">T</span><span class="loading-rest">he Hearth</span>
       </div>
-      <div class="loading-sub">Communication Design®</div>
+      <div class="loading-sub">芸術と脳科学の融合を社会実装する</div>
       <div class="loading-bar-wrap"><div class="loading-bar"></div></div>
     </div>
-  </div>
-
-  <!-- Cookie Notice -->
-  <div class="cookie-notice" id="cookieNotice">
-    <p>当社のウェブサイトはサービス向上およびお客様により適したサービスを提供するため、Cookieを使用しております。当サイトの使用を継続することで、当サイトの<a href="#">ポリシー</a>に同意したものといたします。</p>
-    <button class="cookie-btn" id="cookieAccept">同意する</button>
   </div>
 
   <!-- Mobile Menu Overlay -->
@@ -274,7 +267,7 @@ app.get('/', (c) => {
 
   <!-- Header -->
   <header id="site-header" class="is-top">
-    <a href="/" class="header-logo" aria-label="博展 ホーム">
+    <a href="/" class="header-logo" aria-label="The Hearth ホーム">
       <div class="logo-mark-wrap">
         <svg class="logo-mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
           <rect width="40" height="40" fill="currentColor"/>
@@ -282,17 +275,17 @@ app.get('/', (c) => {
         </svg>
       </div>
       <div class="logo-text">
-        <span class="logo-jp">株式会社博展</span>
-        <span class="logo-en">HAKUTEN</span>
+        <span class="logo-en">The Hearth</span>
+        <span class="logo-jp">芸術と脳科学の融合を社会実装する</span>
       </div>
     </a>
 
     <nav class="header-nav" aria-label="メインナビゲーション">
       <a href="/service" class="nav-link">Service</a>
       <a href="/reports" class="nav-link">Reports</a>
+      <a href="/news" class="nav-link">News</a>
       <a href="/company" class="nav-link">Company</a>
       <a href="/contact" class="nav-link">Contact</a>
-      <a href="#news" class="nav-link">News</a>
     </nav>
 
     <div class="header-right">
@@ -354,7 +347,7 @@ app.get('/', (c) => {
     <section id="purpose" aria-label="パーパス">
       <div class="purpose-bg-text" aria-hidden="true">Communication Design</div>
       <div class="section-inner purpose-inner">
-        <span class="purpose-label fade-up">Hakuten's Purpose</span>
+        <span class="purpose-label fade-up">The Hearth's Purpose</span>
         <div class="purpose-body">
           <p class="purpose-text fade-up delay-1">
             人・モノ・コトが時間や場所を問わずつながることができる時代において、<br>
@@ -369,9 +362,8 @@ app.get('/', (c) => {
           </h2>
         </div>
         <div class="purpose-bottom fade-up delay-3">
-          <div class="purpose-cd">Communication Design<sup>®</sup></div>
           <a href="/service" class="purpose-link">
-            Our Vision
+            OUR SERVICE
             <svg class="arrow-icon" viewBox="0 0 24 8" fill="none">
               <path d="M0 4H22M19 1L22 4L19 7" stroke="currentColor" stroke-width="1"/>
             </svg>
@@ -407,7 +399,7 @@ app.get('/', (c) => {
         </div>
 
         <!-- Works Grid -->
-        <div class="works-grid grid-with-featured" id="worksGrid">
+        <div class="works-grid" id="worksGrid">
           ${worksHTML}
         </div>
       </div>
@@ -476,7 +468,7 @@ app.get('/', (c) => {
             <h2 class="section-title-en fade-up delay-1">News</h2>
             <p class="section-title-jp fade-up delay-2">最新情報</p>
           </div>
-          <a href="#" class="view-all-btn fade-up delay-2" style="pointer-events:none;opacity:0.4;">
+          <a href="/news" class="view-all-btn fade-up delay-2">
             View All News
             <svg class="arrow-icon" viewBox="0 0 24 8" fill="none">
               <path d="M0 4H22M19 1L22 4L19 7" stroke="currentColor" stroke-width="1"/>
@@ -496,7 +488,7 @@ app.get('/', (c) => {
         <div class="contact-banner-text fade-up">
           <span class="contact-eyebrow">Contact Us</span>
           <h2 class="contact-title">プロジェクトのご相談は<br>お気軽にどうぞ</h2>
-          <p class="contact-sub">展示会・イベント・ショールームなど、あらゆる体験設計のご要望に対応いたします。</p>
+          <p class="contact-sub">お問い合わせ内容を確認後、担当者より折り返しご連絡させていただきます。</p>
         </div>
         <div class="contact-actions fade-up delay-2">
           <a href="/contact" class="btn-primary">お問い合わせ</a>
@@ -520,12 +512,12 @@ app.get('/', (c) => {
               </svg>
             </div>
             <div class="footer-logo-text">
-              <span class="footer-logo-en">HAKUTEN</span>
-              <span class="footer-logo-sub">Communication Design®</span>
+              <span class="footer-logo-en">The Hearth</span>
+              <span class="footer-logo-sub">芸術と脳科学の融合を社会実装する</span>
             </div>
           </div>
-          <p class="footer-company-jp">株式会社博展</p>
-          <p class="footer-address">〒104-0031 東京都中央区京橋三丁目1番1号<br>東京スクエアガーデン20F</p>
+          <p class="footer-company-jp">The Hearth</p>
+          <p class="footer-address">〒163-0604 東京都新宿区西新宿1丁目25ー1</p>
           <div class="footer-social">
             <a href="#" aria-label="X (Twitter)"><i class="fab fa-x-twitter"></i></a>
             <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
@@ -540,7 +532,7 @@ app.get('/', (c) => {
           <a href="/reports" class="footer-nav-link">Reports</a>
           <a href="/company" class="footer-nav-link">Company</a>
           <a href="/contact" class="footer-nav-link">Contact</a>
-          <a href="#news" class="footer-nav-link">News</a>
+          <a href="/news" class="footer-nav-link">News</a>
         </nav>
       </div>
 
@@ -551,7 +543,7 @@ app.get('/', (c) => {
           <a href="#">個人情報保護方針</a>
           <a href="#">Cookie設定</a>
         </div>
-        <p class="footer-copyright">© 2024 HAKUTEN Corporation. All Rights Reserved.</p>
+        <p class="footer-copyright">© 2024 The Hearth. All Rights Reserved.</p>
       </div>
     </div>
   </footer>
@@ -580,10 +572,10 @@ app.get('/reports', (c) => {
   const currentCat = c.req.query('cat') || 'all'
   const categories = [
     { key: 'all', label: 'All' },
-    { key: 'exhibition', label: '展示会 / 学会出展' },
-    { key: 'event', label: 'イベントプロモーション' },
-    { key: 'showroom', label: 'ショールーム' },
-    { key: 'store', label: '店舗 / ディスプレイ' },
+    { key: 'exhibition', label: 'label1' },
+    { key: 'event', label: 'label2' },
+    { key: 'showroom', label: 'label3' },
+    { key: 'store', label: 'label4' },
   ]
   const filtered = currentCat === 'all' ? layoutWorksData : layoutWorksData.filter(w => w.category === currentCat)
   const filterTabsHTML = categories.map(cat => {
@@ -606,7 +598,7 @@ app.get('/reports', (c) => {
       </a>
     </article>`).join('')
 
-  return c.html(`${pageHead('Reports', '研究レポート — 博展による展示会・イベント・ショールームなどのプロジェクトレポート。')}
+  return c.html(`${pageHead('Reports', '研究レポート — The Hearthによる研究レポート。')}
 ${header('/reports')}
 <main>
   <section class="page-hero">
@@ -623,6 +615,40 @@ ${header('/reports')}
         <p class="works-count">${filtered.length} 件</p>
       </div>
       <div class="works-page-grid">${worksHTML}</div>
+    </div>
+  </section>
+</main>
+${footer()}
+${pageScripts()}`)
+})
+
+// ── NEWS PAGE ─────────────────────────────────────────────
+app.get('/news', (c) => {
+  const newsHTML = newsData.map((n, i) => `
+    <a href="#" class="news-card fade-up" style="transition-delay:${i * 0.05}s">
+      <div class="news-card-inner">
+        <div class="news-card-meta">
+          <time class="news-card-date">${n.date}</time>
+          <span class="news-card-category news-cat-${n.category.toLowerCase()}">${n.category}</span>
+        </div>
+        <h3 class="news-card-title">${n.title}</h3>
+        <span class="news-card-arrow">→</span>
+      </div>
+    </a>`).join('')
+
+  return c.html(`${pageHead('News', 'The Heathの最新情報・ニュースリリース。受賞実績、新サービス、プロジェクト情報などをお届けします。')}
+${header('/news')}
+<main>
+  <section class="page-hero">
+    <div class="page-hero-inner">
+      <span class="page-hero-eyebrow fade-up">Latest News</span>
+      <h1 class="page-hero-title fade-up delay-1">News</h1>
+      <p class="page-hero-sub fade-up delay-2">最新情報</p>
+    </div>
+  </section>
+  <section class="news-page-section">
+    <div class="section-inner">
+      <div class="news-page-grid">${newsHTML}</div>
     </div>
   </section>
 </main>
@@ -672,7 +698,7 @@ ${header('/service')}
           <h2 class="service-intro-title">体験創造のプロフェッショナルとして、<br>多岐にわたるソリューションを<br>統合的にご提供します。</h2>
         </div>
         <div class="service-intro-desc fade-up delay-2">
-          <p>博展は、リアル・デジタルを通じて、人の"体験"を統合的にデザインし、企業や社会の課題解決に貢献します。豊富な経験と充実した組織機能で、多様なお客様のニーズにお応えします。</p>
+          <p>The Hearthは、リアル・デジタルを通じて、人の"体験"を統合的にデザインし、企業や社会の課題解決に貢献します。豊富な経験と充実した組織機能で、多様なお客様のニーズにお応えします。</p>
         </div>
       </div>
     </div>
@@ -722,7 +748,7 @@ ${header('/service')}
         <div class="section-head-left">
           <span class="section-eyebrow fade-up">ご提供価値</span>
           <h2 class="section-title-en fade-up delay-1">Our Strengths</h2>
-          <p class="section-title-jp fade-up delay-2">博展の強み</p>
+          <p class="section-title-jp fade-up delay-2">The Hearthの強み</p>
         </div>
       </div>
       <div class="strength-grid">
@@ -769,7 +795,7 @@ ${header('/service')}
       <div class="contact-banner-text fade-up">
         <span class="contact-eyebrow">Contact Us</span>
         <h2 class="contact-title">プロジェクトのご相談は<br>お気軽にどうぞ</h2>
-        <p class="contact-sub">展示会・イベント・ショールームなど、あらゆる体験設計のご要望に対応いたします。</p>
+        <p class="contact-sub">お問い合わせ内容を確認後、担当者より折り返しご連絡させていただきます。</p>
       </div>
       <div class="contact-actions fade-up delay-2">
         <a href="/contact" class="btn-primary">お問い合わせ</a>
@@ -820,7 +846,7 @@ app.get('/company', (c) => {
       <div class="history-text">${item.text}</div>
     </div>`).join('')
 
-  return c.html(`${pageHead('Company', '株式会社博展の会社概要・役員情報・沿革・グループ会社情報をご覧いただけます。')}
+  return c.html(`${pageHead('Company', 'The Hearthの会社概要・メンバー・実績をご覧いただけます。')}
 ${header('/company')}
 <main>
   <section class="page-hero page-hero--dark">
@@ -863,18 +889,12 @@ ${header('/company')}
       <div class="company-table-wrap fade-up">
         <table class="company-table">
           <tbody>
-            <tr><th>正式名称</th><td>株式会社 博展</td></tr>
-            <tr><th>英文名称</th><td>Hakuten Corporation</td></tr>
-            <tr><th>所在地</th><td><strong>本社</strong><br>〒104-0031 東京都中央区京橋三丁目１番１号 東京スクエアガーデン20F<br><br><strong>西日本事業所</strong><br>〒541-0043 大阪府大阪市中央区高麗橋3-2-7 ORIX 高麗橋ビル5F<br><br><strong>中部営業所</strong><br>〒460-0008 愛知県名古屋市中区栄三丁目１８番１号 ナディアパーク ビジネスセンタービル21F</td></tr>
-            <tr><th>創業</th><td>1967年</td></tr>
-            <tr><th>設立</th><td>1970年</td></tr>
-            <tr><th>資本金</th><td>2億3,970万円（2024年12月末）</td></tr>
-            <tr><th>従業員数</th><td>単体：473名　連結：545名（2024年12月末）</td></tr>
+            <tr><th>正式名称</th><td>The Hearth</td></tr>
+            <tr><th>所在地</th><td>〒163-0604<br>東京都新宿区西新宿1丁目25ー1<br></td></tr>
+            <tr><th>設立</th><td>2025年9月7日</td></tr>
+            <tr><th>資本金</th><td>300万円</td></tr>
+            <tr><th>メンバー</th><td>3名</td></tr>
             <tr><th>事業内容</th><td>「Experience Marketing」を事業領域とした、コンタクトポイントにおけるコミュニケーション開発及び統合型マーケティングソリューションの提供</td></tr>
-            <tr><th>売上高（連結）</th><td>188億4,543万円（2024年12月末）</td></tr>
-            <tr><th>取引先業種</th><td>情報、通信、製造、食品、医療、自動車、スポーツなど</td></tr>
-            <tr><th>取引銀行</th><td>三井住友銀行、みずほ銀行、三菱ＵＦＪ銀行、横浜銀行、りそな銀行、三井住友信託銀行</td></tr>
-            <tr><th>上場市場</th><td>東京証券取引所グロース　証券コード：2173</td></tr>
           </tbody>
         </table>
       </div>
@@ -925,7 +945,7 @@ ${header('/company')}
       <div class="contact-banner-text fade-up">
         <span class="contact-eyebrow">Contact Us</span>
         <h2 class="contact-title">プロジェクトのご相談は<br>お気軽にどうぞ</h2>
-        <p class="contact-sub">展示会・イベント・ショールームなど、あらゆる体験設計のご要望に対応いたします。</p>
+        <p class="contact-sub">お問い合わせ内容を確認後、担当者より折り返しご連絡させていただきます。</p>
       </div>
       <div class="contact-actions fade-up delay-2">
         <a href="/contact" class="btn-primary">お問い合わせ</a>
@@ -1047,16 +1067,8 @@ ${header('/contact')}
         </div>
         <div class="contact-info fade-up delay-2">
           <div class="contact-info-block">
-            <h3 class="contact-info-heading">本社</h3>
-            <p class="contact-info-text">〒104-0031<br>東京都中央区京橋三丁目1番1号<br>東京スクエアガーデン20F</p>
-          </div>
-          <div class="contact-info-block">
-            <h3 class="contact-info-heading">西日本事業所</h3>
-            <p class="contact-info-text">〒541-0043<br>大阪府大阪市中央区高麗橋3-2-7<br>ORIX 高麗橋ビル5F</p>
-          </div>
-          <div class="contact-info-block">
-            <h3 class="contact-info-heading">中部営業所</h3>
-            <p class="contact-info-text">〒460-0008<br>愛知県名古屋市中区栄三丁目18番1号<br>ナディアパーク ビジネスセンタービル21F</p>
+            <h3 class="contact-info-heading">所在地</h3>
+            <p class="contact-info-text">〒163-0604<br>東京都新宿区西新宿1丁目25ー1</p>
           </div>
           <div class="contact-info-block" id="recruit">
             <h3 class="contact-info-heading">採用に関するお問い合わせ</h3>
@@ -1096,3 +1108,4 @@ ${pageScripts(`
 })
 
 export default handle(app)
+export { app }

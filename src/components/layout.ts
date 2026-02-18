@@ -29,9 +29,9 @@ export function header(currentPath: string = '/'): string {
   const navItems = [
     { href: '/service', label: 'Service' },
     { href: '/reports',  label: 'Reports' },
+    { href: '/news',    label: 'News' },
     { href: '/company', label: 'Company' },
     { href: '/contact', label: 'Contact' },
-    { href: '#news',    label: 'News' },
   ]
 
   const navHTML = navItems.map(item => {
@@ -129,9 +129,9 @@ export function footer(): string {
         <nav class="footer-nav-simple">
           <a href="/service" class="footer-nav-link">Service</a>
           <a href="/reports" class="footer-nav-link">Reports</a>
+          <a href="/news" class="footer-nav-link">News</a>
           <a href="/company" class="footer-nav-link">Company</a>
           <a href="/contact" class="footer-nav-link">Contact</a>
-          <a href="#news" class="footer-nav-link">News</a>
         </nav>
       </div>
       <div class="footer-bottom">
@@ -140,7 +140,7 @@ export function footer(): string {
           <a href="#">サイトポリシー</a>
           <a href="#">個人情報保護方針</a>
         </div>
-        <p class="footer-copyright">© 2024 HAKUTEN Corporation. All Rights Reserved.</p>
+        <p class="footer-copyright">© 2024 The Hearth. All Rights Reserved.</p>
       </div>
     </div>
   </footer>`

@@ -1,5 +1,5 @@
 import { serve } from '@hono/node-server'
-import app from './src/index'
+import { app } from './api/index.js'
 
 const port = parseInt(process.env.PORT || '3000', 10)
 
