@@ -7,7 +7,6 @@
     "preview": "wrangler pages dev",
     "deploy": "npm run build && wrangler pages deploy",
     "cf-typegen": "wrangler types --env-interface CloudflareBindings",
-    "vercel-build": "echo 'Build complete'",
     "start": "node -e \"import('./server.js')\""
   },
   "dependencies": {
