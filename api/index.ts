@@ -1,91 +1,219 @@
 import { Hono } from 'hono'
 import { handle } from '@hono/node-server/vercel'
 import { serveStatic } from '@hono/node-server/serve-static'
-import { header, footer, pageHead, pageScripts, worksData, newsData } from '../src/components/layout.js'
+import { header, footer, pageHead, pageScripts, worksData as layoutWorksData, newsData as layoutNewsData } from '../src/components/layout.js'
 
 const app = new Hono()
 
-// ── Static files ──────────────────────────────────────────
+// Static files (Node.js version for Vercel)
 app.use('/static/*', serveStatic({ root: 'public' }))
-app.get('/favicon.ico', (c) => new Response(null, { status: 204 }))
 
-// ── TOP PAGE ──────────────────────────────────────────────
+// Favicon
+app.get('/favicon.ico', (c) => {
+  return new Response(null, { status: 204 })
+})
+
+// Works data
+const worksData = [
+  {
+    id: 1,
+    title: 'ORGATEC TOKYO 2025',
+    client: 'コクヨ株式会社',
+    subtitle: '国際家具見本市「オルガテック東京2025」',
+    tags: ['#BtoB', '#展示会/学会出展', '#受賞作品'],
+    img: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1200&q=85',
+    featured: true,
+    category: 'exhibition',
+    year: '2025'
+  },
+  {
+    id: 2,
+    title: 'In the world tree',
+    client: '株式会社カナデビア',
+    subtitle: '大阪・関西万博（EXPO2025）',
+    tags: ['#BtoC', '#店舗/ウィンドウディスプレイ'],
+    img: 'https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=800&q=80',
+    featured: false,
+    category: 'store',
+    year: '2025'
+  },
+  {
+    id: 3,
+    title: 'JAPAN MOBILITY SHOW 2025',
+    client: '日本自動車工業会',
+    subtitle: '次世代モビリティの体験空間',
+    tags: ['#BtoC', '#展示会/学会出展'],
+    img: 'https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=800&q=80',
+    featured: false,
+    category: 'exhibition',
+    year: '2025'
+  },
+  {
+    id: 4,
+    title: 'Star Wars Celebration JAPAN 2025',
+    client: '株式会社オーディオテクニカ',
+    subtitle: '日本文化をモチーフとしたブースデザイン',
+    tags: ['#BtoC', '#展示会/学会出展', '#デジタルコンテンツ'],
+    img: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80',
+    featured: false,
+    category: 'exhibition',
+    year: '2025'
+  },
+  {
+    id: 5,
+    title: 'Dewar\'s 12年 DISCOVER YOUR HIGHBALL',
+    client: 'バカルディ ジャパン株式会社',
+    subtitle: '六本木ヒルズカフェ 期間限定イベント',
+    tags: ['#BtoC', '#イベントプロモーション'],
+    img: 'https://images.unsplash.com/photo-1527529482837-4698179dc6ce?w=800&q=80',
+    featured: false,
+    category: 'event',
+    year: '2024'
+  },
+  {
+    id: 6,
+    title: 'Hakuten Permanent Showroom',
+    client: 'パナソニック株式会社',
+    subtitle: 'ブランド体験型ショールーム設計',
+    tags: ['#BtoB', '#ショールーム'],
+    img: 'https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=800&q=80',
+    featured: false,
+    category: 'showroom',
+    year: '2024'
+  }
+]
+
+
+// News data
+const newsData = [
+  {
+    date: '2026.02.14',
+    category: 'News',
+    title: '博展グループ、2025年12月期連結決算発表（売上高188億円）'
+  },
+  {
+    date: '2026.01.22',
+    category: 'Award',
+    title: 'ORGATEC TOKYO 2025にてグランプリをはじめとする史上初のダブル受賞を達成'
+  },
+  {
+    date: '2025.12.10',
+    category: 'Event',
+    title: '博展の1年間のクリエイティブの集大成「Hakuten Open Studio 2025」を開催'
+  },
+  {
+    date: '2025.04.13',
+    category: 'Project',
+    title: '大阪・関西万博（EXPO2025）「未来の都市」パビリオン、4月13日より出展開始'
+  },
+  {
+    date: '2025.03.19',
+    category: 'Press',
+    title: '博展・デジタルエクスペリエンス、AIを活用した展示会効果測定サービスを新たに開始'
+  },
+  {
+    date: '2025.01.14',
+    category: 'Press',
+    title: '「パケテン」が累計ユーザー数5,000社を突破。展示会ブース設計・施工のオンライン受注を加速'
+  }
+]
+
+// Hero slides
+const heroSlides = [
+  {
+    img: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1920&q=90',
+    label: 'Exhibition / Award',
+    title: 'ORGATEC TOKYO 2025',
+    subtitle: '史上最多・三度目グランプリ受賞',
+    client: 'KOKUYO Co., Ltd.',
+    year: '2025'
+  },
+  {
+    img: 'https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=1920&q=90',
+    label: 'Pavilion / EXPO 2025',
+    title: 'In the world tree',
+    subtitle: '大阪・関西万博 カナデビアパビリオン',
+    client: 'KANADVIA Corporation',
+    year: '2025'
+  },
+  {
+    img: 'https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=1920&q=90',
+    label: 'Exhibition',
+    title: 'JAPAN MOBILITY SHOW 2025',
+    subtitle: '次世代モビリティの体験価値を創造',
+    client: 'Japan Automobile Manufacturers Association',
+    year: '2025'
+  },
+  {
+    img: 'https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=1920&q=90',
+    label: 'Showroom / Branding',
+    title: 'INNOVATION EXPERIENCE CENTER',
+    subtitle: 'ブランド体験型空間設計',
+    client: 'Panasonic Corporation',
+    year: '2024'
+  }
+]
+
+const tickerItems = [
+  'Exhibition', 'Event Promotion', 'Private Show', 'Showroom',
+  'Digital Contents', 'Space Design', 'Pavilion', 'Store Display',
+  'Communication Design®', 'Experience Design', 'Brand Activation',
+  'Sustainability'
+]
+
+// Main HTML page
 app.get('/', (c) => {
-  const heroSlides = [
-    { label: 'Exhibition Design', title: 'ORGATEC TOKYO 2025', client: 'KOKUYO Co., Ltd.', img: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1920&q=90' },
-    { label: 'Pavilion Design', title: 'In the world tree', client: 'KANADEVIA Corporation', img: 'https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=1920&q=90' },
-    { label: 'Event Production', title: "Dewar's 12 DISCOVER YOUR HIGHBALL", client: 'Bacardi Japan', img: 'https://images.unsplash.com/photo-1527529482837-4698179dc6ce?w=1920&q=90' },
-    { label: 'Brand Experience', title: 'Star Wars Celebration JAPAN 2025', client: 'Audio Technica', img: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=1920&q=90' },
-  ]
+  const heroSlidesHTML = heroSlides.map((slide, i) => `
+    <div class="hero-slide ${i === 0 ? 'active' : ''}" data-index="${i}">
+      <img src="${slide.img}" alt="${slide.title}" class="hero-slide-img" loading="${i === 0 ? 'eager' : 'lazy'}">
+      <div class="hero-slide-overlay"></div>
+    </div>
+  `).join('')
 
-  const storyData = [
-    { title: 'RE:WORLD HIROSHIMA — 万博で広島の未来を発信', date: '2026.02', tags: ['#行政/自治体', '#イベントプロモーション'], img: 'https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?w=800&q=80', url: '#' },
-    { title: '暗闇婚礼 蠢一族 ─ 東京ドームお化け屋敷リニューアル', date: '2026.01', tags: ['#BtoC', '#イベントプロモーション'], img: 'https://images.unsplash.com/photo-1509347528160-9a9e33742cdb?w=800&q=80', url: '#' },
-    { title: '資生堂 在る美 ── 銀座ウィンドウアート', date: '2025.10', tags: ['#BtoC', '#店舗/ウィンドウディスプレイ', '#受賞作品'], img: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&q=80', url: '#' },
-    { title: 'Dewar\'s 12年 DISCOVER YOUR HIGHBALL', date: '2025.11', tags: ['#BtoC', '#イベントプロモーション'], img: 'https://images.unsplash.com/photo-1527529482837-4698179dc6ce?w=800&q=80', url: '#' },
-  ]
+  const heroIndicatorsHTML = heroSlides.map((_, i) => `
+    <button class="hero-dot ${i === 0 ? 'active' : ''}" data-slide="${i}" aria-label="Slide ${i + 1}">
+      <span class="hero-dot-fill"></span>
+    </button>
+  `).join('')
 
-  const featuredWork = worksData.find(w => w.featured) || worksData[0]
-  const otherWorks = worksData.filter(w => !w.featured).slice(0, 5)
-
-  const heroSlidesHTML = heroSlides.map((s, i) => `
-    <div class="hero-slide${i === 0 ? ' active' : ''}" data-index="${i}">
-      <div class="hero-bg" style="background-image:url('${s.img}')"></div>
-    </div>`).join('')
-
-  const heroDotsHTML = heroSlides.map((_, i) => `
-    <button class="hero-dot${i === 0 ? ' active' : ''}" data-slide="${i}" aria-label="スライド ${i+1}"></button>`).join('')
-
-  const featuredWorksHTML = `
-    <article class="work-featured fade-up">
-      <a href="/reports" class="work-featured-link">
-        <div class="work-featured-img">
-          <img src="${featuredWork.img}" alt="${featuredWork.title}" loading="lazy">
-          <div class="work-overlay"><span>View Works</span></div>
+  const worksHTML = worksData.map((work, i) => `
+    <article class="work-item ${work.featured ? 'work-featured' : ''}" data-category="${work.category}">
+      <a href="#" class="work-link">
+        <div class="work-img-wrap">
+          <img src="${work.img}" alt="${work.title}" class="work-img" loading="lazy">
+          <div class="work-hover-overlay">
+            <div class="work-hover-inner">
+              <div class="work-hover-label">View Project</div>
+            </div>
+          </div>
         </div>
-        <div class="work-featured-body">
-          <p class="work-client">${featuredWork.client}</p>
-          <h3 class="work-title">${featuredWork.title}</h3>
-          <p class="work-subtitle">${featuredWork.subtitle}</p>
-          <div class="work-tags">${featuredWork.tags.map(t => `<span>${t}</span>`).join('')}</div>
+        <div class="work-info">
+          <div class="work-client">${work.client}</div>
+          <h3 class="work-title">${work.title}</h3>
+          <div class="work-tags-row">
+            ${work.tags.map(t => `<span class="work-tag">${t}</span>`).join('')}
+          </div>
         </div>
       </a>
     </article>
-    ${otherWorks.map((w, i) => `
-      <article class="work-item fade-up" style="transition-delay:${0.08 + i * 0.06}s" data-filter="${w.category}">
-        <a href="/reports" class="work-item-link">
-          <div class="work-item-img">
-            <img src="${w.img}" alt="${w.title}" loading="lazy">
-            <div class="work-overlay"><span>View</span></div>
-          </div>
-          <p class="work-client">${w.client}</p>
-          <h3 class="work-title">${w.title}</h3>
-          <div class="work-tags">${w.tags.map(t => `<span>${t}</span>`).join('')}</div>
-        </a>
-      </article>`).join('')}`
-
-  const storiesHTML = storyData.map((s, i) => `
-    <article class="story-item fade-up" style="transition-delay:${i * 0.08}s">
-      <a href="${s.url}" class="story-link">
-        <div class="story-img">
-          <img src="${s.img}" alt="${s.title}" loading="lazy">
-        </div>
-        <div class="story-body">
-          <div class="story-tags">${s.tags.map(t => `<span>${t}</span>`).join('')}</div>
-          <h3 class="story-title">${s.title}</h3>
-          <span class="story-date">${s.date}</span>
-        </div>
-      </a>
-    </article>`).join('')
+  `).join('')
 
   const newsHTML = newsData.map(n => `
-    <li class="news-item fade-up">
-      <a href="#" class="news-link">
+    <a href="#" class="news-item">
+      <div class="news-item-inner">
         <time class="news-date">${n.date}</time>
-        <span class="news-cat news-cat--${n.category.toLowerCase()}">${n.category}</span>
-        <span class="news-title">${n.title}</span>
-      </a>
-    </li>`).join('')
+        <span class="news-category news-cat-${n.category.toLowerCase()}">${n.category}</span>
+        <p class="news-title">${n.title}</p>
+        <span class="news-arrow">→</span>
+      </div>
+    </a>
+  `).join('')
+
+  const tickerHTML = [...tickerItems, ...tickerItems].map(item =>
+    `<span class="ticker-item"><span class="ticker-dot">◆</span>${item}</span>`
+  ).join('')
+
+  const slidesDataJSON = JSON.stringify(heroSlides)
 
   return c.html(`<!DOCTYPE html>
 <html lang="ja">
@@ -93,7 +221,10 @@ app.get('/', (c) => {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>株式会社博展 HAKUTEN | Communication Design®</title>
-  <meta name="description" content="博展は体験創造のプロフェッショナルとして、企業のコミュニケーションを多角的にデザインします。展示会・イベント・ショールーム・デジタルコンテンツ。">
+  <meta name="description" content="体験価値の創造を通じて、企業・団体のコミュニケーションをデザインしています。イベントプロモーション、プライベートショー、展示会、ショールーム等の企画・制作。">
+  <meta property="og:title" content="株式会社博展 HAKUTEN | Communication Design®">
+  <meta property="og:description" content="体験価値の創造を通じて、企業・団体のコミュニケーションをデザインしています。">
+  <meta property="og:type" content="website">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@300;400;600&family=Inter:ital,wght@0,200;0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
@@ -102,198 +233,351 @@ app.get('/', (c) => {
 </head>
 <body>
 
-<!-- Loading Screen -->
-<div id="loading" class="loading-screen">
-  <div class="loading-inner">
-    <div class="loading-logo">
-      <svg viewBox="0 0 60 60" fill="none" width="60" height="60">
-        <rect width="60" height="60" fill="white"/>
-        <text x="30" y="42" text-anchor="middle" font-size="28" font-weight="bold" fill="black" font-family="serif">博</text>
-      </svg>
-    </div>
-    <div class="loading-bar-wrap"><div class="loading-bar" id="loadingBar"></div></div>
-  </div>
-</div>
-
-<!-- Cookie Notice -->
-<div id="cookieNotice" class="cookie-notice">
-  <p>本サイトはCookieを使用しています。サイトを引き続き利用することで、<a href="#" class="cookie-link">サイトポリシー</a>に同意したものとみなします。</p>
-  <button id="cookieAccept" class="cookie-accept">OK</button>
-</div>
-
-${header('/')}
-
-<main>
-  <!-- ── HERO ── -->
-  <section id="hero" class="hero">
-    <div class="hero-slides-wrap" id="heroSlides">${heroSlidesHTML}</div>
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <div class="hero-meta fade-hero">
-        <span class="hero-label" id="heroLabel">${heroSlides[0].label}</span>
+  <!-- Loading Screen -->
+  <div id="loading">
+    <div class="loading-inner">
+      <div class="loading-logo">
+        <span class="loading-h">H</span><span class="loading-rest">AKUTEN</span>
       </div>
-      <h1 class="hero-title">
-        <span class="hero-title-jp fade-hero delay-hero-1">人も、社会も動かす</span>
-        <span class="hero-title-jp fade-hero delay-hero-1">"体験"をつくる。</span>
-      </h1>
-      <div class="hero-work-info fade-hero delay-hero-2">
-        <span class="hero-work-title" id="heroWorkTitle">${heroSlides[0].title}</span>
-        <span class="hero-sep">／</span>
-        <span class="hero-work-client" id="heroWorkClient">${heroSlides[0].client}</span>
-      </div>
-    </div>
-    <div class="hero-progress"><div class="hero-progress-bar" id="heroProgress"></div></div>
-    <div class="hero-dots" id="heroDots">${heroDotsHTML}</div>
-    <div class="hero-scroll-arrow">
-      <span>Scroll</span>
-      <svg viewBox="0 0 24 40" width="16" height="28"><line x1="12" y1="0" x2="12" y2="32" stroke="white" stroke-width="1.5"/><polyline points="6,26 12,32 18,26" fill="none" stroke="white" stroke-width="1.5"/></svg>
-    </div>
-  </section>
-
-  <!-- ── SERVICE TICKER ── -->
-  <div class="service-ticker" aria-hidden="true">
-    <div class="ticker-inner">
-      ${Array(3).fill('Exhibition Design&nbsp;&nbsp;//&nbsp;&nbsp;Event Production&nbsp;&nbsp;//&nbsp;&nbsp;Showroom Design&nbsp;&nbsp;//&nbsp;&nbsp;Window Display&nbsp;&nbsp;//&nbsp;&nbsp;Digital Content&nbsp;&nbsp;//&nbsp;&nbsp;Communication Design®&nbsp;&nbsp;//&nbsp;&nbsp;').join('')}
+      <div class="loading-sub">Communication Design®</div>
+      <div class="loading-bar-wrap"><div class="loading-bar"></div></div>
     </div>
   </div>
 
-  <!-- ── WORKS ── -->
-  <section id="works" class="works-section">
-    <div class="section-inner">
-      <div class="section-head">
-        <div class="section-head-left">
-          <span class="section-eyebrow fade-up">Our Works</span>
-          <h2 class="section-title-en fade-up delay-1">Works</h2>
-          <p class="section-title-jp fade-up delay-2">制作実績</p>
-        </div>
-        <div class="section-head-right">
-          <a href="/reports" class="section-more-link fade-up">View All Works →</a>
-        </div>
-      </div>
+  <!-- Cookie Notice -->
+  <div class="cookie-notice" id="cookieNotice">
+    <p>当社のウェブサイトはサービス向上およびお客様により適したサービスを提供するため、Cookieを使用しております。当サイトの使用を継続することで、当サイトの<a href="#">ポリシー</a>に同意したものといたします。</p>
+    <button class="cookie-btn" id="cookieAccept">同意する</button>
+  </div>
 
-      <!-- Filter buttons -->
-      <div class="works-filters fade-up">
-        <button class="filter-btn active" data-cat="all">All</button>
-        <button class="filter-btn" data-cat="exhibition">展示会 / 学会出展</button>
-        <button class="filter-btn" data-cat="event">イベントプロモーション</button>
-        <button class="filter-btn" data-cat="showroom">ショールーム</button>
-        <button class="filter-btn" data-cat="store">店舗 / ディスプレイ</button>
-      </div>
-
-      <div class="works-grid" id="worksGrid">
-        ${featuredWorksHTML}
+  <!-- Mobile Menu Overlay -->
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <div class="mobile-menu-bg"></div>
+    <div class="mobile-menu-content">
+      <nav class="mobile-nav">
+        <a href="/service" class="mobile-nav-link"><span class="mn-num">01</span><span class="mn-text">Service</span></a>
+        <a href="/reports" class="mobile-nav-link"><span class="mn-num">02</span><span class="mn-text">Reports</span></a>
+        <a href="/company" class="mobile-nav-link"><span class="mn-num">03</span><span class="mn-text">Company</span></a>
+        <a href="/contact" class="mobile-nav-link"><span class="mn-num">04</span><span class="mn-text">Contact</span></a>
+      </nav>
+      <div class="mobile-menu-footer">
+        <a href="/contact" class="mobile-contact-btn">Contact Us</a>
+        <div class="mobile-social">
+          <a href="#" aria-label="X (Twitter)"><i class="fab fa-x-twitter"></i></a>
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        </div>
       </div>
     </div>
-  </section>
+  </div>
 
-  <!-- ── STORY ── -->
-  <section id="story" class="story-section">
-    <div class="section-inner">
-      <div class="section-head">
-        <div class="section-head-left">
-          <span class="section-eyebrow fade-up">Behind the Works</span>
-          <h2 class="section-title-en fade-up delay-1">Story</h2>
-          <p class="section-title-jp fade-up delay-2">プロジェクトストーリー</p>
-        </div>
-        <div class="section-head-right">
-          <a href="/reports" class="section-more-link fade-up">View All Stories →</a>
+  <!-- Header -->
+  <header id="site-header" class="is-top">
+    <a href="/" class="header-logo" aria-label="博展 ホーム">
+      <div class="logo-mark-wrap">
+        <svg class="logo-mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="40" height="40" fill="currentColor"/>
+          <text x="20" y="28" text-anchor="middle" font-size="18" font-weight="bold" fill="white" font-family="serif">博</text>
+        </svg>
+      </div>
+      <div class="logo-text">
+        <span class="logo-jp">株式会社博展</span>
+        <span class="logo-en">HAKUTEN</span>
+      </div>
+    </a>
+
+    <nav class="header-nav" aria-label="メインナビゲーション">
+      <a href="/service" class="nav-link">Service</a>
+      <a href="/reports" class="nav-link">Reports</a>
+      <a href="/company" class="nav-link">Company</a>
+      <a href="/contact" class="nav-link">Contact</a>
+      <a href="#news" class="nav-link">News</a>
+    </nav>
+
+    <div class="header-right">
+      <a href="/contact" class="btn-contact">Contact</a>
+      <button class="hamburger" id="hamburger" aria-label="メニューを開く" aria-expanded="false">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main-content">
+
+    <!-- ===== HERO ===== -->
+    <section id="hero" aria-label="メインビジュアル">
+      <div class="hero-slider">
+        ${heroSlidesHTML}
+      </div>
+
+      <div class="hero-content" id="heroContent">
+        <div class="hero-content-inner">
+          <div class="hero-eyebrow" id="heroLabel">Exhibition / Award</div>
+          <h1 class="hero-title" id="heroTitle">ORGATEC TOKYO 2025</h1>
+          <p class="hero-subtitle" id="heroSubtitle">史上最多・三度目グランプリ受賞</p>
+          <div class="hero-client" id="heroClient">KOKUYO Co., Ltd.</div>
+          <a href="#" class="hero-cta">View Project <span>→</span></a>
         </div>
       </div>
-      <div class="story-grid">${storiesHTML}</div>
-    </div>
-  </section>
 
-  <!-- ── PURPOSE ── -->
-  <section id="purpose" class="purpose-section">
-    <div class="purpose-bg-text" aria-hidden="true">COMMUNICATION<br>DESIGN</div>
-    <div class="section-inner">
-      <div class="purpose-content">
-        <span class="section-eyebrow fade-up" style="color:rgba(255,255,255,0.6)">Our Purpose</span>
-        <h2 class="purpose-title fade-up delay-1">
-          人と社会の<br>コミュニケーションに<br>ココロを通わせ、<br>未来へつなげる<br>原動力をつくる。
-        </h2>
-        <a href="/service" class="purpose-link fade-up delay-2">Our Vision &amp; Service →</a>
+      <div class="hero-side-info">
+        <div class="hero-counter">
+          <span id="heroCurrentNum" class="hero-num-current">01</span>
+          <span class="hero-num-sep">/</span>
+          <span class="hero-num-total">0${heroSlides.length}</span>
+        </div>
+      </div>
+
+      <div class="hero-indicators" role="tablist" aria-label="スライドナビゲーション">
+        ${heroIndicatorsHTML}
+      </div>
+
+      <div class="hero-scroll-hint" aria-hidden="true">
+        <span class="scroll-text">Scroll</span>
+        <span class="scroll-line"></span>
+      </div>
+
+      <div class="hero-progress-bar" id="heroProgressBar"></div>
+    </section>
+
+    <!-- ===== TICKER ===== -->
+    <div id="service-ticker" aria-hidden="true">
+      <div class="ticker-track">
+        ${tickerHTML}
       </div>
     </div>
-  </section>
 
-  <!-- ── ABOUT ── -->
-  <section id="about" class="about-section">
-    <div class="section-inner">
-      <div class="about-grid">
-        <div class="about-visual fade-up">
-          <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=900&q=85" alt="HAKUTEN about">
-          <div class="about-visual-caption">Experience Marketing</div>
+    <!-- ===== PURPOSE / OUR VISION ===== -->
+    <section id="purpose" aria-label="パーパス">
+      <div class="purpose-bg-text" aria-hidden="true">Communication Design</div>
+      <div class="section-inner purpose-inner">
+        <span class="purpose-label fade-up">Hakuten's Purpose</span>
+        <div class="purpose-body">
+          <p class="purpose-text fade-up delay-1">
+            人・モノ・コトが時間や場所を問わずつながることができる時代において、<br>
+            私たちは社会の流れを常に捉え、コミュニケーションの本質とは何かを探究し続けます。<br>
+            そして、ココロある豊かなコミュニケーションをデザインすることで、<br>
+            人と社会に創造力を生み出し、未来へつなげる原動力をつくります。
+          </p>
+          <h2 class="purpose-title fade-up delay-2">
+            人と社会のコミュニケーションに<br>
+            ココロを通わせ、<br>
+            未来へつなげる原動力をつくる。
+          </h2>
         </div>
-        <div class="about-content">
-          <span class="section-eyebrow fade-up">About HAKUTEN</span>
-          <h2 class="about-title fade-up delay-1">体験創造のプロフェッショナルとして</h2>
-          <p class="about-desc fade-up delay-2">1967年の創業以来、博展は「体験価値の創造」を軸に企業のコミュニケーションを支えてきました。展示会・イベント・ショールームなどリアル接点でのコミュニケーション設計から、デジタルとの融合まで、ワンストップでご提供します。</p>
-          <div class="about-stats">
-            <div class="about-stat fade-up delay-2">
-              <span class="stat-num" data-target="57">0</span>
-              <span class="stat-unit">年</span>
-              <span class="stat-label">創業</span>
+        <div class="purpose-bottom fade-up delay-3">
+          <div class="purpose-cd">Communication Design<sup>®</sup></div>
+          <a href="/service" class="purpose-link">
+            Our Vision
+            <svg class="arrow-icon" viewBox="0 0 24 8" fill="none">
+              <path d="M0 4H22M19 1L22 4L19 7" stroke="currentColor" stroke-width="1"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== WORKS ===== -->
+    <section id="works" aria-label="制作実績">
+      <div class="section-inner">
+        <div class="section-head">
+          <div class="section-head-left">
+            <span class="section-eyebrow fade-up">Our Reports</span>
+            <h2 class="section-title-en fade-up delay-1">Reports</h2>
+            <p class="section-title-jp fade-up delay-2">研究レポート</p>
+          </div>
+          <a href="/reports" class="view-all-btn fade-up delay-2">
+            View All Reports
+            <svg class="arrow-icon" viewBox="0 0 24 8" fill="none">
+              <path d="M0 4H22M19 1L22 4L19 7" stroke="currentColor" stroke-width="1"/>
+            </svg>
+          </a>
+        </div>
+
+        <!-- Filter Tabs -->
+        <div class="filter-tabs fade-up" role="tablist" aria-label="カテゴリフィルター">
+          <button class="filter-tab active" data-filter="all" role="tab" aria-selected="true">All</button>
+          <button class="filter-tab" data-filter="exhibition" role="tab" aria-selected="false">展示会 / 学会</button>
+          <button class="filter-tab" data-filter="event" role="tab" aria-selected="false">イベント</button>
+          <button class="filter-tab" data-filter="showroom" role="tab" aria-selected="false">ショールーム</button>
+          <button class="filter-tab" data-filter="store" role="tab" aria-selected="false">店舗 / ディスプレイ</button>
+        </div>
+
+        <!-- Works Grid -->
+        <div class="works-grid grid-with-featured" id="worksGrid">
+          ${worksHTML}
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SERVICE SECTION ===== -->
+    <section id="service-home" aria-label="サービス">
+      <div class="section-inner">
+        <div class="section-head">
+          <div class="section-head-left">
+            <span class="section-eyebrow fade-up">What We Do</span>
+            <h2 class="section-title-en fade-up delay-1">Service</h2>
+            <p class="section-title-jp fade-up delay-2">サービス領域</p>
+          </div>
+          <a href="/service" class="view-all-btn fade-up delay-2">
+            View All Services
+            <svg class="arrow-icon" viewBox="0 0 24 8" fill="none">
+              <path d="M0 4H22M19 1L22 4L19 7" stroke="currentColor" stroke-width="1"/>
+            </svg>
+          </a>
+        </div>
+
+        <div class="service-cards-grid">
+          <a href="/service" class="service-card fade-up">
+            <div class="service-card-icon"><i class="fas fa-building"></i></div>
+            <div class="service-card-body">
+              <h3 class="service-card-name">展示会 / 学会出展</h3>
+              <p class="service-card-desc">国内外の展示会・学会において、企画から設計、制作、運営まで一気通貫で対応します。</p>
             </div>
-            <div class="about-stat fade-up delay-3">
-              <span class="stat-num" data-target="473">0</span>
-              <span class="stat-unit">名</span>
-              <span class="stat-label">社員数</span>
+            <span class="service-card-arrow">→</span>
+          </a>
+          <a href="/service" class="service-card fade-up delay-1">
+            <div class="service-card-icon"><i class="fas fa-star"></i></div>
+            <div class="service-card-body">
+              <h3 class="service-card-name">イベントプロモーション</h3>
+              <p class="service-card-desc">ブランド体験型イベントの企画・演出から当日運営まで、最高の瞬間をデザインします。</p>
             </div>
-            <div class="about-stat fade-up" style="transition-delay:0.4s">
-              <span class="stat-num" data-target="188">0</span>
-              <span class="stat-unit">億円</span>
-              <span class="stat-label">売上高</span>
+            <span class="service-card-arrow">→</span>
+          </a>
+          <a href="/service" class="service-card fade-up delay-2">
+            <div class="service-card-icon"><i class="fas fa-store"></i></div>
+            <div class="service-card-body">
+              <h3 class="service-card-name">ショールーム / 商環境</h3>
+              <p class="service-card-desc">恒久的なブランド空間の企画設計・施工。日常的な体験価値を通してブランドを強化します。</p>
+            </div>
+            <span class="service-card-arrow">→</span>
+          </a>
+          <a href="/service" class="service-card fade-up delay-3">
+            <div class="service-card-icon"><i class="fas fa-desktop"></i></div>
+            <div class="service-card-body">
+              <h3 class="service-card-name">デジタルコンテンツ</h3>
+              <p class="service-card-desc">インタラクティブなデジタル体験・映像制作で、リアルな空間にデジタルの力を融合します。</p>
+            </div>
+            <span class="service-card-arrow">→</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== NEWS ===== -->
+    <section id="news" aria-label="ニュース">
+      <div class="section-inner">
+        <div class="section-head">
+          <div class="section-head-left">
+            <span class="section-eyebrow fade-up">Latest News</span>
+            <h2 class="section-title-en fade-up delay-1">News</h2>
+            <p class="section-title-jp fade-up delay-2">最新情報</p>
+          </div>
+          <a href="#" class="view-all-btn fade-up delay-2" style="pointer-events:none;opacity:0.4;">
+            View All News
+            <svg class="arrow-icon" viewBox="0 0 24 8" fill="none">
+              <path d="M0 4H22M19 1L22 4L19 7" stroke="currentColor" stroke-width="1"/>
+            </svg>
+          </a>
+        </div>
+
+        <div class="news-list fade-up">
+          ${newsHTML}
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CONTACT BANNER ===== -->
+    <section id="contact-banner" aria-label="お問い合わせ">
+      <div class="contact-banner-inner">
+        <div class="contact-banner-text fade-up">
+          <span class="contact-eyebrow">Contact Us</span>
+          <h2 class="contact-title">プロジェクトのご相談は<br>お気軽にどうぞ</h2>
+          <p class="contact-sub">展示会・イベント・ショールームなど、あらゆる体験設計のご要望に対応いたします。</p>
+        </div>
+        <div class="contact-actions fade-up delay-2">
+          <a href="/contact" class="btn-primary">お問い合わせ</a>
+          <a href="/reports" class="btn-secondary">実績を見る</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer id="site-footer" aria-label="フッター">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <div class="footer-logo-mark">
+              <svg viewBox="0 0 40 40" fill="none">
+                <rect width="40" height="40" fill="white"/>
+                <text x="20" y="28" text-anchor="middle" font-size="18" font-weight="bold" fill="black" font-family="serif">博</text>
+              </svg>
+            </div>
+            <div class="footer-logo-text">
+              <span class="footer-logo-en">HAKUTEN</span>
+              <span class="footer-logo-sub">Communication Design®</span>
             </div>
           </div>
-          <a href="/company" class="about-link fade-up delay-3">Company Overview →</a>
+          <p class="footer-company-jp">株式会社博展</p>
+          <p class="footer-address">〒104-0031 東京都中央区京橋三丁目1番1号<br>東京スクエアガーデン20F</p>
+          <div class="footer-social">
+            <a href="#" aria-label="X (Twitter)"><i class="fab fa-x-twitter"></i></a>
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          </div>
         </div>
+
+        <nav class="footer-nav-simple" aria-label="フッターナビゲーション">
+          <a href="/service" class="footer-nav-link">Service</a>
+          <a href="/reports" class="footer-nav-link">Reports</a>
+          <a href="/company" class="footer-nav-link">Company</a>
+          <a href="/contact" class="footer-nav-link">Contact</a>
+          <a href="#news" class="footer-nav-link">News</a>
+        </nav>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-legal-links">
+          <a href="#">プライバシーポリシー</a>
+          <a href="#">サイトポリシー</a>
+          <a href="#">個人情報保護方針</a>
+          <a href="#">Cookie設定</a>
+        </div>
+        <p class="footer-copyright">© 2024 HAKUTEN Corporation. All Rights Reserved.</p>
       </div>
     </div>
-  </section>
+  </footer>
 
-  <!-- ── NEWS ── -->
-  <section id="news" class="news-section">
-    <div class="section-inner">
-      <div class="section-head">
-        <div class="section-head-left">
-          <span class="section-eyebrow fade-up">Latest Updates</span>
-          <h2 class="section-title-en fade-up delay-1">News</h2>
-        </div>
-        <div class="section-head-right">
-          <a href="#" class="section-more-link fade-up">View All News →</a>
-        </div>
-      </div>
-      <ul class="news-list">${newsHTML}</ul>
-    </div>
-  </section>
-
-  <!-- ── CONTACT CTA ── -->
-  <section id="contact-banner">
-    <div class="contact-banner-inner">
-      <div class="contact-banner-text fade-up">
-        <span class="contact-eyebrow">Contact Us</span>
-        <h2 class="contact-title">プロジェクトのご相談は<br>お気軽にどうぞ</h2>
-        <p class="contact-sub">展示会・イベント・ショールームなど、あらゆる体験設計のご要望に対応いたします。</p>
-      </div>
-      <div class="contact-actions fade-up delay-2">
-        <a href="/contact" class="btn-primary">お問い合わせ</a>
-        <a href="/reports" class="btn-secondary">実績を見る</a>
-      </div>
-    </div>
-  </section>
-</main>
-
-${footer()}
-<script src="/static/app.js"></script>
+  <script id="slides-data" type="application/json">${slidesDataJSON}</script>
+  <script src="/static/app.js"></script>
 </body>
 </html>`)
 })
 
-// ── WORKS PAGE ──────────────────────────────────────────────
+// API endpoints
+app.get('/api/works', (c) => {
+  const category = c.req.query('category')
+  const filtered = category && category !== 'all'
+    ? worksData.filter(w => w.category === category)
+    : worksData
+  return c.json(filtered)
+})
+
+app.get('/api/news', (c) => {
+  return c.json(newsData)
+})
+
+// ── REPORTS PAGE ───────────────────────────────────────────
 app.get('/reports', (c) => {
   const currentCat = c.req.query('cat') || 'all'
-
   const categories = [
     { key: 'all', label: 'All' },
     { key: 'exhibition', label: '展示会 / 学会出展' },
@@ -301,14 +585,11 @@ app.get('/reports', (c) => {
     { key: 'showroom', label: 'ショールーム' },
     { key: 'store', label: '店舗 / ディスプレイ' },
   ]
-
-  const filtered = currentCat === 'all' ? worksData : worksData.filter(w => w.category === currentCat)
-
+  const filtered = currentCat === 'all' ? layoutWorksData : layoutWorksData.filter(w => w.category === currentCat)
   const filterTabsHTML = categories.map(cat => {
     const active = currentCat === cat.key ? ' active' : ''
     return `<a href="/reports?cat=${cat.key}" class="filter-tab${active}">${cat.label}</a>`
   }).join('')
-
   const worksHTML = filtered.map((work, i) => `
     <article class="work-card fade-up" style="transition-delay:${(i % 3) * 0.08}s">
       <a href="#" class="work-card-link">
@@ -325,17 +606,16 @@ app.get('/reports', (c) => {
       </a>
     </article>`).join('')
 
-  return c.html(`${pageHead('Works', '制作実績一覧 — 博展が手がけた展示会・イベント・ショールームなどの実績をご覧いただけます。')}
+  return c.html(`${pageHead('Reports', '研究レポート — 博展による展示会・イベント・ショールームなどのプロジェクトレポート。')}
 ${header('/reports')}
 <main>
   <section class="page-hero">
     <div class="page-hero-inner">
-      <span class="page-hero-eyebrow fade-up">Our Works</span>
-      <h1 class="page-hero-title fade-up delay-1">Works</h1>
-      <p class="page-hero-sub fade-up delay-2">制作実績</p>
+      <span class="page-hero-eyebrow fade-up">Our Reports</span>
+      <h1 class="page-hero-title fade-up delay-1">Reports</h1>
+      <p class="page-hero-sub fade-up delay-2">研究レポート</p>
     </div>
   </section>
-
   <section class="works-page-section">
     <div class="section-inner">
       <div class="filter-tabs-wrap">
@@ -350,7 +630,7 @@ ${footer()}
 ${pageScripts()}`)
 })
 
-// ── SERVICE PAGE ──────────────────────────────────────────────
+// ── SERVICE PAGE ─────────────────────────────────────────
 app.get('/service', (c) => {
   const serviceItems = [
     { icon: 'fa-building', name: '展示会 / 学会出展', desc: '国内外の展示会・学会における企画から施工・運営まで。ブースデザインで来場者に強い印象を与えます。', link: '/reports?cat=exhibition' },
@@ -360,7 +640,6 @@ app.get('/service', (c) => {
     { icon: 'fa-map-marker-alt', name: 'ショールーム / 商環境', desc: 'ブランドの恒久的な体験拠点の企画設計・施工。日常的な来訪で深いブランド理解を促します。', link: '/reports?cat=showroom' },
     { icon: 'fa-window-maximize', name: '店舗 / ウィンドウディスプレイ', desc: '路面店・百貨店・商業施設のディスプレイ制作。季節感やブランドの世界観を空間で表現します。', link: '/reports?cat=store' },
   ]
-
   const serviceMenuHTML = serviceItems.map(item => `
     <a href="${item.link}" class="service-menu-item fade-up">
       <div class="service-menu-icon"><i class="fas ${item.icon}"></i></div>
@@ -385,7 +664,6 @@ ${header('/service')}
       <p class="page-hero-lead fade-up delay-2">人も、社会も動かす<br>"体験"をつくる。</p>
     </div>
   </section>
-
   <section class="service-intro">
     <div class="section-inner">
       <div class="service-intro-grid">
@@ -399,7 +677,6 @@ ${header('/service')}
       </div>
     </div>
   </section>
-
   <section class="service-domains">
     <div class="section-inner">
       <div class="section-head">
@@ -428,7 +705,7 @@ ${header('/service')}
           </div>
         </div>
         <div class="service-domain-item fade-up delay-2">
-          <div class="service-domain-img"><img src="https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?w=800&q=80" alt="行政・自治体・街づくり" loading="lazy"></div>
+          <div class="service-domain-img"><img src="https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?w=800&q=80" alt="行政・自治体" loading="lazy"></div>
           <div class="service-domain-body">
             <h3 class="service-domain-title">行政・自治体・街づくり関連</h3>
             <p class="service-domain-desc">地域活性化・観光PR・万博など、行政・自治体と連携した大規模な体験空間の企画・制作・運営に対応。地域と人をつなぐ体験をデザインします。</p>
@@ -439,7 +716,6 @@ ${header('/service')}
       </div>
     </div>
   </section>
-
   <section class="service-strengths">
     <div class="section-inner">
       <div class="section-head">
@@ -450,30 +726,13 @@ ${header('/service')}
         </div>
       </div>
       <div class="strength-grid">
-        <div class="strength-item fade-up">
-          <div class="strength-num">01</div>
-          <h3 class="strength-title">ワンストップの体験設計</h3>
-          <p class="strength-desc">企画・デザイン・制作・施工・運営まで、すべて一社で完結。スピードと品質を両立した一気通貫のサービスを提供します。</p>
-        </div>
-        <div class="strength-item fade-up delay-1">
-          <div class="strength-num">02</div>
-          <h3 class="strength-title">リアル × デジタルの融合</h3>
-          <p class="strength-desc">空間デザインとデジタルコンテンツを統合した体験設計が強み。インタラクティブ展示・AR/VR・映像演出を組み合わせます。</p>
-        </div>
-        <div class="strength-item fade-up delay-2">
-          <div class="strength-num">03</div>
-          <h3 class="strength-title">豊富な実績と専門知識</h3>
-          <p class="strength-desc">1967年の創業以来、国内外の展示会・イベントを多数手がけてきた実績と知見。各業界の特性を理解した提案が可能です。</p>
-        </div>
-        <div class="strength-item fade-up delay-3">
-          <div class="strength-num">04</div>
-          <h3 class="strength-title">サステナブルな空間づくり</h3>
-          <p class="strength-desc">廃材活用・資源循環を取り入れたサーキュラーデザインへの取り組み。環境に配慮した体験設計で企業のESG活動を支援します。</p>
-        </div>
+        <div class="strength-item fade-up"><div class="strength-num">01</div><h3 class="strength-title">ワンストップの体験設計</h3><p class="strength-desc">企画・デザイン・制作・施工・運営まで、すべて一社で完結。スピードと品質を両立した一気通貫のサービスを提供します。</p></div>
+        <div class="strength-item fade-up delay-1"><div class="strength-num">02</div><h3 class="strength-title">リアル × デジタルの融合</h3><p class="strength-desc">空間デザインとデジタルコンテンツを統合した体験設計が強み。インタラクティブ展示・AR/VR・映像演出を組み合わせます。</p></div>
+        <div class="strength-item fade-up delay-2"><div class="strength-num">03</div><h3 class="strength-title">豊富な実績と専門知識</h3><p class="strength-desc">1967年の創業以来、国内外の展示会・イベントを多数手がけてきた実績と知見。各業界の特性を理解した提案が可能です。</p></div>
+        <div class="strength-item fade-up delay-3"><div class="strength-num">04</div><h3 class="strength-title">サステナブルな空間づくり</h3><p class="strength-desc">廃材活用・資源循環を取り入れたサーキュラーデザインへの取り組み。環境に配慮した体験設計で企業のESG活動を支援します。</p></div>
       </div>
     </div>
   </section>
-
   <section class="service-menu-section">
     <div class="section-inner">
       <div class="section-head">
@@ -486,13 +745,10 @@ ${header('/service')}
       <div class="service-menu-list">${serviceMenuHTML}</div>
     </div>
   </section>
-
   <section class="service-digital">
     <div class="section-inner">
       <div class="service-digital-grid">
-        <div class="service-digital-img fade-up">
-          <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=900&q=85" alt="デジタルソリューション" loading="lazy">
-        </div>
+        <div class="service-digital-img fade-up"><img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=900&q=85" alt="デジタルソリューション" loading="lazy"></div>
         <div class="service-digital-content fade-up delay-2">
           <span class="section-eyebrow">Digital Solutions</span>
           <h2 class="service-digital-title">デジタル領域の強み</h2>
@@ -508,7 +764,6 @@ ${header('/service')}
       </div>
     </div>
   </section>
-
   <section id="contact-banner">
     <div class="contact-banner-inner">
       <div class="contact-banner-text fade-up">
@@ -527,7 +782,7 @@ ${footer()}
 ${pageScripts()}`)
 })
 
-// ── COMPANY PAGE ──────────────────────────────────────────────
+// ── COMPANY PAGE ─────────────────────────────────────────
 app.get('/company', (c) => {
   const officers = [
     { role: '代表取締役 会長執行役員 CEO', name: '田口 徳久' },
@@ -540,7 +795,6 @@ app.get('/company', (c) => {
     { role: '執行役員', name: '福田 雄之' },
     { role: '執行役員', name: '南 正一郎' },
   ]
-
   const historyItems = [
     { year: '1967', text: '東京都中央区に「田口博展堂」として創業' },
     { year: '1970', text: '株式会社博展として法人化、設立' },
@@ -553,16 +807,12 @@ app.get('/company', (c) => {
     { year: '2022', text: '東京証券取引所グロース市場へ区分変更' },
     { year: '2024', text: 'ビジュアル・アイデンティティをリニューアル' },
   ]
-
   const officersHTML = officers.map((o, i) => `
     <div class="officer-item fade-up" style="transition-delay:${(i % 3) * 0.08}s">
-      <div class="officer-avatar">
-        <div class="officer-avatar-placeholder"><i class="fas fa-user"></i></div>
-      </div>
+      <div class="officer-avatar"><div class="officer-avatar-placeholder"><i class="fas fa-user"></i></div></div>
       <p class="officer-role">${o.role}</p>
       <p class="officer-name">${o.name}</p>
     </div>`).join('')
-
   const historyHTML = historyItems.map((item, i) => `
     <div class="history-item fade-up" style="transition-delay:${i * 0.06}s">
       <div class="history-year">${item.year}</div>
@@ -584,45 +834,23 @@ ${header('/company')}
       <p class="page-hero-sub fade-up delay-2">会社概要</p>
     </div>
   </section>
-
   <section class="company-purpose">
     <div class="section-inner">
       <div class="company-purpose-grid">
         <div class="company-purpose-text fade-up">
           <span class="section-eyebrow">Our Purpose</span>
-          <h2 class="company-purpose-title">
-            人と社会のコミュニケーションに<br>
-            ココロを通わせ、<br>
-            未来へつなげる原動力をつくる。
-          </h2>
+          <h2 class="company-purpose-title">人と社会のコミュニケーションに<br>ココロを通わせ、<br>未来へつなげる原動力をつくる。</h2>
           <p class="company-purpose-desc">1967年の創業以来、博展はリアルな"体験"を通じた企業コミュニケーションの創造を事業領域としてきました。私たちは「Communication Design®」を旗印に、人と社会のつながりを深める体験を生み出し続けています。</p>
         </div>
         <div class="company-stats fade-up delay-2">
-          <div class="company-stat">
-            <div class="company-stat-num" data-target="57">0</div>
-            <div class="company-stat-unit">年</div>
-            <div class="company-stat-label">創業年数</div>
-          </div>
-          <div class="company-stat">
-            <div class="company-stat-num" data-target="473">0</div>
-            <div class="company-stat-unit">名</div>
-            <div class="company-stat-label">社員数（単体）</div>
-          </div>
-          <div class="company-stat">
-            <div class="company-stat-num" data-target="188">0</div>
-            <div class="company-stat-unit">億円</div>
-            <div class="company-stat-label">売上高（連結）</div>
-          </div>
-          <div class="company-stat">
-            <div class="company-stat-num" data-target="545">0</div>
-            <div class="company-stat-unit">名</div>
-            <div class="company-stat-label">社員数（連結）</div>
-          </div>
+          <div class="company-stat"><div class="company-stat-num" data-target="57">0</div><div class="company-stat-unit">年</div><div class="company-stat-label">創業年数</div></div>
+          <div class="company-stat"><div class="company-stat-num" data-target="473">0</div><div class="company-stat-unit">名</div><div class="company-stat-label">社員数（単体）</div></div>
+          <div class="company-stat"><div class="company-stat-num" data-target="188">0</div><div class="company-stat-unit">億円</div><div class="company-stat-label">売上高（連結）</div></div>
+          <div class="company-stat"><div class="company-stat-num" data-target="545">0</div><div class="company-stat-unit">名</div><div class="company-stat-label">社員数（連結）</div></div>
         </div>
       </div>
     </div>
   </section>
-
   <section class="company-overview">
     <div class="section-inner">
       <div class="section-head">
@@ -637,11 +865,7 @@ ${header('/company')}
           <tbody>
             <tr><th>正式名称</th><td>株式会社 博展</td></tr>
             <tr><th>英文名称</th><td>Hakuten Corporation</td></tr>
-            <tr><th>所在地</th><td>
-              <strong>本社</strong><br>〒104-0031 東京都中央区京橋三丁目１番１号 東京スクエアガーデン20F<br><br>
-              <strong>西日本事業所</strong><br>〒541-0043 大阪府大阪市中央区高麗橋3-2-7 ORIX 高麗橋ビル5F<br><br>
-              <strong>中部営業所</strong><br>〒460-0008 愛知県名古屋市中区栄三丁目１８番１号 ナディアパーク ビジネスセンタービル21F
-            </td></tr>
+            <tr><th>所在地</th><td><strong>本社</strong><br>〒104-0031 東京都中央区京橋三丁目１番１号 東京スクエアガーデン20F<br><br><strong>西日本事業所</strong><br>〒541-0043 大阪府大阪市中央区高麗橋3-2-7 ORIX 高麗橋ビル5F<br><br><strong>中部営業所</strong><br>〒460-0008 愛知県名古屋市中区栄三丁目１８番１号 ナディアパーク ビジネスセンタービル21F</td></tr>
             <tr><th>創業</th><td>1967年</td></tr>
             <tr><th>設立</th><td>1970年</td></tr>
             <tr><th>資本金</th><td>2億3,970万円（2024年12月末）</td></tr>
@@ -656,7 +880,6 @@ ${header('/company')}
       </div>
     </div>
   </section>
-
   <section class="company-officers">
     <div class="section-inner">
       <div class="section-head">
@@ -669,7 +892,6 @@ ${header('/company')}
       <div class="officers-grid">${officersHTML}</div>
     </div>
   </section>
-
   <section class="company-history">
     <div class="section-inner">
       <div class="section-head">
@@ -682,7 +904,6 @@ ${header('/company')}
       <div class="history-timeline">${historyHTML}</div>
     </div>
   </section>
-
   <section class="company-group" id="sustainability">
     <div class="section-inner">
       <div class="section-head">
@@ -693,22 +914,12 @@ ${header('/company')}
         </div>
       </div>
       <div class="group-grid">
-        <div class="group-item fade-up">
-          <h3 class="group-name">デジタルエクスペリエンス株式会社</h3>
-          <p class="group-desc">イベント領域におけるITプロダクトの提供。展示会・イベントのデジタル化を推進するサービスを展開。</p>
-        </div>
-        <div class="group-item fade-up delay-1">
-          <h3 class="group-name">株式会社ニチナン</h3>
-          <p class="group-desc">展示会・イベント、商環境など、リアルプロモーションサービスを中部・関西エリアで企画から制作までをワンストップサービスで提供。</p>
-        </div>
-        <div class="group-item fade-up delay-2">
-          <h3 class="group-name">株式会社ヒラミヤ</h3>
-          <p class="group-desc">3D CADによる複雑な仕様設計・簡易解析を用いたホテル、商環境・オフィス、装飾美術品等の企画・製作。</p>
-        </div>
+        <div class="group-item fade-up"><h3 class="group-name">デジタルエクスペリエンス株式会社</h3><p class="group-desc">イベント領域におけるITプロダクトの提供。展示会・イベントのデジタル化を推進するサービスを展開。</p></div>
+        <div class="group-item fade-up delay-1"><h3 class="group-name">株式会社ニチナン</h3><p class="group-desc">展示会・イベント、商環境など、リアルプロモーションサービスを中部・関西エリアで企画から制作までをワンストップサービスで提供。</p></div>
+        <div class="group-item fade-up delay-2"><h3 class="group-name">株式会社ヒラミヤ</h3><p class="group-desc">3D CADによる複雑な仕様設計・簡易解析を用いたホテル、商環境・オフィス、装飾美術品等の企画・製作。</p></div>
       </div>
     </div>
   </section>
-
   <section id="contact-banner">
     <div class="contact-banner-inner">
       <div class="contact-banner-text fade-up">
@@ -746,17 +957,9 @@ ${pageScripts(`
 `)}`)
 })
 
-// ── CONTACT PAGE ──────────────────────────────────────────────
+// ── CONTACT PAGE ─────────────────────────────────────────
 app.get('/contact', (c) => {
-  const contactTypes = [
-    'プロジェクト・制作の相談',
-    '展示会 / 学会出展',
-    'イベントプロモーション',
-    'ショールーム / 商環境',
-    'デジタルコンテンツ',
-    'その他',
-  ]
-
+  const contactTypes = ['プロジェクト・制作の相談', '展示会 / 学会出展', 'イベントプロモーション', 'ショールーム / 商環境', 'デジタルコンテンツ', 'その他']
   const radioHTML = contactTypes.map(label => `
     <label class="form-radio">
       <input type="radio" name="type" value="${label}">
@@ -774,15 +977,12 @@ ${header('/contact')}
       <p class="page-hero-sub fade-up delay-2">お問い合わせ</p>
     </div>
   </section>
-
   <section class="contact-section">
     <div class="section-inner">
       <div class="contact-grid">
-
         <div class="contact-form-wrap fade-up">
           <h2 class="contact-form-title">プロジェクトのご相談・お問い合わせ</h2>
           <p class="contact-form-lead">以下のフォームにご記入の上、送信してください。担当者より2〜3営業日以内にご連絡いたします。</p>
-
           <form class="contact-form" id="contactForm" novalidate>
             <div class="form-row form-row--2">
               <div class="form-group">
@@ -838,7 +1038,6 @@ ${header('/contact')}
               </button>
             </div>
           </form>
-
           <div class="form-success" id="formSuccess" style="display:none">
             <div class="form-success-icon"><i class="fas fa-check-circle"></i></div>
             <h3>お問い合わせを受け付けました</h3>
@@ -846,7 +1045,6 @@ ${header('/contact')}
             <a href="/" class="btn-primary" style="margin-top:24px;display:inline-block">トップへ戻る</a>
           </div>
         </div>
-
         <div class="contact-info fade-up delay-2">
           <div class="contact-info-block">
             <h3 class="contact-info-heading">本社</h3>
@@ -875,7 +1073,6 @@ ${header('/contact')}
             </div>
           </div>
         </div>
-
       </div>
     </div>
   </section>
@@ -897,16 +1094,5 @@ ${pageScripts(`
 </script>
 `)}`)
 })
-
-// ── API ROUTES ──────────────────────────────────────────────
-app.get('/api/reports', (c) => {
-  const category = c.req.query('category')
-  const data = category && category !== 'all'
-    ? worksData.filter(w => w.category === category)
-    : worksData
-  return c.json(data)
-})
-
-app.get('/api/news', (c) => c.json(newsData))
 
 export default handle(app)
