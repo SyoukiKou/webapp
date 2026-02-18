@@ -1,7 +1,7 @@
 import { Hono } from 'hono'
 import { handle } from '@hono/node-server/vercel'
 import { serveStatic } from '@hono/node-server/serve-static'
-import { header, footer, pageHead, pageScripts, worksData, newsData } from '../src/components/layout'
+import { header, footer, pageHead, pageScripts, worksData, newsData } from '../src/components/layout.js'
 
 const app = new Hono()
 
