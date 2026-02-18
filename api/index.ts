@@ -318,23 +318,23 @@ app.get('/', (c) => {
           <a href="/service" class="service-card fade-up">
             <div class="service-card-icon"><i class="fas fa-building"></i></div>
             <div class="service-card-body">
-              <h3 class="service-card-name">タイトル1</h3>
-              <p class="service-card-desc">サービス1</p>
+              <h3 class="service-card-name">Regulative Art Experience</h3>
+              <p class="service-card-desc">社会課題解決のためのアート体験を提供します。</p>
             </div>
             <span class="service-card-arrow">→</span>
           </a>
           <a href="/service" class="service-card fade-up delay-1">
             <div class="service-card-icon"><i class="fas fa-star"></i></div>
             <div class="service-card-body">
-              <h3 class="service-card-name">タイトル2</h3>
-              <p class="service-card-desc">サービス2</p>
+              <h3 class="service-card-name">オフィス生演奏</h3>
+              <p class="service-card-desc">オフィス空間に生演奏を演出し、職場の雰囲気を豊かにします。</p>
             </div>
             <span class="service-card-arrow">→</span>
           </a>
           <a href="/service" class="service-card fade-up delay-2">
             <div class="service-card-icon"><i class="fas fa-store"></i></div>
             <div class="service-card-body">
-              <h3 class="service-card-name">タイトル3</h3>
+              <h3 class="service-card-name">ニューロマーケティング</h3>
               <p class="service-card-desc">恒久的なブランド空間の企画設計・施工。日常的な体験価値を通してブランドを強化します。</p>
             </div>
             <span class="service-card-arrow">→</span>
@@ -342,7 +342,7 @@ app.get('/', (c) => {
           <a href="/service" class="service-card fade-up delay-3">
             <div class="service-card-icon"><i class="fas fa-desktop"></i></div>
             <div class="service-card-body">
-              <h3 class="service-card-name">タイトル4</h3>
+              <h3 class="service-card-name">メディアアート</h3>
               <p class="service-card-desc">インタラクティブなデジタル体験・映像制作で、リアルな空間にデジタルの力を融合します。</p>
             </div>
             <span class="service-card-arrow">→</span>
@@ -541,12 +541,11 @@ ${pageScripts()}`)
 // ── SERVICE PAGE ─────────────────────────────────────────
 app.get('/service', (c) => {
   const serviceItems = [
-    { icon: 'fa-building', name: '展示会 / 学会出展', desc: '国内外の展示会・学会における企画から施工・運営まで。ブースデザインで来場者に強い印象を与えます。', link: '/reports?cat=exhibition' },
     { icon: 'fa-star', name: 'イベントプロモーション', desc: 'ブランド体験型イベントの企画・演出・運営。ターゲットに刺さる体験で記憶に残るブランド接点を創出。', link: '/reports?cat=event' },
     { icon: 'fa-store', name: 'プライベートショー', desc: '自社開催の展示・発表会の企画運営。招待客に特別な体験価値を提供し、商談機会の最大化を支援。', link: '/reports' },
     { icon: 'fa-tv', name: 'デジタルコンテンツ', desc: 'AR/VR・インタラクティブ展示・映像制作。デジタルの力でリアルな空間を拡張し、体験価値を高めます。', link: '/reports' },
-    { icon: 'fa-map-marker-alt', name: 'ショールーム / 商環境', desc: 'ブランドの恒久的な体験拠点の企画設計・施工。日常的な来訪で深いブランド理解を促します。', link: '/reports?cat=showroom' },
-    { icon: 'fa-window-maximize', name: '店舗 / ウィンドウディスプレイ', desc: '路面店・百貨店・商業施設のディスプレイ制作。季節感やブランドの世界観を空間で表現します。', link: '/reports?cat=store' },
+    { icon: 'fa-map-marker-alt', name: '環境デザイン', desc: 'ブランドの恒久的な体験拠点の企画設計・施工。日常的な来訪で深いブランド理解を促します。', link: '/reports?cat=showroom' },
+    { icon: 'fa-window-maximize', name: 'ニューロマーケティング', desc: '脳科学に基づくマーケティング戦略を提供。消費者の行動を深く理解し、効果的な体験を創出します。', link: '/reports?cat=store' },
   ]
   const serviceMenuHTML = serviceItems.map(item => `
     <a href="${item.link}" class="service-menu-item fade-up">
@@ -600,7 +599,7 @@ ${header('/service')}
             <h3 class="service-domain-title">BtoC芸術体験</h3>
             <p class="service-domain-desc">消費者に直接アプローチする芸術体験型施策を企画から運営まで一気通貫で提供。ブランドと生活者の間に感動的な体験をつくります。</p>
             <div class="service-domain-tags"><span>イベントプロモーション</span><span>店舗・ウィンドウディスプレイ</span><span>アートイベント</span></div>
-            <a href="/reports?cat=event" class="service-domain-link">実績を見る →</a>
+            <a href="#" class="service-domain-link">実績を見る →</a>
           </div>
         </div>
         <div class="service-domain-item fade-up delay-1">
@@ -609,16 +608,16 @@ ${header('/service')}
             <h3 class="service-domain-title">BtoB芸術体験</h3>
             <p class="service-domain-desc">企業内、企業間の深い関係構築に向けた体験設計を行います。</p>
             <div class="service-domain-tags"><span>プライベートショー</span></div>
-            <a href="/reports?cat=exhibition" class="service-domain-link">実績を見る →</a>
+            <a href="#" class="service-domain-link">実績を見る →</a>
           </div>
         </div>
         <div class="service-domain-item fade-up delay-2">
           <div class="service-domain-img"><img src="https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?w=800&q=80" alt="行政・自治体" loading="lazy"></div>
           <div class="service-domain-body">
             <h3 class="service-domain-title">行政・自治体・街づくり関連</h3>
-            <p class="service-domain-desc">地域活性化・観光PR・万博など、行政・自治体と連携した大規模な体験空間の企画・制作・運営に対応。地域と人をつなぐ体験をデザインします。</p>
+            <p class="service-domain-desc">地域活性化・観光PR・万博など、行政・自治体と連携した芸術体験空間の企画・制作・運営に対応。地域と人をつなぐ体験をデザインします。</p>
             <div class="service-domain-tags"><span>地方創生</span><span>地域PR</span><span>観光促進</span></div>
-            <a href="/reports?cat=event" class="service-domain-link">実績を見る →</a>
+            <a href="#" class="service-domain-link">実績を見る →</a>
           </div>
         </div>
       </div>
@@ -660,7 +659,7 @@ ${header('/service')}
         <div class="service-digital-content fade-up delay-2">
           <span class="section-eyebrow">Digital Solutions</span>
           <h2 class="service-digital-title">デジタル領域の強み</h2>
-          <p class="service-digital-desc">時代に求められるデジタルソリューションをいち早く取り入れ、リアル領域との融合を進めています。専属部門、グループ会社を有し、信頼性の高く、成果につながるサービスをご提供します。</p>
+          <p class="service-digital-desc">時代に求められるデジタルソリューションをいち早く取り入れ、リアル領域との融合を進めています。信頼性の高く、成果につながるサービスをご提供します。</p>
           <ul class="service-digital-list">
             <li><i class="fas fa-check"></i> インタラクティブコンテンツ開発</li>
             <li><i class="fas fa-check"></i> AR / VR 体験設計</li>
