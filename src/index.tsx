@@ -315,15 +315,13 @@ app.get('/', (c) => {
     <div class="mobile-menu-bg"></div>
     <div class="mobile-menu-content">
       <nav class="mobile-nav">
-        <a href="#works" class="mobile-nav-link"><span class="mn-num">01</span><span class="mn-text">Works</span></a>
-        <a href="#story" class="mobile-nav-link"><span class="mn-num">02</span><span class="mn-text">Story</span></a>
-        <a href="#" class="mobile-nav-link"><span class="mn-num">03</span><span class="mn-text">Service</span></a>
-        <a href="#purpose" class="mobile-nav-link"><span class="mn-num">04</span><span class="mn-text">Purpose</span></a>
-        <a href="#about" class="mobile-nav-link"><span class="mn-num">05</span><span class="mn-text">Company</span></a>
-        <a href="#news" class="mobile-nav-link"><span class="mn-num">06</span><span class="mn-text">News</span></a>
+        <a href="/works" class="mobile-nav-link"><span class="mn-num">01</span><span class="mn-text">Works</span></a>
+        <a href="/service" class="mobile-nav-link"><span class="mn-num">02</span><span class="mn-text">Service</span></a>
+        <a href="/company" class="mobile-nav-link"><span class="mn-num">03</span><span class="mn-text">Company</span></a>
+        <a href="/contact" class="mobile-nav-link"><span class="mn-num">04</span><span class="mn-text">Contact</span></a>
       </nav>
       <div class="mobile-menu-footer">
-        <a href="#" class="mobile-contact-btn">Contact Us</a>
+        <a href="/contact" class="mobile-contact-btn">Contact Us</a>
         <div class="mobile-social">
           <a href="#" aria-label="X (Twitter)"><i class="fab fa-x-twitter"></i></a>
           <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
@@ -350,16 +348,14 @@ app.get('/', (c) => {
     </a>
 
     <nav class="header-nav" aria-label="メインナビゲーション">
-      <a href="#works" class="nav-link">Works</a>
-      <a href="#story" class="nav-link">Story</a>
-      <a href="#" class="nav-link">Service</a>
-      <a href="#purpose" class="nav-link">Purpose</a>
-      <a href="#about" class="nav-link">Company</a>
-      <a href="#news" class="nav-link">News</a>
+      <a href="/works" class="nav-link">Works</a>
+      <a href="/service" class="nav-link">Service</a>
+      <a href="/company" class="nav-link">Company</a>
+      <a href="/contact" class="nav-link">Contact</a>
     </nav>
 
     <div class="header-right">
-      <a href="#" class="btn-contact">Contact</a>
+      <a href="/contact" class="btn-contact">Contact</a>
       <button class="hamburger" id="hamburger" aria-label="メニューを開く" aria-expanded="false">
         <span class="hamburger-line"></span>
         <span class="hamburger-line"></span>
@@ -422,7 +418,7 @@ app.get('/', (c) => {
             <h2 class="section-title-en fade-up delay-1">Works</h2>
             <p class="section-title-jp fade-up delay-2">制作実績</p>
           </div>
-          <a href="#" class="view-all-btn fade-up delay-2">
+          <a href="/works" class="view-all-btn fade-up delay-2">
             View All Works
             <svg class="arrow-icon" viewBox="0 0 24 8" fill="none">
               <path d="M0 4H22M19 1L22 4L19 7" stroke="currentColor" stroke-width="1"/>
@@ -455,7 +451,7 @@ app.get('/', (c) => {
             <h2 class="section-title-en fade-up delay-1">Story</h2>
             <p class="section-title-jp fade-up delay-2">ストーリー</p>
           </div>
-          <a href="#" class="view-all-btn fade-up delay-2">
+          <a href="/works" class="view-all-btn fade-up delay-2">
             View All Stories
             <svg class="arrow-icon" viewBox="0 0 24 8" fill="none">
               <path d="M0 4H22M19 1L22 4L19 7" stroke="currentColor" stroke-width="1"/>
@@ -488,7 +484,7 @@ app.get('/', (c) => {
         </div>
         <div class="purpose-bottom fade-up delay-3">
           <div class="purpose-cd">Communication Design<sup>®</sup></div>
-          <a href="#" class="purpose-link">
+          <a href="/service" class="purpose-link">
             Our Vision
             <svg class="arrow-icon" viewBox="0 0 24 8" fill="none">
               <path d="M0 4H22M19 1L22 4L19 7" stroke="currentColor" stroke-width="1"/>
@@ -571,7 +567,7 @@ app.get('/', (c) => {
                 <div class="stat-label">売上高（連結）</div>
               </div>
             </div>
-            <a href="#" class="view-all-btn fade-up delay-3">
+            <a href="/company" class="view-all-btn fade-up delay-3">
               Company Information
               <svg class="arrow-icon" viewBox="0 0 24 8" fill="none">
                 <path d="M0 4H22M19 1L22 4L19 7" stroke="currentColor" stroke-width="1"/>
@@ -614,8 +610,8 @@ app.get('/', (c) => {
           <p class="contact-sub">展示会・イベント・ショールームなど、あらゆる体験設計のご要望に対応いたします。</p>
         </div>
         <div class="contact-actions fade-up delay-2">
-          <a href="#" class="btn-primary">お問い合わせ</a>
-          <a href="#" class="btn-secondary">資料請求</a>
+          <a href="/contact" class="btn-primary">お問い合わせ</a>
+          <a href="/works" class="btn-secondary">実績を見る</a>
         </div>
       </div>
     </section>
@@ -654,23 +650,23 @@ app.get('/', (c) => {
           <div class="footer-nav-col">
             <h3 class="footer-nav-heading">Works</h3>
             <ul>
-              <li><a href="#">展示会 / 学会出展</a></li>
-              <li><a href="#">イベントプロモーション</a></li>
-              <li><a href="#">プライベートショー</a></li>
-              <li><a href="#">ショールーム</a></li>
-              <li><a href="#">店舗 / ウィンドウ</a></li>
-              <li><a href="#">デジタルコンテンツ</a></li>
+              <li><a href="/works?cat=exhibition">展示会 / 学会出展</a></li>
+              <li><a href="/works?cat=event">イベントプロモーション</a></li>
+              <li><a href="/works">プライベートショー</a></li>
+              <li><a href="/works?cat=showroom">ショールーム</a></li>
+              <li><a href="/works?cat=store">店舗 / ウィンドウ</a></li>
+              <li><a href="/service">デジタルコンテンツ</a></li>
             </ul>
           </div>
           <div class="footer-nav-col">
             <h3 class="footer-nav-heading">Company</h3>
             <ul>
-              <li><a href="#">会社概要</a></li>
-              <li><a href="#">Purpose / Vision</a></li>
-              <li><a href="#">Service</a></li>
-              <li><a href="#">Sustainability</a></li>
-              <li><a href="#">IR情報</a></li>
-              <li><a href="#">グループ会社</a></li>
+              <li><a href="/company">会社概要</a></li>
+              <li><a href="/service">Purpose / Vision</a></li>
+              <li><a href="/service">Service</a></li>
+              <li><a href="/company#sustainability">Sustainability</a></li>
+              <li><a href="/company">IR情報</a></li>
+              <li><a href="/company#sustainability">グループ会社</a></li>
             </ul>
           </div>
           <div class="footer-nav-col">
@@ -685,9 +681,9 @@ app.get('/', (c) => {
           <div class="footer-nav-col">
             <h3 class="footer-nav-heading">Contact</h3>
             <ul>
-              <li><a href="#">お問い合わせ</a></li>
-              <li><a href="#">資料請求</a></li>
-              <li><a href="#">アクセス</a></li>
+              <li><a href="/contact">お問い合わせ</a></li>
+              <li><a href="/contact">資料請求</a></li>
+              <li><a href="/company">アクセス</a></li>
             </ul>
           </div>
         </nav>
