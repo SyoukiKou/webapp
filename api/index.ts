@@ -6,7 +6,7 @@ import { header, footer, pageHead, pageScripts, worksData, newsData } from '../s
 const app = new Hono()
 
 // ── Static files ──────────────────────────────────────────
-app.use('/static/*', serveStatic({ root: './public' }))
+app.use('/static/*', serveStatic({ root: 'public' }))
 app.get('/favicon.ico', (c) => new Response(null, { status: 204 }))
 
 // ── TOP PAGE ──────────────────────────────────────────────

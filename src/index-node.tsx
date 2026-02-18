@@ -4,7 +4,7 @@ import { serveStatic } from '@hono/node-server/serve-static'
 const app = new Hono()
 
 // Static files (Node.js version for Vercel)
-app.use('/static/*', serveStatic({ root: './public' }))
+app.use('/static/*', serveStatic({ root: 'public' }))
 
 // Favicon
 app.get('/favicon.ico', (c) => {
