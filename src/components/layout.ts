@@ -28,7 +28,7 @@ export const newsData = [
 export function header(currentPath: string = '/'): string {
   const navItems = [
     { href: '/service', label: 'Service' },
-    { href: '/reports',  label: 'Works' },
+    { href: '/reports',  label: 'Reports' },
     { href: '/company', label: 'Company' },
     { href: '/contact', label: 'Contact' },
     { href: '#news',    label: 'News' },
@@ -126,50 +126,12 @@ export function footer(): string {
             <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
           </div>
         </div>
-        <nav class="footer-nav">
-          <div class="footer-nav-col">
-            <h3 class="footer-nav-heading">Service</h3>
-            <ul>
-              <li><a href="/service">展示会 / 学会出展</a></li>
-              <li><a href="/service">イベントプロモーション</a></li>
-              <li><a href="/service">ショールーム / 商環境</a></li>
-              <li><a href="/service">店舗 / ウィンドウディスプレイ</a></li>
-              <li><a href="/service">デジタルコンテンツ</a></li>
-            </ul>
-          </div>
-          <div class="footer-nav-col">
-            <h3 class="footer-nav-heading">Reports</h3>
-            <ul>
-              <li><a href="/reports?cat=exhibition">展示会 / 学会出展</a></li>
-              <li><a href="/reports?cat=event">イベントプロモーション</a></li>
-              <li><a href="/reports?cat=showroom">ショールーム</a></li>
-              <li><a href="/reports?cat=store">店舗 / ウィンドウ</a></li>
-            </ul>
-          </div>
-          <div class="footer-nav-col">
-            <h3 class="footer-nav-heading">News</h3>
-            <ul>
-              <li><a href="#">最新情報</a></li>
-              <li><a href="#">受賞・表彰</a></li>
-              <li><a href="#">イベント情報</a></li>
-              <li><a href="#">プレスリリース</a></li>
-            </ul>
-          </div>
-          <div class="footer-nav-col">
-            <h3 class="footer-nav-heading">Company</h3>
-            <ul>
-              <li><a href="/company">会社概要</a></li>
-              <li><a href="/service">Service</a></li>
-              <li><a href="/company#sustainability">Sustainability</a></li>
-            </ul>
-          </div>
-          <div class="footer-nav-col">
-            <h3 class="footer-nav-heading">Contact</h3>
-            <ul>
-              <li><a href="/contact">お問い合わせ</a></li>
-              <li><a href="/contact#recruit">採用情報</a></li>
-            </ul>
-          </div>
+        <nav class="footer-nav-simple">
+          <a href="/service" class="footer-nav-link">Service</a>
+          <a href="/reports" class="footer-nav-link">Reports</a>
+          <a href="/company" class="footer-nav-link">Company</a>
+          <a href="/contact" class="footer-nav-link">Contact</a>
+          <a href="#news" class="footer-nav-link">News</a>
         </nav>
       </div>
       <div class="footer-bottom">

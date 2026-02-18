@@ -82,45 +82,6 @@ const worksData = [
   }
 ]
 
-// Story data
-const storyData = [
-  {
-    id: 1,
-    date: 'Feb. 2026',
-    title: '被爆からの復興と魅力あふれる広島の姿を伝えるブース「RE:WORLD HIROSHIMA」を2025年大阪・関西万博に出展',
-    client: '広島県',
-    subtitle: '大阪・関西万博（EXPO2025）広島県ブース「RE:WORLD HIROSHIMA」',
-    tags: ['#行政/自治体/官公庁', '#イベントプロモーション'],
-    img: 'https://images.unsplash.com/photo-1583512603805-3cc6b41f3edb?w=600&q=80'
-  },
-  {
-    id: 2,
-    date: 'Jan. 2026',
-    title: '8年ぶりの全面リニューアル「暗闇婚礼 蠢一族お化け屋敷」はこうして生まれた──制作陣と（株）東京ドームが語る、新たなホラー体験への挑戦',
-    client: '株式会社東京ドーム',
-    subtitle: '暗闇婚礼 蠢一族お化け屋敷',
-    tags: ['#BtoC', '#イベントプロモーション', '#店舗/ウィンドウディスプレイ'],
-    img: 'https://images.unsplash.com/photo-1509347528160-9a9e33742cdb?w=600&q=80'
-  },
-  {
-    id: 3,
-    date: 'Dec. 2025',
-    title: 'マテリアルに記憶を残し、サーキュラーデザインの実現へのメッセージを発信する実験の場「ANTENNA」の挑戦',
-    client: '三井デザインテック株式会社',
-    subtitle: 'ANTENNA プロジェクト',
-    tags: ['#BtoB', '#ブランディング', '#オフィス', '#サステナビリティ実績'],
-    img: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80'
-  },
-  {
-    id: 4,
-    date: 'Sep. 2025',
-    title: '『スター・ウォーズ』の世界観とオーディオテクニカのブランドを表現した「Star Wars Celebration JAPAN 2025」の展示デザイン',
-    client: '株式会社オーディオテクニカ',
-    subtitle: 'STARWARS CELEBRATION JAPAN 2025',
-    tags: ['#BtoC', '#展示会/学会出展', '#デジタルコンテンツ'],
-    img: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=600&q=80'
-  }
-]
 
 // News data
 const newsData = [
@@ -236,26 +197,6 @@ app.get('/', (c) => {
     </article>
   `).join('')
 
-  const storyHTML = storyData.map(s => `
-    <a href="#" class="story-item">
-      <div class="story-img-wrap">
-        <img src="${s.img}" alt="${s.title}" loading="lazy">
-        <div class="story-img-overlay"></div>
-      </div>
-      <div class="story-body">
-        <div class="story-meta">
-          <span class="story-date">${s.date}</span>
-          <span class="story-client-name">${s.client}</span>
-        </div>
-        <p class="story-subtitle">${s.subtitle}</p>
-        <h3 class="story-title">${s.title}</h3>
-        <div class="story-tags">
-          ${s.tags.map(t => `<span class="story-tag">${t}</span>`).join('')}
-        </div>
-      </div>
-    </a>
-  `).join('')
-
   const newsHTML = newsData.map(n => `
     <a href="#" class="news-item">
       <div class="news-item-inner">
@@ -314,7 +255,7 @@ app.get('/', (c) => {
     <div class="mobile-menu-content">
       <nav class="mobile-nav">
         <a href="/service" class="mobile-nav-link"><span class="mn-num">01</span><span class="mn-text">Service</span></a>
-        <a href="/reportss" class="mobile-nav-link"><span class="mn-num">02</span><span class="mn-text">Works</span></a>
+        <a href="/reports" class="mobile-nav-link"><span class="mn-num">02</span><span class="mn-text">Reports</span></a>
         <a href="/company" class="mobile-nav-link"><span class="mn-num">03</span><span class="mn-text">Company</span></a>
         <a href="/contact" class="mobile-nav-link"><span class="mn-num">04</span><span class="mn-text">Contact</span></a>
       </nav>
@@ -347,7 +288,7 @@ app.get('/', (c) => {
 
     <nav class="header-nav" aria-label="メインナビゲーション">
       <a href="/service" class="nav-link">Service</a>
-      <a href="/reportss" class="nav-link">Works</a>
+      <a href="/reports" class="nav-link">Reports</a>
       <a href="/company" class="nav-link">Company</a>
       <a href="/contact" class="nav-link">Contact</a>
       <a href="#news" class="nav-link">News</a>
@@ -443,12 +384,12 @@ app.get('/', (c) => {
       <div class="section-inner">
         <div class="section-head">
           <div class="section-head-left">
-            <span class="section-eyebrow fade-up">Our Works</span>
-            <h2 class="section-title-en fade-up delay-1">Works</h2>
-            <p class="section-title-jp fade-up delay-2">制作実績</p>
+            <span class="section-eyebrow fade-up">Our Reports</span>
+            <h2 class="section-title-en fade-up delay-1">Reports</h2>
+            <p class="section-title-jp fade-up delay-2">研究レポート</p>
           </div>
           <a href="/reports" class="view-all-btn fade-up delay-2">
-            View All Works
+            View All Reports
             <svg class="arrow-icon" viewBox="0 0 24 8" fill="none">
               <path d="M0 4H22M19 1L22 4L19 7" stroke="currentColor" stroke-width="1"/>
             </svg>
@@ -593,55 +534,12 @@ app.get('/', (c) => {
           </div>
         </div>
 
-        <nav class="footer-nav" aria-label="フッターナビゲーション">
-          <div class="footer-nav-col">
-            <h3 class="footer-nav-heading">Service</h3>
-            <ul>
-              <li><a href="/service">展示会 / 学会出展</a></li>
-              <li><a href="/service">イベントプロモーション</a></li>
-              <li><a href="/service">ショールーム / 商環境</a></li>
-              <li><a href="/service">店舗 / ウィンドウディスプレイ</a></li>
-              <li><a href="/service">デジタルコンテンツ</a></li>
-            </ul>
-          </div>
-          <div class="footer-nav-col">
-            <h3 class="footer-nav-heading">Reports</h3>
-            <ul>
-              <li><a href="/reportss?cat=exhibition">展示会 / 学会出展</a></li>
-              <li><a href="/reportss?cat=event">イベントプロモーション</a></li>
-              <li><a href="/reportss">プライベートショー</a></li>
-              <li><a href="/reportss?cat=showroom">ショールーム</a></li>
-              <li><a href="/reportss?cat=store">店舗 / ウィンドウ</a></li>
-            </ul>
-          </div>
-          <div class="footer-nav-col">
-            <h3 class="footer-nav-heading">News</h3>
-            <ul>
-              <li><a href="#">最新情報</a></li>
-              <li><a href="#">受賞・表彰</a></li>
-              <li><a href="#">イベント情報</a></li>
-              <li><a href="#">プレスリリース</a></li>
-            </ul>
-          </div>
-          <div class="footer-nav-col">
-            <h3 class="footer-nav-heading">Company</h3>
-            <ul>
-              <li><a href="/company">会社概要</a></li>
-              <li><a href="/service">Purpose / Vision</a></li>
-              <li><a href="/service">Service</a></li>
-              <li><a href="/company#sustainability">Sustainability</a></li>
-              <li><a href="/company">IR情報</a></li>
-              <li><a href="/company#sustainability">グループ会社</a></li>
-            </ul>
-          </div>
-          <div class="footer-nav-col">
-            <h3 class="footer-nav-heading">Contact</h3>
-            <ul>
-              <li><a href="/contact">お問い合わせ</a></li>
-              <li><a href="/contact">資料請求</a></li>
-              <li><a href="/company">アクセス</a></li>
-            </ul>
-          </div>
+        <nav class="footer-nav-simple" aria-label="フッターナビゲーション">
+          <a href="/service" class="footer-nav-link">Service</a>
+          <a href="/reports" class="footer-nav-link">Reports</a>
+          <a href="/company" class="footer-nav-link">Company</a>
+          <a href="/contact" class="footer-nav-link">Contact</a>
+          <a href="#news" class="footer-nav-link">News</a>
         </nav>
       </div>
 
@@ -676,11 +574,7 @@ app.get('/api/news', (c) => {
   return c.json(newsData)
 })
 
-app.get('/api/story', (c) => {
-  return c.json(storyData)
-})
-
-// ── WORKS PAGE ───────────────────────────────────────────
+// ── REPORTS PAGE ───────────────────────────────────────────
 app.get('/reports', (c) => {
   const currentCat = c.req.query('cat') || 'all'
   const categories = [
@@ -711,14 +605,14 @@ app.get('/reports', (c) => {
       </a>
     </article>`).join('')
 
-  return c.html(`${pageHead('Works', '制作実績一覧 — 博展が手がけた展示会・イベント・ショールームなどの実績をご覧いただけます。')}
+  return c.html(`${pageHead('Reports', '研究レポート — 博展による展示会・イベント・ショールームなどのプロジェクトレポート。')}
 ${header('/reports')}
 <main>
   <section class="page-hero">
     <div class="page-hero-inner">
-      <span class="page-hero-eyebrow fade-up">Our Works</span>
-      <h1 class="page-hero-title fade-up delay-1">Works</h1>
-      <p class="page-hero-sub fade-up delay-2">制作実績</p>
+      <span class="page-hero-eyebrow fade-up">Our Reports</span>
+      <h1 class="page-hero-title fade-up delay-1">Reports</h1>
+      <p class="page-hero-sub fade-up delay-2">研究レポート</p>
     </div>
   </section>
   <section class="works-page-section">
