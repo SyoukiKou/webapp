@@ -1,7 +1,7 @@
 import { Hono } from 'hono'
 import { handle } from '@hono/node-server/vercel'
 import { serveStatic } from '@hono/node-server/serve-static'
-import { header, footer, pageHead, pageScripts, worksData as layoutWorksData, newsData as layoutNewsData } from '../src/components/layout.js'
+import { header, footer, pageHead, pageScripts, reportsData as layoutReportsData, newsData as layoutNewsData } from '../src/components/layout.js'
 
 const app = new Hono()
 
@@ -13,143 +13,38 @@ app.get('/favicon.ico', (c) => {
   return new Response(null, { status: 204 })
 })
 
-// Works data
-const worksData = [
-  {
-    id: 1,
-    title: 'ORGATEC TOKYO 2025',
-    client: 'コクヨ株式会社',
-    subtitle: '国際家具見本市「オルガテック東京2025」',
-    tags: ['#BtoB', '#展示会/学会出展', '#受賞作品'],
-    img: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1200&q=85',
-    featured: true,
-    category: 'exhibition',
-    year: '2025'
-  },
-  {
-    id: 2,
-    title: 'In the world tree',
-    client: '株式会社カナデビア',
-    subtitle: '大阪・関西万博（EXPO2025）',
-    tags: ['#BtoC', '#店舗/ウィンドウディスプレイ'],
-    img: 'https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=800&q=80',
-    featured: false,
-    category: 'store',
-    year: '2025'
-  },
-  {
-    id: 3,
-    title: 'JAPAN MOBILITY SHOW 2025',
-    client: '日本自動車工業会',
-    subtitle: '次世代モビリティの体験空間',
-    tags: ['#BtoC', '#展示会/学会出展'],
-    img: 'https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=800&q=80',
-    featured: false,
-    category: 'exhibition',
-    year: '2025'
-  },
-  {
-    id: 4,
-    title: 'Star Wars Celebration JAPAN 2025',
-    client: '株式会社オーディオテクニカ',
-    subtitle: '日本文化をモチーフとしたブースデザイン',
-    tags: ['#BtoC', '#展示会/学会出展', '#デジタルコンテンツ'],
-    img: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80',
-    featured: false,
-    category: 'exhibition',
-    year: '2025'
-  },
-  {
-    id: 5,
-    title: 'Dewar\'s 12年 DISCOVER YOUR HIGHBALL',
-    client: 'バカルディ ジャパン株式会社',
-    subtitle: '六本木ヒルズカフェ 期間限定イベント',
-    tags: ['#BtoC', '#イベントプロモーション'],
-    img: 'https://images.unsplash.com/photo-1527529482837-4698179dc6ce?w=800&q=80',
-    featured: false,
-    category: 'event',
-    year: '2024'
-  },
-  {
-    id: 6,
-    title: 'Hakuten Permanent Showroom',
-    client: 'パナソニック株式会社',
-    subtitle: 'ブランド体験型ショールーム設計',
-    tags: ['#BtoB', '#ショールーム'],
-    img: 'https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=800&q=80',
-    featured: false,
-    category: 'showroom',
-    year: '2024'
-  }
-]
-
-
-// News data
-const newsData = [
-  {
-    date: '2026.02.19',
-    category: 'News',
-    title: '弊社のホームページをリニューアルしました。'
-  },
-  {
-    date: '2025.11.01',
-    category: 'Event',
-    title: '未知の価値に挑戦するプログラム【SHIBUYA QWS チャレンジ #25】に採択されました。'
-  },
-  {
-    date: '2025.10.18',
-    category: 'Project',
-    title: '公益財団法人Soilが主催する、社会課題解決を支援する助成プログラムSoil100に採択されました。'
-  },
-  {
-    date: '2025.10.27',
-    category: 'News',
-    title: '弊社のホームページが完成しました。'
-  },
-  {
-    date: '2025.10.05',
-    category: 'Press',
-    title: '異才を持つ学生が社会課題を解決するUT-LABの公認プロジェクトに採択されました。'
-  },
-  {
-    date: '2025.02.21',
-    category: 'Award',
-    title: '第7回 WASEDA Demo Dayにてリザプロ賞を受賞しました。'
-  }
-]
-
 // Hero slides
 const heroSlides = [
   {
-    img: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1920&q=90',
-    label: 'Exhibition / Award',
-    title: 'ORGATEC TOKYO 2025',
-    subtitle: '史上最多・三度目グランプリ受賞',
-    client: 'KOKUYO Co., Ltd.',
+    img: 'https://cdn.myportfolio.com/03f544c3-4dc7-41cb-b486-0fc7f382b534/99c2c5c1-cc73-45ba-9bd0-3e5c5762488c_rwc_0x300x6000x3381x1280.JPG?h=5646dc2201364de55991d98c5f5cefd6',
+    label: 'label1',
+    title: 'test1',
+    subtitle: 'subtest1',
+    client: 'test1',
     year: '2025'
   },
   {
-    img: 'https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=1920&q=90',
-    label: 'Pavilion / EXPO 2025',
-    title: 'In the world tree',
-    subtitle: '大阪・関西万博 カナデビアパビリオン',
-    client: 'KANADVIA Corporation',
+    img: 'https://cdn.myportfolio.com/03f544c3-4dc7-41cb-b486-0fc7f382b534/89c1959f-5194-4240-a6ba-4ef811063f44_carw_16x9x1280.jpg?h=e31ee441f3f39bfc3dd3d0c5750f5b0a',
+    label: 'label2',
+    title: 'test2',
+    subtitle: 'subtest2',
+    client: 'test2',
     year: '2025'
   },
   {
-    img: 'https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=1920&q=90',
-    label: 'Exhibition',
-    title: 'JAPAN MOBILITY SHOW 2025',
-    subtitle: '次世代モビリティの体験価値を創造',
-    client: 'Japan Automobile Manufacturers Association',
+    img: 'https://cdn.myportfolio.com/03f544c3-4dc7-41cb-b486-0fc7f382b534/a3694a04-f9ad-460a-8175-db56d45fa70f_rwc_0x0x1916x1080x1280.png?h=c3ba7858c01d5ee2cd3fb5caa49a76a1',
+    label: 'label3',
+    title: 'test3',
+    subtitle: 'subtest3',
+    client: 'test3',
     year: '2025'
   },
   {
-    img: 'https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=1920&q=90',
-    label: 'Showroom / Branding',
-    title: 'INNOVATION EXPERIENCE CENTER',
-    subtitle: 'ブランド体験型空間設計',
-    client: 'Panasonic Corporation',
+    img: 'https://art-media.libli.co.jp/wp-content/uploads/2023/11/difference-art-and-fine-art-eyecatch.png',
+    label: 'label4',
+    title: 'test4',
+    subtitle: 'subtest4',
+    client: 'test4',
     year: '2024'
   }
 ]
@@ -175,7 +70,7 @@ app.get('/', (c) => {
     </button>
   `).join('')
 
-  const worksHTML = worksData.map((work, i) => `
+  const worksHTML = layoutReportsData.filter(work => work.featured).map((work, i) => `
     <article class="work-item" data-category="${work.category}">
       <a href="#" class="work-link">
         <div class="work-img-wrap">
@@ -197,7 +92,7 @@ app.get('/', (c) => {
     </article>
   `).join('')
 
-  const newsHTML = newsData.map(n => `
+  const newsHTML = layoutNewsData.map(n => `
     <a href="#" class="news-item">
       <div class="news-item-inner">
         <time class="news-date">${n.date}</time>
@@ -269,10 +164,7 @@ app.get('/', (c) => {
   <header id="site-header" class="is-top">
     <a href="/" class="header-logo" aria-label="The Hearth ホーム">
       <div class="logo-mark-wrap">
-        <svg class="logo-mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect width="40" height="40" fill="currentColor"/>
-          <text x="20" y="28" text-anchor="middle" font-size="18" font-weight="bold" fill="white" font-family="serif">博</text>
-        </svg>
+        <img src="/static/logo.png" alt="The Hearth Logo" class="logo-mark" />
       </div>
       <div class="logo-text">
         <span class="logo-en">The Hearth</span>
@@ -392,10 +284,10 @@ app.get('/', (c) => {
         <!-- Filter Tabs -->
         <div class="filter-tabs fade-up" role="tablist" aria-label="カテゴリフィルター">
           <button class="filter-tab active" data-filter="all" role="tab" aria-selected="true">All</button>
-          <button class="filter-tab" data-filter="exhibition" role="tab" aria-selected="false">展示会 / 学会</button>
-          <button class="filter-tab" data-filter="event" role="tab" aria-selected="false">イベント</button>
-          <button class="filter-tab" data-filter="showroom" role="tab" aria-selected="false">ショールーム</button>
-          <button class="filter-tab" data-filter="store" role="tab" aria-selected="false">店舗 / ディスプレイ</button>
+          <button class="filter-tab" data-filter="exhibition" role="tab" aria-selected="false">脳波と音楽</button>
+          <button class="filter-tab" data-filter="event" role="tab" aria-selected="false">脳波と味覚</button>
+          <button class="filter-tab" data-filter="showroom" role="tab" aria-selected="false">脳波とメンタルヘルス</button>
+          <button class="filter-tab" data-filter="store" role="tab" aria-selected="false">ニューロマーケティング</button>
         </div>
 
         <!-- Works Grid -->
@@ -426,23 +318,23 @@ app.get('/', (c) => {
           <a href="/service" class="service-card fade-up">
             <div class="service-card-icon"><i class="fas fa-building"></i></div>
             <div class="service-card-body">
-              <h3 class="service-card-name">展示会 / 学会出展</h3>
-              <p class="service-card-desc">国内外の展示会・学会において、企画から設計、制作、運営まで一気通貫で対応します。</p>
+              <h3 class="service-card-name">タイトル1</h3>
+              <p class="service-card-desc">サービス1</p>
             </div>
             <span class="service-card-arrow">→</span>
           </a>
           <a href="/service" class="service-card fade-up delay-1">
             <div class="service-card-icon"><i class="fas fa-star"></i></div>
             <div class="service-card-body">
-              <h3 class="service-card-name">イベントプロモーション</h3>
-              <p class="service-card-desc">ブランド体験型イベントの企画・演出から当日運営まで、最高の瞬間をデザインします。</p>
+              <h3 class="service-card-name">タイトル2</h3>
+              <p class="service-card-desc">サービス2</p>
             </div>
             <span class="service-card-arrow">→</span>
           </a>
           <a href="/service" class="service-card fade-up delay-2">
             <div class="service-card-icon"><i class="fas fa-store"></i></div>
             <div class="service-card-body">
-              <h3 class="service-card-name">ショールーム / 商環境</h3>
+              <h3 class="service-card-name">タイトル3</h3>
               <p class="service-card-desc">恒久的なブランド空間の企画設計・施工。日常的な体験価値を通してブランドを強化します。</p>
             </div>
             <span class="service-card-arrow">→</span>
@@ -450,7 +342,7 @@ app.get('/', (c) => {
           <a href="/service" class="service-card fade-up delay-3">
             <div class="service-card-icon"><i class="fas fa-desktop"></i></div>
             <div class="service-card-body">
-              <h3 class="service-card-name">デジタルコンテンツ</h3>
+              <h3 class="service-card-name">タイトル4</h3>
               <p class="service-card-desc">インタラクティブなデジタル体験・映像制作で、リアルな空間にデジタルの力を融合します。</p>
             </div>
             <span class="service-card-arrow">→</span>
@@ -506,10 +398,7 @@ app.get('/', (c) => {
         <div class="footer-brand">
           <div class="footer-logo">
             <div class="footer-logo-mark">
-              <svg viewBox="0 0 40 40" fill="none">
-                <rect width="40" height="40" fill="white"/>
-                <text x="20" y="28" text-anchor="middle" font-size="18" font-weight="bold" fill="black" font-family="serif">博</text>
-              </svg>
+              <img src="/static/logo.png" alt="The Hearth Logo" />
             </div>
             <div class="footer-logo-text">
               <span class="footer-logo-en">The Hearth</span>
@@ -518,13 +407,6 @@ app.get('/', (c) => {
           </div>
           <p class="footer-company-jp">The Hearth</p>
           <p class="footer-address">〒163-0604 東京都新宿区西新宿1丁目25ー1</p>
-          <div class="footer-social">
-            <a href="#" aria-label="X (Twitter)"><i class="fab fa-x-twitter"></i></a>
-            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-          </div>
         </div>
 
         <nav class="footer-nav-simple" aria-label="フッターナビゲーション">
@@ -558,13 +440,13 @@ app.get('/', (c) => {
 app.get('/api/works', (c) => {
   const category = c.req.query('category')
   const filtered = category && category !== 'all'
-    ? worksData.filter(w => w.category === category)
-    : worksData
+    ? layoutReportsData.filter(w => w.category === category)
+    : layoutReportsData
   return c.json(filtered)
 })
 
 app.get('/api/news', (c) => {
-  return c.json(newsData)
+  return c.json(layoutNewsData)
 })
 
 // ── REPORTS PAGE ───────────────────────────────────────────
@@ -577,7 +459,7 @@ app.get('/reports', (c) => {
     { key: 'showroom', label: 'label3' },
     { key: 'store', label: 'label4' },
   ]
-  const filtered = currentCat === 'all' ? layoutWorksData : layoutWorksData.filter(w => w.category === currentCat)
+  const filtered = currentCat === 'all' ? layoutReportsData : layoutReportsData.filter(w => w.category === currentCat)
   const filterTabsHTML = categories.map(cat => {
     const active = currentCat === cat.key ? ' active' : ''
     return `<a href="/reports?cat=${cat.key}" class="filter-tab${active}">${cat.label}</a>`
@@ -624,7 +506,7 @@ ${pageScripts()}`)
 
 // ── NEWS PAGE ─────────────────────────────────────────────
 app.get('/news', (c) => {
-  const newsHTML = newsData.map((n, i) => `
+  const newsHTML = layoutNewsData.map((n, i) => `
     <a href="#" class="news-card fade-up" style="transition-delay:${i * 0.05}s">
       <div class="news-card-inner">
         <div class="news-card-meta">
@@ -715,8 +597,8 @@ ${header('/service')}
         <div class="service-domain-item fade-up">
           <div class="service-domain-img"><img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&q=80" alt="BtoCマーケティング" loading="lazy"></div>
           <div class="service-domain-body">
-            <h3 class="service-domain-title">BtoCマーケティング</h3>
-            <p class="service-domain-desc">消費者に直接アプローチするイベント・プロモーション・体験型施策を企画から運営まで一気通貫で提供。ブランドと生活者の間に感動的な体験をつくります。</p>
+            <h3 class="service-domain-title">BtoC芸術体験</h3>
+            <p class="service-domain-desc">消費者に直接アプローチする芸術体験型施策を企画から運営まで一気通貫で提供。ブランドと生活者の間に感動的な体験をつくります。</p>
             <div class="service-domain-tags"><span>イベントプロモーション</span><span>店舗・ウィンドウディスプレイ</span><span>アートイベント</span></div>
             <a href="/reports?cat=event" class="service-domain-link">実績を見る →</a>
           </div>
@@ -724,9 +606,9 @@ ${header('/service')}
         <div class="service-domain-item fade-up delay-1">
           <div class="service-domain-img"><img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=800&q=80" alt="BtoBマーケティング" loading="lazy"></div>
           <div class="service-domain-body">
-            <h3 class="service-domain-title">BtoBマーケティング</h3>
-            <p class="service-domain-desc">展示会・学会・プライベートショー・ショールームなど、企業間の深い関係構築に向けた体験設計を行います。リード獲得から顧客育成まで支援します。</p>
-            <div class="service-domain-tags"><span>展示会 / 学会出展</span><span>プライベートショー</span><span>ショールーム</span></div>
+            <h3 class="service-domain-title">BtoB芸術体験</h3>
+            <p class="service-domain-desc">企業内、企業間の深い関係構築に向けた体験設計を行います。</p>
+            <div class="service-domain-tags"><span>プライベートショー</span></div>
             <a href="/reports?cat=exhibition" class="service-domain-link">実績を見る →</a>
           </div>
         </div>
@@ -735,7 +617,7 @@ ${header('/service')}
           <div class="service-domain-body">
             <h3 class="service-domain-title">行政・自治体・街づくり関連</h3>
             <p class="service-domain-desc">地域活性化・観光PR・万博など、行政・自治体と連携した大規模な体験空間の企画・制作・運営に対応。地域と人をつなぐ体験をデザインします。</p>
-            <div class="service-domain-tags"><span>パビリオン</span><span>地域PR</span><span>観光促進</span></div>
+            <div class="service-domain-tags"><span>地方創生</span><span>地域PR</span><span>観光促進</span></div>
             <a href="/reports?cat=event" class="service-domain-link">実績を見る →</a>
           </div>
         </div>
@@ -754,8 +636,8 @@ ${header('/service')}
       <div class="strength-grid">
         <div class="strength-item fade-up"><div class="strength-num">01</div><h3 class="strength-title">ワンストップの体験設計</h3><p class="strength-desc">企画・デザイン・制作・施工・運営まで、すべて一社で完結。スピードと品質を両立した一気通貫のサービスを提供します。</p></div>
         <div class="strength-item fade-up delay-1"><div class="strength-num">02</div><h3 class="strength-title">リアル × デジタルの融合</h3><p class="strength-desc">空間デザインとデジタルコンテンツを統合した体験設計が強み。インタラクティブ展示・AR/VR・映像演出を組み合わせます。</p></div>
-        <div class="strength-item fade-up delay-2"><div class="strength-num">03</div><h3 class="strength-title">豊富な実績と専門知識</h3><p class="strength-desc">1967年の創業以来、国内外の展示会・イベントを多数手がけてきた実績と知見。各業界の特性を理解した提案が可能です。</p></div>
-        <div class="strength-item fade-up delay-3"><div class="strength-num">04</div><h3 class="strength-title">サステナブルな空間づくり</h3><p class="strength-desc">廃材活用・資源循環を取り入れたサーキュラーデザインへの取り組み。環境に配慮した体験設計で企業のESG活動を支援します。</p></div>
+        <div class="strength-item fade-up delay-2"><div class="strength-num">03</div><h3 class="strength-title">豊富な専門知識</h3><p class="strength-desc">各業界の特性を理解した提案が可能です。</p></div>
+        <div class="strength-item fade-up delay-3"><div class="strength-num">04</div><h3 class="strength-title">ESG活動の支援</h3><p class="strength-desc">社会課題を視野に入れた体験設計で企業のESG活動を支援します。</p></div>
       </div>
     </div>
   </section>
@@ -811,27 +693,13 @@ ${pageScripts()}`)
 // ── COMPANY PAGE ─────────────────────────────────────────
 app.get('/company', (c) => {
   const officers = [
-    { role: '代表取締役 会長執行役員 CEO', name: '田口 徳久' },
-    { role: '代表取締役 社長執行役員 COO', name: '原田 淳' },
-    { role: '取締役 執行役員 CFO', name: '藤井 由康' },
-    { role: '取締役（常勤監査等委員）', name: '田中 雅樹' },
-    { role: '社外取締役（監査等委員）', name: '山田 毅志' },
-    { role: '社外取締役（監査等委員）', name: '石塚 陽子' },
-    { role: '社外取締役（監査等委員）', name: '金森 浩之' },
-    { role: '執行役員', name: '福田 雄之' },
-    { role: '執行役員', name: '南 正一郎' },
+    { role: '代表', name: '黄 松毅' },
+    { role: '執行責任者', name: '上杉 未宇' },
+    { role: 'ディレクター', name: '大塚 康平' },
   ]
   const historyItems = [
-    { year: '1967', text: '東京都中央区に「田口博展堂」として創業' },
-    { year: '1970', text: '株式会社博展として法人化、設立' },
-    { year: '1985', text: '大阪事務所を開設。全国展開を本格化' },
-    { year: '1995', text: 'デジタルコンテンツ事業に本格参入' },
-    { year: '2004', text: '東京証券取引所マザーズ市場に株式上場' },
-    { year: '2012', text: '東京証券取引所JASDAQ市場に市場変更' },
-    { year: '2015', text: '東証1部（現：プライム市場）への市場変更' },
-    { year: '2018', text: 'デジタルエクスペリエンス株式会社をグループ化' },
-    { year: '2022', text: '東京証券取引所グロース市場へ区分変更' },
-    { year: '2024', text: 'ビジュアル・アイデンティティをリニューアル' },
+    { year: '2025', text: '設立' },
+    { year: '2026', text: '1億!' },
   ]
   const officersHTML = officers.map((o, i) => `
     <div class="officer-item fade-up" style="transition-delay:${(i % 3) * 0.08}s">
@@ -979,7 +847,7 @@ ${pageScripts(`
 
 // ── CONTACT PAGE ─────────────────────────────────────────
 app.get('/contact', (c) => {
-  const contactTypes = ['プロジェクト・制作の相談', '展示会 / 学会出展', 'イベントプロモーション', 'ショールーム / 商環境', 'デジタルコンテンツ', 'その他']
+  const contactTypes = ['プロジェクト・制作の相談', '演奏依頼', 'イベント共催', '音環境デザイン', 'デジタルコンテンツ', 'その他']
   const radioHTML = contactTypes.map(label => `
     <label class="form-radio">
       <input type="radio" name="type" value="${label}">
@@ -987,7 +855,7 @@ app.get('/contact', (c) => {
       <span>${label}</span>
     </label>`).join('')
 
-  return c.html(`${pageHead('Contact', 'プロジェクトのご相談、お問い合わせはこちらから。展示会・イベント・ショールームなど、あらゆる体験設計に対応します。')}
+  return c.html(`${pageHead('Contact', 'ご相談、お問い合わせはこちらから。お問い合わせ内容を確認後、担当者より折り返しご連絡させていただきます。')}
 ${header('/contact')}
 <main>
   <section class="page-hero">
@@ -1032,7 +900,8 @@ ${header('/contact')}
               <label class="form-label" for="budget">ご予算（目安）</label>
               <select class="form-select" id="budget" name="budget">
                 <option value="" disabled selected>選択してください</option>
-                <option>〜100万円</option>
+                <option>〜10万円</option>
+                <option>10万円〜100万円</option>
                 <option>100〜300万円</option>
                 <option>300〜500万円</option>
                 <option>500万〜1,000万円</option>
@@ -1072,8 +941,8 @@ ${header('/contact')}
           </div>
           <div class="contact-info-block" id="recruit">
             <h3 class="contact-info-heading">採用に関するお問い合わせ</h3>
-            <p class="contact-info-text">新卒採用・キャリア採用に関するご質問は、採用ページよりご確認ください。</p>
-            <a href="#" class="contact-info-link">採用情報を見る →</a>
+            <p class="contact-info-text">芸術家採用・オフィス採用に関するご連絡はこちら</p>
+            <a href="#" class="contact-info-link">お問い合わせ →</a>
           </div>
           <div class="contact-info-block">
             <h3 class="contact-info-heading">SNS</h3>

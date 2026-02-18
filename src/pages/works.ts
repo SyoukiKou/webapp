@@ -1,5 +1,5 @@
 import { Hono } from 'hono'
-import { pageHead, header, footer, pageScripts, worksData } from '../components/layout'
+import { pageHead, header, footer, pageScripts, reportsData } from '../components/layout'
 
 const app = new Hono()
 
@@ -20,8 +20,8 @@ app.get('/', (c) => {
   }).join('')
 
   const filtered = currentCat === 'all'
-    ? worksData
-    : worksData.filter(w => w.category === currentCat)
+    ? reportsData
+    : reportsData.filter(w => w.category === currentCat)
 
   const worksHTML = filtered.map((work, i) => `
     <article class="work-card fade-up" style="transition-delay:${(i % 3) * 0.08}s">

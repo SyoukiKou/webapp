@@ -195,6 +195,17 @@
   if (heroSlidesEls.length > 0) {
     // Init
     heroSlidesEls[0].classList.add('active');
+    
+    // Initialize content with first slide data
+    if (slidesData[0]) {
+      const d = slidesData[0];
+      if (heroLabel) heroLabel.textContent = d.label || '';
+      if (heroTitle) heroTitle.textContent = d.title || '';
+      if (heroSubtitle) heroSubtitle.textContent = d.subtitle || '';
+      if (heroClient) heroClient.textContent = d.client || '';
+      if (heroCurrentNum) heroCurrentNum.textContent = '01';
+    }
+    
     startProgress();
     startAutoplay();
 
