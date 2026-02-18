@@ -27,10 +27,11 @@ export const newsData = [
 // ============================================
 export function header(currentPath: string = '/'): string {
   const navItems = [
-    { href: '/report',   label: 'Works' },
     { href: '/service', label: 'Service' },
+    { href: '/reports',  label: 'Works' },
     { href: '/company', label: 'Company' },
     { href: '/contact', label: 'Contact' },
+    { href: '#news',    label: 'News' },
   ]
 
   const navHTML = navItems.map(item => {
@@ -127,12 +128,31 @@ export function footer(): string {
         </div>
         <nav class="footer-nav">
           <div class="footer-nav-col">
-            <h3 class="footer-nav-heading">Works</h3>
+            <h3 class="footer-nav-heading">Service</h3>
             <ul>
-              <li><a href="/report?cat=exhibition">展示会 / 学会出展</a></li>
-              <li><a href="/report?cat=event">イベントプロモーション</a></li>
-              <li><a href="/report?cat=showroom">ショールーム</a></li>
-              <li><a href="/report?cat=store">店舗 / ウィンドウ</a></li>
+              <li><a href="/service">展示会 / 学会出展</a></li>
+              <li><a href="/service">イベントプロモーション</a></li>
+              <li><a href="/service">ショールーム / 商環境</a></li>
+              <li><a href="/service">店舗 / ウィンドウディスプレイ</a></li>
+              <li><a href="/service">デジタルコンテンツ</a></li>
+            </ul>
+          </div>
+          <div class="footer-nav-col">
+            <h3 class="footer-nav-heading">Reports</h3>
+            <ul>
+              <li><a href="/reports?cat=exhibition">展示会 / 学会出展</a></li>
+              <li><a href="/reports?cat=event">イベントプロモーション</a></li>
+              <li><a href="/reports?cat=showroom">ショールーム</a></li>
+              <li><a href="/reports?cat=store">店舗 / ウィンドウ</a></li>
+            </ul>
+          </div>
+          <div class="footer-nav-col">
+            <h3 class="footer-nav-heading">News</h3>
+            <ul>
+              <li><a href="#">最新情報</a></li>
+              <li><a href="#">受賞・表彰</a></li>
+              <li><a href="#">イベント情報</a></li>
+              <li><a href="#">プレスリリース</a></li>
             </ul>
           </div>
           <div class="footer-nav-col">

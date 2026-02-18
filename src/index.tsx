@@ -313,8 +313,8 @@ app.get('/', (c) => {
     <div class="mobile-menu-bg"></div>
     <div class="mobile-menu-content">
       <nav class="mobile-nav">
-        <a href="/report" class="mobile-nav-link"><span class="mn-num">01</span><span class="mn-text">Works</span></a>
-        <a href="/service" class="mobile-nav-link"><span class="mn-num">02</span><span class="mn-text">Service</span></a>
+        <a href="/service" class="mobile-nav-link"><span class="mn-num">01</span><span class="mn-text">Service</span></a>
+        <a href="/reportss" class="mobile-nav-link"><span class="mn-num">02</span><span class="mn-text">Works</span></a>
         <a href="/company" class="mobile-nav-link"><span class="mn-num">03</span><span class="mn-text">Company</span></a>
         <a href="/contact" class="mobile-nav-link"><span class="mn-num">04</span><span class="mn-text">Contact</span></a>
       </nav>
@@ -346,10 +346,11 @@ app.get('/', (c) => {
     </a>
 
     <nav class="header-nav" aria-label="メインナビゲーション">
-      <a href="/report" class="nav-link">Works</a>
       <a href="/service" class="nav-link">Service</a>
+      <a href="/reportss" class="nav-link">Works</a>
       <a href="/company" class="nav-link">Company</a>
       <a href="/contact" class="nav-link">Contact</a>
+      <a href="#news" class="nav-link">News</a>
     </nav>
 
     <div class="header-right">
@@ -446,7 +447,7 @@ app.get('/', (c) => {
             <h2 class="section-title-en fade-up delay-1">Works</h2>
             <p class="section-title-jp fade-up delay-2">制作実績</p>
           </div>
-          <a href="/report" class="view-all-btn fade-up delay-2">
+          <a href="/reports" class="view-all-btn fade-up delay-2">
             View All Works
             <svg class="arrow-icon" viewBox="0 0 24 8" fill="none">
               <path d="M0 4H22M19 1L22 4L19 7" stroke="currentColor" stroke-width="1"/>
@@ -470,25 +471,56 @@ app.get('/', (c) => {
       </div>
     </section>
 
-    <!-- ===== STORY ===== -->
-    <section id="story" aria-label="ストーリー">
+    <!-- ===== SERVICE SECTION ===== -->
+    <section id="service-home" aria-label="サービス">
       <div class="section-inner">
         <div class="section-head">
           <div class="section-head-left">
-            <span class="section-eyebrow fade-up">Our Story</span>
-            <h2 class="section-title-en fade-up delay-1">Story</h2>
-            <p class="section-title-jp fade-up delay-2">ストーリー</p>
+            <span class="section-eyebrow fade-up">What We Do</span>
+            <h2 class="section-title-en fade-up delay-1">Service</h2>
+            <p class="section-title-jp fade-up delay-2">サービス領域</p>
           </div>
-          <a href="/report" class="view-all-btn fade-up delay-2">
-            View All Stories
+          <a href="/service" class="view-all-btn fade-up delay-2">
+            View All Services
             <svg class="arrow-icon" viewBox="0 0 24 8" fill="none">
               <path d="M0 4H22M19 1L22 4L19 7" stroke="currentColor" stroke-width="1"/>
             </svg>
           </a>
         </div>
 
-        <div class="story-grid">
-          ${storyHTML}
+        <div class="service-cards-grid">
+          <a href="/service" class="service-card fade-up">
+            <div class="service-card-icon"><i class="fas fa-building"></i></div>
+            <div class="service-card-body">
+              <h3 class="service-card-name">展示会 / 学会出展</h3>
+              <p class="service-card-desc">国内外の展示会・学会において、企画から設計、制作、運営まで一気通貫で対応します。</p>
+            </div>
+            <span class="service-card-arrow">→</span>
+          </a>
+          <a href="/service" class="service-card fade-up delay-1">
+            <div class="service-card-icon"><i class="fas fa-star"></i></div>
+            <div class="service-card-body">
+              <h3 class="service-card-name">イベントプロモーション</h3>
+              <p class="service-card-desc">ブランド体験型イベントの企画・演出から当日運営まで、最高の瞬間をデザインします。</p>
+            </div>
+            <span class="service-card-arrow">→</span>
+          </a>
+          <a href="/service" class="service-card fade-up delay-2">
+            <div class="service-card-icon"><i class="fas fa-store"></i></div>
+            <div class="service-card-body">
+              <h3 class="service-card-name">ショールーム / 商環境</h3>
+              <p class="service-card-desc">恒久的なブランド空間の企画設計・施工。日常的な体験価値を通してブランドを強化します。</p>
+            </div>
+            <span class="service-card-arrow">→</span>
+          </a>
+          <a href="/service" class="service-card fade-up delay-3">
+            <div class="service-card-icon"><i class="fas fa-desktop"></i></div>
+            <div class="service-card-body">
+              <h3 class="service-card-name">デジタルコンテンツ</h3>
+              <p class="service-card-desc">インタラクティブなデジタル体験・映像制作で、リアルな空間にデジタルの力を融合します。</p>
+            </div>
+            <span class="service-card-arrow">→</span>
+          </a>
         </div>
       </div>
     </section>
@@ -526,7 +558,7 @@ app.get('/', (c) => {
         </div>
         <div class="contact-actions fade-up delay-2">
           <a href="/contact" class="btn-primary">お問い合わせ</a>
-          <a href="/report" class="btn-secondary">実績を見る</a>
+          <a href="/reports" class="btn-secondary">実績を見る</a>
         </div>
       </div>
     </section>
@@ -563,14 +595,23 @@ app.get('/', (c) => {
 
         <nav class="footer-nav" aria-label="フッターナビゲーション">
           <div class="footer-nav-col">
-            <h3 class="footer-nav-heading">Works</h3>
+            <h3 class="footer-nav-heading">Service</h3>
             <ul>
-              <li><a href="/report?cat=exhibition">展示会 / 学会出展</a></li>
-              <li><a href="/report?cat=event">イベントプロモーション</a></li>
-              <li><a href="/report">プライベートショー</a></li>
-              <li><a href="/report?cat=showroom">ショールーム</a></li>
-              <li><a href="/report?cat=store">店舗 / ウィンドウ</a></li>
+              <li><a href="/service">展示会 / 学会出展</a></li>
+              <li><a href="/service">イベントプロモーション</a></li>
+              <li><a href="/service">ショールーム / 商環境</a></li>
+              <li><a href="/service">店舗 / ウィンドウディスプレイ</a></li>
               <li><a href="/service">デジタルコンテンツ</a></li>
+            </ul>
+          </div>
+          <div class="footer-nav-col">
+            <h3 class="footer-nav-heading">Reports</h3>
+            <ul>
+              <li><a href="/reportss?cat=exhibition">展示会 / 学会出展</a></li>
+              <li><a href="/reportss?cat=event">イベントプロモーション</a></li>
+              <li><a href="/reportss">プライベートショー</a></li>
+              <li><a href="/reportss?cat=showroom">ショールーム</a></li>
+              <li><a href="/reportss?cat=store">店舗 / ウィンドウ</a></li>
             </ul>
           </div>
           <div class="footer-nav-col">
@@ -591,15 +632,6 @@ app.get('/', (c) => {
               <li><a href="/company#sustainability">Sustainability</a></li>
               <li><a href="/company">IR情報</a></li>
               <li><a href="/company#sustainability">グループ会社</a></li>
-            </ul>
-          </div>
-          <div class="footer-nav-col">
-            <h3 class="footer-nav-heading">Recruit</h3>
-            <ul>
-              <li><a href="#">採用情報</a></li>
-              <li><a href="#">新卒採用</a></li>
-              <li><a href="#">キャリア採用</a></li>
-              <li><a href="#">社内制度・文化</a></li>
             </ul>
           </div>
           <div class="footer-nav-col">
@@ -649,7 +681,7 @@ app.get('/api/story', (c) => {
 })
 
 // ── WORKS PAGE ───────────────────────────────────────────
-app.get('/report', (c) => {
+app.get('/reports', (c) => {
   const currentCat = c.req.query('cat') || 'all'
   const categories = [
     { key: 'all', label: 'All' },
@@ -661,7 +693,7 @@ app.get('/report', (c) => {
   const filtered = currentCat === 'all' ? layoutWorksData : layoutWorksData.filter(w => w.category === currentCat)
   const filterTabsHTML = categories.map(cat => {
     const active = currentCat === cat.key ? ' active' : ''
-    return `<a href="/report?cat=${cat.key}" class="filter-tab${active}">${cat.label}</a>`
+    return `<a href="/reports?cat=${cat.key}" class="filter-tab${active}">${cat.label}</a>`
   }).join('')
   const worksHTML = filtered.map((work, i) => `
     <article class="work-card fade-up" style="transition-delay:${(i % 3) * 0.08}s">
@@ -680,7 +712,7 @@ app.get('/report', (c) => {
     </article>`).join('')
 
   return c.html(`${pageHead('Works', '制作実績一覧 — 博展が手がけた展示会・イベント・ショールームなどの実績をご覧いただけます。')}
-${header('/report')}
+${header('/reports')}
 <main>
   <section class="page-hero">
     <div class="page-hero-inner">
@@ -706,12 +738,12 @@ ${pageScripts()}`)
 // ── SERVICE PAGE ─────────────────────────────────────────
 app.get('/service', (c) => {
   const serviceItems = [
-    { icon: 'fa-building', name: '展示会 / 学会出展', desc: '国内外の展示会・学会における企画から施工・運営まで。ブースデザインで来場者に強い印象を与えます。', link: '/report?cat=exhibition' },
-    { icon: 'fa-star', name: 'イベントプロモーション', desc: 'ブランド体験型イベントの企画・演出・運営。ターゲットに刺さる体験で記憶に残るブランド接点を創出。', link: '/report?cat=event' },
-    { icon: 'fa-store', name: 'プライベートショー', desc: '自社開催の展示・発表会の企画運営。招待客に特別な体験価値を提供し、商談機会の最大化を支援。', link: '/report' },
-    { icon: 'fa-tv', name: 'デジタルコンテンツ', desc: 'AR/VR・インタラクティブ展示・映像制作。デジタルの力でリアルな空間を拡張し、体験価値を高めます。', link: '/report' },
-    { icon: 'fa-map-marker-alt', name: 'ショールーム / 商環境', desc: 'ブランドの恒久的な体験拠点の企画設計・施工。日常的な来訪で深いブランド理解を促します。', link: '/report?cat=showroom' },
-    { icon: 'fa-window-maximize', name: '店舗 / ウィンドウディスプレイ', desc: '路面店・百貨店・商業施設のディスプレイ制作。季節感やブランドの世界観を空間で表現します。', link: '/report?cat=store' },
+    { icon: 'fa-building', name: '展示会 / 学会出展', desc: '国内外の展示会・学会における企画から施工・運営まで。ブースデザインで来場者に強い印象を与えます。', link: '/reports?cat=exhibition' },
+    { icon: 'fa-star', name: 'イベントプロモーション', desc: 'ブランド体験型イベントの企画・演出・運営。ターゲットに刺さる体験で記憶に残るブランド接点を創出。', link: '/reports?cat=event' },
+    { icon: 'fa-store', name: 'プライベートショー', desc: '自社開催の展示・発表会の企画運営。招待客に特別な体験価値を提供し、商談機会の最大化を支援。', link: '/reports' },
+    { icon: 'fa-tv', name: 'デジタルコンテンツ', desc: 'AR/VR・インタラクティブ展示・映像制作。デジタルの力でリアルな空間を拡張し、体験価値を高めます。', link: '/reports' },
+    { icon: 'fa-map-marker-alt', name: 'ショールーム / 商環境', desc: 'ブランドの恒久的な体験拠点の企画設計・施工。日常的な来訪で深いブランド理解を促します。', link: '/reports?cat=showroom' },
+    { icon: 'fa-window-maximize', name: '店舗 / ウィンドウディスプレイ', desc: '路面店・百貨店・商業施設のディスプレイ制作。季節感やブランドの世界観を空間で表現します。', link: '/reports?cat=store' },
   ]
   const serviceMenuHTML = serviceItems.map(item => `
     <a href="${item.link}" class="service-menu-item fade-up">
@@ -765,7 +797,7 @@ ${header('/service')}
             <h3 class="service-domain-title">BtoCマーケティング</h3>
             <p class="service-domain-desc">消費者に直接アプローチするイベント・プロモーション・体験型施策を企画から運営まで一気通貫で提供。ブランドと生活者の間に感動的な体験をつくります。</p>
             <div class="service-domain-tags"><span>イベントプロモーション</span><span>店舗・ウィンドウディスプレイ</span><span>アートイベント</span></div>
-            <a href="/report?cat=event" class="service-domain-link">実績を見る →</a>
+            <a href="/reports?cat=event" class="service-domain-link">実績を見る →</a>
           </div>
         </div>
         <div class="service-domain-item fade-up delay-1">
@@ -774,7 +806,7 @@ ${header('/service')}
             <h3 class="service-domain-title">BtoBマーケティング</h3>
             <p class="service-domain-desc">展示会・学会・プライベートショー・ショールームなど、企業間の深い関係構築に向けた体験設計を行います。リード獲得から顧客育成まで支援します。</p>
             <div class="service-domain-tags"><span>展示会 / 学会出展</span><span>プライベートショー</span><span>ショールーム</span></div>
-            <a href="/report?cat=exhibition" class="service-domain-link">実績を見る →</a>
+            <a href="/reports?cat=exhibition" class="service-domain-link">実績を見る →</a>
           </div>
         </div>
         <div class="service-domain-item fade-up delay-2">
@@ -783,7 +815,7 @@ ${header('/service')}
             <h3 class="service-domain-title">行政・自治体・街づくり関連</h3>
             <p class="service-domain-desc">地域活性化・観光PR・万博など、行政・自治体と連携した大規模な体験空間の企画・制作・運営に対応。地域と人をつなぐ体験をデザインします。</p>
             <div class="service-domain-tags"><span>パビリオン</span><span>地域PR</span><span>観光促進</span></div>
-            <a href="/report?cat=event" class="service-domain-link">実績を見る →</a>
+            <a href="/reports?cat=event" class="service-domain-link">実績を見る →</a>
           </div>
         </div>
       </div>
@@ -846,7 +878,7 @@ ${header('/service')}
       </div>
       <div class="contact-actions fade-up delay-2">
         <a href="/contact" class="btn-primary">お問い合わせ</a>
-        <a href="/report" class="btn-secondary">実績を見る</a>
+        <a href="/reports" class="btn-secondary">実績を見る</a>
       </div>
     </div>
   </section>
@@ -1002,7 +1034,7 @@ ${header('/company')}
       </div>
       <div class="contact-actions fade-up delay-2">
         <a href="/contact" class="btn-primary">お問い合わせ</a>
-        <a href="/report" class="btn-secondary">実績を見る</a>
+        <a href="/reports" class="btn-secondary">実績を見る</a>
       </div>
     </div>
   </section>
