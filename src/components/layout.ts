@@ -27,7 +27,7 @@ export const newsData = [
 // ============================================
 export function header(currentPath: string = '/'): string {
   const navItems = [
-    { href: '/works',   label: 'Works' },
+    { href: '/report',   label: 'Works' },
     { href: '/service', label: 'Service' },
     { href: '/company', label: 'Company' },
     { href: '/contact', label: 'Contact' },
@@ -129,10 +129,10 @@ export function footer(): string {
           <div class="footer-nav-col">
             <h3 class="footer-nav-heading">Works</h3>
             <ul>
-              <li><a href="/works?cat=exhibition">展示会 / 学会出展</a></li>
-              <li><a href="/works?cat=event">イベントプロモーション</a></li>
-              <li><a href="/works?cat=showroom">ショールーム</a></li>
-              <li><a href="/works?cat=store">店舗 / ウィンドウ</a></li>
+              <li><a href="/report?cat=exhibition">展示会 / 学会出展</a></li>
+              <li><a href="/report?cat=event">イベントプロモーション</a></li>
+              <li><a href="/report?cat=showroom">ショールーム</a></li>
+              <li><a href="/report?cat=store">店舗 / ウィンドウ</a></li>
             </ul>
           </div>
           <div class="footer-nav-col">
