@@ -176,8 +176,6 @@ ${header('/company')}
     <div class="section-inner">
       <div class="section-head">
         <div class="section-head-left">
-          <span class="section-eyebrow fade-up">Group Companies</span>
-          <h2 class="section-title-en fade-up delay-1">Group</h2>
           <p class="section-title-jp fade-up delay-2">グループ会社</p>
         </div>
       </div>

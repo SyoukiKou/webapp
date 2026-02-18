@@ -698,8 +698,7 @@ app.get('/company', (c) => {
     { role: 'ディレクター', name: '大塚 康平' },
   ]
   const historyItems = [
-    { year: '2025', text: '設立' },
-    { year: '2026', text: '1億!' },
+    { year: '2025', text: '創業' },
   ]
   const officersHTML = officers.map((o, i) => `
     <div class="officer-item fade-up" style="transition-delay:${(i % 3) * 0.08}s">
@@ -734,13 +733,13 @@ ${header('/company')}
         <div class="company-purpose-text fade-up">
           <span class="section-eyebrow">Our Purpose</span>
           <h2 class="company-purpose-title">人と社会のコミュニケーションに<br>ココロを通わせ、<br>未来へつなげる原動力をつくる。</h2>
-          <p class="company-purpose-desc">1967年の創業以来、博展はリアルな"体験"を通じた企業コミュニケーションの創造を事業領域としてきました。私たちは「Communication Design®」を旗印に、人と社会のつながりを深める体験を生み出し続けています。</p>
+          <p class="company-purpose-desc">The Hearthはリアルな"体験"を通じた企業コミュニケーションの創造を事業領域としています。私たちは人と社会のつながりを深める体験を生み出し続けています。</p>
         </div>
         <div class="company-stats fade-up delay-2">
-          <div class="company-stat"><div class="company-stat-num" data-target="57">0</div><div class="company-stat-unit">年</div><div class="company-stat-label">創業年数</div></div>
-          <div class="company-stat"><div class="company-stat-num" data-target="473">0</div><div class="company-stat-unit">名</div><div class="company-stat-label">社員数（単体）</div></div>
-          <div class="company-stat"><div class="company-stat-num" data-target="188">0</div><div class="company-stat-unit">億円</div><div class="company-stat-label">売上高（連結）</div></div>
-          <div class="company-stat"><div class="company-stat-num" data-target="545">0</div><div class="company-stat-unit">名</div><div class="company-stat-label">社員数（連結）</div></div>
+          <div class="company-stat"><div class="company-stat-num" data-target="1">0</div><div class="company-stat-unit">回</div><div class="company-stat-label">創業年数</div></div>
+          <div class="company-stat"><div class="company-stat-num" data-target="7">0</div><div class="company-stat-unit">回</div><div class="company-stat-label">イベント開催</div></div>
+          <div class="company-stat"><div class="company-stat-num" data-target="98">0</div><div class="company-stat-unit">名</div><div class="company-stat-label">芸術家</div></div>
+          <div class="company-stat"><div class="company-stat-num" data-target="200">0</div><div class="company-stat-unit">名</div><div class="company-stat-label">施設訪問</div></div>
         </div>
       </div>
     </div>
@@ -762,7 +761,7 @@ ${header('/company')}
             <tr><th>設立</th><td>2025年9月7日</td></tr>
             <tr><th>資本金</th><td>300万円</td></tr>
             <tr><th>メンバー</th><td>3名</td></tr>
-            <tr><th>事業内容</th><td>「Experience Marketing」を事業領域とした、コンタクトポイントにおけるコミュニケーション開発及び統合型マーケティングソリューションの提供</td></tr>
+            <tr><th>事業内容</th><td>ソリューション・アート・サイエンスを軸にした社会課題解決</td></tr>
           </tbody>
         </table>
       </div>
@@ -773,8 +772,8 @@ ${header('/company')}
       <div class="section-head">
         <div class="section-head-left">
           <span class="section-eyebrow fade-up">Leadership</span>
-          <h2 class="section-title-en fade-up delay-1">Officers</h2>
-          <p class="section-title-jp fade-up delay-2">役員</p>
+          <h2 class="section-title-en fade-up delay-1">Members</h2>
+          <p class="section-title-jp fade-up delay-2">メンバー</p>
         </div>
       </div>
       <div class="officers-grid">${officersHTML}</div>
@@ -790,22 +789,6 @@ ${header('/company')}
         </div>
       </div>
       <div class="history-timeline">${historyHTML}</div>
-    </div>
-  </section>
-  <section class="company-group" id="sustainability">
-    <div class="section-inner">
-      <div class="section-head">
-        <div class="section-head-left">
-          <span class="section-eyebrow fade-up">Group Companies</span>
-          <h2 class="section-title-en fade-up delay-1">Group</h2>
-          <p class="section-title-jp fade-up delay-2">グループ会社</p>
-        </div>
-      </div>
-      <div class="group-grid">
-        <div class="group-item fade-up"><h3 class="group-name">デジタルエクスペリエンス株式会社</h3><p class="group-desc">イベント領域におけるITプロダクトの提供。展示会・イベントのデジタル化を推進するサービスを展開。</p></div>
-        <div class="group-item fade-up delay-1"><h3 class="group-name">株式会社ニチナン</h3><p class="group-desc">展示会・イベント、商環境など、リアルプロモーションサービスを中部・関西エリアで企画から制作までをワンストップサービスで提供。</p></div>
-        <div class="group-item fade-up delay-2"><h3 class="group-name">株式会社ヒラミヤ</h3><p class="group-desc">3D CADによる複雑な仕様設計・簡易解析を用いたホテル、商環境・オフィス、装飾美術品等の企画・製作。</p></div>
-      </div>
     </div>
   </section>
   <section id="contact-banner">
