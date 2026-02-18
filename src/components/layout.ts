@@ -2,8 +2,8 @@
 // 共通データ
 // ============================================
 export const reportsData = [
-  { id: 1, title: 'title1?', client: 'client1', subtitle: 'subtitle1', tags: ['#BtoB', '#出展'], img: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1200&q=85', featured: true, category: 'category1', year: '2025' },
-  { id: 2, title: 'title2', client: 'client2', subtitle: 'subtitle2', tags: ['#BtoC', '#ディスプレイ'], img: 'https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=800&q=80', featured: true, category: 'category2', year: '2025' },
+  { id: 1, title: 'coming soon', client: 'coming soon', subtitle: 'coming soon', tags: ['#coming soon', '#coming soon'], img: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1200&q=85', featured: true, category: 'category1', year: '2025' },
+  { id: 2, title: 'coming soon', client: 'coming soon', subtitle: 'coming soon', tags: ['#coming soon', '#coming soon'], img: 'https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=800&q=80', featured: true, category: 'category2', year: '2025' },
 ]
 
 export const newsData = [
@@ -62,7 +62,7 @@ export function header(currentPath: string = '/'): string {
 
   <!-- Header -->
   <header id="site-header" class="${headerClass}">
-    <a href="/" class="header-logo" aria-label="博展 ホーム">
+    <a href="/" class="header-logo" aria-label="The Hearth ホーム">
       <div class="logo-mark-wrap">
         <img src="/static/logo.png" alt="The Hearth Logo" class="logo-mark" />
       </div>
@@ -120,7 +120,7 @@ export function footer(): string {
           <a href="#">サイトポリシー</a>
           <a href="#">個人情報保護方針</a>
         </div>
-        <p class="footer-copyright">© 2024 The Hearth. All Rights Reserved.</p>
+        <p class="footer-copyright">© 2025 The Hearth. All Rights Reserved.</p>
       </div>
     </div>
   </footer>`
@@ -130,13 +130,13 @@ export function footer(): string {
 // ページ共通 <head>
 // ============================================
 export function pageHead(title: string, desc: string = ''): string {
-  const description = desc || '体験価値の創造を通じて、企業・団体のコミュニケーションをデザインしています。'
+  const description = desc || '芸術体験の創造を通じて、これからの社会をデザインしています。'
   return `<!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>${title} | 株式会社博展 HAKUTEN</title>
+  <title>${title} | The Hearth</title>
   <meta name="description" content="${description}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

@@ -17,28 +17,28 @@ app.get('/favicon.ico', (c) => {
 const heroSlides = [
   {
     img: 'https://cdn.myportfolio.com/03f544c3-4dc7-41cb-b486-0fc7f382b534/99c2c5c1-cc73-45ba-9bd0-3e5c5762488c_rwc_0x300x6000x3381x1280.JPG?h=5646dc2201364de55991d98c5f5cefd6',
-    label: 'label1',
-    title: 'test1',
-    subtitle: 'subtest1',
-    client: 'test1',
+    label: 'Music',
+    title: '芸術家集団 The Hearth',
+    subtitle: '芸術で社会課題を解決する',
+    client: 'レストラン・施設等',
     year: '2025'
   },
   {
     img: 'https://cdn.myportfolio.com/03f544c3-4dc7-41cb-b486-0fc7f382b534/89c1959f-5194-4240-a6ba-4ef811063f44_carw_16x9x1280.jpg?h=e31ee441f3f39bfc3dd3d0c5750f5b0a',
-    label: 'label2',
-    title: 'test2',
-    subtitle: 'subtest2',
-    client: 'test2',
+    label: 'Music',
+    title: 'Marunouchi Street Music',
+    subtitle: '芸術あふれる街づくり',
+    client: '丸の内仲通り',
     year: '2025'
   },
   {
     img: 'https://cdn.myportfolio.com/03f544c3-4dc7-41cb-b486-0fc7f382b534/a3694a04-f9ad-460a-8175-db56d45fa70f_rwc_0x0x1916x1080x1280.png?h=c3ba7858c01d5ee2cd3fb5caa49a76a1',
-    label: 'label3',
-    title: 'test3',
-    subtitle: 'subtest3',
-    client: 'test3',
+    label: 'Art',
+    title: 'Regulative Art Experience',
+    subtitle: '音でととのう',
+    client: '共創施設',
     year: '2025'
-  },
+  }/*,
   {
     img: 'https://art-media.libli.co.jp/wp-content/uploads/2023/11/difference-art-and-fine-art-eyecatch.png',
     label: 'label4',
@@ -46,7 +46,7 @@ const heroSlides = [
     subtitle: 'subtest4',
     client: 'test4',
     year: '2024'
-  }
+  }*/
 ]
 
 const tickerItems = [
@@ -115,9 +115,9 @@ app.get('/', (c) => {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Hearth | 芸術と脳科学の融合を社会実装する</title>
-  <meta name="description" content="体験価値の創造を通じて、企業・団体のコミュニケーションをデザインしています。イベントプロモーション、プライベートショー、展示会、ショールーム等の企画・制作。">
+  <meta name="description" content="芸術体験の創造を通じて、これからの社会をデザインしています。">
   <meta property="og:title" content="The Hearth | 芸術と脳科学の融合を社会実装する">
-  <meta property="og:description" content="体験価値の創造を通じて、企業・団体のコミュニケーションをデザインしています。">
+  <meta property="og:description" content="芸術体験の創造を通じて、これからの社会をデザインしています。">
   <meta property="og:type" content="website">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

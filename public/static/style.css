@@ -632,7 +632,7 @@ ul { list-style: none; }
 /* Hero Side Info */
 .hero-side-info {
   position: absolute;
-  right: 20px;
+  right: 80px;
   bottom: 100px;
   z-index: 20;
 }
@@ -657,7 +657,7 @@ ul { list-style: none; }
 /* Hero Indicators */
 .hero-indicators {
   position: absolute;
-  right: 20px;
+  right: 80px;
   bottom: 60px;
   z-index: 20;
   display: flex;
@@ -1821,8 +1821,8 @@ ul { list-style: none; }
 
   #hero { height: 100svh; }
   .hero-content { padding: 60px 24px; }
-  .hero-side-info { right: 24px; bottom: 90px; }
-  .hero-indicators { right: 24px; bottom: 56px; }
+  .hero-side-info { right: 60px; bottom: 90px; }
+  .hero-indicators { right: 60px; bottom: 56px; }
   .hero-scroll-hint { display: none; }
 
   .section-head {
