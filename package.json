@@ -11,13 +11,11 @@
   },
   "dependencies": {
     "@hono/node-server": "^1.19.9",
-    "hono": "^4.11.9",
-    "nodemailer": "^8.0.1"
+    "hono": "^4.11.9"
   },
   "devDependencies": {
     "@hono/vite-build": "^1.2.0",
     "@hono/vite-dev-server": "^0.18.2",
-    "@types/nodemailer": "^7.0.10",
     "@vercel/node": "^5.6.4",
     "vite": "^6.3.5",
     "wrangler": "^4.4.0"

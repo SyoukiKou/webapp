@@ -29,92 +29,8 @@ ${header('/contact')}
           <h2 class="contact-form-title">プロジェクトのご相談・お問い合わせ</h2>
           <p class="contact-form-lead">以下のフォームにご記入の上、送信してください。担当者より2〜3営業日以内にご連絡いたします。</p>
 
-          <form class="contact-form" id="contactForm" novalidate>
-
-            <div class="form-row form-row--2">
-              <div class="form-group">
-                <label class="form-label" for="company">会社名・団体名 <span class="form-required">必須</span></label>
-                <input class="form-input" type="text" id="company" name="company" placeholder="株式会社〇〇" required>
-              </div>
-              <div class="form-group">
-                <label class="form-label" for="name">お名前 <span class="form-required">必須</span></label>
-                <input class="form-input" type="text" id="name" name="name" placeholder="山田 太郎" required>
-              </div>
-            </div>
-
-            <div class="form-row form-row--2">
-              <div class="form-group">
-                <label class="form-label" for="email">メールアドレス <span class="form-required">必須</span></label>
-                <input class="form-input" type="email" id="email" name="email" placeholder="example@company.co.jp" required>
-              </div>
-              <div class="form-group">
-                <label class="form-label" for="tel">電話番号</label>
-                <input class="form-input" type="tel" id="tel" name="tel" placeholder="03-0000-0000">
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label class="form-label">お問い合わせの種類 <span class="form-required">必須</span></label>
-              <div class="form-radio-group">
-                ${[
-                  'プロジェクト・制作の相談',
-                  '展示会 / 学会出展',
-                  'イベントプロモーション',
-                  'ショールーム / 商環境',
-                  'デジタルコンテンツ',
-                  'その他',
-                ].map(label => `
-                  <label class="form-radio">
-                    <input type="radio" name="type" value="${label}">
-                    <span class="form-radio-mark"></span>
-                    <span>${label}</span>
-                  </label>
-                `).join('')}
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label class="form-label" for="budget">ご予算（目安）</label>
-              <select class="form-select" id="budget" name="budget">
-                <option value="" disabled selected>選択してください</option>
-                <option>〜100万円</option>
-                <option>100〜300万円</option>
-                <option>300〜500万円</option>
-                <option>500万〜1,000万円</option>
-                <option>1,000万円以上</option>
-                <option>未定</option>
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label class="form-label" for="message">お問い合わせ内容 <span class="form-required">必須</span></label>
-              <textarea class="form-textarea" id="message" name="message" rows="6" placeholder="プロジェクトの概要・開催時期・会場など、お気軽にご記入ください。" required></textarea>
-            </div>
-
-            <div class="form-group">
-              <label class="form-checkbox">
-                <input type="checkbox" name="privacy" required>
-                <span class="form-checkbox-mark"></span>
-                <span><a href="#" target="_blank">プライバシーポリシー</a>に同意する</span>
-              </label>
-            </div>
-
-            <div class="form-submit-wrap">
-              <button type="submit" class="form-submit-btn">
-                <span class="form-submit-text">送信する</span>
-                <span class="form-submit-icon">→</span>
-              </button>
-            </div>
-
-          </form>
-
-          <!-- Success Message (hidden by default) -->
-          <div class="form-success" id="formSuccess" style="display:none">
-            <div class="form-success-icon"><i class="fas fa-check-circle"></i></div>
-            <h3>お問い合わせを受け付けました</h3>
-            <p>ご連絡いただきありがとうございます。<br>担当者より2〜3営業日以内にご連絡いたします。</p>
-            <a href="/" class="btn-primary" style="margin-top:24px;display:inline-block">トップへ戻る</a>
-          </div>
+          <!-- Google Form Embed -->
+          <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScOh-Zm04sLeCGzF93Gm7JLYUgmVkB02ttbC4uQQ0HGlXN4eA/viewform?embedded=true" width="100%" height="1200" frameborder="0" marginheight="0" marginwidth="0" style="border: none;">読み込み中…</iframe>
         </div>
 
         <!-- Info -->
@@ -167,54 +83,7 @@ ${header('/contact')}
 ${footer()}
 ${pageScripts(`
 <script>
-  // Contact form
-  document.getElementById('contactForm')?.addEventListener('submit', async function(e) {
-    e.preventDefault();
-    const form = this;
-    const btn = form.querySelector('.form-submit-btn');
-    btn.disabled = true;
-    btn.querySelector('.form-submit-text').textContent = '送信中...';
-
-    try {
-      // Collect form data
-      const formData = new FormData(form);
-      const data = {
-        company: formData.get('company'),
-        name: formData.get('name'),
-        email: formData.get('email'),
-        tel: formData.get('tel'),
-        type: formData.get('type'),
-        budget: formData.get('budget'),
-        message: formData.get('message'),
-        privacy: formData.get('privacy') ? true : false,
-      };
-
-      // Send to API
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      });
-
-      if (response.ok) {
-        form.style.display = 'none';
-        document.getElementById('formSuccess').style.display = 'block';
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      } else {
-        const errorData = await response.json();
-        alert('エラー: ' + (errorData.error || 'メール送信に失敗しました'));
-        btn.disabled = false;
-        btn.querySelector('.form-submit-text').textContent = '送信する';
-      }
-    } catch (error) {
-      console.error('Form submission error:', error);
-      alert('エラーが発生しました。もう一度お試しください。');
-      btn.disabled = false;
-      btn.querySelector('.form-submit-text').textContent = '送信する';
-    }
-  });
+  // Google Form is embedded via iframe, no additional script needed
 </script>
 `)}
   `)
