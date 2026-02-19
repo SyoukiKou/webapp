@@ -15,6 +15,14 @@ const transporter = nodemailer.createTransport({
     user: process.env.SMTP_USER,
     pass: process.env.SMTP_PASS,
   },
+  connectionTimeout: 10000,
+  socketTimeout: 10000,
+  pool: {
+    maxConnections: 1,
+    maxMessages: 100,
+    rateDelta: 1000,
+    rateLimit: 5,
+  },
 })
 
 // Static files (Node.js version for Vercel)
@@ -462,6 +470,16 @@ app.post('/api/contact', async (c) => {
       return c.json({ error: 'メールアドレスの形式が正しくありません' }, 400)
     }
 
+    // Check SMTP configuration
+    if (!process.env.SMTP_HOST || !process.env.SMTP_USER || !process.env.SMTP_PASS) {
+      console.error('Missing SMTP configuration:', {
+        host: !!process.env.SMTP_HOST,
+        user: !!process.env.SMTP_USER,
+        pass: !!process.env.SMTP_PASS,
+      })
+      return c.json({ error: 'メール送信の設定が不完全です。管理者にお問い合わせください。' }, 500)
+    }
+
     const contactEmail = process.env.CONTACT_EMAIL || 'info@thehearth.jp'
 
     // Email to admin
@@ -494,7 +512,7 @@ app.post('/api/contact', async (c) => {
       <p><strong>会社名・団体名:</strong> ${company}</p>
       <p><strong>お名前:</strong> ${name}</p>
       <p><strong>メールアドレス:</strong> ${email}</p>
-      <p><strong>電話番号:</strong> ${tel || 'なし'}</p>
+      <p><strong>電話番号:</strong> ${tel|| 'なし'}</p>
       <p><strong>お問い合わせの種類:</strong> ${type}</p>
       <p><strong>ご予算（目安）:</strong> ${budget || '未記入'}</p>
       <p><strong>お問い合わせ内容:</strong></p>
@@ -517,8 +535,9 @@ app.post('/api/contact', async (c) => {
 
     return c.json({ success: true, message: 'メールを送信しました' }, 200)
   } catch (error) {
-    console.error('Contact form error:', error)
-    return c.json({ error: 'メール送信に失敗しました。もう一度お試しください。' }, 500)
+    const errorMsg = error instanceof Error ? error.message : String(error)
+    console.error('Contact form error:', errorMsg)
+    return c.json({ error: `メール送信に失敗しました: ${errorMsg}` }, 500)
   }
 })
 
