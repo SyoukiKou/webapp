@@ -9,7 +9,7 @@ export const newsData = [
   },
   {
     "id": 6,
-    "slug": "shibuya-qws-challenge-25",
+    "slug": "2025-interview-article-toggle-holdings",
     "date": "2025.11.03",
     "category": "Press",
     "title": "弊団体代表のインタビュー記事が、トグルホールディングス株式会社の公式noteに掲載されました。",
@@ -20,7 +20,7 @@ export const newsData = [
     "id": 5,
     "slug": "shibuya-qws-challenge-25",
     "date": "2025.11.01",
-    "category": "Event",
+    "category": "Press",
     "title": "未知の価値に挑戦するプログラム【SHIBUYA QWS チャレンジ #25】に採択されました。",
     "description": "渋谷キューズが主催する、未知の価値に挑戦するプログラム「SHIBUYA QWS チャレンジ #25」に、The Hearthのプロジェクトが採択されました。このプログラムを通じて、芸術と脳科学を融合した新しい価値創造に取り組んでまいります。"
   },
@@ -36,7 +36,7 @@ export const newsData = [
     "id": 3,
     "slug": "soil100-adoption",
     "date": "2025.10.18",
-    "category": "Project",
+    "category": "Award",
     "title": "公益財団法人Soilが主催する、社会課題解決を支援する助成プログラムSoil100に採択されました。",
     "description": "公益財団法人Soilが運営する、社会課題解決を支援する助成プログラム「Soil100」に、The Hearthのプロジェクトが採択されました。芸術体験を通じた社会課題解決という私たちのビジョンが評価され、今後の活動をさらに加速させてまいります。"
   },

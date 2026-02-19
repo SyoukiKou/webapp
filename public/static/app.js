@@ -6,6 +6,8 @@
 (function () {
   'use strict';
 
+  const isHome = document.body.classList.contains('is-homepage');
+
   /* ============================================
      LOADING SCREEN
      ============================================ */
@@ -20,9 +22,9 @@
   }
 
   if (document.readyState === 'complete') {
-    setTimeout(hideLoading, 1400);
+    setTimeout(hideLoading, 400);
   } else {
-    window.addEventListener('load', () => setTimeout(hideLoading, 1400));
+    window.addEventListener('load', () => setTimeout(hideLoading, 400));
   }
 
   /* ============================================
@@ -46,6 +48,8 @@
       setTimeout(() => cookieNotice.style.display = 'none', 450);
     });
   }
+
+  if (!isHome) return;
 
   /* ============================================
      HEADER SCROLL
@@ -249,14 +253,16 @@
   }
 
   /* ============================================
-     WORKS FILTER
+     FILTER (Works / Reports)
      ============================================ */
   const filterBtns = document.querySelectorAll('.filter-tab');
   const workItems = document.querySelectorAll('.work-item');
+  const reportsGrid = document.getElementById('reportsGrid');
   const worksGrid = document.getElementById('worksGrid');
+  const gridEl = reportsGrid || worksGrid;
 
-  if (worksGrid) {
-    worksGrid.classList.remove('grid-with-featured');
+  if (gridEl) {
+    gridEl.classList.remove('grid-with-featured');
   }
 
   filterBtns.forEach(btn => {
@@ -271,8 +277,8 @@
       this.classList.add('active');
       this.setAttribute('aria-selected', 'true');
 
-      if (worksGrid) {
-        worksGrid.classList.remove('grid-with-featured');
+      if (gridEl) {
+        gridEl.classList.remove('grid-with-featured');
       }
 
       // Filter items
@@ -309,7 +315,7 @@
     const io = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('in-view');
+          entry.target.classList.add('visible');
           io.unobserve(entry.target);
         }
       });
@@ -317,7 +323,7 @@
 
     fadeEls.forEach(el => io.observe(el));
   } else {
-    fadeEls.forEach(el => el.classList.add('in-view'));
+    fadeEls.forEach(el => el.classList.add('visible'));
   }
 
   /* ============================================

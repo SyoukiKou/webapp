@@ -10,5 +10,8 @@ export default defineConfig({
       adapter,
       entry: 'src/index.tsx'
     })
-  ]
+  ],
+  define: {
+    'process.env.VITE_GA_ID': JSON.stringify(process.env.VITE_GA_ID || '')
+  }
 })

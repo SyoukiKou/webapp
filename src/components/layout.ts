@@ -1,9 +1,11 @@
 // ============================================
 // 共通データ
 // ============================================
+import { heroSlides as heroSlidesRaw } from '../../data/hero.js'
 import { reportsData as reportsDataRaw } from '../../data/reports.js'
 import { newsData as newsDataRaw } from '../../data/news.js'
 
+export const heroSlides = heroSlidesRaw
 export const reportsData = reportsDataRaw
 export const newsData = newsDataRaw
 
@@ -40,15 +42,19 @@ export function header(currentPath: string = '/', useTransparentHeader: boolean 
     <div class="mobile-menu-bg"></div>
     <div class="mobile-menu-content">
       <nav class="mobile-nav">${mobileNavHTML}</nav>
-      <div class="mobile-menu-footer">
-        <a href="/contact" class="mobile-contact-btn">Contact Us</a>
-        <div class="mobile-social">
-          <a href="#" aria-label="X"><i class="fab fa-x-twitter"></i></a>
-          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-          <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        <div class="mobile-menu-footer">
+          <a href="/contact" class="mobile-contact-btn">Contact Us</a>
+          <div class="mobile-social">
+            <a href="https://x.com/syiaviolin" aria-label="X">
+              <svg aria-hidden="true" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                <path d="M18.244 2H21.5l-7.106 8.12L22.5 22h-6.172l-4.83-6.48L5.94 22H2.5l7.59-8.67L1.5 2h6.328l4.37 5.86L18.244 2Zm-1.07 18.2h1.8L6.86 3.74H4.93l12.244 16.46Z" />
+              </svg>
+            </a>
+            <a href="https://www.instagram.com/syiaviolin/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.facebook.com/syiaviolin/" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="mailto:info@thehearth.jp" aria-label="Send mail"><i class="fas fa-envelope"></i></a>
+          </div>
         </div>
-      </div>
     </div>
   </div>
 
@@ -121,8 +127,24 @@ export function footer(): string {
 // ============================================
 // ページ共通 <head>
 // ============================================
-export function pageHead(title: string, desc: string = ''): string {
+export function pageHead(title: string, desc: string = '', bodyClass: string = ''): string {
   const description = desc || '芸術体験の創造を通じて、これからの社会をデザインしています。'
+  const bodyClassAttr = bodyClass ? ` class="${bodyClass}"` : ''
+  
+  // Google Analytics ID を環境変数から取得
+  const gaId = process.env.VITE_GA_ID || ''
+  
+  // Google Analytics スクリプト（本番環境でのみ有効）
+  const gaScript = gaId ? `
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=${gaId}"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', '${gaId}');
+  </script>` : ''
+  
   return `<!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -135,19 +157,31 @@ export function pageHead(title: string, desc: string = ''): string {
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@300;400;600&family=Inter:ital,wght@0,200;0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="/static/style.css">
-  <link rel="stylesheet" href="/static/pages.css">
+  <link rel="stylesheet" href="/static/pages.css">${gaScript}
 </head>
-<body>`
+<body${bodyClassAttr}>`
 }
 
 // ============================================
 // ページ共通フッタースクリプト
 // ============================================
-export function pageScripts(extra: string = ''): string {
+export function pageScripts(
+  extraOrOptions: string | { extra?: string; includeApp?: boolean; includePages?: boolean } = ''
+): string {
+  const options = typeof extraOrOptions === 'string' ? { extra: extraOrOptions } : extraOrOptions
+  const extra = options.extra || ''
+  const includeApp = options.includeApp !== false
+  const includePages = options.includePages !== false
+
   return `
-  <script src="/static/app.js"></script>
-  <script src="/static/pages.js"></script>
+  <div id="cookieNotice" class="cookie-notice" style="display: none;" role="dialog" aria-live="polite" aria-label="Cookie notice">
+    <p>当サイトではCookieを使用しています。詳細はプライバシーポリシーをご確認ください。</p>
+    <a href="#" aria-label="プライバシーポリシー">プライバシーポリシー</a>
+    <button id="cookieAccept" class="cookie-btn" type="button">OK</button>
+  </div>
   ${extra}
+  ${includeApp ? '<script src="/static/app.js"></script>' : ''}
+  ${includePages ? '<script src="/static/pages.js"></script>' : ''}
 </body>
 </html>`
 }

@@ -831,7 +831,7 @@ ul { list-style: none; }
               transform 0.75s var(--ease-out-expo);
 }
 
-.fade-up.in-view {
+.fade-up.visible {
   opacity: 1;
   transform: translateY(0);
 }
@@ -1343,6 +1343,20 @@ ul { list-style: none; }
   font-size: 12.5px;
   color: var(--c-gray-500);
   line-height: 1.8;
+}
+
+/* ============================================
+   REPORTS SECTION
+   ============================================ */
+#reports {
+  padding: 100px 0 20px;
+  background: var(--c-white);
+}
+
+.reports-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3px;
 }
 
 /* ============================================
