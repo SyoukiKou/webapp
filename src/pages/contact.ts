@@ -167,17 +167,53 @@ ${header('/contact')}
 ${footer()}
 ${pageScripts(`
 <script>
-  // Contact form (UI only)
-  document.getElementById('contactForm')?.addEventListener('submit', function(e) {
+  // Contact form
+  document.getElementById('contactForm')?.addEventListener('submit', async function(e) {
     e.preventDefault();
     const form = this;
     const btn = form.querySelector('.form-submit-btn');
     btn.disabled = true;
     btn.querySelector('.form-submit-text').textContent = '送信中...';
-    setTimeout(() => {
-      form.style.display = 'none';
-      document.getElementById('formSuccess').style.display = 'block';
-    }, 1200);
+
+    try {
+      // Collect form data
+      const formData = new FormData(form);
+      const data = {
+        company: formData.get('company'),
+        name: formData.get('name'),
+        email: formData.get('email'),
+        tel: formData.get('tel'),
+        type: formData.get('type'),
+        budget: formData.get('budget'),
+        message: formData.get('message'),
+        privacy: formData.get('privacy') ? true : false,
+      };
+
+      // Send to API
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        form.style.display = 'none';
+        document.getElementById('formSuccess').style.display = 'block';
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        const errorData = await response.json();
+        alert('エラー: ' + (errorData.error || 'メール送信に失敗しました'));
+        btn.disabled = false;
+        btn.querySelector('.form-submit-text').textContent = '送信する';
+      }
+    } catch (error) {
+      console.error('Form submission error:', error);
+      alert('エラーが発生しました。もう一度お試しください。');
+      btn.disabled = false;
+      btn.querySelector('.form-submit-text').textContent = '送信する';
+    }
   });
 </script>
 `)}

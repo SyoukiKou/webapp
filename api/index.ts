@@ -1,9 +1,21 @@
 import { Hono } from 'hono'
 import { handle } from '@hono/node-server/vercel'
 import { serveStatic } from '@hono/node-server/serve-static'
+import nodemailer from 'nodemailer'
 import { header, footer, pageHead, pageScripts, reportsData as layoutReportsData, newsData as layoutNewsData } from '../src/components/layout.js'
 
 const app = new Hono()
+
+// SMTP Configuration
+const transporter = nodemailer.createTransport({
+  host: process.env.SMTP_HOST,
+  port: parseInt(process.env.SMTP_PORT || '587'),
+  secure: process.env.SMTP_PORT === '465',
+  auth: {
+    user: process.env.SMTP_USER,
+    pass: process.env.SMTP_PASS,
+  },
+})
 
 // Static files (Node.js version for Vercel)
 app.use('/static/*', serveStatic({ root: 'public' }))
@@ -17,7 +29,7 @@ app.get('/favicon.ico', (c) => {
 const heroSlides = [
   {
     img: 'https://cdn.myportfolio.com/03f544c3-4dc7-41cb-b486-0fc7f382b534/99c2c5c1-cc73-45ba-9bd0-3e5c5762488c_rwc_0x300x6000x3381x1280.JPG?h=5646dc2201364de55991d98c5f5cefd6',
-    label: 'Music',
+    label: 'Art',
     title: '芸術家集団 The Hearth',
     subtitle: '芸術で社会課題を解決する',
     client: 'レストラン・施設等',
@@ -33,10 +45,10 @@ const heroSlides = [
   },
   {
     img: 'https://cdn.myportfolio.com/03f544c3-4dc7-41cb-b486-0fc7f382b534/a3694a04-f9ad-460a-8175-db56d45fa70f_rwc_0x0x1916x1080x1280.png?h=c3ba7858c01d5ee2cd3fb5caa49a76a1',
-    label: 'Art',
+    label: 'Experience',
     title: 'Regulative Art Experience',
     subtitle: '音でととのう',
-    client: '共創施設',
+    client: 'オフィス・共創施設・教育機関',
     year: '2025'
   }/*,
   {
@@ -93,7 +105,7 @@ app.get('/', (c) => {
   `).join('')
 
   const newsHTML = layoutNewsData.map(n => `
-    <a href="#" class="news-item">
+    <a href="/news/${n.slug}" class="news-item">
       <div class="news-item-inner">
         <time class="news-date">${n.date}</time>
         <span class="news-category news-cat-${n.category.toLowerCase()}">${n.category}</span>
@@ -228,13 +240,6 @@ app.get('/', (c) => {
       <div class="hero-progress-bar" id="heroProgressBar"></div>
     </section>
 
-    <!-- ===== TICKER ===== -->
-    <div id="service-ticker" aria-hidden="true">
-      <div class="ticker-track">
-        ${tickerHTML}
-      </div>
-    </div>
-
     <!-- ===== PURPOSE / OUR VISION ===== -->
     <section id="purpose" aria-label="パーパス">
       <div class="purpose-bg-text" aria-hidden="true">Communication Design</div>
@@ -243,13 +248,13 @@ app.get('/', (c) => {
         <div class="purpose-body">
           <p class="purpose-text fade-up delay-1">
             人・モノ・コトが時間や場所を問わずつながることができる時代において、<br>
-            私たちは社会の流れを常に捉え、コミュニケーションの本質とは何かを探究し続けます。<br>
-            そして、ココロある豊かなコミュニケーションをデザインすることで、<br>
+            私たちは社会の流れを常に捉え、生きることの本質とは何かを探究し続けます。<br>
+            そして、ココロある豊かな芸術体験をデザインすることで、<br>
             人と社会に創造力を生み出し、未来へつなげる原動力をつくります。
           </p>
           <h2 class="purpose-title fade-up delay-2">
-            人と社会のコミュニケーションに<br>
-            ココロを通わせ、<br>
+            人と社会のつながりに<br>
+            芸術を通わせ、<br>
             未来へつなげる原動力をつくる。
           </h2>
         </div>
@@ -264,45 +269,18 @@ app.get('/', (c) => {
       </div>
     </section>
 
-    <!-- ===== WORKS ===== -->
-    <section id="works" aria-label="制作実績">
-      <div class="section-inner">
-        <div class="section-head">
-          <div class="section-head-left">
-            <span class="section-eyebrow fade-up">Our Reports</span>
-            <h2 class="section-title-en fade-up delay-1">Reports</h2>
-            <p class="section-title-jp fade-up delay-2">研究レポート</p>
-          </div>
-          <a href="/reports" class="view-all-btn fade-up delay-2">
-            View All Reports
-            <svg class="arrow-icon" viewBox="0 0 24 8" fill="none">
-              <path d="M0 4H22M19 1L22 4L19 7" stroke="currentColor" stroke-width="1"/>
-            </svg>
-          </a>
-        </div>
-
-        <!-- Filter Tabs -->
-        <div class="filter-tabs fade-up" role="tablist" aria-label="カテゴリフィルター">
-          <button class="filter-tab active" data-filter="all" role="tab" aria-selected="true">All</button>
-          <button class="filter-tab" data-filter="exhibition" role="tab" aria-selected="false">脳波と音楽</button>
-          <button class="filter-tab" data-filter="event" role="tab" aria-selected="false">脳波と味覚</button>
-          <button class="filter-tab" data-filter="showroom" role="tab" aria-selected="false">脳波とメンタルヘルス</button>
-          <button class="filter-tab" data-filter="store" role="tab" aria-selected="false">ニューロマーケティング</button>
-        </div>
-
-        <!-- Works Grid -->
-        <div class="works-grid" id="worksGrid">
-          ${worksHTML}
-        </div>
+    <!-- ===== TICKER ===== -->
+    <div id="service-ticker" aria-hidden="true">
+      <div class="ticker-track">
+        ${tickerHTML}
       </div>
-    </section>
+    </div>
 
     <!-- ===== SERVICE SECTION ===== -->
     <section id="service-home" aria-label="サービス">
       <div class="section-inner">
         <div class="section-head">
           <div class="section-head-left">
-            <span class="section-eyebrow fade-up">What We Do</span>
             <h2 class="section-title-en fade-up delay-1">Service</h2>
             <p class="section-title-jp fade-up delay-2">サービス領域</p>
           </div>
@@ -351,12 +329,43 @@ app.get('/', (c) => {
       </div>
     </section>
 
+    <!-- ===== WORKS ===== -->
+    <section id="works" aria-label="制作実績">
+      <div class="section-inner">
+        <div class="section-head">
+          <div class="section-head-left">
+            <h2 class="section-title-en fade-up delay-1">Reports</h2>
+            <p class="section-title-jp fade-up delay-2">研究レポート</p>
+          </div>
+          <a href="/reports" class="view-all-btn fade-up delay-2">
+            View All Reports
+            <svg class="arrow-icon" viewBox="0 0 24 8" fill="none">
+              <path d="M0 4H22M19 1L22 4L19 7" stroke="currentColor" stroke-width="1"/>
+            </svg>
+          </a>
+        </div>
+
+        <!-- Filter Tabs -->
+        <div class="filter-tabs fade-up" role="tablist" aria-label="カテゴリフィルター">
+          <button class="filter-tab active" data-filter="all" role="tab" aria-selected="true">All</button>
+          <button class="filter-tab" data-filter="label1" role="tab" aria-selected="false">脳波と音楽</button>
+          <button class="filter-tab" data-filter="label2" role="tab" aria-selected="false">脳波と味覚</button>
+          <button class="filter-tab" data-filter="label3" role="tab" aria-selected="false">脳波とメンタルヘルス</button>
+          <button class="filter-tab" data-filter="label4" role="tab" aria-selected="false">ニューロマーケティング</button>
+        </div>
+
+        <!-- Works Grid -->
+        <div class="works-grid" id="worksGrid">
+          ${worksHTML}
+        </div>
+      </div>
+    </section>
+
     <!-- ===== NEWS ===== -->
     <section id="news" aria-label="ニュース">
       <div class="section-inner">
         <div class="section-head">
           <div class="section-head-left">
-            <span class="section-eyebrow fade-up">Latest News</span>
             <h2 class="section-title-en fade-up delay-1">News</h2>
             <p class="section-title-jp fade-up delay-2">最新情報</p>
           </div>
@@ -437,6 +446,82 @@ app.get('/', (c) => {
 })
 
 // API endpoints
+app.post('/api/contact', async (c) => {
+  try {
+    const body = await c.req.json()
+    const { company, name, email, tel, type, budget, message, privacy } = body
+
+    // Validation
+    if (!company || !name || !email || !type || !message || !privacy) {
+      return c.json({ error: '必須項目が不足しています' }, 400)
+    }
+
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    if (!emailRegex.test(email)) {
+      return c.json({ error: 'メールアドレスの形式が正しくありません' }, 400)
+    }
+
+    const contactEmail = process.env.CONTACT_EMAIL || 'info@thehearth.jp'
+
+    // Email to admin
+    const adminMailHtml = `
+      <h2>新しいお問い合わせを受け取りました</h2>
+      <p><strong>会社名・団体名:</strong> ${company}</p>
+      <p><strong>お名前:</strong> ${name}</p>
+      <p><strong>メールアドレス:</strong> ${email}</p>
+      <p><strong>電話番号:</strong> ${tel || 'なし'}</p>
+      <p><strong>お問い合わせの種類:</strong> ${type}</p>
+      <p><strong>ご予算（目安）:</strong> ${budget || '未記入'}</p>
+      <p><strong>お問い合わせ内容:</strong></p>
+      <p>${message.replace(/\n/g, '<br>')}</p>
+    `
+
+    // Send email to admin
+    await transporter.sendMail({
+      from: process.env.SMTP_USER,
+      to: contactEmail,
+      subject: `【お問い合わせ】${name}様からのご相談 (${type})`,
+      html: adminMailHtml,
+    })
+
+    // Send confirmation email to user
+    const userMailHtml = `
+      <h2>${name}様へのご確認メール</h2>
+      <p>この度は、The Hearthへお問い合わせいただきまして、誠にありがとうございます。</p>
+      <p>以下の内容でお問い合わせを受け付けいたしました。</p>
+      <p>&nbsp;</p>
+      <p><strong>会社名・団体名:</strong> ${company}</p>
+      <p><strong>お名前:</strong> ${name}</p>
+      <p><strong>メールアドレス:</strong> ${email}</p>
+      <p><strong>電話番号:</strong> ${tel || 'なし'}</p>
+      <p><strong>お問い合わせの種類:</strong> ${type}</p>
+      <p><strong>ご予算（目安）:</strong> ${budget || '未記入'}</p>
+      <p><strong>お問い合わせ内容:</strong></p>
+      <p>${message.replace(/\n/g, '<br>')}</p>
+      <p>&nbsp;</p>
+      <p>担当者より2〜3営業日以内にご連絡させていただきます。</p>
+      <p>よろしくお願いいたします。</p>
+      <p>&nbsp;</p>
+      <p>---</p>
+      <p>The Hearth</p>
+      <p>〒163-0604 東京都新宿区西新宿1丁目25ー1</p>
+    `
+
+    await transporter.sendMail({
+      from: process.env.SMTP_USER,
+      to: email,
+      subject: 'お問い合わせ受付のご確認 | The Hearth',
+      html: userMailHtml,
+    })
+
+    return c.json({ success: true, message: 'メールを送信しました' }, 200)
+  } catch (error) {
+    console.error('Contact form error:', error)
+    return c.json({ error: 'メール送信に失敗しました。もう一度お試しください。' }, 500)
+  }
+})
+
 app.get('/api/works', (c) => {
   const category = c.req.query('category')
   const filtered = category && category !== 'all'
@@ -454,10 +539,10 @@ app.get('/reports', (c) => {
   const currentCat = c.req.query('cat') || 'all'
   const categories = [
     { key: 'all', label: 'All' },
-    { key: 'exhibition', label: 'label1' },
-    { key: 'event', label: 'label2' },
-    { key: 'showroom', label: 'label3' },
-    { key: 'store', label: 'label4' },
+    { key: 'label1', label: '脳波と音楽' },
+    { key: 'label2', label: '脳波と味覚' },
+    { key: 'label3', label: '脳波とメンタルヘルス' },
+    { key: 'label4', label: 'ニューロマーケティング' },
   ]
   const filtered = currentCat === 'all' ? layoutReportsData : layoutReportsData.filter(w => w.category === currentCat)
   const filterTabsHTML = categories.map(cat => {
@@ -469,7 +554,7 @@ app.get('/reports', (c) => {
       <a href="#" class="work-card-link">
         <div class="work-card-img">
           <img src="${work.img}" alt="${work.title}" loading="lazy">
-          <div class="work-card-overlay"><span class="work-card-view">View Project</span></div>
+          <div class="work-card-overlay"><span class="work-card-view">View Report</span></div>
         </div>
         <div class="work-card-body">
           <p class="work-card-client">${work.client}</p>
@@ -485,7 +570,6 @@ ${header('/reports')}
 <main>
   <section class="page-hero">
     <div class="page-hero-inner">
-      <span class="page-hero-eyebrow fade-up">Our Reports</span>
       <h1 class="page-hero-title fade-up delay-1">Reports</h1>
       <p class="page-hero-sub fade-up delay-2">研究レポート</p>
     </div>
@@ -504,10 +588,100 @@ ${footer()}
 ${pageScripts()}`)
 })
 
+// ── NEWS DETAIL PAGE ─────────────────────────────────────────────
+app.get('/news/:slug', (c) => {
+  const slug = c.req.param('slug')
+  const news = layoutNewsData.find(n => n.slug === slug)
+  
+  if (!news) {
+    return c.html(`${pageHead('News Not Found', 'お探しのニュースが見つかりませんでした。')}
+${header('/news')}
+<main>
+  <section class="page-hero">
+    <div class="page-hero-inner">
+      <h1 class="page-hero-title fade-up">News Not Found</h1>
+      <p class="page-hero-sub fade-up delay-2">お探しのニュースが見つかりませんでした。</p>
+    </div>
+  </section>
+  <section style="padding: 80px 0; text-align: center;">
+    <div class="section-inner">
+      <a href="/news" class="btn-primary">ニュース一覧に戻る</a>
+    </div>
+  </section>
+</main>
+${footer()}
+${pageScripts()}`, 404)
+  }
+
+  // 関連ニュースを最大3件取得（現在のニュース以外）
+  const relatedNews = layoutNewsData
+    .filter(n => n.id !== news.id)
+    .slice(0, 3)
+    .map(n => `
+      <a href="/news/${n.slug}" class="news-card fade-up">
+        <div class="news-card-inner">
+          <div class="news-card-meta">
+            <time class="news-card-date">${n.date}</time>
+            <span class="news-card-category news-cat-${n.category.toLowerCase()}">${n.category}</span>
+          </div>
+          <h3 class="news-card-title">${n.title}</h3>
+          <span class="news-card-arrow">→</span>
+        </div>
+      </a>
+    `).join('')
+
+  return c.html(`${pageHead(news.title, news.description)}
+${header('/news', true)}
+<main>
+  <article class="news-detail">
+    <div class="news-detail-hero">
+      <div class="section-inner">
+        <div class="news-detail-meta fade-up">
+          <time class="news-detail-date">${news.date}</time>
+          <span class="news-detail-category news-cat-${news.category.toLowerCase()}">${news.category}</span>
+        </div>
+        <h1 class="news-detail-title fade-up delay-1">${news.title}</h1>
+      </div>
+    </div>
+    
+    <div class="news-detail-content">
+      <div class="section-inner">
+        <div class="news-detail-body fade-up">
+          <p>${news.description}</p>
+        </div>
+        ${news.link ? `<div class="news-detail-article-link fade-up delay-1"><a href="${news.link}" target="_blank" rel="noopener noreferrer" class="news-external-link">View Article</a></div>` : ''}
+        
+        <div class="news-detail-footer fade-up delay-1">
+          <a href="/news" class="news-back-link">
+            <svg class="arrow-icon" viewBox="0 0 24 8" fill="none" style="transform: rotate(180deg)">
+              <path d="M0 4H22M19 1L22 4L19 7" stroke="currentColor" stroke-width="1"/>
+            </svg>
+            ニュース一覧に戻る
+          </a>
+        </div>
+      </div>
+    </div>
+    
+    ${relatedNews.length > 0 ? `
+    <div class="news-related">
+      <div class="section-inner">
+        <h2 class="news-related-title fade-up">関連ニュース</h2>
+        <div class="news-related-grid">
+          ${relatedNews}
+        </div>
+      </div>
+    </div>
+    ` : ''}
+  </article>
+</main>
+${footer()}
+${pageScripts()}`)
+})
+
 // ── NEWS PAGE ─────────────────────────────────────────────
 app.get('/news', (c) => {
   const newsHTML = layoutNewsData.map((n, i) => `
-    <a href="#" class="news-card fade-up" style="transition-delay:${i * 0.05}s">
+    <a href="/news/${n.slug}" class="news-card fade-up" style="transition-delay:${i * 0.05}s">
       <div class="news-card-inner">
         <div class="news-card-meta">
           <time class="news-card-date">${n.date}</time>
@@ -523,7 +697,6 @@ ${header('/news')}
 <main>
   <section class="page-hero">
     <div class="page-hero-inner">
-      <span class="page-hero-eyebrow fade-up">Latest News</span>
       <h1 class="page-hero-title fade-up delay-1">News</h1>
       <p class="page-hero-sub fade-up delay-2">最新情報</p>
     </div>
@@ -558,7 +731,7 @@ app.get('/service', (c) => {
     </a>`).join('')
 
   return c.html(`${pageHead('Service', '体験価値の創造を通じて、企業や社会の課題解決に貢献します。リアル・デジタルを統合したコミュニケーションデザイン。')}
-${header('/service')}
+${header('/service', true)}
 <main>
   <section class="page-hero page-hero--dark">
     <div class="page-hero-bg">
@@ -566,7 +739,6 @@ ${header('/service')}
       <div class="page-hero-overlay"></div>
     </div>
     <div class="page-hero-inner">
-      <span class="page-hero-eyebrow fade-up">Our Service</span>
       <h1 class="page-hero-title fade-up delay-1">Service</h1>
       <p class="page-hero-lead fade-up delay-2">人も、社会も動かす<br>"体験"をつくる。</p>
     </div>
@@ -692,16 +864,18 @@ ${pageScripts()}`)
 // ── COMPANY PAGE ─────────────────────────────────────────
 app.get('/company', (c) => {
   const officers = [
-    { role: '代表', name: '黄 松毅' },
-    { role: '執行責任者', name: '上杉 未宇' },
-    { role: 'ディレクター', name: '大塚 康平' },
+    { role: '代表', name: '黄 松毅', img: '/static/koushoki.jpeg' },
+    { role: '執行責任者', name: '上杉 未宇', img: '/static/miu.webp' },
+    { role: 'ディレクター', name: '大塚 康平', img: '/static/otuka.jpg' },
   ]
   const historyItems = [
     { year: '2025', text: '創業' },
   ]
   const officersHTML = officers.map((o, i) => `
     <div class="officer-item fade-up" style="transition-delay:${(i % 3) * 0.08}s">
-      <div class="officer-avatar"><div class="officer-avatar-placeholder"><i class="fas fa-user"></i></div></div>
+      <div class="officer-avatar">
+        ${o.img ? `<img src="${o.img}" alt="${o.name}">` : '<div class="officer-avatar-placeholder"><i class="fas fa-user"></i></div>'}
+      </div>
       <p class="officer-role">${o.role}</p>
       <p class="officer-name">${o.name}</p>
     </div>`).join('')
@@ -713,7 +887,7 @@ app.get('/company', (c) => {
     </div>`).join('')
 
   return c.html(`${pageHead('Company', 'The Hearthの会社概要・メンバー・実績をご覧いただけます。')}
-${header('/company')}
+${header('/company', true)}
 <main>
   <section class="page-hero page-hero--dark">
     <div class="page-hero-bg">
@@ -721,7 +895,6 @@ ${header('/company')}
       <div class="page-hero-overlay"></div>
     </div>
     <div class="page-hero-inner">
-      <span class="page-hero-eyebrow fade-up">About Us</span>
       <h1 class="page-hero-title fade-up delay-1">Company</h1>
       <p class="page-hero-sub fade-up delay-2">会社概要</p>
     </div>
@@ -731,7 +904,7 @@ ${header('/company')}
       <div class="company-purpose-grid">
         <div class="company-purpose-text fade-up">
           <span class="section-eyebrow">Our Purpose</span>
-          <h2 class="company-purpose-title">人と社会のコミュニケーションに<br>ココロを通わせ、<br>未来へつなげる原動力をつくる。</h2>
+          <h2 class="company-purpose-title">人と社会のつながりに<br>芸術を通わせ、<br>未来へつなげる原動力をつくる。</h2>
           <p class="company-purpose-desc">The Hearthはリアルな"体験"を通じた企業コミュニケーションの創造を事業領域としています。私たちは人と社会のつながりを深める体験を生み出し続けています。</p>
         </div>
         <div class="company-stats fade-up delay-2">
@@ -747,7 +920,6 @@ ${header('/company')}
     <div class="section-inner">
       <div class="section-head">
         <div class="section-head-left">
-          <span class="section-eyebrow fade-up">会社情報</span>
           <h2 class="section-title-en fade-up delay-1">Overview</h2>
           <p class="section-title-jp fade-up delay-2">会社概要</p>
         </div>
@@ -759,6 +931,7 @@ ${header('/company')}
             <tr><th>所在地</th><td>〒163-0604<br>東京都新宿区西新宿1丁目25ー1<br></td></tr>
             <tr><th>設立</th><td>2025年9月7日</td></tr>
             <tr><th>資本金</th><td>300万円</td></tr>
+            <tr><th>代表</th><td>黄松毅</td></tr>
             <tr><th>メンバー</th><td>3名</td></tr>
             <tr><th>事業内容</th><td>ソリューション・アート・サイエンスを軸にした社会課題解決</td></tr>
           </tbody>
@@ -770,7 +943,6 @@ ${header('/company')}
     <div class="section-inner">
       <div class="section-head">
         <div class="section-head-left">
-          <span class="section-eyebrow fade-up">Leadership</span>
           <h2 class="section-title-en fade-up delay-1">Members</h2>
           <p class="section-title-jp fade-up delay-2">メンバー</p>
         </div>
@@ -782,7 +954,6 @@ ${header('/company')}
     <div class="section-inner">
       <div class="section-head">
         <div class="section-head-left">
-          <span class="section-eyebrow fade-up">History</span>
           <h2 class="section-title-en fade-up delay-1">History</h2>
           <p class="section-title-jp fade-up delay-2">沿革</p>
         </div>
@@ -943,16 +1114,53 @@ ${header('/contact')}
 ${footer()}
 ${pageScripts(`
 <script>
-  document.getElementById('contactForm')?.addEventListener('submit', function(e) {
+  // Contact form
+  document.getElementById('contactForm')?.addEventListener('submit', async function(e) {
     e.preventDefault();
-    const btn = this.querySelector('.form-submit-btn');
+    const form = this;
+    const btn = form.querySelector('.form-submit-btn');
     btn.disabled = true;
     btn.querySelector('.form-submit-text').textContent = '送信中...';
-    setTimeout(() => {
-      this.style.display = 'none';
-      document.getElementById('formSuccess').style.display = 'block';
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }, 1200);
+
+    try {
+      // Collect form data
+      const formData = new FormData(form);
+      const data = {
+        company: formData.get('company'),
+        name: formData.get('name'),
+        email: formData.get('email'),
+        tel: formData.get('tel'),
+        type: formData.get('type'),
+        budget: formData.get('budget'),
+        message: formData.get('message'),
+        privacy: formData.get('privacy') ? true : false,
+      };
+
+      // Send to API
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        form.style.display = 'none';
+        document.getElementById('formSuccess').style.display = 'block';
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        const errorData = await response.json();
+        alert('エラー: ' + (errorData.error || 'メール送信に失敗しました'));
+        btn.disabled = false;
+        btn.querySelector('.form-submit-text').textContent = '送信する';
+      }
+    } catch (error) {
+      console.error('Form submission error:', error);
+      alert('エラーが発生しました。もう一度お試しください。');
+      btn.disabled = false;
+      btn.querySelector('.form-submit-text').textContent = '送信する';
+    }
   });
 </script>
 `)}`)

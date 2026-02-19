@@ -1,24 +1,16 @@
 // ============================================
 // 共通データ
 // ============================================
-export const reportsData = [
-  { id: 1, title: 'coming soon', client: 'coming soon', subtitle: 'coming soon', tags: ['#coming soon', '#coming soon'], img: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1200&q=85', featured: true, category: 'category1', year: '2025' },
-  { id: 2, title: 'coming soon', client: 'coming soon', subtitle: 'coming soon', tags: ['#coming soon', '#coming soon'], img: 'https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=800&q=80', featured: true, category: 'category2', year: '2025' },
-]
+import reportsDataRaw from '../../data/reports.json'
+import newsDataRaw from '../../data/news.json'
 
-export const newsData = [
-  { date: '2026.02.19', category: 'News', title: '弊社のホームページをリニューアルしました。' },
-  { date: '2025.11.01', category: 'Event', title: '未知の価値に挑戦するプログラム【SHIBUYA QWS チャレンジ #25】に採択されました。' },
-  { date: '2025.10.18', category: 'Project', title: '公益財団法人Soilが主催する、社会課題解決を支援する助成プログラムSoil100に採択されました。' },
-  { date: '2025.10.27', category: 'News', title: '弊社のホームページが完成しました。' },
-  { date: '2025.10.05', category: 'Press', title: '異才を持つ学生が社会課題を解決するUT-LABの公認プロジェクトに採択されました。' },
-  { date: '2025.02.21', category: 'Award', title: '第7回 WASEDA Demo Dayにてリザプロ賞を受賞しました。' },
-]
+export const reportsData = reportsDataRaw
+export const newsData = newsDataRaw
 
 // ============================================
 // ヘッダー HTML
 // ============================================
-export function header(currentPath: string = '/'): string {
+export function header(currentPath: string = '/', useTransparentHeader: boolean = false): string {
   const navItems = [
     { href: '/service', label: 'Service' },
     { href: '/reports',  label: 'Reports' },
@@ -39,7 +31,7 @@ export function header(currentPath: string = '/'): string {
     </a>`
   }).join('')
 
-  const isTop = currentPath === '/'
+  const isTop = currentPath === '/' || useTransparentHeader
   const headerClass = isTop ? 'is-top' : 'is-scrolled'
 
   return `

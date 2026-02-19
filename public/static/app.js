@@ -174,12 +174,10 @@
     heroProgressBar.style.transition = 'none';
     heroProgressBar.style.width = '0';
 
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        heroProgressBar.style.transition = `width ${SLIDE_DURATION}ms linear`;
-        heroProgressBar.style.width = '100%';
-      });
-    });
+    setTimeout(() => {
+      heroProgressBar.style.transition = `width ${SLIDE_DURATION}ms linear`;
+      heroProgressBar.style.width = '100%';
+    }, 16);
   }
 
   function startAutoplay() {
