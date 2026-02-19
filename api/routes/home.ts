@@ -69,9 +69,35 @@ app.get('/', (c) => {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Hearth | 芸術と脳科学の融合を社会実装する</title>
   <meta name="description" content="芸術体験の創造を通じて、これからの社会をデザインしています。">
+  <link rel="canonical" href="https://thehearth.jp">
+  
+  <!-- Open Graph (OG) Tags -->
+  <meta property="og:type" content="website">
   <meta property="og:title" content="The Hearth | 芸術と脳科学の融合を社会実装する">
   <meta property="og:description" content="芸術体験の創造を通じて、これからの社会をデザインしています。">
-  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://thehearth.jp">
+  <meta property="og:image" content="https://thehearth.jp/static/logo.png">
+  <meta property="og:site_name" content="The Hearth">
+  <meta property="og:locale" content="ja_JP">
+  
+  <!-- Twitter Card Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="The Hearth">
+  <meta name="twitter:description" content="芸術体験の創造を通じて、これからの社会をデザインしています。">
+  <meta name="twitter:image" content="https://thehearth.jp/static/logo.png">
+  
+  <!-- Favicon & Icons -->
+  <link rel="icon" type="image/png" href="/favicon.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#ffffff">
+  
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Organization","@id":"https://thehearth.jp","name":"The Hearth","url":"https://thehearth.jp","logo":"https://thehearth.jp/static/logo.png","description":"芸術体験の創造を通じて、これからの社会をデザインしています。","sameAs":["https://x.com/syiaviolin","https://www.instagram.com/syiaviolin/","https://www.facebook.com/syiaviolin/"],"address":{"@type":"PostalAddress","streetAddress":"西新宿1丁目25ー1","addressLocality":"新宿区","addressRegion":"東京都","postalCode":"163-0604","addressCountry":"JP"},"contactPoint":{"@type":"ContactPoint","contactType":"Customer Service","email":"info@thehearth.jp"}}
+  </script>
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@300;400;600&family=Inter:ital,wght@0,200;0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">

@@ -21,7 +21,13 @@ app.get('/service', (c) => {
       <div class="service-menu-arrow">→</div>
     </a>`).join('')
 
-  return c.html(`${pageHead('Service', '体験価値の創造を通じて、企業や社会の課題解決に貢献します。リアル・デジタルを統合したコミュニケーションデザイン。')}
+  return c.html(`${pageHead({
+    title: 'Service',
+    description: '体験価値の創造を通じて、企業や社会の課題解決に貢献します。リアル・デジタルを統合したコミュニケーションデザイン。',
+    ogImage: 'https://thehearth.jp/static/logo.png',
+    ogUrl: 'https://thehearth.jp/service',
+    canonical: 'https://thehearth.jp/service'
+  })}
 ${header('/service', true)}
 <main>
   <section class="page-hero page-hero--dark">

@@ -4,7 +4,13 @@ import { header, footer, pageHead, pageScripts } from '../../src/components/layo
 const app = new Hono()
 
 app.get('/contact', (c) => {
-  return c.html(`${pageHead('Contact', 'ご相談、お問い合わせはこちらから。お問い合わせ内容を確認後、担当者より折り返しご連絡させていただきます。')}
+  return c.html(`${pageHead({
+    title: 'Contact',
+    description: 'ご相談、お問い合わせはこちらから。お問い合わせ内容を確認後、担当者より折り返しご連絡させていただきます。',
+    ogImage: 'https://thehearth.jp/static/logo.png',
+    ogUrl: 'https://thehearth.jp/contact',
+    canonical: 'https://thehearth.jp/contact'
+  })}
 ${header('/contact')}
 <main>
   <section class="page-hero">

@@ -27,7 +27,13 @@ app.get('/company', (c) => {
       <div class="history-text">${item.text}</div>
     </div>`).join('')
 
-  return c.html(`${pageHead('Company', 'The Hearthの会社概要・メンバー・実績をご覧いただけます。')}
+  return c.html(`${pageHead({
+    title: 'Company',
+    description: 'The Hearthの会社概要・メンバー・実績をご覧いただけます。',
+    ogImage: 'https://thehearth.jp/static/logo.png',
+    ogUrl: 'https://thehearth.jp/company',
+    canonical: 'https://thehearth.jp/company'
+  })}
 ${header('/company', true)}
 <main>
   <section class="page-hero page-hero--dark">

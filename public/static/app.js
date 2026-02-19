@@ -27,28 +27,6 @@
     window.addEventListener('load', () => setTimeout(hideLoading, 400));
   }
 
-  /* ============================================
-     COOKIE NOTICE
-     ============================================ */
-  const cookieNotice = document.getElementById('cookieNotice');
-  const cookieAccept = document.getElementById('cookieAccept');
-
-  if (cookieNotice) {
-    if (localStorage.getItem('hkt_cookie_ok')) {
-      cookieNotice.style.display = 'none';
-    } else {
-      setTimeout(() => cookieNotice.style.display = 'flex', 2500);
-    }
-  }
-
-  if (cookieAccept) {
-    cookieAccept.addEventListener('click', () => {
-      localStorage.setItem('hkt_cookie_ok', '1');
-      cookieNotice.classList.add('hidden');
-      setTimeout(() => cookieNotice.style.display = 'none', 450);
-    });
-  }
-
   if (!isHome) return;
 
   /* ============================================

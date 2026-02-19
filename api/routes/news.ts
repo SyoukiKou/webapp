@@ -1,5 +1,5 @@
 import { Hono } from 'hono'
-import { header, footer, pageHead, pageScripts, newsData } from '../../src/components/layout.js'
+import { header, footer, pageHead, pageScripts, createArticleSchema, newsData } from '../../src/components/layout.js'
 
 const app = new Hono()
 
@@ -45,7 +45,24 @@ ${pageScripts({ includeApp: false, includePages: true })}`, 404)
       </a>
     `).join('')
 
-  return c.html(`${pageHead(news.title, news.description)}
+  // SEO用のStructured Data (JSON-LD) を生成
+  const articleSchema = createArticleSchema({
+    headline: news.title,
+    description: news.description,
+    image: 'https://thehearth.jp/static/logo.png',
+    datePublished: news.date.replace(/\./g, '-'),
+    url: `https://thehearth.jp/news/${news.slug}`
+  })
+
+  return c.html(`${pageHead({
+    title: news.title,
+    description: news.description,
+    ogType: 'article',
+    ogImage: 'https://thehearth.jp/static/logo.png',
+    ogUrl: `https://thehearth.jp/news/${news.slug}`,
+    canonical: `https://thehearth.jp/news/${news.slug}`,
+    structuredData: articleSchema
+  })}
 ${header('/news', true)}
 <main>
   <article class="news-detail">
@@ -76,8 +93,6 @@ ${header('/news', true)}
         </div>
       </div>
     </div>
-    
-    ${relatedNews.length > 0 ? `
     <div class="news-related">
       <div class="section-inner">
         <h2 class="news-related-title fade-up">関連ニュース</h2>
@@ -86,7 +101,7 @@ ${header('/news', true)}
         </div>
       </div>
     </div>
-    ` : ''}
+    ${relatedNews.length > 0 ? `` : ''}
   </article>
 </main>
 ${footer()}
@@ -107,7 +122,13 @@ app.get('/news', (c) => {
       </div>
     </a>`).join('')
 
-  return c.html(`${pageHead('News', 'The Hearthの最新情報・ニュースリリース。受賞実績、新サービス、プロジェクト情報などをお届けします。')}
+  return c.html(`${pageHead({
+    title: 'News',
+    description: 'The Hearthの最新情報・ニュースリリース。受賞実績、新サービス、プロジェクト情報などをお届けします。',
+    ogImage: 'https://thehearth.jp/static/logo.png',
+    ogUrl: 'https://thehearth.jp/news',
+    canonical: 'https://thehearth.jp/news'
+  })}
 ${header('/news')}
 <main>
   <section class="page-hero">

@@ -127,9 +127,101 @@ export function footer(): string {
 // ============================================
 // ページ共通 <head>
 // ============================================
-export function pageHead(title: string, desc: string = '', bodyClass: string = ''): string {
-  const description = desc || '芸術体験の創造を通じて、これからの社会をデザインしています。'
-  const bodyClassAttr = bodyClass ? ` class="${bodyClass}"` : ''
+type PageHeadOptions = {
+  title?: string;
+  description?: string;
+  bodyClass?: string;
+  canonical?: string;
+  ogImage?: string;
+  ogUrl?: string;
+  ogType?: string;
+  twitterImage?: string;
+  structuredData?: object;
+}
+
+// JSON-LD 構造化データジェネレータ
+export function createArticleSchema(options: {
+  headline: string;
+  description: string;
+  image?: string;
+  datePublished: string;
+  dateModified?: string;
+  author?: string;
+  url?: string;
+}): object {
+  const siteUrl = 'https://thehearth.jp'
+  return {
+    "@context": "https://schema.org",
+    "@type": "NewsArticle",
+    "headline": options.headline,
+    "description": options.description,
+    "image": options.image || `${siteUrl}/static/logo.png`,
+    "datePublished": options.datePublished,
+    "dateModified": options.dateModified || options.datePublished,
+    "author": {
+      "@type": "Organization",
+      "name": "The Hearth",
+      "url": siteUrl
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "The Hearth",
+      "logo": {
+        "@type": "ImageObject",
+        "url": `${siteUrl}/static/logo.png`
+      }
+    },
+    "url": options.url || siteUrl
+  }
+}
+
+export function createProductSchema(options: {
+  name: string;
+  description: string;
+  image?: string;
+  url?: string;
+}): object {
+  const siteUrl = 'https://thehearth.jp'
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": options.name,
+    "description": options.description,
+    "image": options.image || `${siteUrl}/static/logo.png`,
+    "provider": {
+      "@type": "Organization",
+      "name": "The Hearth",
+      "url": siteUrl
+    },
+    "url": options.url || siteUrl
+  }
+}
+
+export function pageHead(titleOrOptions: string | PageHeadOptions, desc: string = '', bodyClass: string = ''): string {
+  let options: PageHeadOptions & { title: string }
+  
+  // 後方互換性を保つ
+  if (typeof titleOrOptions === 'string') {
+    options = {
+      title: titleOrOptions,
+      description: desc,
+      bodyClass: bodyClass
+    }
+  } else {
+    options = {
+      title: titleOrOptions.title || 'The Hearth',
+      ...titleOrOptions
+    }
+  }
+
+  const description = options.description || '芸術体験の創造を通じて、これからの社会をデザインしています。'
+  const bodyClassAttr = options.bodyClass ? ` class="${options.bodyClass}"` : ''
+  const ogImage = options.ogImage || '/static/logo.png'
+  const siteUrl = 'https://thehearth.jp'
+  const ogUrl = options.ogUrl || siteUrl
+  const ogType = options.ogType || 'website'
+  const twitterImage = options.twitterImage || ogImage
+  const canonical = options.canonical || ogUrl
   
   // Google Analytics ID を環境変数から取得
   const gaId = process.env.VITE_GA_ID || ''
@@ -145,13 +237,74 @@ export function pageHead(title: string, desc: string = '', bodyClass: string = '
     gtag('config', '${gaId}');
   </script>` : ''
   
+  // JSON-LD構造化データ
+  const defaultStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": siteUrl,
+    "name": "The Hearth",
+    "url": siteUrl,
+    "logo": `${siteUrl}/static/logo.png`,
+    "description": description,
+    "sameAs": [
+      "https://x.com/syiaviolin",
+      "https://www.instagram.com/syiaviolin/",
+      "https://www.facebook.com/syiaviolin/"
+    ],
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "西新宿1丁目25ー1",
+      "addressLocality": "新宿区",
+      "addressRegion": "東京都",
+      "postalCode": "163-0604",
+      "addressCountry": "JP"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "Customer Service",
+      "email": "info@thehearth.jp"
+    }
+  }
+  
+  const structuredData = options.structuredData || defaultStructuredData
+  const structuredDataJson = JSON.stringify(structuredData).replace(/</g, '\\u003c').replace(/>/g, '\\u003e')
+  
   return `<!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>${title} | The Hearth</title>
+  <title>${options.title} | The Hearth</title>
   <meta name="description" content="${description}">
+  <link rel="canonical" href="${canonical}">
+  
+  <!-- Open Graph (OG) Tags -->
+  <meta property="og:type" content="${ogType}">
+  <meta property="og:title" content="${options.title} | The Hearth">
+  <meta property="og:description" content="${description}">
+  <meta property="og:url" content="${ogUrl}">
+  <meta property="og:image" content="${ogImage}">
+  <meta property="og:site_name" content="The Hearth">
+  <meta property="og:locale" content="ja_JP">
+  
+  <!-- Twitter Card Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="${options.title}">
+  <meta name="twitter:description" content="${description}">
+  <meta name="twitter:image" content="${twitterImage}">
+  
+  <!-- Favicon & Icons -->
+  <link rel="icon" type="image/png" href="/favicon.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#ffffff">
+  
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json">
+  ${structuredDataJson}
+  </script>
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@300;400;600&family=Inter:ital,wght@0,200;0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
@@ -174,11 +327,6 @@ export function pageScripts(
   const includePages = options.includePages !== false
 
   return `
-  <div id="cookieNotice" class="cookie-notice" style="display: none;" role="dialog" aria-live="polite" aria-label="Cookie notice">
-    <p>当サイトではCookieを使用しています。詳細はプライバシーポリシーをご確認ください。</p>
-    <a href="#" aria-label="プライバシーポリシー">プライバシーポリシー</a>
-    <button id="cookieAccept" class="cookie-btn" type="button">OK</button>
-  </div>
   ${extra}
   ${includeApp ? '<script src="/static/app.js"></script>' : ''}
   ${includePages ? '<script src="/static/pages.js"></script>' : ''}

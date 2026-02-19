@@ -9,35 +9,12 @@
 
   // ── DOM Ready ────────────────────────────────────────────
   document.addEventListener('DOMContentLoaded', function () {
-    initCookieNotice();
     initScrollAnimations();
     initHeader();
     initMobileMenu();
     initCounters();
     initRipple();
   });
-
-  // ── Cookie notice ─────────────────────────────────────
-  function initCookieNotice() {
-    var cookieNotice = document.getElementById('cookieNotice');
-    var cookieAccept = document.getElementById('cookieAccept');
-
-    if (cookieNotice) {
-      if (localStorage.getItem('hkt_cookie_ok')) {
-        cookieNotice.style.display = 'none';
-      } else {
-        setTimeout(function () { cookieNotice.style.display = 'flex'; }, 2500);
-      }
-    }
-
-    if (cookieAccept) {
-      cookieAccept.addEventListener('click', function () {
-        localStorage.setItem('hkt_cookie_ok', '1');
-        cookieNotice.classList.add('hidden');
-        setTimeout(function () { cookieNotice.style.display = 'none'; }, 450);
-      });
-    }
-  }
 
   // ── Scroll Animations (fade-up) ──────────────────────────
   function initScrollAnimations() {

@@ -33,7 +33,13 @@ app.get('/reports', (c) => {
       </a>
     </article>`).join('')
 
-  return c.html(`${pageHead('Reports', '研究レポート — The Hearthによる研究レポート。')}
+  return c.html(`${pageHead({
+    title: 'Reports',
+    description: '研究レポート — The Hearthによる研究レポート。',
+    ogImage: 'https://thehearth.jp/static/logo.png',
+    ogUrl: 'https://thehearth.jp/reports',
+    canonical: 'https://thehearth.jp/reports'
+  })}
 ${header('/reports')}
 <main>
   <section class="page-hero">
