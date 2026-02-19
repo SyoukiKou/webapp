@@ -1,8 +1,8 @@
 // ============================================
 // 共通データ
 // ============================================
-import { reportsData as reportsDataRaw } from '../../data/reports'
-import { newsData as newsDataRaw } from '../../data/news'
+import { reportsData as reportsDataRaw } from '../../data/reports.js'
+import { newsData as newsDataRaw } from '../../data/news.js'
 
 export const reportsData = reportsDataRaw
 export const newsData = newsDataRaw
