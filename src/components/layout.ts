@@ -1,8 +1,8 @@
 // ============================================
 // 共通データ
 // ============================================
-import reportsDataRaw from '../../data/reports.json' assert { type: 'json' }
-import newsDataRaw from '../../data/news.json' assert { type: 'json' }
+import { reportsData as reportsDataRaw } from '../../data/reports'
+import { newsData as newsDataRaw } from '../../data/news'
 
 export const reportsData = reportsDataRaw
 export const newsData = newsDataRaw
