@@ -494,6 +494,4 @@
     workItemsArr.forEach(item => workIO.observe(item));
   }
 
-  console.log('%c HAKUTEN Communication Design®', 'font-size:14px;font-weight:600;color:#000;padding:4px 0;');
-
 })();
