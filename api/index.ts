@@ -48,6 +48,9 @@ app.get('/sitemap.xml', (c) => {
   const pages = [
     { path: '/', priority: '1.0' },
     { path: '/service', priority: '0.9' },
+    { path: '/rae', priority: '0.8' },
+    { path: '/machi', priority: '0.8' },
+    { path: '/welfare', priority: '0.8' },
     { path: '/reports', priority: '0.8' },
     { path: '/news', priority: '0.8' },
     { path: '/company', priority: '0.7' },
@@ -91,7 +94,12 @@ app.route('/', contactRoutes)
 // 404 Not Found
 app.notFound((c) => {
   return c.html(`
-${pageHead('Not Found', 'お探しのページが見つかりませんでした。')}
+${pageHead({
+  title: 'Not Found',
+  description: 'お探しのページが見つかりませんでした。',
+  noindex: true,
+  nofollow: true
+})}
 ${header('/')}
 <main>
   <section class="page-hero">

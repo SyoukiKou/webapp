@@ -8,7 +8,7 @@ export const heroSlides = [
     year: '2025'
   },
   {
-    img: 'https://cdn.myportfolio.com/03f544c3-4dc7-41cb-b486-0fc7f382b534/a3694a04-f9ad-460a-8175-db56d45fa70f_rwc_0x0x1916x1080x1280.png?h=c3ba7858c01d5ee2cd3fb5caa49a76a1',
+    img: '/static/rae_photo.jpg',
     label: 'Experience',
     title: 'Regulative Art Experience',
     subtitle: '音でととのう',
@@ -16,11 +16,11 @@ export const heroSlides = [
     year: '2025'
   },
   {
-    img: 'https://cdn.myportfolio.com/03f544c3-4dc7-41cb-b486-0fc7f382b534/99c2c5c1-cc73-45ba-9bd0-3e5c5762488c_rwc_0x300x6000x3381x1280.JPG?h=5646dc2201364de55991d98c5f5cefd6',
-    label: 'Art',
-    title: '芸術家集団 The Hearth',
-    subtitle: '芸術で社会課題を解決する',
-    client: 'レストラン・施設等',
+    img: 'https://images.unsplash.com/photo-1516280440614-37939bbacd81?w=1600&q=85',
+    label: 'Welfare',
+    title: '高齢者施設への出張演奏',
+    subtitle: '音楽で日常にやすらぎと対話を届ける',
+    client: '高齢者施設・福祉事業者',
     year: '2025'
   }
 ]

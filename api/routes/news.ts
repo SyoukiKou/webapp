@@ -9,7 +9,12 @@ app.get('/news/:slug', (c) => {
   const news = newsData.find(n => n.slug === slug)
   
   if (!news) {
-    return c.html(`${pageHead('News Not Found', 'お探しのニュースが見つかりませんでした。')}
+    return c.html(`${pageHead({
+  title: 'News Not Found',
+  description: 'お探しのニュースが見つかりませんでした。',
+  noindex: true,
+  nofollow: true
+})}
 ${header('/news')}
 <main>
   <section class="page-hero">

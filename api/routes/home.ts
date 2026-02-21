@@ -68,13 +68,13 @@ app.get('/', (c) => {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Hearth | 芸術と脳科学の融合を社会実装する</title>
-  <meta name="description" content="芸術体験の創造を通じて、これからの社会をデザインしています。">
+  <meta name="description" content="芸術体験の実装を通じて、これからの社会をデザインしています。">
   <link rel="canonical" href="https://thehearth.jp">
   
   <!-- Open Graph (OG) Tags -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="The Hearth | 芸術と脳科学の融合を社会実装する">
-  <meta property="og:description" content="芸術体験の創造を通じて、これからの社会をデザインしています。">
+  <meta property="og:description" content="芸術体験の実装を通じて、これからの社会をデザインしています。">
   <meta property="og:url" content="https://thehearth.jp">
   <meta property="og:image" content="https://thehearth.jp/static/logo.png">
   <meta property="og:site_name" content="The Hearth">
@@ -83,7 +83,7 @@ app.get('/', (c) => {
   <!-- Twitter Card Tags -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="The Hearth">
-  <meta name="twitter:description" content="芸術体験の創造を通じて、これからの社会をデザインしています。">
+  <meta name="twitter:description" content="芸術体験の実装を通じて、これからの社会をデザインしています。">
   <meta name="twitter:image" content="https://thehearth.jp/static/logo.png">
   
   <!-- Favicon & Icons -->
@@ -95,7 +95,7 @@ app.get('/', (c) => {
   
   <!-- Structured Data (JSON-LD) -->
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"Organization","@id":"https://thehearth.jp","name":"The Hearth","url":"https://thehearth.jp","logo":"https://thehearth.jp/static/logo.png","description":"芸術体験の創造を通じて、これからの社会をデザインしています。","sameAs":["https://x.com/syiaviolin","https://www.instagram.com/syiaviolin/","https://www.facebook.com/syiaviolin/"],"address":{"@type":"PostalAddress","streetAddress":"西新宿1丁目25ー1","addressLocality":"新宿区","addressRegion":"東京都","postalCode":"163-0604","addressCountry":"JP"},"contactPoint":{"@type":"ContactPoint","contactType":"Customer Service","email":"info@thehearth.jp"}}
+  {"@context":"https://schema.org","@type":"Organization","@id":"https://thehearth.jp","name":"The Hearth","url":"https://thehearth.jp","logo":"https://thehearth.jp/static/logo.png","description":"芸術体験の実装を通じて、これからの社会をデザインしています。","sameAs":["https://x.com/syiaviolin","https://www.instagram.com/syiaviolin/","https://www.facebook.com/syiaviolin/"],"address":{"@type":"PostalAddress","streetAddress":"西新宿1丁目25ー1","addressLocality":"新宿区","addressRegion":"東京都","postalCode":"163-0604","addressCountry":"JP"},"contactPoint":{"@type":"ContactPoint","contactType":"Customer Service","email":"info@thehearth.jp"}}
   </script>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -211,26 +211,26 @@ app.get('/', (c) => {
 
         <div class="service-cards-grid">
           <a href="/service" class="service-card fade-up">
-            <div class="service-card-icon"><i class="fas fa-building"></i></div>
+            <div class="service-card-icon"><i class="fas fa-hands-helping"></i></div>
             <div class="service-card-body">
               <h3 class="service-card-name">Regulative Art Experience</h3>
-              <p class="service-card-desc">社会課題解決のためのアート体験を提供します。</p>
+              <p class="service-card-desc">音楽体験と対話を組み合わせ、職場のメンタルケアとコミュニケーション改善を無理なく支援するプログラムです。</p>
             </div>
             <span class="service-card-arrow">→</span>
           </a>
           <a href="/service" class="service-card fade-up delay-1">
-            <div class="service-card-icon"><i class="fas fa-star"></i></div>
+            <div class="service-card-icon"><i class="fas fa-music"></i></div>
             <div class="service-card-body">
               <h3 class="service-card-name">オフィス生演奏</h3>
-              <p class="service-card-desc">オフィス空間に生演奏を演出し、職場の雰囲気を豊かにします。</p>
+              <p class="service-card-desc">オフィス空間に生演奏を導入し、働く人の気分転換とコミュニケーション活性化を支援します。</p>
             </div>
             <span class="service-card-arrow">→</span>
           </a>
           <a href="/service" class="service-card fade-up delay-2">
-            <div class="service-card-icon"><i class="fas fa-store"></i></div>
+            <div class="service-card-icon"><i class="fas fa-chart-line"></i></div>
             <div class="service-card-body">
               <h3 class="service-card-name">ニューロマーケティング</h3>
-              <p class="service-card-desc">恒久的なブランド空間の企画設計・施工。日常的な体験価値を通してブランドを強化します。</p>
+              <p class="service-card-desc">脳科学的な知見を活用し、顧客理解に基づいた体験設計とブランドコミュニケーションを最適化します。</p>
             </div>
             <span class="service-card-arrow">→</span>
           </a>
@@ -238,7 +238,7 @@ app.get('/', (c) => {
             <div class="service-card-icon"><i class="fas fa-desktop"></i></div>
             <div class="service-card-body">
               <h3 class="service-card-name">メディアアート</h3>
-              <p class="service-card-desc">インタラクティブなデジタル体験・映像制作で、リアルな空間にデジタルの力を融合します。</p>
+              <p class="service-card-desc">映像・インタラクティブ表現を活用し、リアル空間に新しい没入体験と発見を生み出します。</p>
             </div>
             <span class="service-card-arrow">→</span>
           </a>

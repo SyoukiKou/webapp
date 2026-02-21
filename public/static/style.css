@@ -1057,6 +1057,13 @@ ul { list-style: none; }
   position: relative;
 }
 
+.service-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+}
+
 .service-card:hover {
   background: var(--c-black);
   color: var(--c-white);
@@ -1075,6 +1082,7 @@ ul { list-style: none; }
   font-weight: 500;
   line-height: 1.5;
   margin: 0;
+  min-height: 44px;
 }
 
 .service-card-desc {
@@ -1082,6 +1090,7 @@ ul { list-style: none; }
   color: var(--c-gray-600);
   line-height: 1.75;
   flex: 1;
+  margin: 0;
 }
 
 .service-card:hover .service-card-desc { color: rgba(255,255,255,0.6); }
@@ -1834,7 +1843,17 @@ ul { list-style: none; }
 
   section { padding: 72px 0; }
 
-  #hero { height: 100svh; }
+  #hero {
+    height: 100svh;
+    min-height: 100svh;
+  }
+  .hero-slide-img {
+    object-position: center 24%;
+    transform: scale(1.02);
+  }
+  .hero-slide.active .hero-slide-img {
+    transform: scale(1);
+  }
   .hero-content { padding: 60px 24px; }
   .hero-side-info { right: 60px; bottom: 90px; }
   .hero-indicators { right: 60px; bottom: 56px; }
@@ -1850,6 +1869,11 @@ ul { list-style: none; }
   .works-grid,
   .works-grid.grid-with-featured {
     grid-template-columns: 1fr;
+  }
+
+  .reports-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
   }
 
   .about-grid { grid-template-columns: 1fr; gap: 48px; }

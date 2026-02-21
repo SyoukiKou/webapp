@@ -137,6 +137,9 @@ type PageHeadOptions = {
   ogType?: string;
   twitterImage?: string;
   structuredData?: object;
+  robots?: string;
+  noindex?: boolean;
+  nofollow?: boolean;
 }
 
 // JSON-LD 構造化データジェネレータ
@@ -222,6 +225,17 @@ export function pageHead(titleOrOptions: string | PageHeadOptions, desc: string 
   const ogType = options.ogType || 'website'
   const twitterImage = options.twitterImage || ogImage
   const canonical = options.canonical || ogUrl
+  const robotsMeta = (() => {
+    if (options.robots) {
+      return `<meta name="robots" content="${options.robots}">`
+    }
+    if (options.noindex || options.nofollow) {
+      const indexValue = options.noindex ? 'noindex' : 'index'
+      const followValue = options.nofollow ? 'nofollow' : 'follow'
+      return `<meta name="robots" content="${indexValue}, ${followValue}">`
+    }
+    return ''
+  })()
   
   // Google Analytics ID を環境変数から取得
   const gaId = process.env.VITE_GA_ID || ''
@@ -277,6 +291,7 @@ export function pageHead(titleOrOptions: string | PageHeadOptions, desc: string 
   <title>${options.title} | The Hearth</title>
   <meta name="description" content="${description}">
   <link rel="canonical" href="${canonical}">
+  ${robotsMeta}
   
   <!-- Open Graph (OG) Tags -->
   <meta property="og:type" content="${ogType}">
