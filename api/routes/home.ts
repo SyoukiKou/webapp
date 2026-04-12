@@ -83,7 +83,7 @@ app.get('/', (c) => {
   
   <!-- Open Graph (OG) Tags -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="The Hearth | 芸術と脳科学の融合を社会実装する">
+  <meta property="og:title" content="The Hearth | 芸術で社会課題を解決する">
   <meta property="og:description" content="芸術体験の実装を通じて、これからの社会をデザインしています。">
   <meta property="og:url" content="https://thehearth.jp">
   <meta property="og:image" content="https://thehearth.jp/static/logo.png">
@@ -123,7 +123,7 @@ app.get('/', (c) => {
       <div class="loading-logo">
         <span class="loading-h">T</span><span class="loading-rest">he Hearth</span>
       </div>
-      <div class="loading-sub">芸術と脳科学の融合を社会実装する</div>
+      <div class="loading-sub">芸術で社会課題を解決する</div>
       <div class="loading-bar-wrap"><div class="loading-bar"></div></div>
     </div>
   </div>
