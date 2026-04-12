@@ -5,22 +5,22 @@ export const heroSlides = [
     title: 'Marunouchi Street Music',
     subtitle: '芸術あふれる街づくり',
     client: '丸の内仲通り',
-    year: '2025'
+    year: '2023'
   },
   {
     img: '/static/rae_photo.jpg',
     label: 'Experience',
     title: 'Regulative Art Experience',
     subtitle: '音でととのう',
-    client: 'オフィス・共創施設・教育機関',
+    client: 'オフィス・共創施設・教育現場',
     year: '2025'
   },
   {
-    img: 'https://images.unsplash.com/photo-1516280440614-37939bbacd81?w=1600&q=85',
+    img: '/static/komorebi.jpeg',
     label: 'Welfare',
-    title: '高齢者施設への出張演奏',
-    subtitle: '音楽で日常にやすらぎと対話を届ける',
-    client: '高齢者施設・福祉事業者',
-    year: '2025'
+    title: '環境介入デバイス「Komorebi」',
+    subtitle: 'せん妄予防のための空間介入',
+    client: '医療機関',
+    year: '2026'
   }
 ]

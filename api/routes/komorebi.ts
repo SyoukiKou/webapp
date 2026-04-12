@@ -26,7 +26,7 @@ ${header('/komorebi')}
     </div>
     <div class="page-hero-inner">
       <span class="page-hero-eyebrow fade-up">Space-as-a-Service for ICU</span>
-      <h1 class="page-hero-title fade-up delay-1">ICUに、癒やしと尊厳を。</h1>
+      <h1 class="page-hero-title fade-up delay-1">KOMOREBI</h1>
       <p class="page-hero-lead fade-up delay-2">せん妄は、起きてから抑えるほど高くつく。Komorebiは、空間から未然に防ぐための医療インフラです。</p>
     </div>
   </section>

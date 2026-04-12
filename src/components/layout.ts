@@ -66,7 +66,7 @@ export function header(currentPath: string = '/', useTransparentHeader: boolean 
       </div>
       <div class="logo-text">
         <span class="logo-en">The Hearth</span>
-        <span class="logo-jp">芸術と脳科学の融合を社会実装する</span>
+        <span class="logo-jp">芸術で社会課題を解決する</span>
       </div>
     </a>
     <nav class="header-nav" aria-label="メインナビゲーション">
@@ -98,7 +98,7 @@ export function footer(): string {
             </div>
             <div class="footer-logo-text">
               <span class="footer-logo-en">The Hearth</span>
-              <span class="footer-logo-sub">芸術と脳科学の融合を社会実装する</span>
+              <span class="footer-logo-sub">芸術で社会課題を解決する</span>
             </div>
           </div>
           <p class="footer-company-jp">The Hearth</p>
