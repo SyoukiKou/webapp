@@ -5,13 +5,13 @@ const app = new Hono()
 
 app.get('/komorebi', (c) => {
   return c.html(`${pageHead({
-    title: 'Komorebi',
-    description: 'Komorebiは、ICUの空間を視覚・聴覚・嗅覚・気流の4つの要素で再設計し、せん妄予防と患者の尊厳回復を支援するSpace-as-a-Serviceです。',
+    title: 'KOMOREBI',
+    description: 'KOMOREBIは、ICUの空間を視覚・聴覚・嗅覚・気流の4つの要素で再設計し、せん妄予防と患者の尊厳回復を支援するSpace-as-a-Serviceです。',
     ogImage: 'https://thehearth.jp/static/logo.png',
     ogUrl: 'https://thehearth.jp/komorebi',
     canonical: 'https://thehearth.jp/komorebi',
     structuredData: createProductSchema({
-      name: 'Komorebi',
+      name: 'KOMOREBI',
       description: 'ICUの空間を、せん妄予防と患者の尊厳回復のために再設計するSpace-as-a-Service。',
       image: 'https://thehearth.jp/static/logo.png',
       url: 'https://thehearth.jp/komorebi'
@@ -21,13 +21,13 @@ ${header('/komorebi')}
 <main>
   <section class="page-hero page-hero--dark">
     <div class="page-hero-bg">
-      <img src="https://images.unsplash.com/photo-1585435557343-3b092031d8d8?w=1920&q=85&auto=format&fit=crop" alt="Komorebi ICU" loading="eager">
+      <img src="https://images.unsplash.com/photo-1585435557343-3b092031d8d8?w=1920&q=85&auto=format&fit=crop" alt="KOMOREBI ICU" loading="eager">
       <div class="page-hero-overlay"></div>
     </div>
     <div class="page-hero-inner">
       <span class="page-hero-eyebrow fade-up">Space-as-a-Service for ICU</span>
       <h1 class="page-hero-title fade-up delay-1">KOMOREBI</h1>
-      <p class="page-hero-lead fade-up delay-2">せん妄は、起きてから抑えるほど高くつく。Komorebiは、空間から未然に防ぐための医療インフラです。</p>
+      <p class="page-hero-lead fade-up delay-2">せん妄は、起きてから抑えるほど高くつく。KOMOREBIは、空間から未然に防ぐための医療インフラです。</p>
     </div>
   </section>
 
@@ -37,10 +37,12 @@ ${header('/komorebi')}
         <div class="service-intro-text fade-up">
           <span class="section-eyebrow">Hero</span>
           <h2 class="service-intro-title">重症患者の体内時計を整え、ICUを回復にふさわしい環境へ。</h2>
+          <p class="service-intro-copy">KOMOREBIは、視覚・聴覚・嗅覚・気流の4つの刺激を統合制御し、鎮静下でも働く皮質下の感覚・自律神経パスウェイに直接アプローチします。患者の概日リズムを再構築し、せん妄を未然に防ぐためのSpace-as-a-Serviceデバイスです。</p>
         </div>
-        <div class="service-intro-desc fade-up delay-2">
-          <p>Komorebiは、視覚・聴覚・嗅覚・気流の4つの刺激を統合制御し、鎮静下でも働く皮質下の感覚・自律神経パスウェイに直接アプローチします。患者の概日リズムを再構築し、せん妄を未然に防ぐためのSpace-as-a-Serviceデバイスです。</p>
-          <p>病院のCFOにとっては、経済的損失を抑える投資。ICUの現場にとっては、看護負担を増やさない介入。Komorebiは、その両方を同時に満たすために設計されています。</p>
+        <div class="service-intro-media fade-up delay-2">
+          <video autoplay muted loop playsinline preload="metadata" aria-label="KOMOREBI">
+            <source src="/static/komorebi.mp4" type="video/mp4">
+          </video>
         </div>
       </div>
     </div>
@@ -67,7 +69,7 @@ ${header('/komorebi')}
       <div class="section-head">
         <div class="section-head-left">
           <span class="section-eyebrow fade-up">The Solution</span>
-          <h2 class="section-title-en fade-up delay-1">Komorebiがつくる空間介入</h2>
+          <h2 class="section-title-en fade-up delay-1">KOMOREBIがつくる空間介入</h2>
         </div>
       </div>
       <div class="service-domain-grid">
@@ -110,7 +112,7 @@ ${header('/komorebi')}
         <div class="strength-item fade-up delay-1">
           <div class="strength-num">02</div>
           <h3 class="strength-title">鎮静下でも意味を持つ介入</h3>
-          <p class="strength-desc">Komorebiが狙うのは、皮質下の感覚・自律神経パスウェイです。意識に依存せず、身体の深い層に働きかけます。</p>
+          <p class="strength-desc">KOMOREBIが狙うのは、皮質下の感覚・自律神経パスウェイです。意識に依存せず、身体の深い層に働きかけます。</p>
         </div>
         <div class="strength-item fade-up delay-2">
           <div class="strength-num">03</div>
@@ -159,11 +161,11 @@ ${header('/komorebi')}
         <div class="service-digital-content fade-up">
           <span class="section-eyebrow">Vision & Team</span>
           <h2 class="service-digital-title">一般病棟から介護施設まで、すべての空間に尊厳を取り戻す。</h2>
-          <p class="service-digital-desc">The Hearthは、東京科学大学発の多分野横断型アートコレクティブ＆スタートアップとして、医療空間の価値を再定義してきました。Komorebiは、その最初の具体的な実装です。</p>
+          <p class="service-digital-desc">The Hearthは、東京科学大学発の多分野横断型アートコレクティブ＆スタートアップとして、医療空間の価値を再定義してきました。KOMOREBIは、その最初の具体的な実装です。</p>
           <p class="service-digital-desc">ICUで証明された空間介入を、一般病棟、慢性期医療、介護施設へと広げていくことで、誰もが尊厳を保ちながら過ごせる環境を社会に増やしていきます。</p>
         </div>
         <div class="service-digital-img fade-up delay-2">
-          <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?w=1200&q=85&auto=format&fit=crop" alt="Healthcare vision" loading="lazy">
+          <img src="/static/komorebi.jpeg" alt="KOMOREBI" loading="lazy">
         </div>
       </div>
     </div>
@@ -173,7 +175,7 @@ ${header('/komorebi')}
     <div class="contact-banner-inner">
       <div class="contact-banner-text fade-up">
         <span class="contact-eyebrow">CTA</span>
-        <h2 class="contact-title">あなたのICUで、Komorebiの効果を確かめてください。</h2>
+        <h2 class="contact-title">あなたのICUで、KOMOREBIの効果を確かめてください。</h2>
         <p class="contact-sub">まずはデモで、空間が変わる意味を体感してください。導入相談、早期導入、アーリーアダプターとしてのご参加も歓迎します。</p>
       </div>
       <div class="contact-actions fade-up delay-2">
