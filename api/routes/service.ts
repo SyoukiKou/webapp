@@ -143,10 +143,11 @@ ${pageScripts({ includeApp: false, includePages: true })}`
 
 app.get('/service', (c) => {
   const serviceItems = [
-    { icon: 'fa-headphones', name: 'RAEプログラム設計・実施', desc: '生演奏と対話を組み合わせ、職場のメンタルケアとコミュニケーション改善を支援するプログラムを提供します。', link: '/rae' },
+    { icon: 'fa-headphones', name: 'Regulative Art Experienceのプログラム設計・実施', desc: '生演奏と対話を組み合わせ、職場のメンタルケアとコミュニケーション改善を支援するプログラムを提供します。', link: '/rae' },
     { icon: 'fa-city', name: 'まちづくり連携プロジェクト', desc: '都市空間の特性に合わせてサウンド体験を設計し、回遊性や滞在価値の向上につなげます。', link: '/machi' },
     { icon: 'fa-hospital-user', name: '高齢者施設への出張演奏', desc: '入居者様の情緒安定と会話のきっかけづくりを目的に、施設運営に合わせた訪問演奏を実施します。', link: '/welfare' },
-    { icon: 'fa-comments', name: '対話ワークショップ運営', desc: '体験後の振り返りや共有を設計し、現場での気づきが継続的な行動変容につながるよう支援します。', link: '/contact' },
+    { icon: 'fa-comments', name: '生演奏BGM', desc: 'オフィス環境に適した生演奏を提供し、従業員のストレス軽減と生産性向上を支援します。', link: '/contact' },
+    { icon: 'fa-leaf', name: '医療現場×芸術', desc: '入院患者のせん妄を予防する芸術体験を医療現場に導入し、治療とケアの質を向上させます。', link: '/komorebi' },
     { icon: 'fa-chart-line', name: '効果検証・レポーティング', desc: '実施目的に応じた評価観点を整理し、導入効果を可視化するレポート作成と改善提案を行います。', link: '/reports' },
   ]
   const serviceMenuHTML = serviceItems.map(item => `
@@ -186,7 +187,7 @@ ${header('/service', true)}
           <h2 class="service-intro-title">体験創造のプロフェッショナルとして、<br>多岐にわたるソリューションを<br>統合的にご提供します。</h2>
         </div>
         <div class="service-intro-desc fade-up delay-2">
-          <p>The Hearthは、リアル・デジタルを通じて、人の"体験"を統合的にデザインし、企業や社会の課題解決に貢献します。豊富な経験と充実した組織機能で、多様なお客様のニーズにお応えします。</p>
+          <p>The Hearthは、芸術を通じて、人の"体験"を統合的にデザインし、企業や社会の課題解決に貢献します。豊富な経験と充実した組織機能で、多様なお客様のニーズにお応えします。</p>
         </div>
       </div>
     </div>
@@ -212,19 +213,19 @@ ${header('/service', true)}
         <div class="service-domain-item fade-up delay-1">
           <div class="service-domain-img"><a href="/rae" aria-label="RAEの詳細を見る"><img src="/static/rae_photo.jpg" alt="Regulative Art Experience" loading="lazy"></a></div>
           <div class="service-domain-body">
-            <h3 class="service-domain-title">Regulative Art Experience</h3>
+            <h3 class="service-domain-title">オフィス×芸術</h3>
             <p class="service-domain-desc">音楽体験と対話を組み合わせ、職場のメンタルケアとコミュニケーション改善を無理なく支援するプログラムです。</p>
             <div class="service-domain-tags"><span>メンタルヘルス</span><span>チームビルディング</span><span>ウェルビーイング</span></div>
             <a href="/rae" class="service-domain-link">詳細を見る →</a>
           </div>
         </div>
         <div class="service-domain-item fade-up delay-2">
-          <div class="service-domain-img"><a href="/welfare" aria-label="高齢者施設への出張演奏の詳細を見る"><img src="https://images.unsplash.com/photo-1584515933487-779824d29309?w=1200&q=80&auto=format&fit=crop" alt="高齢者施設での音楽プログラム" loading="lazy"></a></div>
+          <div class="service-domain-img"><a href="/komorebi" aria-label="医療現場×芸術の詳細を見る"><img src="/static/komorebi.jpeg" alt="医療現場での芸術体験" loading="lazy"></a></div>
           <div class="service-domain-body">
-            <h3 class="service-domain-title">高齢者施設への出張演奏</h3>
-            <p class="service-domain-desc">生演奏を施設へ届け、入居者様の生活にやすらぎと会話のきっかけを生み出す訪問型プログラムです。</p>
-            <div class="service-domain-tags"><span>高齢者施設</span><span>出張演奏</span><span>福祉</span></div>
-            <a href="/welfare" class="service-domain-link">詳細を見る →</a>
+            <h3 class="service-domain-title">医療現場×芸術</h3>
+            <p class="service-domain-desc">患者や家族の心の支えとなる芸術体験を医療現場に導入し、治療とケアの質を向上させます。</p>
+            <div class="service-domain-tags"><span>医療現場</span><span>音楽療法</span><span>福祉</span></div>
+            <a href="/komorebi" class="service-domain-link">詳細を見る →</a>
           </div>
         </div>
       </div>

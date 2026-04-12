@@ -232,8 +232,16 @@ app.get('/', (c) => {
           <a href="/service" class="service-card fade-up delay-1">
             <div class="service-card-icon"><i class="fas fa-music"></i></div>
             <div class="service-card-body">
-              <h3 class="service-card-name">オフィス生演奏</h3>
+              <h3 class="service-card-name">生演奏BGM</h3>
               <p class="service-card-desc">オフィス空間に生演奏を導入し、働く人の気分転換とコミュニケーション活性化を支援します。</p>
+            </div>
+            <span class="service-card-arrow">→</span>
+          </a>
+          <a href="/service" class="service-card fade-up delay-3">
+            <div class="service-card-icon"><i class="fas fa-desktop"></i></div>
+            <div class="service-card-body">
+              <h3 class="service-card-name">KOMOREBI</h3>
+              <p class="service-card-desc">五感刺激デバイスを医療現場に導入し、治療とケアの質を向上させます。</p>
             </div>
             <span class="service-card-arrow">→</span>
           </a>
@@ -242,14 +250,6 @@ app.get('/', (c) => {
             <div class="service-card-body">
               <h3 class="service-card-name">ニューロマーケティング</h3>
               <p class="service-card-desc">脳科学的な知見を活用し、顧客理解に基づいた体験設計とブランドコミュニケーションを最適化します。</p>
-            </div>
-            <span class="service-card-arrow">→</span>
-          </a>
-          <a href="/service" class="service-card fade-up delay-3">
-            <div class="service-card-icon"><i class="fas fa-desktop"></i></div>
-            <div class="service-card-body">
-              <h3 class="service-card-name">メディアアート</h3>
-              <p class="service-card-desc">映像・インタラクティブ表現を活用し、リアル空間に新しい没入体験と発見を生み出します。</p>
             </div>
             <span class="service-card-arrow">→</span>
           </a>
