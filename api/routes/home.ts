@@ -140,11 +140,11 @@ app.get('/', (c) => {
 
       <div class="hero-content" id="heroContent">
         <div class="hero-content-inner">
-          <div class="hero-eyebrow" id="heroLabel">Exhibition / Award</div>
-          <h1 class="hero-title" id="heroTitle">ORGATEC TOKYO 2025</h1>
-          <p class="hero-subtitle" id="heroSubtitle">史上最多・三度目グランプリ受賞</p>
-          <div class="hero-client" id="heroClient">KOKUYO Co., Ltd.</div>
-          <a href="#" class="hero-cta">View Project <span>→</span></a>
+          <div class="hero-eyebrow" id="heroLabel">Music</div>
+          <h1 class="hero-title" id="heroTitle">Marunouchi Street Music</h1>
+          <p class="hero-subtitle" id="heroSubtitle">芸術あふれる街づくり</p>
+          <div class="hero-client" id="heroClient">丸の内仲通り</div>
+          <a href="/service" class="hero-cta">View Project <span>→</span></a>
         </div>
       </div>
 
