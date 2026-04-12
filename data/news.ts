@@ -1,5 +1,56 @@
 export const newsData = [
   {
+    "id": 13,
+    "slug": "lfj-2026-appearance-announcement",
+    "date": "2026.04.12",
+    "category": "Present",
+    "title": "ラ・フォル・ジュルネ 2026 への出演が決定しました。",
+    "description": "ラ・フォル・ジュルネ TOKYO 2026（LFJエリアコンサート）への出演が決定しました。弊社CEO、COOが出演します。",
+    "link": "https://www.lfj.jp/lfj_2026/event/areaconcert/lfj/article_12.html"
+  },
+  {
+    "id": 12,
+    "slug": "festival-django-reinhardt-japan-takanawa-sponsor-2026",
+    "date": "2026.04.10",
+    "category": "News",
+    "title": "Festival Django Reinhardt JAPAN に協賛しました。",
+    "description": "TAKANAWA GATEWAY CITYで開催される『Festival Django Reinhardt JAPAN in TAKANAWA GATEWAY CITY』に協賛しました。音楽と文化の新しい接点をつくる取り組みを支援しています。",
+    "link": "https://prtimes.jp/main/html/rd/p/000000194.000094653.html"
+  },
+  {
+    "id": 11,
+    "slug": "gciem-global-summit-grand-challenge-2026",
+    "date": "2026.04.09",
+    "category": "Present",
+    "title": "Global Consortium of Innovation and Engineering in Medicine Global Summit のピッチに出場し、セミファイナルまで進出しました。",
+    "description": "Global Consortium of Innovation and Engineering in Medicine（GCIEM）Global Summit 2026 の Grand Challenge ピッチに出場し、セミファイナルまで勝ち残りました。医療分野におけるイノベーション提案の実現可能性と社会実装性が評価されました。",
+    "link": "https://gciem2026.med.nycu.edu.tw/grand-challenge"
+  },
+  {
+    "id": 10,
+    "slug": "exhibition-support-2026",
+    "date": "2026.03.30",
+    "category": "News",
+    "title": "Zuse Meyer 展覧会（東京 2026）の開催をサポートしました。",
+    "description": "Zuse Meyer 展覧会（東京 2026）の開催をサポートしました。会場運営や告知を含む展示実施の支援を行い、来場者に作品世界を届ける取り組みに協力しました。",
+  },
+  {
+    "id": 9,
+    "slug": "innovation-vision-pitch-in-ota-2026",
+    "date": "2026.03.13",
+    "category": "Present",
+    "title": "六郷BASE主催、イノベーションビジョンピッチに登壇しました。",
+    "description": "六郷BASE主催の『イノベーションビジョンピッチ-学生起業家とスタートアップが語る2030年の世界-』に登壇しました。学生起業家とスタートアップの視点から2030年の社会と産業の未来像についてプレゼンしました。",
+  },
+  {
+    "id": 8,
+    "slug": "makers-202602",
+    "date": "2026.02.20",
+    "category": "News",
+    "title": "弊社代表がMAKERS UNIVERSITYの11期生に選ばれました。",
+    "description": "MAKERS UNIVERSITYは、次世代のリーダーを育成するためのプログラムで、世界中から選ばれた才能ある個人が参加しています。この度、弊社代表が11期生に選ばれ、芸術と脳科学を融合した新しい価値創造に対する取り組みが評価されました。今後もこのプログラムを通じて、さらなる成長と社会への貢献を目指してまいります。"
+  },
+  {
     "id": 7,
     "slug": "website-renewal-2026",
     "date": "2026.02.19",

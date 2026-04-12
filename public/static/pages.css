@@ -1372,6 +1372,7 @@
 .news-detail-category.news-cat-event { background: #9c27b0; }
 .news-detail-category.news-cat-project { background: #4caf50; }
 .news-detail-category.news-cat-press { background: #e91e63; }
+.news-detail-category.news-cat-present { background: #009688; }
 
 .news-detail-title {
   font-family: var(--font-jp);
