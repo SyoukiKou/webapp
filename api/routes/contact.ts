@@ -29,7 +29,7 @@ ${header('/contact')}
         <div class="contact-info fade-up delay-2">
           <div class="contact-info-block">
             <h3 class="contact-info-heading">所在地</h3>
-            <p class="contact-info-text">〒163-0604<br>東京都新宿区西新宿1丁目25ー1<br><br>研究所<br>〒194-0001<br>東京都町田市つくし野2丁目33</p>
+            <p class="contact-info-text">本社<br>〒163-0604<br>東京都新宿区西新宿1丁目25ー1<br><br>研究所<br>〒194-0001<br>東京都町田市つくし野2丁目33</p>
           </div>
           <div class="contact-info-block" id="recruit">
             <h3 class="contact-info-heading">採用に関するお問い合わせ</h3>
