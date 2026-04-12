@@ -11,6 +11,7 @@ app.get('/company', (c) => {
   ]
   const historyItems = [
     { year: '2025', text: '創業' },
+    { year: '2025', text: 'エンジェル投資を受ける' },
   ]
   const officersHTML = officers.map((o, i) => `
     <div class="officer-item fade-up" style="transition-delay:${(i % 3) * 0.08}s">
@@ -75,7 +76,7 @@ ${header('/company', true)}
         <table class="company-table">
           <tbody>
             <tr><th>正式名称</th><td>The Hearth</td></tr>
-            <tr><th>所在地</th><td>〒163-0604<br>東京都新宿区西新宿1丁目25ー1<br><br>研究所<br>〒1940001<br>東京都町田市つくし野2-33<br></td></tr>
+            <tr><th>所在地</th><td>〒163-0604<br>東京都新宿区西新宿1丁目25ー1<br><br>研究所<br>〒194-0001<br>東京都町田市つくし野2丁目33<br></td></tr>
             <tr><th>設立</th><td>2025年9月7日</td></tr>
             <tr><th>資本金</th><td>300万円</td></tr>
             <tr><th>代表</th><td>黄松毅</td></tr>
