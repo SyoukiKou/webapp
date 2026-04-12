@@ -75,14 +75,13 @@ ${header('/company', true)}
         <table class="company-table">
           <tbody>
             <tr><th>正式名称</th><td>The Hearth</td></tr>
-            <tr><th>所在地</th><td>〒163-0604<br>東京都新宿区西新宿1丁目25ー1<br></td></tr>
+            <tr><th>所在地</th><td>〒163-0604<br>東京都新宿区西新宿1丁目25ー1<br><br>研究所<br>〒1940001<br>東京都町田市つくし野2-33<br></td></tr>
             <tr><th>設立</th><td>2025年9月7日</td></tr>
             <tr><th>資本金</th><td>300万円</td></tr>
             <tr><th>代表</th><td>黄松毅</td></tr>
             <tr><th>メンバー</th><td>3名</td></tr>
             <tr><th>事業内容</th><td>ソリューション・アート・サイエンスを軸にした社会課題解決</td></tr>
           </tbody>
-            <tr><th>所在地</th><td>〒163-0604<br>東京都新宿区西新宿1丁目25ー1<br><br>研究所<br>〒1940001<br>東京都町田市つくし野2-33<br></td></tr>
       </div>
     </div>
   </section>
