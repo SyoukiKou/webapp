@@ -61,6 +61,16 @@ app.get('/', (c) => {
   ).join('')
 
   const slidesDataJSON = JSON.stringify(heroSlides)
+  const gaId = process.env.VITE_GA_ID || ''
+  const gaScript = gaId ? `
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=${gaId}"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', '${gaId}');
+  </script>` : ''
 
   return c.html(`<!DOCTYPE html>
 <html lang="ja">
@@ -103,6 +113,7 @@ app.get('/', (c) => {
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@300;400;600&family=Inter:ital,wght@0,200;0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="/static/style.css">
+  ${gaScript}
 </head>
 <body class="is-homepage">
 
