@@ -114,9 +114,7 @@ export function footer(): string {
       </div>
       <div class="footer-bottom">
         <div class="footer-legal-links">
-          <a href="/site-policy">プライバシーポリシー</a>
           <a href="/site-policy">サイトポリシー</a>
-          <a href="/site-policy">個人情報保護方針</a>
         </div>
         <p class="footer-copyright">© 2025 The Hearth. All Rights Reserved.</p>
       </div>
