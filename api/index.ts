@@ -11,6 +11,7 @@ import serviceRoutes from './routes/service.js'
 import companyRoutes from './routes/company.js'
 import contactRoutes from './routes/contact.js'
 import komorebiRoutes from './routes/komorebi.js'
+import sitePolicyRoutes from './routes/site-policy.js'
 
 const app = new Hono()
 
@@ -55,6 +56,7 @@ app.get('/sitemap.xml', (c) => {
     { path: '/reports', priority: '0.8' },
     { path: '/news', priority: '0.8' },
     { path: '/company', priority: '0.7' },
+    { path: '/site-policy', priority: '0.5' },
     { path: '/contact', priority: '0.9' }
   ]
   const newsPages = newsData.map((item) => ({ 
@@ -92,6 +94,7 @@ app.route('/', serviceRoutes)
 app.route('/', companyRoutes)
 app.route('/', contactRoutes)
 app.route('/', komorebiRoutes)
+app.route('/', sitePolicyRoutes)
 
 // 404 Not Found
 app.notFound((c) => {
