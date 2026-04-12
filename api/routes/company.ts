@@ -82,6 +82,7 @@ ${header('/company', true)}
             <tr><th>メンバー</th><td>3名</td></tr>
             <tr><th>事業内容</th><td>ソリューション・アート・サイエンスを軸にした社会課題解決</td></tr>
           </tbody>
+        </table>
       </div>
     </div>
   </section>
