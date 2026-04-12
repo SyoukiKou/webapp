@@ -10,6 +10,7 @@ import newsRoutes from './routes/news.js'
 import serviceRoutes from './routes/service.js'
 import companyRoutes from './routes/company.js'
 import contactRoutes from './routes/contact.js'
+import komorebiRoutes from './routes/komorebi.js'
 
 const app = new Hono()
 
@@ -90,6 +91,7 @@ app.route('/', newsRoutes)
 app.route('/', serviceRoutes)
 app.route('/', companyRoutes)
 app.route('/', contactRoutes)
+app.route('/', komorebiRoutes)
 
 // 404 Not Found
 app.notFound((c) => {

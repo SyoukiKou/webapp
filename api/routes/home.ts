@@ -45,7 +45,7 @@ app.get('/', (c) => {
     </article>
   `).join('')
 
-  const newsHTML = newsData.map(n => `
+  const newsHTML = newsData.slice(0, 5).map(n => `
     <a href="/news/${n.slug}" class="news-item">
       <div class="news-item-inner">
         <time class="news-date">${n.date}</time>
@@ -77,7 +77,7 @@ app.get('/', (c) => {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Hearth | 芸術と脳科学の融合を社会実装する</title>
+  <title>The Hearth | 芸術で社会課題を解決する</title>
   <meta name="description" content="芸術体験の実装を通じて、これからの社会をデザインしています。">
   <link rel="canonical" href="https://thehearth.jp">
   
@@ -177,7 +177,7 @@ app.get('/', (c) => {
           <p class="purpose-text fade-up delay-1">
             人・モノ・コトが時間や場所を問わずつながることができる時代において、<br>
             私たちは社会の流れを常に捉え、生きることの本質とは何かを探究し続けます。<br>
-            そして、ココロある豊かな芸術体験をデザインすることで、<br>
+            そして、ココロある豊かな芸術体験を通じて、<br>
             人と社会に創造力を生み出し、未来へつなげる原動力をつくります。
           </p>
           <h2 class="purpose-title fade-up delay-2">
@@ -210,7 +210,7 @@ app.get('/', (c) => {
         <div class="section-head">
           <div class="section-head-left">
             <h2 class="section-title-en fade-up delay-1">Service</h2>
-            <p class="section-title-jp fade-up delay-2">サービス領域</p>
+            <p class="section-title-jp fade-up delay-2">われわれのサービス</p>
           </div>
           <a href="/service" class="view-all-btn fade-up delay-2">
             View All Services
