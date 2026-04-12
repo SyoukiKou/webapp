@@ -175,7 +175,7 @@ ${header('/komorebi')}
     <div class="contact-banner-inner">
       <div class="contact-banner-text fade-up">
         <span class="contact-eyebrow">CTA</span>
-        <h2 class="contact-title">あなたのICUで、KOMOREBIの効果を確かめてください。</h2>
+        <h2 class="contact-title">KOMOREBIの効果を確かめてください。</h2>
         <p class="contact-sub">まずはデモで、空間が変わる意味を体感してください。導入相談、早期導入、アーリーアダプターとしてのご参加も歓迎します。</p>
       </div>
       <div class="contact-actions fade-up delay-2">
