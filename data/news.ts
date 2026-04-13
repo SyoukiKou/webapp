@@ -13,7 +13,7 @@ export const newsData = [
     "slug": "festival-django-reinhardt-japan-takanawa-sponsor-2026",
     "date": "2026.04.10",
     "category": "News",
-    "title": "Festival Django Reinhardt JAPAN に協賛しました。",
+    "title": "Festival Django Reinhardt JAPAN in TAKANAWA GATEWAY CITYに協賛しました。",
     "description": "TAKANAWA GATEWAY CITYで開催される『Festival Django Reinhardt JAPAN in TAKANAWA GATEWAY CITY』に協賛しました。音楽と文化の新しい接点をつくる取り組みを支援しています。",
     "link": "https://prtimes.jp/main/html/rd/p/000000194.000094653.html"
   },
