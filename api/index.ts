@@ -7,7 +7,7 @@ import { header, footer, pageHead, pageScripts, newsData } from '../src/componen
 import homeRoutes from './routes/home.js'
 import reportsRoutes from './routes/reports.js'
 import newsRoutes from './routes/news.js'
-import serviceRoutes from './routes/service'
+import serviceRoutes from './routes/service.js'
 import companyRoutes from './routes/company.js'
 import contactRoutes from './routes/contact.js'
 import komorebiRoutes from './routes/komorebi.js'
