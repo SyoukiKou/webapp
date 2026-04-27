@@ -86,7 +86,7 @@ ${header('/news', true)}
         <div class="news-detail-body fade-up">
           <p>${news.description}</p>
         </div>
-        ${news.link ? `<div class="news-detail-article-link fade-up delay-1"><a href="${news.link}" target="_blank" rel="noopener noreferrer" class="news-external-link">View Article</a></div>` : ''}
+        ${news.link ? `<div class="news-detail-article-link fade-up delay-1"><a href="${news.link}" target="_blank" rel="noopener noreferrer" class="news-external-link">View Detail</a></div>` : ''}
         
         <div class="news-detail-footer fade-up delay-1">
           <a href="/news" class="news-back-link">

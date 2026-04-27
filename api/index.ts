@@ -7,7 +7,7 @@ import { header, footer, pageHead, pageScripts, newsData } from '../src/componen
 import homeRoutes from './routes/home.js'
 import reportsRoutes from './routes/reports.js'
 import newsRoutes from './routes/news.js'
-import serviceRoutes from './routes/service.js'
+import serviceRoutes from './routes/service'
 import companyRoutes from './routes/company.js'
 import contactRoutes from './routes/contact.js'
 import komorebiRoutes from './routes/komorebi.js'
@@ -50,9 +50,12 @@ app.get('/sitemap.xml', (c) => {
   const pages = [
     { path: '/', priority: '1.0' },
     { path: '/service', priority: '0.9' },
-    { path: '/rae', priority: '0.8' },
-    { path: '/machi', priority: '0.8' },
-    { path: '/welfare', priority: '0.8' },
+    { path: '/service/rae', priority: '0.8' },
+    { path: '/service/machi', priority: '0.8' },
+    { path: '/service/welfare', priority: '0.8' },
+    { path: '/service/live-bgm', priority: '0.8' },
+    { path: '/service/komorebi', priority: '0.8' },
+    { path: '/service/reporting', priority: '0.8' },
     { path: '/reports', priority: '0.8' },
     { path: '/news', priority: '0.8' },
     { path: '/company', priority: '0.7' },
