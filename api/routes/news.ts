@@ -62,7 +62,7 @@ ${pageScripts({ includeApp: false, includePages: true })}`, 404)
   return c.html(`${pageHead({
     title: news.title,
     description: news.description,
-    ogType: 'article',
+    ogType: 'ticle',
     ogImage: 'https://thehearth.jp/static/logo.png',
     ogUrl: `https://thehearth.jp/news/${news.slug}`,
     canonical: `https://thehearth.jp/news/${news.slug}`,
