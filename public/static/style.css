@@ -1528,6 +1528,7 @@ ul { list-style: none; }
 .news-cat-award { background: rgba(200, 169, 110, 0.15); color: #8a6e2a; }
 .news-cat-event { background: rgba(0, 100, 200, 0.08); color: #1565c0; }
 .news-cat-project { background: rgba(0, 150, 80, 0.08); color: #1b5e20; }
+.news-cat-present { background: rgba(46, 125, 80, 0.12); color: #1f6b45; }
 
 .news-title {
   font-size: 13.5px;
@@ -1987,6 +1988,7 @@ ul { list-style: none; }
 .news-cat-award { background: #fff3e0; color: #f57c00; }
 .news-cat-event { background: #f3e5f5; color: #7b1fa2; }
 .news-cat-project { background: #e8f5e9; color: #388e3c; }
+.news-cat-present { background: #e6f4ea; color: #2d6a4f; }
 .news-cat-press { background: #fce4ec; color: #c2185b; }
 
 .news-card-title {

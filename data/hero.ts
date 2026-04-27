@@ -4,14 +4,14 @@ export const heroSlides = [
     label: 'Music',
     title: 'Marunouchi Street Music',
     subtitle: '芸術あふれる街づくり',
-    client: '丸の内仲通り',
+    client: 'ディベロッパー',
     year: '2023'
   },
   {
     img: '/static/rae_photo.jpg',
     label: 'Experience',
     title: 'Regulative Art Experience',
-    subtitle: '音でととのう',
+    subtitle: '音でととのう、あたらしいリラクゼーション体験',
     client: 'オフィス・共創施設・教育現場',
     year: '2025'
   },
@@ -19,7 +19,7 @@ export const heroSlides = [
     img: '/static/komorebi.jpeg',
     label: 'Welfare',
     title: '環境介入デバイス「Komorebi」',
-    subtitle: 'せん妄予防のための空間介入',
+    subtitle: '大自然を再現する環境介入デバイス',
     client: '医療機関',
     year: '2026'
   }

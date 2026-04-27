@@ -1,19 +1,12 @@
 import { Hono } from 'hono'
-import { header, footer, pageHead, pageScripts, reportsData } from '../../src/components/layout.js'
+import { header, footer, pageHead, pageScripts, reportsData, reportCategories } from '../../src/components/layout.js'
 
 const app = new Hono()
 
 app.get('/reports', (c) => {
   const currentCat = c.req.query('cat') || 'all'
-  const categories = [
-    { key: 'all', label: 'All' },
-    { key: 'label1', label: '音楽とメンタルケア' },
-    { key: 'label2', label: '脳波と絵画' },
-    { key: 'label3', label: '脳波とメンタルヘルス' },
-    { key: 'label4', label: 'ニューロマーケティング' },
-  ]
   const filtered = currentCat === 'all' ? reportsData : reportsData.filter(w => w.category === currentCat)
-  const filterTabsHTML = categories.map(cat => {
+  const filterTabsHTML = reportCategories.map(cat => {
     const active = currentCat === cat.key ? ' active' : ''
     return `<a href="/reports?cat=${cat.key}" class="filter-tab${active}">${cat.label}</a>`
   }).join('')

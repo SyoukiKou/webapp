@@ -1,3 +1,11 @@
+export const reportCategories = [
+  { key: 'all', label: 'All' },
+  { key: 'label1', label: '音楽とメンタルケア' },
+  { key: 'label2', label: '脳波と絵画' },
+  { key: 'label3', label: '脳波とメンタルヘルス' },
+  { key: 'label4', label: 'ニューロマーケティング' },
+]
+
 export const reportsData = [
   {
     "id": 1,

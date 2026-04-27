@@ -3,10 +3,12 @@
 // ============================================
 import { heroSlides as heroSlidesRaw } from '../../data/hero.js'
 import { reportsData as reportsDataRaw } from '../../data/reports.js'
+import { reportCategories as reportCategoriesRaw } from '../../data/reports.js'
 import { newsData as newsDataRaw } from '../../data/news.js'
 
 export const heroSlides = heroSlidesRaw
 export const reportsData = reportsDataRaw
+export const reportCategories = reportCategoriesRaw
 export const newsData = newsDataRaw
 
 // ============================================

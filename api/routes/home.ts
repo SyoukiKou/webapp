@@ -1,5 +1,5 @@
 import { Hono } from 'hono'
-import { header, footer, pageScripts, heroSlides, reportsData, newsData } from '../../src/components/layout.js'
+import { header, footer, pageScripts, heroSlides, reportsData, reportCategories, newsData } from '../../src/components/layout.js'
 
 const app = new Hono()
 
@@ -23,7 +23,15 @@ app.get('/', (c) => {
     </button>
   `).join('')
 
-  const reportsHTML = reportsData.filter(report => report.featured).map((report, i) => `
+  const latestReports = [...reportsData]
+    .sort((a, b) => {
+      const yearDiff = Number(b.year) - Number(a.year)
+      if (yearDiff !== 0) return yearDiff
+      return Number(b.id) - Number(a.id)
+    })
+    .slice(0, 3)
+
+  const reportsHTML = latestReports.map((report, i) => `
     <article class="work-item" data-category="${report.category}">
       <a href="#" class="work-link">
         <div class="work-img-wrap">
@@ -44,6 +52,11 @@ app.get('/', (c) => {
       </a>
     </article>
   `).join('')
+
+  const reportFilterTabsHTML = reportCategories
+    .filter(cat => cat.key !== 'all')
+    .map(cat => `<button class="filter-tab" data-filter="${cat.key}" role="tab" aria-selected="false">${cat.label}</button>`)
+    .join('')
 
   const newsHTML = newsData.slice(0, 5).map(n => `
     <a href="/news/${n.slug}" class="news-item">
@@ -210,7 +223,7 @@ app.get('/', (c) => {
         <div class="section-head">
           <div class="section-head-left">
             <h2 class="section-title-en fade-up delay-1">Service</h2>
-            <p class="section-title-jp fade-up delay-2">われわれのサービス</p>
+            <p class="section-title-jp fade-up delay-2">サービス</p>
           </div>
           <a href="/service" class="view-all-btn fade-up delay-2">
             View All Services
@@ -232,8 +245,8 @@ app.get('/', (c) => {
           <a href="/service" class="service-card fade-up delay-1">
             <div class="service-card-icon"><i class="fas fa-music"></i></div>
             <div class="service-card-body">
-              <h3 class="service-card-name">生演奏BGM</h3>
-              <p class="service-card-desc">オフィス空間に生演奏を導入し、働く人の気分転換とコミュニケーション活性化を支援します。</p>
+              <h3 class="service-card-name">Creative Bar</h3>
+              <p class="service-card-desc">メンタルヘルス×芸術の実践者が集うノンアルコールのクリエイティブ・バー。即興ヴァイオリン生演奏と対話、短歌&モクテル体験で「今の自分」を捉え直します。</p>
             </div>
             <span class="service-card-arrow">→</span>
           </a>
@@ -248,8 +261,8 @@ app.get('/', (c) => {
           <a href="/service" class="service-card fade-up delay-2">
             <div class="service-card-icon"><i class="fas fa-chart-line"></i></div>
             <div class="service-card-body">
-              <h3 class="service-card-name">ニューロマーケティング</h3>
-              <p class="service-card-desc">脳科学的な知見を活用し、顧客理解に基づいた体験設計とブランドコミュニケーションを最適化します。</p>
+              <h3 class="service-card-name">睡眠の質向上プログラム</h3>
+              <p class="service-card-desc">音楽と感覚デザインを活用し、ストレス緩和と入眠前のコンディション調整を支援。日々の休息の質を高め、翌日の集中力と回復力につなげます。</p>
             </div>
             <span class="service-card-arrow">→</span>
           </a>
@@ -276,10 +289,7 @@ app.get('/', (c) => {
         <!-- Filter Tabs -->
         <div class="filter-tabs fade-up" role="tablist" aria-label="カテゴリフィルター">
           <button class="filter-tab active" data-filter="all" role="tab" aria-selected="true">All</button>
-          <button class="filter-tab" data-filter="label1" role="tab" aria-selected="false">脳波と音楽</button>
-          <button class="filter-tab" data-filter="label2" role="tab" aria-selected="false">脳波と味覚</button>
-          <button class="filter-tab" data-filter="label3" role="tab" aria-selected="false">脳波とメンタルヘルス</button>
-          <button class="filter-tab" data-filter="label4" role="tab" aria-selected="false">ニューロマーケティング</button>
+          ${reportFilterTabsHTML}
         </div>
 
         <!-- Reports Grid -->
