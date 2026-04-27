@@ -33,7 +33,7 @@ ${header('/contact')}
           </div>
           <div class="contact-info-block" id="recruit">
             <h3 class="contact-info-heading">採用に関するお問い合わせ</h3>
-            <p class="contact-info-text">芸術家採用・オフィス採用に関するご連絡はこちら</p>
+            <p class="contact-info-text">アーティスト採用・オフィス採用に関するご連絡はこちら</p>
             <a href="#" class="contact-info-link">お問い合わせ →</a>
           </div>
           <div class="contact-info-block">

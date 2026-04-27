@@ -143,22 +143,67 @@ ${pageScripts({ includeApp: false, includePages: true })}`
 
 app.get('/service', (c) => {
   const serviceItems = [
-    { icon: 'fa-headphones', name: 'Regulative Art Experienceのプログラム設計・実施', desc: '生演奏と対話を組み合わせ、職場のメンタルケアとコミュニケーション改善を支援するプログラムを提供します。', link: '/rae' },
-    { icon: 'fa-city', name: 'まちづくり連携プロジェクト', desc: '都市空間の特性に合わせてサウンド体験を設計し、回遊性や滞在価値の向上につなげます。', link: '/machi' },
-    { icon: 'fa-hospital-user', name: '高齢者施設への出張演奏', desc: '入居者様の情緒安定と会話のきっかけづくりを目的に、施設運営に合わせた訪問演奏を実施します。', link: '/welfare' },
-    { icon: 'fa-comments', name: '生演奏BGM', desc: 'オフィス環境に適した生演奏を提供し、従業員のストレス軽減と生産性向上を支援します。', link: '/contact' },
-    { icon: 'fa-leaf', name: '医療現場×芸術', desc: '入院患者のせん妄を予防する芸術体験を医療現場に導入し、治療とケアの質を向上させます。', link: '/komorebi' },
-    { icon: 'fa-chart-line', name: '効果検証・レポーティング', desc: '実施目的に応じた評価観点を整理し、導入効果を可視化するレポート作成と改善提案を行います。', link: '/reports' },
+    {
+      icon: 'fa-headphones',
+      name: 'Regulative Art Experienceのプログラム設計・実施',
+      desc: '生演奏と対話を組み合わせ、職場のメンタルケアとコミュニケーション改善を支援するプログラムを提供します。',
+      link: '/rae',
+      image: '/static/rae_photo.jpg',
+      tags: ['メンタルヘルス', 'チームビルディング', 'ウェルビーイング']
+    },
+    {
+      icon: 'fa-city',
+      name: 'まちづくり連携プロジェクト',
+      desc: '都市空間の特性に合わせてサウンド体験を設計し、回遊性や滞在価値の向上につなげます。',
+      link: '/machi',
+      image: 'https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=1200&q=80&auto=format&fit=crop',
+      tags: ['まちづくり', '都市ウェルビーイング', '地域連携']
+    },
+    {
+      icon: 'fa-hospital-user',
+      name: '高齢者施設への出張演奏',
+      desc: '入居者様の情緒安定と会話のきっかけづくりを目的に、施設運営に合わせた訪問演奏を実施します。',
+      link: '/welfare',
+      image: 'https://images.unsplash.com/photo-1584515933487-779824d29309?w=1200&q=80&auto=format&fit=crop',
+      tags: ['高齢者施設', '回想療法', '情緒安定']
+    },
+    {
+      icon: 'fa-comments',
+      name: '生演奏BGM',
+      desc: 'オフィス環境に適した生演奏を提供し、従業員のストレス軽減と生産性向上を支援します。',
+      link: '/contact',
+      image: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=1200&q=80&auto=format&fit=crop',
+      tags: ['オフィス', '生演奏', 'コンディショニング']
+    },
+    {
+      icon: 'fa-leaf',
+      name: '医療現場×芸術',
+      desc: '入院患者のせん妄を予防する芸術体験を医療現場に導入し、治療とケアの質を向上させます。',
+      link: '/komorebi',
+      image: '/static/komorebi.jpeg',
+      tags: ['医療現場', '音楽療法', '福祉']
+    },
+    {
+      icon: 'fa-chart-line',
+      name: '効果検証・レポーティング',
+      desc: '実施目的に応じた評価観点を整理し、導入効果を可視化するレポート作成と改善提案を行います。',
+      link: '/reports',
+      image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80&auto=format&fit=crop',
+      tags: ['効果検証', 'レポート', '改善提案']
+    },
   ]
-  const serviceMenuHTML = serviceItems.map(item => `
-    <a href="${item.link}" class="service-menu-item fade-up">
-      <div class="service-menu-icon"><i class="fas ${item.icon}"></i></div>
-      <div class="service-menu-body">
-        <h3 class="service-menu-name">${item.name}</h3>
-        <p class="service-menu-desc">${item.desc}</p>
-      </div>
-      <div class="service-menu-arrow">→</div>
-    </a>`).join('')
+
+  const serviceDomainsFromMenuHTML = serviceItems.map((item, i) => `
+        <div class="service-domain-item fade-up delay-${Math.min((i % 3) + 1, 3)}">
+          <div class="service-domain-img"><a href="${item.link}" aria-label="${item.name}の詳細を見る"><img src="${item.image}" alt="${item.name}" loading="lazy"></a></div>
+          <div class="service-domain-body">
+            <h3 class="service-domain-title"><i class="fas ${item.icon}"></i> ${item.name}</h3>
+            <p class="service-domain-desc">${item.desc}</p>
+            <div class="service-domain-tags">${item.tags.map(tag => `<span>${tag}</span>`).join('')}</div>
+            <a href="${item.link}" class="service-domain-link">詳細を見る →</a>
+          </div>
+        </div>
+  `).join('')
 
   return c.html(`${pageHead({
     title: 'Service',
@@ -196,7 +241,7 @@ ${header('/service', true)}
     <div class="section-inner">
       <div class="section-head">
         <div class="section-head-left">
-          <span class="section-eyebrow fade-up">主な事業領域</span>
+          <span class="section-eyebrow fade-up">主な事業領域 / できること</span>
           <h2 class="section-title-en fade-up delay-1">Domain</h2>
         </div>
       </div>
@@ -228,6 +273,7 @@ ${header('/service', true)}
             <a href="/komorebi" class="service-domain-link">詳細を見る →</a>
           </div>
         </div>
+        ${serviceDomainsFromMenuHTML}
       </div>
     </div>
   </section>
@@ -245,17 +291,6 @@ ${header('/service', true)}
         <div class="strength-item fade-up delay-2"><div class="strength-num">03</div><h3 class="strength-title">多様な現場への実装力</h3><p class="strength-desc">オフィス・都市空間・高齢者施設など、環境や運営条件に合わせて安全かつ無理のない導入を行います。</p></div>
         <div class="strength-item fade-up delay-3"><div class="strength-num">04</div><h3 class="strength-title">継続に向けた検証と改善</h3><p class="strength-desc">実施後の振り返りと評価を通じて、単発で終わらない継続運用モデルへ改善を重ねます。</p></div>
       </div>
-    </div>
-  </section>
-  <section class="service-menu-section">
-    <div class="section-inner">
-      <div class="section-head">
-        <div class="section-head-left">
-          <h2 class="section-title-en fade-up delay-1">What We Do</h2>
-          <p class="section-title-jp fade-up delay-2">サービスメニュー</p>
-        </div>
-      </div>
-      <div class="service-menu-list">${serviceMenuHTML}</div>
     </div>
   </section>
   <section class="service-digital">

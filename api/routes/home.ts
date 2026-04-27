@@ -261,8 +261,8 @@ app.get('/', (c) => {
           <a href="/service" class="service-card fade-up delay-2">
             <div class="service-card-icon"><i class="fas fa-chart-line"></i></div>
             <div class="service-card-body">
-              <h3 class="service-card-name">睡眠の質向上プログラム</h3>
-              <p class="service-card-desc">音楽と感覚デザインを活用し、ストレス緩和と入眠前のコンディション調整を支援。日々の休息の質を高め、翌日の集中力と回復力につなげます。</p>
+              <h3 class="service-card-name">睡眠支援音楽生成システム</h3>
+              <p class="service-card-desc">その日の心身状態や生活リズムに合わせて音楽を生成し、入眠前の緊張をやわらげる睡眠支援システムです。休息の質を高め、翌日の集中力と回復力につなげます。</p>
             </div>
             <span class="service-card-arrow">→</span>
           </a>
