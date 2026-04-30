@@ -261,8 +261,8 @@ app.get('/', (c) => {
           <a href="/service" class="service-card fade-up delay-2">
             <div class="service-card-icon"><i class="fas fa-chart-line"></i></div>
             <div class="service-card-body">
-              <h3 class="service-card-name">睡眠支援音楽生成システム</h3>
-              <p class="service-card-desc">その日の心身状態や生活リズムに合わせて音楽を生成し、入眠前の緊張をやわらげる睡眠支援システムです。休息の質を高め、翌日の集中力と回復力につなげます。</p>
+              <h3 class="service-card-name">環境・生体連動音楽生成システム</h3>
+              <p class="service-card-desc">環境データと生体情報をもとに音楽を生成し、睡眠支援・集中力向上・リラックスなど、目的に応じて体験者を理想の状態へ導きます。</p>
             </div>
             <span class="service-card-arrow">→</span>
           </a>

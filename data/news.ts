@@ -3,7 +3,7 @@ export const newsData = [
     "id": 14,
     "slug": "otameshi-studio-co-create-adoption-2026",
     "date": "2026.04.28",
-    "category": "Award",
+    "category": "Press",
     "title": "おためしスタジオ「Co-Create Program」に採択されました。",
     "description": "The Hearthのプロジェクトが、おためしスタジオの『Co-Create Program』に採択されました。芸術体験を通じた社会実装をさらに加速し、共創パートナーとの実証・展開を進めてまいります。"
   },

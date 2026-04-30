@@ -2,40 +2,40 @@ import type { ServiceDetailPage } from './types.js'
 
 export const komorebiPage: ServiceDetailPage = {
   slug: 'komorebi',
-  cardTitle: '医療現場×芸術',
-  cardDescription: '入院患者のせん妄を予防する芸術体験を医療現場に導入し、治療とケアの質を向上させます。',
+  cardTitle: 'KOMOREBI',
+  cardDescription: 'ICUの空間を視覚・聴覚・嗅覚・気流の4つの要素で再設計し、せん妄予防と患者の尊厳回復を支援するSpace-as-a-Serviceです。',
   cardImage: '/static/komorebi.jpeg',
-  cardTags: ['医療現場', '音楽療法', '福祉'],
-  pageTitle: '医療現場×芸術',
-  description: '医療現場に感覚刺激と芸術体験を組み込み、患者体験とケア品質を改善する取り組み。',
-  heroImage: '/static/komorebi.jpeg',
-  heroLead: '治療とケアに、回復を支える芸術体験を実装する。',
-  introTitle: '患者体験に寄り添う、非薬物的アプローチ。',
-  introBody: '医療現場×芸術では、感覚刺激デバイスや音楽体験を活用し、入院患者の不安・混乱の軽減を目指します。病棟オペレーションを妨げない導入設計で、現場に負担をかけずに実装できます。',
-  challengeTitle: '医療の質は、患者体験の質でも決まる。',
-  challengeBody: '治療成果だけでなく、患者の安心感や生活リズムの回復が重視される中、非薬物的なケアアプローチの需要が高まっています。芸術体験を組み込むことで、患者・家族・医療者の関係性改善にもつながります。',
+  cardTags: ['医療技術', 'Space-as-a-Service', 'ICU'],
+  pageTitle: 'KOMOREBI',
+  description: 'KOMOREBIは、ICUの空間を視覚・聴覚・嗅覚・気流の4つの要素で再設計し、せん妄予防と患者の尊厳回復を支援するSpace-as-a-Serviceです。',
+  heroImage: 'https://images.unsplash.com/photo-1585435557343-3b092031d8d8?w=1920&q=85&auto=format&fit=crop',
+  heroLead: 'せん妄は、起きてから抑えるほど高くつく。KOMOREBIは、空間から未然に防ぐための医療インフラです。',
+  introTitle: '重症患者の体内時計を整え、ICUを回復にふさわしい環境へ。',
+  introBody: 'KOMOREBIは、視覚・聴覚・嗅覚・気流の4つの刺激を統合制御し、鎮静下でも働く皮質下の感覚・自律神経パスウェイに直接アプローチします。患者の概日リズムを再構築し、せん妄を未然に防ぐためのSpace-as-a-Serviceデバイスです。病院のCFOにとっては、経済的損失を抑える投資。ICUの現場にとっては、看護負担を増やさない介入。KOMOREBIは、その両方を同時に満たすために設計されています。',
+  challengeTitle: 'せん妄は、患者の問題ではなく、病院経営と現場を同時に疲弊させる構造課題です。',
+  challengeBody: 'ICU患者の約90%が発症するとされるせん妄は、暴れる、徘徊する、眠れないといった症状を通じて、看護師の付きっきり対応を常態化させます。強い鎮静剤やカレンダーに頼るだけでは、根本的な予防にはなりません。1症例あたりの純粋な現金流出は約$7,200。残業代、追加薬剤費、入院長期化による機会損失が、静かに病院の収益を削り続けています。',
   cases: [
     {
       image: '/static/komorebi.jpeg',
-      title: '入院患者のせん妄予防',
-      desc: '五感に働きかける刺激設計で、夜間の混乱や不安の軽減を目指します。',
-      tags: ['せん妄予防', '睡眠リズム', '非薬物療法']
+      title: '視覚',
+      desc: '朝の光、日中の明るさ、夜間の静けさを空間に与え、患者が時間の流れを身体で感じられる状態をつくります。',
+      tags: ['照度制御', '概日リズム']
     },
     {
-      image: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1200&q=80&auto=format&fit=crop',
-      title: '病棟コミュニケーションの改善',
-      desc: '患者・家族・医療スタッフ間の会話を促進し、ケア連携を滑らかにします。',
-      tags: ['患者体験', '家族支援', '多職種連携']
+      image: 'https://images.unsplash.com/photo-1516549655169-df83a0774514?w=1200&q=85&auto=format&fit=crop',
+      title: '聴覚',
+      desc: '過剰な緊張を誘発しない音環境を自動生成し、ICUのノイズを意味のある刺激へと再設計します。',
+      tags: ['音環境設計', '自動制御']
     },
     {
-      image: 'https://images.unsplash.com/photo-1580281780460-82d277b0e3f8?w=1200&q=80&auto=format&fit=crop',
-      title: 'ケアスタッフの負荷軽減',
-      desc: '環境づくりの工夫により、日常的な対応コストの低減を支援します。',
-      tags: ['業務負荷軽減', 'ケア品質', '現場実装']
+      image: 'https://images.unsplash.com/photo-1485846234645-a62644f84728?w=1200&q=85&auto=format&fit=crop',
+      title: '嗅覚・気流',
+      desc: '密閉型アロマカートリッジと気流制御により、看護師の手を煩わせずに、安心感と身体感覚の安定を支えます。',
+      tags: ['アロマテラピー', 'ゼロメンテナンス']
     }
   ],
   records: [
-    { title: '医療機関との共同実証', desc: '病棟環境での感覚刺激プログラムを検証' },
-    { title: 'ケアチーム連携', desc: '看護・リハビリ・医師と連携した運用を構築' }
+    { title: '1ベッドあたり年間 $5,000', desc: 'ハードウェアリース、クラウド利用料、消耗品をすべて含んだB2B Hybrid SaaSモデル。初期導入の不確実性を抑え、継続的な価値提供に最適化しています。' },
+    { title: '年間2.5件の予防で投資回収', desc: '極めて保守的に見積もっても、せん妄を年間2.5人防ぐだけで導入費用はペイします。単年で44%のROIを見込める、明確な経済合理性があります。' }
   ]
 }

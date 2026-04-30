@@ -5,6 +5,7 @@ import { welfarePage } from './welfare.js'
 import { liveBgmPage } from './live-bgm.js'
 import { komorebiPage } from './komorebi.js'
 import { reportingPage } from './reporting.js'
+import { creativeBarPage } from './creative-bar.js'
 
 export const serviceDetailPages: ServiceDetailPage[] = [
   raePage,
@@ -13,4 +14,5 @@ export const serviceDetailPages: ServiceDetailPage[] = [
   welfarePage,
   liveBgmPage,
   reportingPage,
+  creativeBarPage,
 ]
