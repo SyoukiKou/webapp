@@ -62,8 +62,8 @@ app.get('/sitemap.xml', (c) => {
     { path: '/site-policy', priority: '0.5' },
     { path: '/contact', priority: '0.9' }
   ]
-  const newsPages = newsData.map((item) => ({ 
-    path: `/news/${item.slug}`, 
+  const newsPages = newsData.map((item) => ({
+    path: `/news/${item.slug}`,
     priority: '0.7',
     lastmod: item.date.replace(/\./g, '-')
   }))
