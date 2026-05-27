@@ -11,28 +11,6 @@ const cases = casesData.map((c) => ({
   outcomes: c.outcomes || [],
   href: `/cases/${c.slug}`
 }))
-  {
-    title: '企業での研修・空間導入',
-    label: 'For Business',
-    summary: '人事・総務・新規事業部門に向けて、研修と空間の両面からエンゲージメントを改善します。',
-    outcomes: ['心理的安全性の向上', 'コミュニケーションの改善', 'オフィス空間の体験価値向上'],
-    href: '/solutions/business'
-  },
-  {
-    title: '医療機関でのデバイス実証・導入',
-    label: 'For Medical',
-    summary: 'ICUや病棟の負荷を下げながら、患者とスタッフの双方にとって回復しやすい環境を整えます。',
-    outcomes: ['患者ストレスの軽減', 'スタッフ負担の軽減', '実証実験と評価の一体化'],
-    href: '/solutions/medical'
-  },
-  {
-    title: '研究・共創のプロトタイピング',
-    label: 'For R&D',
-    summary: '芸術体験の定量評価や、生体連動デバイスの試作を共同研究として進めます。',
-    outcomes: ['脳科学×アートの共同研究', '評価設計の整備', '新規デバイスの共創'],
-    href: '/solutions/research'
-  }
-]
 
 app.get('/cases', (c) => {
   const caseCardsHTML = cases.map((item, index) => `
