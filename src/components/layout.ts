@@ -16,15 +16,18 @@ export const newsData = newsDataRaw
 // ============================================
 export function header(currentPath: string = '/', useTransparentHeader: boolean = false): string {
   const navItems = [
-    { href: '/service', label: 'Service' },
-    { href: '/reports',  label: 'Reports' },
-    { href: '/news',    label: 'News' },
-    { href: '/company', label: 'Company' },
+    { href: '/solutions', label: 'Solutions' },
+    { href: '/cases', label: 'Cases' },
+    { href: '/science', label: 'Science' },
+    { href: '/about', label: 'About' },
     { href: '/contact', label: 'Contact' },
   ]
 
   const navHTML = navItems.map(item => {
-    const active = currentPath === item.href ? ' nav-active' : ''
+    const isActive = item.href === '/solutions'
+      ? currentPath === item.href || currentPath.startsWith('/solutions/')
+      : currentPath === item.href
+    const active = isActive ? ' nav-active' : ''
     return `<a href="${item.href}" class="nav-link${active}">${item.label}</a>`
   }).join('')
 
@@ -107,10 +110,11 @@ export function footer(): string {
           <p class="footer-address">本社 〒163-0604 東京都新宿区西新宿1丁目25ー1<br>研究所 〒194-0001 東京都町田市つくし野2丁目33</p>
         </div>
         <nav class="footer-nav-simple">
-          <a href="/service" class="footer-nav-link">Service</a>
-          <a href="/reports" class="footer-nav-link">Reports</a>
-          <a href="/news" class="footer-nav-link">News</a>
-          <a href="/company" class="footer-nav-link">Company</a>
+          <a href="/solutions" class="footer-nav-link">Solutions</a>
+          <a href="/cases" class="footer-nav-link">Cases</a>
+          <a href="/science" class="footer-nav-link">Science</a>
+          <a href="/about" class="footer-nav-link">About</a>
+          <a href="/download" class="footer-nav-link">Download</a>
           <a href="/contact" class="footer-nav-link">Contact</a>
         </nav>
       </div>
@@ -202,7 +206,7 @@ export function createProductSchema(options: {
 
 export function pageHead(titleOrOptions: string | PageHeadOptions, desc: string = '', bodyClass: string = ''): string {
   let options: PageHeadOptions & { title: string }
-  
+
   // 後方互換性を保つ
   if (typeof titleOrOptions === 'string') {
     options = {
@@ -236,10 +240,10 @@ export function pageHead(titleOrOptions: string | PageHeadOptions, desc: string 
     }
     return ''
   })()
-  
+
   // Google Analytics ID を環境変数から取得
   const gaId = process.env.VITE_GA_ID || ''
-  
+
   // Google Analytics スクリプト（本番環境でのみ有効）
   const gaScript = gaId ? `
   <!-- Google Analytics -->
@@ -250,7 +254,7 @@ export function pageHead(titleOrOptions: string | PageHeadOptions, desc: string 
     gtag('js', new Date());
     gtag('config', '${gaId}');
   </script>` : ''
-  
+
   // JSON-LD構造化データ
   const defaultStructuredData = {
     "@context": "https://schema.org",
@@ -279,10 +283,10 @@ export function pageHead(titleOrOptions: string | PageHeadOptions, desc: string 
       "email": "info@thehearth.jp"
     }
   }
-  
+
   const structuredData = options.structuredData || defaultStructuredData
   const structuredDataJson = JSON.stringify(structuredData).replace(/</g, '\\u003c').replace(/>/g, '\\u003e')
-  
+
   return `<!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -292,7 +296,7 @@ export function pageHead(titleOrOptions: string | PageHeadOptions, desc: string 
   <meta name="description" content="${description}">
   <link rel="canonical" href="${canonical}">
   ${robotsMeta}
-  
+
   <!-- Open Graph (OG) Tags -->
   <meta property="og:type" content="${ogType}">
   <meta property="og:title" content="${options.title} | The Hearth">
@@ -301,25 +305,25 @@ export function pageHead(titleOrOptions: string | PageHeadOptions, desc: string 
   <meta property="og:image" content="${ogImage}">
   <meta property="og:site_name" content="The Hearth">
   <meta property="og:locale" content="ja_JP">
-  
+
   <!-- Twitter Card Tags -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="${options.title}">
   <meta name="twitter:description" content="${description}">
   <meta name="twitter:image" content="${twitterImage}">
-  
+
   <!-- Favicon & Icons -->
   <link rel="icon" type="image/png" href="/favicon.png" sizes="32x32">
   <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
   <link rel="manifest" href="/site.webmanifest">
   <meta name="theme-color" content="#ffffff">
-  
+
   <!-- Structured Data (JSON-LD) -->
   <script type="application/ld+json">
   ${structuredDataJson}
   </script>
-  
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@300;400;600&family=Inter:ital,wght@0,200;0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">

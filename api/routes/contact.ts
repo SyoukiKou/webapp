@@ -4,6 +4,31 @@ import { header, footer, pageHead, pageScripts } from '../../src/components/layo
 const app = new Hono()
 
 app.get('/contact', (c) => {
+  const contactPaths = [
+    {
+      title: '導入相談',
+      desc: '企業研修、医療機関導入、空間設計など、実施内容がまだ固まっていない方向けです。',
+      href: '/solutions/business'
+    },
+    {
+      title: '共同研究',
+      desc: '大学・企業・研究機関との共創や、試作・実証実験の相談に向いています。',
+      href: '/solutions/research'
+    },
+    {
+      title: '取材・資料請求',
+      desc: 'サービス資料、イベント参加、メディア向けの問い合わせはこちらから進めます。',
+      href: '/download'
+    }
+  ]
+
+  const contactPathsHTML = contactPaths.map((item) => `
+    <a href="${item.href}" class="contact-path-card fade-up">
+      <div class="contact-path-title">${item.title}</div>
+      <p class="contact-path-desc">${item.desc}</p>
+    </a>
+  `).join('')
+
   return c.html(`${pageHead({
     title: 'Contact',
     description: 'ご相談、お問い合わせはこちらから。お問い合わせ内容を確認後、担当者より折り返しご連絡させていただきます。',
@@ -21,6 +46,9 @@ ${header('/contact')}
   </section>
   <section class="contact-section">
     <div class="section-inner">
+      <div class="contact-path-grid">
+        ${contactPathsHTML}
+      </div>
       <div class="contact-grid">
         <div class="contact-form-wrap fade-up">
           <!-- Google Form Embed -->

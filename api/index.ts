@@ -5,6 +5,11 @@ import { header, footer, pageHead, pageScripts, newsData, reportsData } from '..
 
 // ルートファイルをインポート
 import homeRoutes from './routes/home.js'
+import solutionsRoutes from './routes/solutions.js'
+import casesRoutes from './routes/cases.js'
+import scienceRoutes from './routes/science.js'
+import aboutRoutes from './routes/about.js'
+import downloadRoutes from './routes/download.js'
 import reportsRoutes from './routes/reports.js'
 import newsRoutes from './routes/news.js'
 import serviceRoutes from './routes/service.js'
@@ -49,6 +54,16 @@ app.get('/sitemap.xml', (c) => {
   const today = new Date().toISOString().split('T')[0]
   const pages = [
     { path: '/', priority: '1.0' },
+    { path: '/solutions', priority: '0.95' },
+    { path: '/solutions/business', priority: '0.85' },
+    { path: '/solutions/medical', priority: '0.85' },
+    { path: '/solutions/research', priority: '0.85' },
+    { path: '/solutions/culture', priority: '0.85' },
+    { path: '/cases', priority: '0.9' },
+    { path: '/science', priority: '0.9' },
+    { path: '/about', priority: '0.8' },
+    { path: '/download', priority: '0.8' },
+    { path: '/contact', priority: '0.9' },
     { path: '/service', priority: '0.9' },
     { path: '/service/rae', priority: '0.8' },
     { path: '/service/machi', priority: '0.8' },
@@ -58,9 +73,8 @@ app.get('/sitemap.xml', (c) => {
     { path: '/service/reporting', priority: '0.8' },
     { path: '/reports', priority: '0.8' },
     { path: '/news', priority: '0.8' },
-    { path: '/company', priority: '0.7' },
+    { path: '/about', priority: '0.7' },
     { path: '/site-policy', priority: '0.5' },
-    { path: '/contact', priority: '0.9' }
   ]
   const newsPages = newsData.map((item) => ({
     path: `/news/${item.slug}`,
@@ -96,6 +110,11 @@ app.get('/api/news', (c) => {
 
 // ページルートをマウント
 app.route('/', homeRoutes)
+app.route('/', solutionsRoutes)
+app.route('/', casesRoutes)
+app.route('/', scienceRoutes)
+app.route('/', aboutRoutes)
+app.route('/', downloadRoutes)
 app.route('/', reportsRoutes)
 app.route('/', newsRoutes)
 app.route('/', serviceRoutes)
