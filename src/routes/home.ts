@@ -58,42 +58,6 @@ app.get('/', (c) => {
     .map(cat => `<button class="filter-tab" data-filter="${cat.key}" role="tab" aria-selected="false">${cat.label}</button>`)
     .join('')
 
-  const targetAudienceCards = [
-    {
-      href: '/solutions/business',
-      eyebrow: 'For Business',
-      title: '企業・組織の方へ',
-      desc: '組織のエンゲージメント向上、チームビルディング、オフィス空間の改善へ直行します。'
-    },
-    {
-      href: '/solutions/medical',
-      eyebrow: 'For Medical',
-      title: '医療・福祉の方へ',
-      desc: '患者とスタッフの環境改善、KOMOREBI の導入相談、実証実験の入口です。'
-    },
-    {
-      href: '/solutions/research',
-      eyebrow: 'For R&D',
-      title: '研究・共創パートナーへ',
-      desc: '脳科学に基づく共同研究や、新規デバイス・ソフトウェア開発の入口です。'
-    },
-    {
-      href: '/solutions/culture',
-      eyebrow: 'For Culture',
-      title: '一般の方へ',
-      desc: '新しい芸術体験、Creative Bar、解説メディアへの入口です。'
-    }
-  ]
-
-  const targetAudienceHTML = targetAudienceCards.map((card, i) => `
-    <a href="${card.href}" class="target-card fade-up delay-${Math.min(i + 1, 3)}">
-      <div class="target-card-eyebrow">${card.eyebrow}</div>
-      <h3 class="target-card-title">${card.title}</h3>
-      <p class="target-card-desc">${card.desc}</p>
-      <span class="target-card-cta">Explore →</span>
-    </a>
-  `).join('')
-
   const newsHTML = newsData.slice(0, 5).map(n => `
     <a href="/news/${n.slug}" class="news-item">
       <div class="news-item-inner">
@@ -215,23 +179,6 @@ app.get('/', (c) => {
       </div>
 
       <div class="hero-progress-bar" id="heroProgressBar"></div>
-    </section>
-
-    <!-- ===== TARGET ENTRY ===== -->
-    <section id="target-entry" aria-label="対象者別の入り口">
-      <div class="section-inner">
-        <div class="section-head">
-          <div class="section-head-left">
-            <span class="section-eyebrow fade-up">Who are you?</span>
-            <h2 class="section-title-en fade-up delay-1">あなたに合う入口</h2>
-            <p class="section-title-jp fade-up delay-2">対象ごとに最適なページへ直接案内します。</p>
-          </div>
-          <a href="/solutions" class="view-all-btn fade-up delay-2">Solutions へ</a>
-        </div>
-        <div class="target-card-grid">
-          ${targetAudienceHTML}
-        </div>
-      </div>
     </section>
 
     <!-- ===== PURPOSE / OUR VISION ===== -->

@@ -28,30 +28,6 @@ ${header('/contact')}
         </div>
         <div class="contact-info fade-up delay-2">
           <div class="contact-info-block">
-            <h3 class="contact-info-heading">所在地</h3>
-            <p class="contact-info-text">本社<br>〒163-0604<br>東京都新宿区西新宿1丁目25ー1<br><br>研究所<br>〒194-0001<br>東京都町田市つくし野2丁目33</p>
-          </div>
-          <div class="contact-info-block" id="recruit">
-            <h3 class="contact-info-heading">採用に関するお問い合わせ</h3>
-            <p class="contact-info-text">アーティスト採用・オフィス採用に関するご連絡はこちら</p>
-            <a href="#" class="contact-info-link">お問い合わせ →</a>
-          </div>
-          <div class="contact-info-block">
-            <h3 class="contact-info-heading">SNS</h3>
-            <div class="contact-social">
-              <a href="https://x.com/syiaviolin" class="contact-social-link" aria-label="X">
-                <svg aria-hidden="true" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-                  <path d="M18.244 2H21.5l-7.106 8.12L22.5 22h-6.172l-4.83-6.48L5.94 22H2.5l7.59-8.67L1.5 2h6.328l4.37 5.86L18.244 2Zm-1.07 18.2h1.8L6.86 3.74H4.93l12.244 16.46Z" />
-                </svg>
-              </a>
-              <a href="https://www.instagram.com/syiaviolin/" class="contact-social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-              <a href="https://www.facebook.com/syiaviolin/" class="contact-social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-              <a href="mailto:info@thehearth.jp" class="contact-social-link" aria-label="Send mail"><i class="fas fa-envelope"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
   </section>
 </main>
 ${footer()}
