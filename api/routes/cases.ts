@@ -1,9 +1,16 @@
 import { Hono } from 'hono'
 import { header, footer, pageHead, pageScripts } from '../../src/components/layout.js'
+import { casesData } from '../../data/cases.js'
 
 const app = new Hono()
 
-const cases = [
+const cases = casesData.map((c) => ({
+  title: c.title,
+  label: c.industry === 'medical' ? 'For Medical' : c.industry === 'it' ? 'For Business' : 'For Community',
+  summary: c.summary,
+  outcomes: c.outcomes || [],
+  href: `/cases/${c.slug}`
+}))
   {
     title: '企業での研修・空間導入',
     label: 'For Business',
@@ -108,6 +115,86 @@ ${header('/cases', true)}
 </main>
 ${footer()}
 ${pageScripts({ includeApp: false, includePages: true })}`)
+})
+
+app.get('/cases/:slug', (c) => {
+  const slug = c.req.param('slug')
+  const item = casesData.find((x) => x.slug === slug)
+  if (!item) return c.notFound()
+
+  const evidenceHTML = (item.evidence?.quantitative || []).map((q) => `<li>${q}</li>`).join('')
+  const interviewsHTML = (item.interviews || []).map((i) => `
+    <div class="interview">
+      ${i.img ? `<img src="${i.img}" alt="${i.name || ''}">` : ''}
+      <p class="quote">“${i.quote}”</p>
+      <p class="credit">${i.name || ''} ${i.role ? `— ${i.role}` : ''}</p>
+    </div>
+  `).join('')
+
+  return c.html(`${pageHead({
+    title: item.title,
+    description: item.summary,
+    ogUrl: `https://thehearth.jp/cases/${item.slug}`,
+    canonical: `https://thehearth.jp/cases/${item.slug}`
+  })}
+  ${header('/cases', false)}
+  <main class="case-detail">
+    <section class="case-hero">
+      <div class="case-hero-inner">
+        <h1>${item.title}</h1>
+        <p class="case-hero-summary">${item.summary}</p>
+        <p class="case-meta">${item.clientName ? item.clientName + (item.anonymous ? '（匿名）' : '') : ''} ${item.size ? '・' + item.size : ''}</p>
+      </div>
+    </section>
+
+    <section class="case-block">
+      <div class="section-inner">
+        <h2>導入の背景</h2>
+        <p>${item.intro || ''}</p>
+      </div>
+    </section>
+
+    <section class="case-block">
+      <div class="section-inner">
+        <h2>課題（Before）</h2>
+        <ul>${(item.before || []).map((b) => `<li>${b}</li>`).join('')}</ul>
+      </div>
+    </section>
+
+    <section class="case-block">
+      <div class="section-inner">
+        <h2>実施内容（Action）</h2>
+        <ul>${(item.action || []).map((a) => `<li>${a}</li>`).join('')}</ul>
+      </div>
+    </section>
+
+    <section class="case-block">
+      <div class="section-inner">
+        <h2>導入の効果（Evidence）</h2>
+        <ul>${evidenceHTML}</ul>
+      </div>
+    </section>
+
+    <section class="case-block">
+      <div class="section-inner">
+        <h2>関係者の声（Interviews）</h2>
+        ${interviewsHTML}
+      </div>
+    </section>
+
+    <section class="case-block">
+      <div class="section-inner">
+        <h2>結び（Outcomes）</h2>
+        <ul>${(item.outcomes || []).map((o) => `<li>${o}</li>`).join('')}</ul>
+        <div class="case-actions">
+          <a href="/contact" class="btn-primary">導入相談をする</a>
+          <a href="/download" class="btn-secondary">資料を請求する</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  ${footer()}
+  ${pageScripts({ includeApp: false, includePages: true })}`)
 })
 
 export default app
