@@ -4,14 +4,14 @@ import { serveStatic } from '@hono/node-server/serve-static'
 import { header, footer, pageHead, pageScripts, newsData, reportsData } from '../src/components/layout.js'
 
 // ルートファイルをインポート
-import homeRoutes from './routes/home.js'
-import reportsRoutes from './routes/reports.js'
-import newsRoutes from './routes/news.js'
-import serviceRoutes from './routes/service.js'
-import companyRoutes from './routes/company.js'
-import contactRoutes from './routes/contact.js'
-import komorebiRoutes from './routes/komorebi.js'
-import sitePolicyRoutes from './routes/site-policy.js'
+import homeRoutes from '../src/routes/home.js'
+import reportsRoutes from '../src/routes/reports.js'
+import newsRoutes from '../src/routes/news.js'
+import serviceRoutes from '../src/routes/service.js'
+import companyRoutes from '../src/routes/company.js'
+import contactRoutes from '../src/routes/contact.js'
+import komorebiRoutes from '../src/routes/komorebi.js'
+import sitePolicyRoutes from '../src/routes/site-policy.js'
 
 const app = new Hono()
 
