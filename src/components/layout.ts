@@ -16,18 +16,15 @@ export const newsData = newsDataRaw
 // ============================================
 export function header(currentPath: string = '/', useTransparentHeader: boolean = false): string {
   const navItems = [
-    { href: '/solutions', label: 'Solutions' },
-    { href: '/cases', label: 'Cases' },
-    { href: '/science', label: 'Science' },
-    { href: '/about', label: 'About' },
+    { href: '/service', label: 'Service' },
+    { href: '/reports',  label: 'Reports' },
+    { href: '/news',    label: 'News' },
+    { href: '/company', label: 'Company' },
     { href: '/contact', label: 'Contact' },
   ]
 
   const navHTML = navItems.map(item => {
-    const isActive = item.href === '/solutions'
-      ? currentPath === item.href || currentPath.startsWith('/solutions/')
-      : currentPath === item.href
-    const active = isActive ? ' nav-active' : ''
+    const active = currentPath === item.href ? ' nav-active' : ''
     return `<a href="${item.href}" class="nav-link${active}">${item.label}</a>`
   }).join('')
 
@@ -110,11 +107,10 @@ export function footer(): string {
           <p class="footer-address">本社 〒163-0604 東京都新宿区西新宿1丁目25ー1<br>研究所 〒194-0001 東京都町田市つくし野2丁目33</p>
         </div>
         <nav class="footer-nav-simple">
-          <a href="/solutions" class="footer-nav-link">Solutions</a>
-          <a href="/cases" class="footer-nav-link">Cases</a>
-          <a href="/science" class="footer-nav-link">Science</a>
-          <a href="/about" class="footer-nav-link">About</a>
-          <a href="/download" class="footer-nav-link">Download</a>
+          <a href="/service" class="footer-nav-link">Service</a>
+          <a href="/reports" class="footer-nav-link">Reports</a>
+          <a href="/news" class="footer-nav-link">News</a>
+          <a href="/company" class="footer-nav-link">Company</a>
           <a href="/contact" class="footer-nav-link">Contact</a>
         </nav>
       </div>
