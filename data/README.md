@@ -39,20 +39,27 @@
 
 **データ項目：**
 - `id`: 一意の識別番号
+- `slug`: URL用の英数字ID（例: `ai-sensibility-judgment-value`）
 - `title`: タイトル
 - `client`: クライアント名
 - `subtitle`: サブタイトル
-- `tags`: タグの配列（例: `["#脳波", "#音楽"]`）
+- `summary`: 詳細ページの冒頭要約
+- `publishedAt`: 公開日（`YYYY-MM-DD`）
+- `tags`: タグの配列（例: `['AI', '主観的判断']`）
 - `img`: 画像URL
 - `featured`: トップページに表示するか（`true` / `false`）
-- `category`: カテゴリー（`label1`, `label2`, `label3`, `label4`）
+- `category`: カテゴリー（`ai`, `neuroaesthetics`, `leadership`, `social-prescribing`）
 - `year`: 年度
+- `intro`: 詳細ページの導入文
+- `sections`: 本文セクションの配列
+- `takeaways`: 要点の配列
 
 **新しいレポートを追加する方法：**
 1. `reports.ts` を開く
-2. 配列に新しいオブジェクトを追加
-3. 画像は `/static/` フォルダに配置するか、外部URLを使用
-4. 保存してサーバーを再起動
+2. `slug` を一意に設定する
+3. `summary` と `sections` を書き、一覧と詳細の両方に流用できるようにする
+4. 画像は `/static/` フォルダに配置するか、外部URLを使用
+5. 保存してサーバーを再起動
 
 ## 🔄 変更を反映する方法
 

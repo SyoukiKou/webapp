@@ -25,25 +25,25 @@ app.get('/', (c) => {
 
   const latestReports = [...reportsData]
     .sort((a, b) => {
-      const yearDiff = Number(b.year) - Number(a.year)
-      if (yearDiff !== 0) return yearDiff
+      const dateDiff = b.publishedAt.localeCompare(a.publishedAt)
+      if (dateDiff !== 0) return dateDiff
       return Number(b.id) - Number(a.id)
     })
     .slice(0, 3)
 
   const reportsHTML = latestReports.map((report, i) => `
-    <article class="work-item" data-category="${report.category}">
-      <a href="#" class="work-link">
+    <article class="work-item${report.featured ? ' work-featured' : ''}" data-category="${report.category}">
+      <a href="/reports/${report.slug}" class="work-link">
         <div class="work-img-wrap">
           <img src="${report.img}" alt="${report.title}" class="work-img" loading="lazy">
           <div class="work-hover-overlay">
             <div class="work-hover-inner">
-              <div class="work-hover-label">View Report</div>
+              <div class="work-hover-label">Read Report</div>
             </div>
           </div>
         </div>
         <div class="work-info">
-          <div class="work-client">${report.client}</div>
+          <div class="work-client">${report.client} / ${report.year}</div>
           <h3 class="work-title">${report.title}</h3>
           <div class="work-tags-row">
             ${report.tags.map(t => `<span class="work-tag">${t}</span>`).join('')}
@@ -93,7 +93,7 @@ app.get('/', (c) => {
   <title>The Hearth | 芸術で社会課題を解決する</title>
   <meta name="description" content="芸術体験の実装を通じて、これからの社会をデザインしています。">
   <link rel="canonical" href="https://thehearth.jp">
-  
+
   <!-- Open Graph (OG) Tags -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="The Hearth | 芸術で社会課題を解決する">
@@ -102,25 +102,25 @@ app.get('/', (c) => {
   <meta property="og:image" content="https://thehearth.jp/static/logo.png">
   <meta property="og:site_name" content="The Hearth">
   <meta property="og:locale" content="ja_JP">
-  
+
   <!-- Twitter Card Tags -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="The Hearth">
   <meta name="twitter:description" content="芸術体験の実装を通じて、これからの社会をデザインしています。">
   <meta name="twitter:image" content="https://thehearth.jp/static/logo.png">
-  
+
   <!-- Favicon & Icons -->
   <link rel="icon" type="image/png" href="/favicon.png" sizes="32x32">
   <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
   <link rel="manifest" href="/site.webmanifest">
   <meta name="theme-color" content="#ffffff">
-  
+
   <!-- Structured Data (JSON-LD) -->
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"Organization","@id":"https://thehearth.jp","name":"The Hearth","url":"https://thehearth.jp","logo":"https://thehearth.jp/static/logo.png","description":"芸術体験の実装を通じて、これからの社会をデザインしています。","sameAs":["https://x.com/syiaviolin","https://www.instagram.com/syiaviolin/","https://www.facebook.com/syiaviolin/"],"address":{"@type":"PostalAddress","streetAddress":"西新宿1丁目25ー1","addressLocality":"新宿区","addressRegion":"東京都","postalCode":"163-0604","addressCountry":"JP"},"contactPoint":{"@type":"ContactPoint","contactType":"Customer Service","email":"info@thehearth.jp"}}
   </script>
-  
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@300;400;600&family=Inter:ital,wght@0,200;0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">

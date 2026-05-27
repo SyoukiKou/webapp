@@ -1,7 +1,7 @@
 import { Hono } from 'hono'
 import { handle } from '@hono/node-server/vercel'
 import { serveStatic } from '@hono/node-server/serve-static'
-import { header, footer, pageHead, pageScripts, newsData } from '../src/components/layout.js'
+import { header, footer, pageHead, pageScripts, newsData, reportsData } from '../src/components/layout.js'
 
 // ルートファイルをインポート
 import homeRoutes from './routes/home.js'
@@ -67,7 +67,12 @@ app.get('/sitemap.xml', (c) => {
     priority: '0.7',
     lastmod: item.date.replace(/\./g, '-')
   }))
-  const urls = [...pages, ...newsPages]
+  const reportPages = reportsData.map((item) => ({
+    path: `/reports/${item.slug}`,
+    priority: '0.7',
+    lastmod: item.publishedAt,
+  }))
+  const urls = [...pages, ...newsPages, ...reportPages]
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>\n` +
     `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n` +

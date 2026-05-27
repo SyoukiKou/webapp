@@ -1514,3 +1514,199 @@
   .news-related { padding: 60px 0 80px; }
   .news-related-title { font-size: 24px; margin-bottom: 32px; }
 }
+
+/* ============================================
+   REPORT DETAIL PAGE
+   ============================================ */
+
+.report-detail-hero {
+  padding: calc(120px + var(--header-h)) 0 90px;
+  background: linear-gradient(135deg, #151515 0%, #040404 100%);
+  position: relative;
+}
+
+.report-detail-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top right, rgba(244, 180, 0, 0.16), transparent 38%), radial-gradient(circle at bottom left, rgba(38, 128, 255, 0.14), transparent 34%);
+  pointer-events: none;
+}
+
+.report-detail-hero .section-inner {
+  position: relative;
+  z-index: 1;
+}
+
+.report-detail-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.report-detail-category {
+  font-family: var(--font-jp);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 3px;
+  color: #111;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.report-detail-date {
+  font-family: var(--font-en);
+  font-size: 13px;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.75);
+  letter-spacing: 0.04em;
+}
+
+.report-detail-title {
+  font-family: var(--font-jp);
+  font-size: 36px;
+  font-weight: 600;
+  line-height: 1.55;
+  color: var(--c-white);
+  max-width: 960px;
+}
+
+.report-detail-lead {
+  max-width: 880px;
+  margin-top: 20px;
+  font-family: var(--font-jp);
+  font-size: 18px;
+  line-height: 1.9;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.report-detail-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 28px;
+}
+
+.report-detail-tags .work-tag {
+  color: rgba(255, 255, 255, 0.86);
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.report-detail-content {
+  padding: 72px 0 60px;
+}
+
+.report-detail-body {
+  max-width: 840px;
+  margin: 0 auto;
+  font-family: var(--font-jp);
+  color: var(--c-text-body);
+}
+
+.report-detail-intro {
+  font-size: 17px;
+  line-height: 2;
+  color: var(--c-gray-700);
+  margin-bottom: 40px;
+}
+
+.report-detail-section {
+  margin-bottom: 40px;
+  padding: 0 0 8px;
+}
+
+.report-detail-section-title {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.6;
+  color: var(--c-black);
+  margin-bottom: 16px;
+}
+
+.report-detail-section p {
+  font-size: 15px;
+  line-height: 2;
+  color: var(--c-gray-700);
+  margin-bottom: 18px;
+}
+
+.report-detail-list {
+  list-style: none;
+  display: grid;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.report-detail-list li {
+  position: relative;
+  padding-left: 18px;
+  font-size: 14px;
+  line-height: 1.9;
+  color: var(--c-gray-700);
+}
+
+.report-detail-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.95em;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--c-black);
+}
+
+.report-detail-section--takeaways {
+  background: var(--c-gray-50);
+  padding: 28px 24px;
+  border: 1px solid var(--c-gray-200);
+}
+
+.report-detail-list--takeaways li {
+  color: var(--c-gray-800);
+}
+
+.report-detail-footer {
+  max-width: 840px;
+  margin: 48px auto 0;
+  padding-top: 32px;
+  border-top: 1px solid var(--c-gray-200);
+}
+
+.report-related {
+  padding: 80px 0 120px;
+  background: var(--c-gray-50);
+}
+
+.report-related-title {
+  font-family: var(--font-en);
+  font-size: 28px;
+  font-weight: 500;
+  text-align: center;
+  margin-bottom: 40px;
+  color: var(--c-text-primary);
+}
+
+.report-related-grid {
+  gap: 24px;
+}
+
+@media (max-width: 992px) {
+  .report-detail-title { font-size: 28px; }
+  .report-detail-lead { font-size: 16px; }
+  .report-related-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 768px) {
+  .report-detail-hero { padding: calc(60px + var(--header-h)) 0 48px; }
+  .report-detail-title { font-size: 24px; }
+  .report-detail-content { padding: 48px 0 40px; }
+  .report-detail-section-title { font-size: 20px; }
+  .report-related { padding: 60px 0 80px; }
+  .report-related-title { font-size: 24px; margin-bottom: 28px; }
+}
