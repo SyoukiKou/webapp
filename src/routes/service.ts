@@ -1,7 +1,7 @@
 import { Hono } from 'hono'
-import { header, footer, pageHead, pageScripts, createProductSchema } from '../../src/components/layout.js'
-import { serviceDetailPages } from '../../src/data/service-pages/index.js'
-import type { ServiceDetailPage } from '../../src/data/service-pages/types.js'
+import { header, footer, pageHead, pageScripts, createProductSchema } from '../components/layout.js'
+import { serviceDetailPages } from '../data/service-pages/index.js'
+import type { ServiceDetailPage } from '../data/service-pages/types.js'
 
 const app = new Hono()
 

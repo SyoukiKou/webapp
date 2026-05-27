@@ -1,5 +1,5 @@
 import { Hono } from 'hono'
-import { header, footer, pageHead, pageScripts, createArticleSchema, newsData } from '../../src/components/layout.js'
+import { header, footer, pageHead, pageScripts, createArticleSchema, newsData } from '../components/layout.js'
 
 const app = new Hono()
 

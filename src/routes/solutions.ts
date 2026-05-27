@@ -1,6 +1,6 @@
 import { Hono } from 'hono'
-import { header, footer, pageHead, pageScripts, createProductSchema } from '../../src/components/layout.js'
-import { serviceDetailPages } from '../../src/data/service-pages/index.js'
+import { header, footer, pageHead, pageScripts, createProductSchema } from '../components/layout.js'
+import { serviceDetailPages } from '../data/service-pages/index.js'
 import { reportsData } from '../../data/reports.js'
 
 const app = new Hono()
