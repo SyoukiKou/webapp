@@ -145,21 +145,22 @@ function findService(slug: string) {
 }
 
 function renderServiceCards(serviceSlugs: string[]): string {
-  return serviceSlugs.map((slug) => {
+  return serviceSlugs.map((slug, index) => {
     const service = findService(slug)
     if (!service) return ''
 
+    const delay = Math.min((index % 3) + 1, 3)
+
     return `
-      <a href="/solutions/${service.slug}" class="solution-service-card">
-        <div class="solution-service-card-image">
-          <img src="${service.cardImage}" alt="${service.cardTitle}" loading="lazy">
+      <div class="service-domain-item fade-up delay-${delay}">
+        <div class="service-domain-img"><a href="/solutions/${service.slug}" aria-label="${service.cardTitle}の詳細を見る"><img src="${service.cardImage}" alt="${service.cardTitle}" loading="lazy"></a></div>
+        <div class="service-domain-body">
+          <h3 class="service-domain-title">${service.cardTitle}</h3>
+          <p class="service-domain-desc">${service.cardDescription}</p>
+          <div class="service-domain-tags">${service.cardTags.map((tag) => `<span>${tag}</span>`).join('')}</div>
+          <a href="/solutions/${service.slug}" class="service-domain-link">詳細を見る →</a>
         </div>
-        <div class="solution-service-card-body">
-          <span class="solution-service-card-eyebrow">${service.cardTags[0] || 'Service'}</span>
-          <h3 class="solution-service-card-title">${service.cardTitle}</h3>
-          <p class="solution-service-card-desc">${service.cardDescription}</p>
-        </div>
-      </a>
+      </div>
     `
   }).join('')
 }
