@@ -371,6 +371,11 @@
   gap: 32px;
 }
 
+/* カテゴリ間の余白を確保 */
+.solution-category-block {
+  margin-bottom: 64px;
+}
+
 .service-domain-item {
   background: var(--c-white);
   overflow: hidden;
