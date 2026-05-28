@@ -35,7 +35,7 @@ app.get('/about', (c) => {
   `).join('')
 
   return c.html(`${pageHead({
-    title: 'About',
+    title: 'About Us',
     description: 'The Hearthのビジョン、メンバー、会社概要をご覧いただけます。',
     ogUrl: 'https://thehearth.jp/about',
     canonical: 'https://thehearth.jp/about'
@@ -44,7 +44,7 @@ ${header('/about', true)}
 <main class="about-page">
   <section class="page-hero page-hero--dark">
     <div class="page-hero-bg">
-      <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=1920&q=85&auto=format&fit=crop" alt="About" loading="eager">
+      <h1 class="page-hero-title fade-up delay-1">About Us</h1>
       <div class="page-hero-overlay"></div>
     </div>
     <div class="page-hero-inner">
@@ -55,7 +55,7 @@ ${header('/about', true)}
   </section>
 
   <section class="company-purpose">
-    <div class="section-inner">
+          <p class="company-purpose-desc">私たちThe Hearthは、感性に満ちた豊かな社会の実現を目指す企業です。Purpose に共感したメンバーが集まり、それぞれの専門性を活かし、<br>相乗効果をもたらすことで社会にインパクトを与えます。<br><br>唯一重視しているのは、価値観を共有できること。目標も、働き方も、各自が裁量と責任を持って、自由に働いています。<br>私たちに少しでも興味を持って頂いた方は、フォームよりお問い合わせください。<br>まずは、お互いを知ることからはじめましょう。</p>
       <div class="company-purpose-grid">
         <div class="company-purpose-text fade-up">
           <span class="section-eyebrow">Our Vision</span>
@@ -67,19 +67,26 @@ ${header('/about', true)}
           <div class="company-stat"><div class="company-stat-num" data-target="130">0</div><div class="company-stat-unit">回</div><div class="company-stat-label">出演回数</div></div>
           <div class="company-stat"><div class="company-stat-num" data-target="25">0</div><div class="company-stat-unit">回</div><div class="company-stat-label">ワークショップ開催</div></div>
           <div class="company-stat"><div class="company-stat-num" data-target="300">0</div><div class="company-stat-unit">回</div><div class="company-stat-label">施設訪問</div></div>
-        </div>
+  <section class="company-officers">
       </div>
     </div>
   </section>
-
-  <section class="company-overview">
+          <h2 class="section-title-en fade-up delay-1">Members</h2>
+          <p class="section-title-jp fade-up delay-2">メンバー</p>
     <div class="section-inner">
       <div class="section-head">
-        <div class="section-head-left">
+      <div class="officers-grid">${membersHTML}</div>
+            <tr><th>メンバー</th><td>8名 (業務委託・インターンも含む)</td></tr>
+            <tr><th>事業内容</th><td>ソリューション・アート・サイエンスを軸にした社会課題解決</td></tr>
+          </tbody>
+  <section class="company-overview">
+      </div>
+    </div>
+  </section>
           <h2 class="section-title-en fade-up delay-1">Overview</h2>
           <p class="section-title-jp fade-up delay-2">会社概要</p>
-        </div>
-      </div>
+    <div class="section-inner">
+      <div class="section-head">
       <div class="company-table-wrap fade-up">
         <table class="company-table">
           <tbody>
@@ -92,13 +99,6 @@ ${header('/about', true)}
           </tbody>
         </table>
       </div>
-    </div>
-  </section>
-
-  <section class="company-officers">
-    <div class="section-inner">
-      <div class="section-head">
-        <div class="section-head-left">
           <h2 class="section-title-en fade-up delay-1">Members</h2>
           <p class="section-title-jp fade-up delay-2">メンバー</p>
         </div>

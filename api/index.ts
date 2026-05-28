@@ -7,6 +7,7 @@ import { header, footer, pageHead, pageScripts, newsData, reportsData } from '..
 import homeRoutes from '../src/routes/home.js'
 import reportsRoutes from '../src/routes/reports.js'
 import newsRoutes from '../src/routes/news.js'
+import solutionsRoutes from '../src/routes/solutions.js'
 import serviceRoutes from '../src/routes/service.js'
 import companyRoutes from './routes/company.js'
 import contactRoutes from '../src/routes/contact.js'
@@ -63,7 +64,7 @@ app.get('/sitemap.xml', (c) => {
     { path: '/solutions/creative-bar', priority: '0.8' },
     { path: '/reports', priority: '0.8' },
     { path: '/news', priority: '0.8' },
-    { path: '/company', priority: '0.7' },
+    { path: '/about', priority: '0.7' },
     { path: '/site-policy', priority: '0.5' },
     { path: '/contact', priority: '0.9' }
   ]
@@ -103,6 +104,7 @@ app.get('/api/news', (c) => {
 app.route('/', homeRoutes)
 app.route('/', reportsRoutes)
 app.route('/', newsRoutes)
+app.route('/', solutionsRoutes)
 app.route('/', serviceRoutes)
 app.route('/', companyRoutes)
 app.route('/', contactRoutes)

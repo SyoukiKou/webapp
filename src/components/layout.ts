@@ -19,7 +19,7 @@ export function header(currentPath: string = '/', useTransparentHeader: boolean 
     { href: '/solutions', label: 'Solutions' },
     { href: '/reports',  label: 'Reports' },
     { href: '/news',    label: 'News' },
-    { href: '/company', label: 'Company' },
+    { href: '/about', label: 'About' },
     { href: '/contact', label: 'Contact' },
   ]
 
@@ -110,7 +110,7 @@ export function footer(): string {
           <a href="/solutions" class="footer-nav-link">Solutions</a>
           <a href="/reports" class="footer-nav-link">Reports</a>
           <a href="/news" class="footer-nav-link">News</a>
-          <a href="/company" class="footer-nav-link">Company</a>
+          <a href="/about" class="footer-nav-link">About</a>
           <a href="/contact" class="footer-nav-link">Contact</a>
         </nav>
       </div>

@@ -29,11 +29,11 @@ ${header('/contact')}
         <div class="contact-info fade-up delay-2">
           <div class="contact-info-block">
             <h3 class="contact-info-heading">所在地</h3>
-            <p class="contact-info-text">本社<br>〒163-0604<br>東京都新宿区西新宿1丁目25ー1<br><br>研究所<br>〒194-0001<br>東京都町田市つくし野2丁目33</p>
+            <p class="contact-info-text">本社<br>〒163-0604<br>東京都新宿区西新宿1丁目25ー1<br><br>アトリエ・スタジオ・研究所<br>〒194-0001<br>東京都町田市つくし野2丁目33</p>
           </div>
           <div class="contact-info-block" id="recruit">
             <h3 class="contact-info-heading">採用に関するお問い合わせ</h3>
-            <p class="contact-info-text">アーティスト採用・オフィス採用に関するご連絡はこちら</p>
+            <p class="contact-info-text">私たちThe Hearthは、感性に満ちた豊かな社会の実現を目指す企業です。Purpose に共感したメンバーが集まり、それぞれの専門性を活かし、相乗効果をもたらすことで社会にインパクトを与えます。<br><br>唯一重視しているのは、価値観を共有できること。目標も、働き方も、各自が裁量と責任を持って、自由に働いています。私たちに少しでも興味を持って頂いた方は、フォームよりお問い合わせください。まずは、お互いを知ることからはじめましょう。</p>
             <a href="#" class="contact-info-link">お問い合わせ →</a>
           </div>
           <div class="contact-info-block">
