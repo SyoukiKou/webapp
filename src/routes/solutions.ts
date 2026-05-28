@@ -386,69 +386,113 @@ ${pageScripts({ includeApp: false, includePages: true })}`
 }
 
 app.get('/solutions', (c) => {
-  const cardsHTML = solutionPages.map((page, index) => `
-    <a href="/solutions/${page.key}" class="target-card fade-up delay-${Math.min(index + 1, 3)}">
-      <div class="target-card-eyebrow">${page.label}</div>
-      <h3 class="target-card-title">${page.title}</h3>
-      <p class="target-card-desc">${page.lead}</p>
-      <ul class="target-card-list">
-        ${page.offers.slice(0, 2).map((item) => `<li>${item}</li>`).join('')}
-      </ul>
-      <span class="target-card-cta">View Details →</span>
-    </a>
+  const solutionsHTML = serviceDetailPages.map((item, index) => `
+        <div class="service-domain-item fade-up delay-${Math.min((index % 3) + 1, 3)}">
+          <div class="service-domain-img"><a href="/solutions/${item.slug}" aria-label="${item.cardTitle}の詳細を見る"><img src="${item.cardImage}" alt="${item.cardTitle}" loading="lazy"></a></div>
+          <div class="service-domain-body">
+            <h3 class="service-domain-title">${item.cardTitle}</h3>
+            <p class="service-domain-desc">${item.cardDescription}</p>
+            <div class="service-domain-tags">${item.cardTags.map((tag) => `<span>${tag}</span>`).join('')}</div>
+            <a href="/solutions/${item.slug}" class="service-domain-link">詳細を見る →</a>
+          </div>
+        </div>
   `).join('')
 
   return c.html(`${pageHead({
-    title: 'Solutions',
-    description: '企業・医療・研究・文化の4つの対象者に向けたソリューションを案内します。',
+    title: 'Service',
+    description: '体験価値の創造を通じて、企業や社会の課題解決に貢献します。リアル・デジタルを統合したコミュニケーションデザイン。',
+    ogImage: 'https://thehearth.jp/static/logo.png',
     ogUrl: 'https://thehearth.jp/solutions',
     canonical: 'https://thehearth.jp/solutions'
   })}
 ${header('/solutions', true)}
-<main class="solutions-page">
+<main>
   <section class="page-hero page-hero--dark">
     <div class="page-hero-bg">
-      <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=1920&q=85&auto=format&fit=crop" alt="Solutions" loading="eager">
+      <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1920&q=85" alt="Service" loading="eager">
       <div class="page-hero-overlay"></div>
     </div>
     <div class="page-hero-inner">
-      <span class="page-hero-eyebrow fade-up">Targeted Solutions</span>
-      <h1 class="page-hero-title fade-up delay-1">あなたは誰ですか？</h1>
-      <p class="page-hero-lead fade-up delay-2">The Hearth は、対象ごとに最適化した入口から、最短で役立つ情報へ案内します。</p>
+      <h1 class="page-hero-title fade-up delay-1">Service</h1>
+      <p class="page-hero-lead fade-up delay-2">人も、社会も動かす<br>"体験"をつくる。</p>
     </div>
   </section>
 
-  <section class="target-entry-block">
+  <section class="service-intro">
+    <div class="section-inner">
+      <div class="service-intro-grid">
+        <div class="service-intro-text fade-up">
+          <span class="section-eyebrow">OUR SERVICE</span>
+          <h2 class="service-intro-title">体験創造のプロフェッショナルとして、<br>多岐にわたるソリューションを<br>統合的にご提供します。</h2>
+        </div>
+        <div class="service-intro-desc fade-up delay-2">
+          <p>The Hearthは、芸術を通じて、人の"体験"を統合的にデザインし、企業や社会の課題解決に貢献します。豊富な経験と充実した組織機能で、多様なお客様のニーズにお応えします。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="service-domains">
     <div class="section-inner">
       <div class="section-head">
         <div class="section-head-left">
-          <span class="section-eyebrow fade-up">Solutions</span>
-          <h2 class="section-title-en fade-up delay-1">対象者別の入り口</h2>
+          <h2 class="section-title-en fade-up delay-1">Solutions</h2>
+          <p class="section-title-jp fade-up delay-2">主なソリューション</p>
         </div>
       </div>
-      <div class="target-card-grid">
-        ${cardsHTML}
+      <div class="service-domain-grid">
+        ${solutionsHTML}
       </div>
     </div>
   </section>
 
-  <section class="solution-process-block">
+  <section class="service-strengths">
     <div class="section-inner">
-      <div class="solution-process-grid">
-        <div class="solution-process-copy fade-up">
-          <span class="section-eyebrow">How It Works</span>
-          <h2 class="solution-overview-title">迷わず、必要なページへ。</h2>
-          <p class="solution-overview-desc">トップページ直下の入口から、個人・組織ごとに必要な情報に進み、導入相談や資料請求まで一気通貫で辿れる構造にしています。</p>
+      <div class="section-head">
+        <div class="section-head-left">
+          <h2 class="section-title-en fade-up delay-1">Our Strengths</h2>
+          <p class="section-title-jp fade-up delay-2">The Hearthの強み</p>
         </div>
-        <div class="solution-process-panel fade-up delay-1">
-          <ul class="solution-overview-list">
-            <li>Solutions で対象を選ぶ</li>
-            <li>Cases で導入の実例を確認する</li>
-            <li>Science で根拠を確認する</li>
-            <li>About で私たちの背景を知る</li>
-            <li>Contact で目的別に相談する</li>
+      </div>
+      <div class="strength-grid">
+        <div class="strength-item fade-up"><div class="strength-num">01</div><h3 class="strength-title">目的起点のプログラム設計</h3><p class="strength-desc">実施ありきではなく、対象者・課題・期待する変化を整理したうえで、最適な実施形式を設計します。</p></div>
+        <div class="strength-item fade-up delay-1"><div class="strength-num">02</div><h3 class="strength-title">芸術体験と対話の統合</h3><p class="strength-desc">生演奏などの芸術体験に対話プロセスを組み合わせ、感情の動きや気づきを現場で活かせる学びに変換します。</p></div>
+        <div class="strength-item fade-up delay-2"><div class="strength-num">03</div><h3 class="strength-title">多様な現場への実装力</h3><p class="strength-desc">オフィス・都市空間・高齢者施設など、環境や運営条件に合わせて安全かつ無理のない導入を行います。</p></div>
+        <div class="strength-item fade-up delay-3"><div class="strength-num">04</div><h3 class="strength-title">継続に向けた検証と改善</h3><p class="strength-desc">実施後の振り返りと評価を通じて、単発で終わらない継続運用モデルへ改善を重ねます。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="service-digital">
+    <div class="section-inner">
+      <div class="service-digital-grid">
+        <div class="service-digital-img fade-up"><img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=900&q=85&auto=format&fit=crop" alt="プログラム実施に向けた対話と準備" loading="lazy"></div>
+        <div class="service-digital-content fade-up delay-2">
+          <span class="section-eyebrow">Our Approach</span>
+          <h2 class="service-digital-title">実装に向けた進め方</h2>
+          <p class="service-digital-desc">私たちは、芸術体験を単発イベントで終わらせず、現場で継続できる取り組みにすることを重視しています。目的整理から実施、振り返りまでを一貫して伴走します。</p>
+          <ul class="service-digital-list">
+            <li><i class="fas fa-check"></i> 課題・対象者に合わせた実施目的の整理</li>
+            <li><i class="fas fa-check"></i> 現場運営に合わせたプログラム設計</li>
+            <li><i class="fas fa-check"></i> 生演奏と対話を組み合わせた実施</li>
+            <li><i class="fas fa-check"></i> 実施後の振り返りと次回改善提案</li>
+            <li><i class="fas fa-check"></i> 継続運用に向けた社内連携支援</li>
           </ul>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact-banner">
+    <div class="contact-banner-inner">
+      <div class="contact-banner-text fade-up">
+        <span class="contact-eyebrow">Contact Us</span>
+        <h2 class="contact-title">まずはお気軽にお問い合わせください</h2>
+        <p class="contact-sub">サービスに関するご相談やご質問を承ります。</p>
+      </div>
+      <div class="contact-actions fade-up delay-2">
+        <a href="/contact" class="btn-primary">お問い合わせ</a>
+        <a href="/solutions" class="btn-secondary">ソリューション一覧へ</a>
       </div>
     </div>
   </section>

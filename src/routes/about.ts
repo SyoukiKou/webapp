@@ -11,8 +11,7 @@ const members = [
 
 const history = [
   { year: '2025', text: '創業' },
-  { year: '2025', text: 'エンジェル投資を受ける' },
-  { year: '2026', text: 'Solutions / Science / Cases の公開' }
+  { year: '2025', text: 'エンジェル投資を受ける' }
 ]
 
 app.get('/about', (c) => {
@@ -48,8 +47,8 @@ ${header('/about', true)}
       <div class="page-hero-overlay"></div>
     </div>
     <div class="page-hero-inner">
-      <span class="page-hero-eyebrow fade-up">About Us</span>
-      <h1 class="page-hero-title fade-up delay-1">The Hearth について</h1>
+      <span class="page-hero-eyebrow fade-up">　</span>
+      <h1 class="page-hero-title fade-up delay-1">About Us</h1>
       <p class="page-hero-lead fade-up delay-2">芸術で社会課題を解決するために、研究と実装を往復しながら活動しています。</p>
     </div>
   </section>
@@ -77,14 +76,14 @@ ${header('/about', true)}
       <div class="section-head">
         <div class="section-head-left">
           <h2 class="section-title-en fade-up delay-1">Overview</h2>
-          <p class="section-title-jp fade-up delay-2">会社概要</p>
+          <p class="section-title-jp fade-up delay-2">組織概要</p>
         </div>
       </div>
       <div class="company-table-wrap fade-up">
         <table class="company-table">
           <tbody>
             <tr><th>正式名称</th><td>The Hearth</td></tr>
-            <tr><th>所在地</th><td>本社<br>〒163-0604<br>東京都新宿区西新宿1丁目25ー1<br><br>研究所<br>〒194-0001<br>東京都町田市つくし野2丁目33<br></td></tr>
+            <tr><th>所在地</th><td>本社<br>〒163-0604<br>東京都新宿区西新宿1丁目25ー1<br><br>アトリエ・スタジオ・研究所<br>〒194-0001<br>東京都町田市つくし野2丁目33<br></td></tr>
             <tr><th>設立</th><td>2025年9月7日</td></tr>
             <tr><th>代表</th><td>黄松毅</td></tr>
             <tr><th>メンバー</th><td>8名 (業務委託・インターンも含む)</td></tr>
