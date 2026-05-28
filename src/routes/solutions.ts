@@ -19,7 +19,9 @@ type SolutionPage = {
   evidence: string[]
   services: string[]
   ctaPrimary: string
+  ctaPrimaryLabel: string
   ctaSecondary: string
+  ctaSecondaryLabel: string
 }
 
 const solutionPages: SolutionPage[] = [
@@ -27,85 +29,97 @@ const solutionPages: SolutionPage[] = [
     key: 'business',
     title: 'For Business',
     label: '企業・組織向け',
-    lead: '人材課題と空間課題を、芸術体験・対話・音環境設計で同時に扱います。',
-    challengeTitle: '論理だけでは解けない組織の停滞に向き合う',
-    challengeBody: 'メンタル不調、コミュニケーション不足、創造性の低下は、制度や研修だけでは根本的に解きづらい課題です。The Hearthは、体験設計を通じて、組織内の関係性と空間の質を少しずつ変えていきます。',
+    lead: '感性とレジリエンスを鍛える、アートベースの研修・空間設計を提案します。',
+    challengeTitle: '論理ベースの研修だけでは、予測不能な環境を生き抜く力は育ちにくい',
+    challengeBody: '企業が直面するのは、正解のある課題だけではありません。メンタル不調、関係性の硬直、発想の停滞のような曖昧な課題に対しては、感性を介した認知の切り替えが必要です。The Hearthは、体験と対話を通じて、組織の思考の質を変える研修を設計します。',
     offers: [
-      'Regulative Art Experience による研修・チームビルディング',
-      '環境・生体連動音楽生成システムによるオフィス空間プロデュース',
-      '導入後の振り返りと継続運用の設計'
+      'Regulative Art Experience による感性トレーニングと対話設計',
+      '環境・生体連動音楽生成システムによる集中・回復空間の設計',
+      '事前アセスメントと事後検証を含む導入設計'
     ],
     evidence: [
-      '対話の導入で心理的安全性と関係性を整える',
-      'ストレス軽減や集中回復に向けた空間改善を支援する',
-      'エンゲージメントと創造性の両方を高める導線をつくる'
+      '感性への介入で、言語化しにくい課題の共有を促す',
+      '参加前後の変化をアンケートや行動観察で確認できる',
+      '研修単発ではなく、継続運用できる設計に落とし込める'
     ],
     services: ['rae', 'live-bgm', 'reporting'],
-    ctaPrimary: '/contact',
-    ctaSecondary: '/download'
+    ctaPrimary: '/download',
+    ctaPrimaryLabel: '資料を請求する',
+    ctaSecondary: '/contact'
+    ,
+    ctaSecondaryLabel: '導入相談をする'
   },
   {
     key: 'medical',
     title: 'For Medical',
     label: '医療・福祉向け',
-    lead: 'KOMOREBI をはじめとする環境介入で、患者とスタッフの双方にとって負荷の少ない空間をつくります。',
-    challengeTitle: '無機質な病室を、回復を支える環境へ変える',
-    challengeBody: 'ICUのせん妄リスク、病室のストレス、看護負荷の増大は、現場の努力だけで吸収しきれません。The Hearthは、空間を整えるデバイスと芸術的な環境演出を組み合わせ、医療の現場に実装しやすい形で提案します。',
+    lead: 'KOMOREBI を中心に、臨床実証と試験導入を見据えた環境介入を提案します。',
+    challengeTitle: '患者の回復とスタッフ負荷の両方に効く、病室環境を設計する',
+    challengeBody: 'ICUのせん妄リスク、昼夜逆転、過度な騒音やストレスは、現場の努力だけでは解きにくい構造課題です。The Hearthは、空間デバイスと検証設計を組み合わせ、臨床の現場で扱いやすい形に落とし込みます。',
     offers: [
-      '医療機関向けメディアアート生成デバイス KOMOREBI',
-      '患者の体内リズムと現場運営に配慮した環境改善',
-      '実証実験と効果検証の伴走'
+      'KOMOREBI による光・音・気流を用いた環境制御',
+      '臨床現場に合わせた安全性確認と設置要件の整理',
+      '実証実験と共同研究の伴走'
     ],
     evidence: [
-      '脳波・生体データを含む評価設計に接続できる',
-      '患者のストレスとスタッフの負担を同時に軽減する',
-      'Science ページで研究背景を確認できる'
+      '社会的処方や自律神経への影響などの研究文脈に接続できる',
+      '臨床現場でのフィードバックを踏まえて改善できる',
+      '導入前後の変化を検証する設計を組み込みやすい'
     ],
     services: ['komorebi', 'welfare', 'reporting'],
     ctaPrimary: '/contact',
-    ctaSecondary: '/science'
+    ctaPrimaryLabel: '臨床デモを相談する',
+    ctaSecondary: '/download'
+    ,
+    ctaSecondaryLabel: '資料を確認する'
   },
   {
     key: 'research',
     title: 'For R&D',
     label: '研究・共創パートナー向け',
-    lead: '脳科学×アートの知見を、共同研究・試作・評価の3段階で実装します。',
-    challengeTitle: 'アカデミアと現場をつなぐ実装力を提供する',
-    challengeBody: '研究は再現性だけでなく、現場に届くかどうかが重要です。The Hearthは、アカデミックな知見とアーティストの実践知を統合し、定量評価やプロトタイピングまで進められる共創体制を整えています。',
+    lead: '仮説設計から検証、プロトタイピングまで進める共創・共同研究の入口です。',
+    challengeTitle: '研究を、現場に届くかたちまでつなぐ',
+    challengeBody: '研究は論文化だけでなく、現場で再現できることが重要です。The Hearthは、アカデミックな知見と実践知を行き来しながら、共同研究・試作・評価の設計を一緒に進めます。',
     offers: [
-      '脳科学×アートの共同研究',
-      '芸術体験の定量評価と実験設計',
-      '生体連動型デバイス・ソフトウェアの共同開発'
+      '脳科学×アートの共同研究と評価設計',
+      '芸術体験の定量・定性評価フレームづくり',
+      '生体連動型デバイスやソフトウェアの試作支援'
     ],
     evidence: [
-      '研究テーマの仮説設計から伴走できる',
-      'Science ページで論点とレポートを公開している',
-      '大学・企業・現場をつなぐ共通言語を設計する'
+      '仮説から実証までの流れを一貫して設計できる',
+      'Science ページで論点やレポートを公開している',
+      '大学・企業・現場の共通言語を整えられる'
     ],
     services: ['reporting', 'komorebi', 'rae'],
-    ctaPrimary: '/contact',
-    ctaSecondary: '/science'
+    ctaPrimary: '/science',
+    ctaPrimaryLabel: 'Science を見る',
+    ctaSecondary: '/contact'
+    ,
+    ctaSecondaryLabel: '共同研究を相談する'
   },
   {
     key: 'culture',
     title: 'For Culture',
     label: '一般・個人向け',
-    lead: 'Creative Bar などの体験プログラムと解説メディアで、芸術の入口をひらきます。',
+    lead: '参加しやすい体験と読みやすいメディアで、芸術の入口をひらきます。',
     challengeTitle: '芸術を、もっと近くにする',
-    challengeBody: '芸術に興味はあっても、どう楽しめばいいか分からない人は少なくありません。The Hearthは、参加しやすい体験と読みやすいメディアを通して、芸術の価値を日常へつなぎます。',
+    challengeBody: '芸術に興味はあっても、参加の仕方や楽しみ方が分からない人は少なくありません。The Hearthは、体験プログラムと解説メディアを通して、芸術を日常の選択肢にします。',
     offers: [
-      '双方向型芸術体験ワークショップ Creative Bar',
-      '芸術鑑賞の敷居を下げる解説記事・動画コンテンツ',
-      'イベント参加から継続閲覧につながる導線'
+      'Creative Bar による双方向型の芸術体験',
+      '鑑賞を助ける解説記事・動画コンテンツ',
+      'イベント参加から継続閲覧につながる導線設計'
     ],
     evidence: [
       '初めてでも参加しやすい短時間プログラムを設計する',
       '鑑賞と対話を組み合わせて理解を深める',
-      '芸術体験を生活の中に持ち帰れる'
+      '体験を日常の会話や気づきにつなげられる'
     ],
     services: ['creative-bar', 'reporting', 'machi'],
-    ctaPrimary: '/contact',
-    ctaSecondary: '/news'
+    ctaPrimary: '/news',
+    ctaPrimaryLabel: 'News を見る',
+    ctaSecondary: '/contact'
+    ,
+    ctaSecondaryLabel: '参加相談をする'
   }
 ]
 
@@ -189,10 +203,8 @@ function renderEvidenceList(items: string[]): string {
   return items.map((item) => `<li>${item}</li>`).join('')
 }
 
-function renderServiceDetailPage(page: ServiceDetailPage): string {
-  const pagePath = `/solutions/${page.slug}`
-
-  const casesHTML = page.cases.map((item, index) => `
+function renderDetailCaseCards(items: ServiceDetailPage['cases']): string {
+  return items.map((item, index) => `
         <article class="service-domain-item fade-up${index > 0 ? ` delay-${Math.min(index, 3)}` : ''}">
           <div class="service-domain-img"><img src="${item.image}" alt="${item.title}" loading="lazy"></div>
           <div class="service-domain-body">
@@ -202,8 +214,10 @@ function renderServiceDetailPage(page: ServiceDetailPage): string {
           </div>
         </article>
   `).join('')
+}
 
-  const recordsHTML = page.records.map((item, index) => `
+function renderDetailRecordItems(items: ServiceDetailPage['records']): string {
+  return items.map((item, index) => `
         <article class="service-menu-item fade-up${index > 0 ? ` delay-${Math.min(index, 3)}` : ''}">
           <div class="service-menu-icon"><i class="fas fa-check"></i></div>
           <div class="service-menu-body">
@@ -212,6 +226,10 @@ function renderServiceDetailPage(page: ServiceDetailPage): string {
           </div>
         </article>
   `).join('')
+}
+
+function renderDetailShell(page: ServiceDetailPage, contentHTML: string): string {
+  const pagePath = `/solutions/${page.slug}`
 
   return `${pageHead({
     title: page.pageTitle,
@@ -228,6 +246,14 @@ function renderServiceDetailPage(page: ServiceDetailPage): string {
   })}
 ${header('/solutions', true)}
 <main>
+${contentHTML}
+</main>
+${footer()}
+${pageScripts({ includeApp: false, includePages: true })}`
+}
+
+function renderDefaultServiceDetailPage(page: ServiceDetailPage): string {
+  const heroHTML = `
   <section class="page-hero page-hero--dark">
     <div class="page-hero-bg">
       <img src="${page.heroImage}" alt="${page.pageTitle}" loading="eager">
@@ -238,13 +264,334 @@ ${header('/solutions', true)}
       <h1 class="page-hero-title fade-up delay-1">${page.pageTitle}</h1>
       <p class="page-hero-lead fade-up delay-2">${page.heroLead}</p>
     </div>
+  </section>`
+
+  const introHTML = `
+  <section class="service-intro">
+    <div class="section-inner">
+      <div class="service-intro-grid">
+        <div class="service-intro-text fade-up">
+          <span class="section-eyebrow">Overview</span>
+          <h2 class="service-intro-title">${page.introTitle}</h2>
+        </div>
+        <div class="service-intro-desc fade-up delay-2">
+          <p>${page.introBody}</p>
+        </div>
+      </div>
+    </div>
+  </section>`
+
+  const challengeHTML = `
+  <section class="service-digital">
+    <div class="section-inner">
+      <div class="service-digital-grid">
+        <div class="service-digital-content fade-up">
+          <span class="section-eyebrow">Why This Solution</span>
+          <h2 class="service-digital-title">${page.challengeTitle}</h2>
+          <p class="service-digital-desc">${page.challengeBody}</p>
+        </div>
+        <div class="service-digital-img fade-up delay-2">
+          <img src="${page.heroImage}" alt="${page.pageTitle}" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>`
+
+  const casesHTML = `
+  <section class="service-domains">
+    <div class="section-inner">
+      <div class="section-head">
+        <div class="section-head-left">
+          <span class="section-eyebrow fade-up">Use Cases</span>
+          <h2 class="section-title-en fade-up delay-1">活用イメージ</h2>
+        </div>
+      </div>
+      <div class="service-domain-grid">
+        ${renderDetailCaseCards(page.cases)}
+      </div>
+    </div>
+  </section>`
+
+  const recordsHTML = `
+  <section class="service-menu-section">
+    <div class="section-inner">
+      <div class="section-head">
+        <div class="section-head-left">
+          <span class="section-eyebrow fade-up">Track Record</span>
+          <h2 class="section-title-en fade-up delay-1">導入・活動実績</h2>
+        </div>
+      </div>
+      <div class="service-menu-list">
+        ${renderDetailRecordItems(page.records)}
+      </div>
+    </div>
+  </section>`
+
+  const contactHTML = `
+  <section id="contact-banner">
+    <div class="contact-banner-inner">
+      <div class="contact-banner-text fade-up">
+        <span class="contact-eyebrow">Contact Us</span>
+        <h2 class="contact-title">ご相談はお気軽にどうぞ</h2>
+        <p class="contact-sub">課題や目的に合わせて、最適な実施プランをご提案します。</p>
+      </div>
+      <div class="contact-actions fade-up delay-2">
+        <a href="/contact" class="btn-primary">お問い合わせ</a>
+        <a href="/solutions" class="btn-secondary">ソリューション一覧へ</a>
+      </div>
+    </div>
+  </section>`
+
+  return renderDetailShell(page, `${heroHTML}${introHTML}${challengeHTML}${casesHTML}${recordsHTML}${contactHTML}`)
+}
+
+function renderTrainingServiceDetailPage(page: ServiceDetailPage): string {
+  const contentHTML = `
+  <section class="page-hero page-hero--dark">
+    <div class="page-hero-bg">
+      <img src="${page.heroImage}" alt="${page.pageTitle}" loading="eager">
+      <div class="page-hero-overlay"></div>
+    </div>
+    <div class="page-hero-inner">
+      <span class="page-hero-eyebrow fade-up">Training LP</span>
+      <h1 class="page-hero-title fade-up delay-1">${page.pageTitle}</h1>
+      <p class="page-hero-lead fade-up delay-2">${page.heroLead}</p>
+      <div class="contact-actions fade-up delay-3">
+        <a href="/download" class="btn-primary">資料を請求する</a>
+        <a href="/contact" class="btn-secondary">導入相談をする</a>
+      </div>
+    </div>
   </section>
 
   <section class="service-intro">
     <div class="section-inner">
       <div class="service-intro-grid">
         <div class="service-intro-text fade-up">
-          <span class="section-eyebrow">Overview</span>
+          <span class="section-eyebrow">Pain</span>
+          <h2 class="service-intro-title">${page.challengeTitle}</h2>
+        </div>
+        <div class="service-intro-desc fade-up delay-2">
+          <p>${page.challengeBody}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="service-digital">
+    <div class="section-inner">
+      <div class="service-digital-grid">
+        <div class="service-digital-content fade-up">
+          <span class="section-eyebrow">Paradigm Shift</span>
+          <h2 class="service-digital-title">${page.introTitle}</h2>
+          <p class="service-digital-desc">${page.introBody}</p>
+        </div>
+        <div class="service-digital-img fade-up delay-2">
+          <img src="${page.heroImage}" alt="${page.pageTitle}" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="service-domains">
+    <div class="section-inner">
+      <div class="section-head">
+        <div class="section-head-left">
+          <span class="section-eyebrow fade-up">Program Detail</span>
+          <h2 class="section-title-en fade-up delay-1">実施ステップ</h2>
+        </div>
+      </div>
+      <div class="service-domain-grid">
+        ${renderDetailCaseCards(page.cases)}
+      </div>
+    </div>
+  </section>
+
+  <section class="service-menu-section">
+    <div class="section-inner">
+      <div class="section-head">
+        <div class="section-head-left">
+          <span class="section-eyebrow fade-up">Evidence & Mechanism</span>
+          <h2 class="section-title-en fade-up delay-1">根拠と変化の見取り図</h2>
+        </div>
+      </div>
+      <div class="service-menu-list">
+        ${renderDetailRecordItems(page.records)}
+      </div>
+    </div>
+  </section>
+
+  <section class="service-digital">
+    <div class="section-inner">
+      <div class="service-digital-grid">
+        <div class="service-digital-content fade-up">
+          <span class="section-eyebrow">Flow</span>
+          <h2 class="service-digital-title">導入の流れ</h2>
+          <p class="service-digital-desc">事前アセスメントから実施、事後検証までを一つの研修設計としてつなぎ、予算化しやすい形にまとめます。</p>
+        </div>
+        <div class="service-digital-desc fade-up delay-2">
+          <ul class="service-digital-list">
+            <li><i class="fas fa-check"></i> 事前アセスメントで組織課題と対象者を整理</li>
+            <li><i class="fas fa-check"></i> 半日×2回など、実施しやすいワークショップ形式で設計</li>
+            <li><i class="fas fa-check"></i> アンケートや簡易測定で変化を可視化</li>
+            <li><i class="fas fa-check"></i> 次回提案につながる振り返り資料を作成</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact-banner">
+    <div class="contact-banner-inner">
+      <div class="contact-banner-text fade-up">
+        <span class="contact-eyebrow">Contact Us</span>
+        <h2 class="contact-title">まずは自社の課題をご相談ください</h2>
+        <p class="contact-sub">感性を鍛える研修として、導入目的に合わせてご提案します。</p>
+      </div>
+      <div class="contact-actions fade-up delay-2">
+        <a href="/download" class="btn-primary">資料を請求する</a>
+        <a href="/contact" class="btn-secondary">導入相談をする</a>
+      </div>
+    </div>
+  </section>`
+
+  return renderDetailShell(page, contentHTML)
+}
+
+function renderMedicalServiceDetailPage(page: ServiceDetailPage): string {
+  const contentHTML = `
+  <section class="page-hero page-hero--dark">
+    <div class="page-hero-bg">
+      <img src="${page.heroImage}" alt="${page.pageTitle}" loading="eager">
+      <div class="page-hero-overlay"></div>
+    </div>
+    <div class="page-hero-inner">
+      <span class="page-hero-eyebrow fade-up">Clinical LP</span>
+      <h1 class="page-hero-title fade-up delay-1">${page.pageTitle}</h1>
+      <p class="page-hero-lead fade-up delay-2">${page.heroLead}</p>
+      <div class="contact-actions fade-up delay-3">
+        <a href="/contact" class="btn-primary">臨床デモを申し込む</a>
+        <a href="/download" class="btn-secondary">資料をダウンロード</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="service-intro">
+    <div class="section-inner">
+      <div class="service-intro-grid">
+        <div class="service-intro-text fade-up">
+          <span class="section-eyebrow">Clinical Problem</span>
+          <h2 class="service-intro-title">${page.challengeTitle}</h2>
+        </div>
+        <div class="service-intro-desc fade-up delay-2">
+          <p>${page.challengeBody}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="service-digital">
+    <div class="section-inner">
+      <div class="service-digital-grid">
+        <div class="service-digital-content fade-up">
+          <span class="section-eyebrow">Product Overview</span>
+          <h2 class="service-digital-title">${page.introTitle}</h2>
+          <p class="service-digital-desc">${page.introBody}</p>
+        </div>
+        <div class="service-digital-img fade-up delay-2">
+          <img src="${page.heroImage}" alt="${page.pageTitle}" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="service-domains">
+    <div class="section-inner">
+      <div class="section-head">
+        <div class="section-head-left">
+          <span class="section-eyebrow fade-up">System Modules</span>
+          <h2 class="section-title-en fade-up delay-1">機能イメージ</h2>
+        </div>
+      </div>
+      <div class="service-domain-grid">
+        ${renderDetailCaseCards(page.cases)}
+      </div>
+    </div>
+  </section>
+
+  <section class="service-menu-section">
+    <div class="section-inner">
+      <div class="section-head">
+        <div class="section-head-left">
+          <span class="section-eyebrow fade-up">Scientific / Clinical Evidence</span>
+          <h2 class="section-title-en fade-up delay-1">根拠と検証</h2>
+        </div>
+      </div>
+      <div class="service-menu-list">
+        ${renderDetailRecordItems(page.records)}
+      </div>
+    </div>
+  </section>
+
+  <section class="service-digital">
+    <div class="section-inner">
+      <div class="service-digital-grid">
+        <div class="service-digital-content fade-up">
+          <span class="section-eyebrow">Specs & Installation</span>
+          <h2 class="service-digital-title">導入要件と設置のしやすさ</h2>
+          <p class="service-digital-desc">既存病室への負荷を抑えながら試験導入しやすい構成を前提に、電源・スペース・ネットワーク条件を整理してご提案します。</p>
+        </div>
+        <div class="service-digital-desc fade-up delay-2">
+          <ul class="service-digital-list">
+            <li><i class="fas fa-check"></i> 既存設備を活かせる低侵襲な設置設計</li>
+            <li><i class="fas fa-check"></i> 電源・通信・設置スペースを事前に確認</li>
+            <li><i class="fas fa-check"></i> 実証実験から共同研究まで段階的に導入</li>
+            <li><i class="fas fa-check"></i> 医療現場の運用に合わせた安全性確認を実施</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact-banner">
+    <div class="contact-banner-inner">
+      <div class="contact-banner-text fade-up">
+        <span class="contact-eyebrow">Contact Us</span>
+        <h2 class="contact-title">臨床現場でのデモンストレーション・共同研究についてご相談ください</h2>
+        <p class="contact-sub">医療安全と検証計画を前提に、導入可否を一緒に整理します。</p>
+      </div>
+      <div class="contact-actions fade-up delay-2">
+        <a href="/contact" class="btn-primary">臨床デモを相談する</a>
+        <a href="/download" class="btn-secondary">資料を確認する</a>
+      </div>
+    </div>
+  </section>`
+
+  return renderDetailShell(page, contentHTML)
+}
+
+function renderSoftwareServiceDetailPage(page: ServiceDetailPage): string {
+  const contentHTML = `
+  <section class="page-hero page-hero--dark">
+    <div class="page-hero-bg">
+      <img src="${page.heroImage}" alt="${page.pageTitle}" loading="eager">
+      <div class="page-hero-overlay"></div>
+    </div>
+    <div class="page-hero-inner">
+      <span class="page-hero-eyebrow fade-up">Software LP</span>
+      <h1 class="page-hero-title fade-up delay-1">${page.pageTitle}</h1>
+      <p class="page-hero-lead fade-up delay-2">${page.heroLead}</p>
+      <div class="contact-actions fade-up delay-3">
+        <a href="/contact" class="btn-primary">デモを見る</a>
+        <a href="/contact" class="btn-secondary">導入相談をする</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="service-intro">
+    <div class="section-inner">
+      <div class="service-intro-grid">
+        <div class="service-intro-text fade-up">
+          <span class="section-eyebrow">Concept & Tech</span>
           <h2 class="service-intro-title">${page.introTitle}</h2>
         </div>
         <div class="service-intro-desc fade-up delay-2">
@@ -258,7 +605,7 @@ ${header('/solutions', true)}
     <div class="section-inner">
       <div class="service-digital-grid">
         <div class="service-digital-content fade-up">
-          <span class="section-eyebrow">Why This Solution</span>
+          <span class="section-eyebrow">How It Works</span>
           <h2 class="service-digital-title">${page.challengeTitle}</h2>
           <p class="service-digital-desc">${page.challengeBody}</p>
         </div>
@@ -274,11 +621,11 @@ ${header('/solutions', true)}
       <div class="section-head">
         <div class="section-head-left">
           <span class="section-eyebrow fade-up">Use Cases</span>
-          <h2 class="section-title-en fade-up delay-1">活用イメージ</h2>
+          <h2 class="section-title-en fade-up delay-1">活用シーン</h2>
         </div>
       </div>
       <div class="service-domain-grid">
-        ${casesHTML}
+        ${renderDetailCaseCards(page.cases)}
       </div>
     </div>
   </section>
@@ -287,12 +634,32 @@ ${header('/solutions', true)}
     <div class="section-inner">
       <div class="section-head">
         <div class="section-head-left">
-          <span class="section-eyebrow fade-up">Track Record</span>
-          <h2 class="section-title-en fade-up delay-1">導入・活動実績</h2>
+          <span class="section-eyebrow fade-up">Benefit</span>
+          <h2 class="section-title-en fade-up delay-1">導入メリット</h2>
         </div>
       </div>
       <div class="service-menu-list">
-        ${recordsHTML}
+        ${renderDetailRecordItems(page.records)}
+      </div>
+    </div>
+  </section>
+
+  <section class="service-digital">
+    <div class="section-inner">
+      <div class="service-digital-grid">
+        <div class="service-digital-content fade-up">
+          <span class="section-eyebrow">Developer / Partner Info</span>
+          <h2 class="service-digital-title">連携と実装の考え方</h2>
+          <p class="service-digital-desc">ウェアラブルや環境センサーからデータを取り込み、空間側のAPIや再生ロジックに接続しやすいように設計します。</p>
+        </div>
+        <div class="service-digital-desc fade-up delay-2">
+          <ul class="service-digital-list">
+            <li><i class="fas fa-check"></i> スマートウォッチやセンサー入力を前提にした構成</li>
+            <li><i class="fas fa-check"></i> 既存システムとのAPI連携を想定した設計</li>
+            <li><i class="fas fa-check"></i> 空間演出・運用・分析をまとめて相談可能</li>
+            <li><i class="fas fa-check"></i> 導入後の改善を見据えた運用フローを提案</li>
+          </ul>
+        </div>
       </div>
     </div>
   </section>
@@ -301,18 +668,30 @@ ${header('/solutions', true)}
     <div class="contact-banner-inner">
       <div class="contact-banner-text fade-up">
         <span class="contact-eyebrow">Contact Us</span>
-        <h2 class="contact-title">ご相談はお気軽にどうぞ</h2>
-        <p class="contact-sub">課題や目的に合わせて、最適な実施プランをご提案します。</p>
+        <h2 class="contact-title">システム連携・空間プロデュースのご相談</h2>
+        <p class="contact-sub">技術要件と体験設計の両方を見ながら、導入イメージを具体化します。</p>
       </div>
       <div class="contact-actions fade-up delay-2">
-        <a href="/contact" class="btn-primary">お問い合わせ</a>
-        <a href="/solutions" class="btn-secondary">ソリューション一覧へ</a>
+        <a href="/contact" class="btn-primary">デモを見る</a>
+        <a href="/contact" class="btn-secondary">導入相談をする</a>
       </div>
     </div>
-  </section>
-</main>
-${footer()}
-${pageScripts({ includeApp: false, includePages: true })}`
+  </section>`
+
+  return renderDetailShell(page, contentHTML)
+}
+
+function renderServiceDetailPage(page: ServiceDetailPage): string {
+  switch (page.pageTemplate) {
+    case 'training':
+      return renderTrainingServiceDetailPage(page)
+    case 'medical':
+      return renderMedicalServiceDetailPage(page)
+    case 'software':
+      return renderSoftwareServiceDetailPage(page)
+    default:
+      return renderDefaultServiceDetailPage(page)
+  }
 }
 
 function renderSolutionPage(page: SolutionPage): string {
@@ -424,8 +803,8 @@ ${header('/solutions', true)}
           <p class="contact-sub">導入検討、実証実験、資料確認のいずれでも歓迎です。</p>
         </div>
         <div class="contact-actions">
-          <a href="${page.ctaPrimary}" class="btn-primary">お問い合わせ</a>
-          <a href="${page.ctaSecondary}" class="btn-secondary">資料を見る</a>
+          <a href="${page.ctaPrimary}" class="btn-primary">${page.ctaPrimaryLabel}</a>
+          <a href="${page.ctaSecondary}" class="btn-secondary">${page.ctaSecondaryLabel}</a>
         </div>
       </div>
     </div>

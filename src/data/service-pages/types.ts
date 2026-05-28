@@ -1,5 +1,6 @@
 export type ServiceDetailPage = {
   slug: string
+  pageTemplate?: 'default' | 'training' | 'medical' | 'software'
   cardTitle: string
   cardDescription: string
   cardImage: string

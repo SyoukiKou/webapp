@@ -2,6 +2,7 @@ import type { ServiceDetailPage } from './types.js'
 
 export const raePage: ServiceDetailPage = {
   slug: 'rae',
+  pageTemplate: 'training',
   cardTitle: 'Regulative Art Experience',
   cardDescription: '音楽体験と対話を組み合わせ、職場のメンタルケアとコミュニケーション改善を無理なく支援するプログラムです。',
   cardImage: '/static/rae_photo.jpg',
@@ -9,7 +10,7 @@ export const raePage: ServiceDetailPage = {
   pageTitle: 'Regulative Art Experience',
   description: '音楽体験と対話を通じて、組織のメンタルヘルス施策を支援するプログラム。',
   heroImage: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=1920&q=85&auto=format&fit=crop',
-  heroLead: '音楽体験を、職場で実行しやすいメンタルヘルス施策として設計する。',
+  heroLead: 'AIの最適解に依存しない、次世代のアートベース・リーダーシップを育てる。',
   introTitle: '生演奏と対話を組み合わせ、状態の振り返りを促す。',
   introBody: 'RAEは、生演奏とワークショップ形式の対話を組み合わせたプログラムです。参加者が自身の状態を言語化し、チームで共有できるように設計しています。必要に応じて既存の健康経営施策とも併用できます。',
   challengeTitle: '導入しやすく、継続しやすい施策設計。',

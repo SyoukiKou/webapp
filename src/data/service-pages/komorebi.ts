@@ -2,6 +2,7 @@ import type { ServiceDetailPage } from './types.js'
 
 export const komorebiPage: ServiceDetailPage = {
   slug: 'komorebi',
+  pageTemplate: 'medical',
   cardTitle: 'KOMOREBI',
   cardDescription: 'ICUの空間を視覚・聴覚・嗅覚・気流の4つの要素で再設計し、せん妄予防と患者の尊厳回復を支援するSpace-as-a-Serviceです。',
   cardImage: '/static/komorebi.jpeg',

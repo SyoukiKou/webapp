@@ -2,6 +2,7 @@ import type { ServiceDetailPage } from './types.js'
 
 export const liveBgmPage: ServiceDetailPage = {
   slug: 'live-bgm',
+  pageTemplate: 'software',
   cardTitle: '環境・生体連動音楽生成システム',
   cardDescription: '環境データと生体情報から音楽を生成し、睡眠・集中・リラックスなど目的に応じて状態を整えるシステムです。',
   cardImage: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=1200&q=80&auto=format&fit=crop',
