@@ -162,7 +162,7 @@ app.get('/reports', (c) => {
 
   return c.html(`${pageHead({
     title: 'Reports',
-    description: 'AI、神経美学、リーダーシップ、社会的処方を横断して、芸術の社会的価値を読み解くレポートアーカイブ。',
+    description: 'AI、神経美学、リーダーシップ、社会的処方を横断して、芸術の社会的価値を読み解く。',
     ogImage: 'https://thehearth.jp/static/logo.png',
     ogUrl: 'https://thehearth.jp/reports',
     canonical: 'https://thehearth.jp/reports'
@@ -173,7 +173,7 @@ ${header('/reports')}
     <div class="page-hero-inner">
       <h1 class="page-hero-title fade-up delay-1">Reports</h1>
       <p class="page-hero-sub fade-up delay-2">研究レポート</p>
-      <p class="page-hero-lead fade-up delay-3">AI、神経美学、リーダーシップ、社会的処方を横断し、芸術の社会的価値を読み解く読み物アーカイブ。</p>
+      <p class="page-hero-lead fade-up delay-3">AI、神経美学、リーダーシップ、社会的処方を横断し、芸術の社会的価値を読み解く。</p>
     </div>
   </section>
   <section class="works-page-section">

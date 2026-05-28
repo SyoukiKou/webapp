@@ -413,7 +413,7 @@ ${header('/solutions', true)}
     </div>
     <div class="page-hero-inner">
       <span class="page-hero-eyebrow fade-up">Targeted Solutions</span>
-      <h1 class="page-hero-title fade-up delay-1">あなたは誰ですか？</h1>
+      <h1 class="page-hero-title fade-up delay-1">対象者別の入り口</h1>
       <p class="page-hero-lead fade-up delay-2">The Hearth は、対象ごとに最適化した入口から、最短で役立つ情報へ案内します。</p>
     </div>
   </section>

@@ -9,6 +9,7 @@ import reportsRoutes from '../src/routes/reports.js'
 import newsRoutes from '../src/routes/news.js'
 import solutionsRoutes from '../src/routes/solutions.js'
 import serviceRoutes from '../src/routes/service.js'
+import aboutRoutes from '../src/routes/about.js'
 import companyRoutes from './routes/company.js'
 import contactRoutes from '../src/routes/contact.js'
 import komorebiRoutes from '../src/routes/komorebi.js'
@@ -106,6 +107,7 @@ app.route('/', reportsRoutes)
 app.route('/', newsRoutes)
 app.route('/', solutionsRoutes)
 app.route('/', serviceRoutes)
+app.route('/', aboutRoutes)
 app.route('/', companyRoutes)
 app.route('/', contactRoutes)
 app.route('/', komorebiRoutes)
