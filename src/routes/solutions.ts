@@ -171,9 +171,11 @@ function renderSolutionSections(): string {
 
     return `
       <div class="solution-category-block">
-        <div class="solution-category-header fade-up">
-          <h3 class="solution-category-title">${section.title}</h3>
-          <p class="solution-category-sub">${section.subtitle}</p>
+        <div class="section-head">
+          <div class="section-head-left">
+            <h2 class="section-title-en fade-up delay-1">${section.title}</h2>
+            <p class="section-title-jp fade-up delay-2">${section.subtitle}</p>
+          </div>
         </div>
         <div class="service-domain-grid">
           ${cardsHTML}
@@ -482,12 +484,6 @@ ${header('/solutions', true)}
 
   <section class="service-domains">
     <div class="section-inner">
-      <div class="section-head">
-        <div class="section-head-left">
-          <h2 class="section-title-en fade-up delay-1">Solutions</h2>
-          <p class="section-title-jp fade-up delay-2">主なソリューション</p>
-        </div>
-      </div>
       ${renderSolutionSections()}
     </div>
   </section>
