@@ -200,8 +200,8 @@ app.get('/', (c) => {
           </h2>
         </div>
         <div class="purpose-bottom fade-up delay-3">
-          <a href="/service" class="purpose-link">
-            OUR SERVICE
+          <a href="/solutions" class="purpose-link">
+            OUR SOLUTIONS
             <svg class="arrow-icon" viewBox="0 0 24 8" fill="none">
               <path d="M0 4H22M19 1L22 4L19 7" stroke="currentColor" stroke-width="1"/>
             </svg>
@@ -222,11 +222,11 @@ app.get('/', (c) => {
       <div class="section-inner">
         <div class="section-head">
           <div class="section-head-left">
-            <h2 class="section-title-en fade-up delay-1">Service</h2>
+            <h2 class="section-title-en fade-up delay-1">Solutions</h2>
             <p class="section-title-jp fade-up delay-2">サービス</p>
           </div>
-          <a href="/service" class="view-all-btn fade-up delay-2">
-            View All Services
+          <a href="/solutions" class="view-all-btn fade-up delay-2">
+            View All Solutions
             <svg class="arrow-icon" viewBox="0 0 24 8" fill="none">
               <path d="M0 4H22M19 1L22 4L19 7" stroke="currentColor" stroke-width="1"/>
             </svg>
@@ -234,7 +234,7 @@ app.get('/', (c) => {
         </div>
 
         <div class="service-cards-grid">
-          <a href="/service" class="service-card fade-up">
+          <a href="/solutions" class="service-card fade-up">
             <div class="service-card-icon"><i class="fas fa-hands-helping"></i></div>
             <div class="service-card-body">
               <h3 class="service-card-name">Regulative Art Experience</h3>
@@ -242,7 +242,7 @@ app.get('/', (c) => {
             </div>
             <span class="service-card-arrow">→</span>
           </a>
-          <a href="/service" class="service-card fade-up delay-1">
+          <a href="/solutions" class="service-card fade-up delay-1">
             <div class="service-card-icon"><i class="fas fa-music"></i></div>
             <div class="service-card-body">
               <h3 class="service-card-name">Creative Bar</h3>
@@ -250,7 +250,7 @@ app.get('/', (c) => {
             </div>
             <span class="service-card-arrow">→</span>
           </a>
-          <a href="/service" class="service-card fade-up delay-3">
+          <a href="/solutions" class="service-card fade-up delay-3">
             <div class="service-card-icon"><i class="fas fa-desktop"></i></div>
             <div class="service-card-body">
               <h3 class="service-card-name">KOMOREBI</h3>
@@ -258,7 +258,7 @@ app.get('/', (c) => {
             </div>
             <span class="service-card-arrow">→</span>
           </a>
-          <a href="/service" class="service-card fade-up delay-2">
+          <a href="/solutions" class="service-card fade-up delay-2">
             <div class="service-card-icon"><i class="fas fa-chart-line"></i></div>
             <div class="service-card-body">
               <h3 class="service-card-name">環境・生体連動音楽生成システム</h3>

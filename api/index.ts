@@ -49,13 +49,18 @@ app.get('/sitemap.xml', (c) => {
   const today = new Date().toISOString().split('T')[0]
   const pages = [
     { path: '/', priority: '1.0' },
-    { path: '/service', priority: '0.9' },
-    { path: '/service/rae', priority: '0.8' },
-    { path: '/service/machi', priority: '0.8' },
-    { path: '/service/welfare', priority: '0.8' },
-    { path: '/service/live-bgm', priority: '0.8' },
-    { path: '/service/komorebi', priority: '0.8' },
-    { path: '/service/reporting', priority: '0.8' },
+    { path: '/solutions', priority: '0.9' },
+    { path: '/solutions/business', priority: '0.8' },
+    { path: '/solutions/medical', priority: '0.8' },
+    { path: '/solutions/research', priority: '0.8' },
+    { path: '/solutions/culture', priority: '0.8' },
+    { path: '/solutions/rae', priority: '0.8' },
+    { path: '/solutions/machi', priority: '0.8' },
+    { path: '/solutions/welfare', priority: '0.8' },
+    { path: '/solutions/live-bgm', priority: '0.8' },
+    { path: '/solutions/komorebi', priority: '0.8' },
+    { path: '/solutions/reporting', priority: '0.8' },
+    { path: '/solutions/creative-bar', priority: '0.8' },
     { path: '/reports', priority: '0.8' },
     { path: '/news', priority: '0.8' },
     { path: '/company', priority: '0.7' },
@@ -103,6 +108,8 @@ app.route('/', companyRoutes)
 app.route('/', contactRoutes)
 app.route('/', komorebiRoutes)
 app.route('/', sitePolicyRoutes)
+
+app.get('/service', (c) => c.redirect('/solutions', 301))
 
 // 404 Not Found
 app.notFound((c) => {

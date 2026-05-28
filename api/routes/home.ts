@@ -157,7 +157,7 @@ app.get('/', (c) => {
           <h1 class="hero-title" id="heroTitle">Marunouchi Street Music</h1>
           <p class="hero-subtitle" id="heroSubtitle">芸術あふれる街づくり</p>
           <div class="hero-client" id="heroClient">丸の内仲通り</div>
-          <a href="/service" class="hero-cta">View Project <span>→</span></a>
+          <a href="/solutions" class="hero-cta">View Solutions <span>→</span></a>
         </div>
       </div>
 
@@ -188,20 +188,29 @@ app.get('/', (c) => {
         <span class="purpose-label fade-up">The Hearth's Purpose</span>
         <div class="purpose-body">
           <p class="purpose-text fade-up delay-1">
-            人・モノ・コトが時間や場所を問わずつながることができる時代において、<br>
-            私たちは社会の流れを常に捉え、生きることの本質とは何かを探究し続けます。<br>
-            そして、ココロある豊かな芸術体験を通じて、<br>
-            人と社会に創造力を生み出し、未来へつなげる原動力をつくります。
+            AIが高度な情報処理を行い、瞬時に「最適解」を提示する時代。<br>
+            私たちは効率化の恩恵を受ける一方で、「アルゴリズムへの過剰適応」による思考の均質化や、<br>
+            人間としての主体性を見失う危機に直面しています。<br>
+            　<br>
+            正解のない曖昧さに耐え、他者の痛みに共感し、倫理的な判断を下すこと。<br>
+            論理と予測を機械に委ねることができる今だからこそ、人類は自らの内面に向き合い、<br>
+            「感性」という羅針盤を研ぎ澄ませる必要があります。<br>
+            　<br>
+            The Hearthは、ココロある豊かな芸術体験を、単なる鑑賞や娯楽とは捉えません。<br>
+            それは、人間とAIが真の意味で協働する未来を築くための、最も歴史的かつ効果的な体験です。<br>
+            　<br>
+            私たちは、芸術を一部の愛好家のための文化振興としてではなく、<br>
+            社会の持続可能性を担保する次世代のインフラとして再定義し、<br>
+            科学的エビデンスに基づく社会実装を通じて、人と社会に創造の原動力を生み出します。
           </p>
           <h2 class="purpose-title fade-up delay-2">
-            人と社会のつながりに<br>
-            芸術を通わせ、<br>
-            未来へつなげる原動力をつくる。
+            予測不能な世界に、感性という羅針盤を。<br>
+            芸術を次世代のインフラとして社会実装し、人間の主体性を未来へつなぐ。
           </h2>
         </div>
         <div class="purpose-bottom fade-up delay-3">
-          <a href="/service" class="purpose-link">
-            OUR SERVICE
+          <a href="/solutions" class="purpose-link">
+            OUR SOLUTIONS
             <svg class="arrow-icon" viewBox="0 0 24 8" fill="none">
               <path d="M0 4H22M19 1L22 4L19 7" stroke="currentColor" stroke-width="1"/>
             </svg>
@@ -222,11 +231,11 @@ app.get('/', (c) => {
       <div class="section-inner">
         <div class="section-head">
           <div class="section-head-left">
-            <h2 class="section-title-en fade-up delay-1">Service</h2>
+            <h2 class="section-title-en fade-up delay-1">Solutions</h2>
             <p class="section-title-jp fade-up delay-2">サービス</p>
           </div>
-          <a href="/service" class="view-all-btn fade-up delay-2">
-            View All Services
+          <a href="/solutions" class="view-all-btn fade-up delay-2">
+            View All Solutions
             <svg class="arrow-icon" viewBox="0 0 24 8" fill="none">
               <path d="M0 4H22M19 1L22 4L19 7" stroke="currentColor" stroke-width="1"/>
             </svg>
@@ -234,7 +243,7 @@ app.get('/', (c) => {
         </div>
 
         <div class="service-cards-grid">
-          <a href="/service" class="service-card fade-up">
+          <a href="/solutions" class="service-card fade-up">
             <div class="service-card-icon"><i class="fas fa-hands-helping"></i></div>
             <div class="service-card-body">
               <h3 class="service-card-name">Regulative Art Experience</h3>
@@ -242,7 +251,7 @@ app.get('/', (c) => {
             </div>
             <span class="service-card-arrow">→</span>
           </a>
-          <a href="/service" class="service-card fade-up delay-1">
+          <a href="/solutions" class="service-card fade-up delay-1">
             <div class="service-card-icon"><i class="fas fa-music"></i></div>
             <div class="service-card-body">
               <h3 class="service-card-name">Creative Bar</h3>
@@ -250,7 +259,7 @@ app.get('/', (c) => {
             </div>
             <span class="service-card-arrow">→</span>
           </a>
-          <a href="/service" class="service-card fade-up delay-3">
+          <a href="/solutions" class="service-card fade-up delay-3">
             <div class="service-card-icon"><i class="fas fa-desktop"></i></div>
             <div class="service-card-body">
               <h3 class="service-card-name">KOMOREBI</h3>
@@ -258,7 +267,7 @@ app.get('/', (c) => {
             </div>
             <span class="service-card-arrow">→</span>
           </a>
-          <a href="/service" class="service-card fade-up delay-2">
+          <a href="/solutions" class="service-card fade-up delay-2">
             <div class="service-card-icon"><i class="fas fa-chart-line"></i></div>
             <div class="service-card-body">
               <h3 class="service-card-name">環境・生体連動音楽生成システム</h3>

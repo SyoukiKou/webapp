@@ -16,7 +16,7 @@ export const newsData = newsDataRaw
 // ============================================
 export function header(currentPath: string = '/', useTransparentHeader: boolean = false): string {
   const navItems = [
-    { href: '/service', label: 'Service' },
+    { href: '/solutions', label: 'Solutions' },
     { href: '/reports',  label: 'Reports' },
     { href: '/news',    label: 'News' },
     { href: '/company', label: 'Company' },
@@ -107,7 +107,7 @@ export function footer(): string {
           <p class="footer-address">本社 〒163-0604 東京都新宿区西新宿1丁目25ー1<br>研究所 〒194-0001 東京都町田市つくし野2丁目33</p>
         </div>
         <nav class="footer-nav-simple">
-          <a href="/service" class="footer-nav-link">Service</a>
+          <a href="/solutions" class="footer-nav-link">Solutions</a>
           <a href="/reports" class="footer-nav-link">Reports</a>
           <a href="/news" class="footer-nav-link">News</a>
           <a href="/company" class="footer-nav-link">Company</a>
