@@ -169,17 +169,13 @@ function renderSolutionSections(): string {
     const cardsHTML = renderServiceCards(section.slugs)
 
     return `
-      <section class="solution-category-block">
-        <div class="section-head">
-          <div class="section-head-left">
-            <h3 class="section-title-en fade-up delay-1">${section.title}</h3>
-            <p class="section-title-jp fade-up delay-2">${section.subtitle}</p>
-          </div>
+      <div class="solution-category-block">
+        <div class="solution-category-header fade-up">
+          <h3 class="solution-category-title">${section.title}</h3>
+          <p class="solution-category-sub">${section.subtitle}</p>
         </div>
-        <div class="service-domain-grid">
-          ${cardsHTML}
-        </div>
-      </section>
+        ${cardsHTML}
+      </div>
     `
   }).join('')
 }
