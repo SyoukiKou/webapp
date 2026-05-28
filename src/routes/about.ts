@@ -63,9 +63,9 @@ ${header('/about', true)}
         </div>
         <div class="company-stats fade-up delay-2">
           <div class="company-stat"><div class="company-stat-num" data-target="1">0</div><div class="company-stat-unit">年</div><div class="company-stat-label">創業年数</div></div>
-          <div class="company-stat"><div class="company-stat-num" data-target="130">0</div><div class="company-stat-unit">回</div><div class="company-stat-label">出演回数</div></div>
-          <div class="company-stat"><div class="company-stat-num" data-target="25">0</div><div class="company-stat-unit">回</div><div class="company-stat-label">ワークショップ開催</div></div>
-          <div class="company-stat"><div class="company-stat-num" data-target="300">0</div><div class="company-stat-unit">回</div><div class="company-stat-label">施設訪問</div></div>
+          <div class="company-stat"><div class="company-stat-num" data-target="350">0</div><div class="company-stat-unit">回</div><div class="company-stat-label">体験提供数</div></div>
+          <div class="company-stat"><div class="company-stat-num" data-target="18">0</div><div class="company-stat-unit">社</div><div class="company-stat-label">取引先</div></div>
+          <div class="company-stat"><div class="company-stat-num" data-target="62">0</div><div class="company-stat-unit">名</div><div class="company-stat-label">アーティスト</div></div>
         </div>
       </div>
     </div>
