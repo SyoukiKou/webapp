@@ -104,7 +104,7 @@ export function footer(): string {
             </div>
           </div>
           <p class="footer-company-jp">The Hearth</p>
-          <p class="footer-address">本社 〒163-0604 東京都新宿区西新宿1丁目25ー1<br>研究所 〒194-0001 東京都町田市つくし野2丁目33</p>
+          <p class="footer-address">本社 〒163-0604 東京都新宿区西新宿1丁目25ー1<br>アトリエ・スタジオ・研究所 〒194-0001 東京都町田市つくし野2丁目33</p>
         </div>
         <nav class="footer-nav-simple">
           <a href="/solutions" class="footer-nav-link">Solutions</a>

@@ -413,8 +413,8 @@ ${header('/solutions', true)}
       <div class="page-hero-overlay"></div>
     </div>
     <div class="page-hero-inner">
-      <h1 class="page-hero-title fade-up delay-1">Service</h1>
-      <p class="page-hero-lead fade-up delay-2">人も、社会も動かす<br>"体験"をつくる。</p>
+      <h1 class="page-hero-title fade-up delay-1">Solutions</h1>
+      <p class="page-hero-lead fade-up delay-2">人も、社会も動かす<br>"芸術体験"をつくる。</p>
     </div>
   </section>
 
@@ -423,7 +423,7 @@ ${header('/solutions', true)}
       <div class="service-intro-grid">
         <div class="service-intro-text fade-up">
           <span class="section-eyebrow">OUR SERVICE</span>
-          <h2 class="service-intro-title">体験創造のプロフェッショナルとして、<br>多岐にわたるソリューションを<br>統合的にご提供します。</h2>
+          <h2 class="service-intro-title">芸術体験創造のプロフェッショナルとして、<br>多岐にわたるソリューションを<br>統合的にご提供します。</h2>
         </div>
         <div class="service-intro-desc fade-up delay-2">
           <p>The Hearthは、芸術を通じて、人の"体験"を統合的にデザインし、企業や社会の課題解決に貢献します。豊富な経験と充実した組織機能で、多様なお客様のニーズにお応えします。</p>
