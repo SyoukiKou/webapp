@@ -8,7 +8,6 @@ import homeRoutes from '../src/routes/home.js'
 import reportsRoutes from '../src/routes/reports.js'
 import newsRoutes from '../src/routes/news.js'
 import solutionsRoutes from '../src/routes/solutions.js'
-import serviceRoutes from '../src/routes/service.js'
 import aboutRoutes from '../src/routes/about.js'
 import companyRoutes from './routes/company.js'
 import contactRoutes from '../src/routes/contact.js'
@@ -106,14 +105,26 @@ app.route('/', homeRoutes)
 app.route('/', reportsRoutes)
 app.route('/', newsRoutes)
 app.route('/', solutionsRoutes)
-app.route('/', serviceRoutes)
 app.route('/', aboutRoutes)
 app.route('/', companyRoutes)
 app.route('/', contactRoutes)
 app.route('/', komorebiRoutes)
 app.route('/', sitePolicyRoutes)
 
+// Keep legacy /service redirects unified to /solutions
 app.get('/service', (c) => c.redirect('/solutions', 301))
+app.get('/service/:slug', (c) => {
+  const slug = c.req.param('slug')
+  return c.redirect(`/solutions/${slug}`, 301)
+})
+
+app.get('/rae', (c) => c.redirect('/solutions/rae', 301))
+app.get('/machi', (c) => c.redirect('/solutions/machi', 301))
+app.get('/welfare', (c) => c.redirect('/solutions/welfare', 301))
+
+app.get('/rae.html', (c) => c.redirect('/solutions/rae', 301))
+app.get('/machi.html', (c) => c.redirect('/solutions/machi', 301))
+app.get('/welfare.html', (c) => c.redirect('/solutions/welfare', 301))
 
 // 404 Not Found
 app.notFound((c) => {
