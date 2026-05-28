@@ -111,6 +111,35 @@ const solutionPages: SolutionPage[] = [
 
 const solutionMap = new Map<SolutionKey, SolutionPage>(solutionPages.map((page) => [page.key, page]))
 
+type SolutionSection = {
+  title: string
+  subtitle: string
+  slugs: string[]
+}
+
+const solutionSections: SolutionSection[] = [
+  {
+    title: 'Business',
+    subtitle: '企業・組織',
+    slugs: ['rae', 'live-bgm']
+  },
+  {
+    title: 'Culture & Consumer',
+    subtitle: '社会・個人',
+    slugs: ['machi', 'creative-bar', 'otomo']
+  },
+  {
+    title: 'Medical & Healthcare',
+    subtitle: '医療・福祉機関',
+    slugs: ['komorebi', 'welfare']
+  },
+  {
+    title: 'R&D',
+    subtitle: '研究開発・アカデミア',
+    slugs: ['reporting']
+  }
+]
+
 function findService(slug: string) {
   return serviceDetailPages.find((page) => page.slug === slug)
 }
@@ -131,6 +160,26 @@ function renderServiceCards(serviceSlugs: string[]): string {
           <p class="solution-service-card-desc">${service.cardDescription}</p>
         </div>
       </a>
+    `
+  }).join('')
+}
+
+function renderSolutionSections(): string {
+  return solutionSections.map((section) => {
+    const cardsHTML = renderServiceCards(section.slugs)
+
+    return `
+      <section class="solution-category-block">
+        <div class="section-head">
+          <div class="section-head-left">
+            <h3 class="section-title-en fade-up delay-1">${section.title}</h3>
+            <p class="section-title-jp fade-up delay-2">${section.subtitle}</p>
+          </div>
+        </div>
+        <div class="service-domain-grid">
+          ${cardsHTML}
+        </div>
+      </section>
     `
   }).join('')
 }
@@ -423,7 +472,7 @@ ${header('/solutions', true)}
       <div class="service-intro-grid">
         <div class="service-intro-text fade-up">
           <span class="section-eyebrow">OUR SERVICE</span>
-          <h2 class="service-intro-title">芸術体験創造のプロフェッショナルとして、<br>多岐にわたるソリューションを<br>統合的にご提供します。</h2>
+          <h2 class="service-intro-title">体験創造のプロフェッショナルとして、<br>多岐にわたるソリューションを<br>統合的にご提供します。</h2>
         </div>
         <div class="service-intro-desc fade-up delay-2">
           <p>The Hearthは、芸術を通じて、人の"体験"を統合的にデザインし、企業や社会の課題解決に貢献します。豊富な経験と充実した組織機能で、多様なお客様のニーズにお応えします。</p>
@@ -440,9 +489,7 @@ ${header('/solutions', true)}
           <p class="section-title-jp fade-up delay-2">主なソリューション</p>
         </div>
       </div>
-      <div class="service-domain-grid">
-        ${solutionsHTML}
-      </div>
+      ${renderSolutionSections()}
     </div>
   </section>
 

@@ -62,6 +62,7 @@ app.get('/sitemap.xml', (c) => {
     { path: '/solutions/komorebi', priority: '0.8' },
     { path: '/solutions/reporting', priority: '0.8' },
     { path: '/solutions/creative-bar', priority: '0.8' },
+    { path: '/solutions/otomo', priority: '0.8' },
     { path: '/reports', priority: '0.8' },
     { path: '/news', priority: '0.8' },
     { path: '/about', priority: '0.7' },

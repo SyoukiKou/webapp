@@ -6,6 +6,7 @@ import { liveBgmPage } from './live-bgm.js'
 import { komorebiPage } from './komorebi.js'
 import { reportingPage } from './reporting.js'
 import { creativeBarPage } from './creative-bar.js'
+import { otomoPage } from './otomo.js'
 
 export const serviceDetailPages: ServiceDetailPage[] = [
   raePage,
@@ -15,4 +16,5 @@ export const serviceDetailPages: ServiceDetailPage[] = [
   liveBgmPage,
   reportingPage,
   creativeBarPage,
+  otomoPage,
 ]

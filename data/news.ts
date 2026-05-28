@@ -1,5 +1,14 @@
 export const newsData = [
   {
+    "id": 15,
+    "slug": "otomo-launch-2026",
+    "date": "2026.05.28",
+    "category": "News",
+    "title": "音楽を続けながら働きたい人のためのキャリア相談サービス otomo を公開しました。",
+    "description": "The Hearthは、音楽と仕事の両立を支援するキャリア相談サービス otomo を公開しました。パラレルキャリアの実践者と一緒に、進路や働き方を整理し、自分らしい選択を考えるサービスです。",
+    "link": "https://otomo.thehearth.jp/"
+  },
+  {
     "id": 14,
     "slug": "otameshi-studio-co-create-adoption-2026",
     "date": "2026.04.28",
