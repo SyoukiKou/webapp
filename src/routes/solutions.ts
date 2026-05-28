@@ -175,7 +175,9 @@ function renderSolutionSections(): string {
           <h3 class="solution-category-title">${section.title}</h3>
           <p class="solution-category-sub">${section.subtitle}</p>
         </div>
-        ${cardsHTML}
+        <div class="service-domain-grid">
+          ${cardsHTML}
+        </div>
       </div>
     `
   }).join('')
