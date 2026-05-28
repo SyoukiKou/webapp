@@ -33,7 +33,13 @@ ${header('/contact')}
           </div>
           <div class="contact-info-block" id="recruit">
             <h3 class="contact-info-heading">採用に関するお問い合わせ</h3>
-            <p class="contact-info-text">私たちThe Hearthは、感性に満ちた豊かな社会の実現を目指す企業です。Purpose に共感したメンバーが集まり、それぞれの専門性を活かし、相乗効果をもたらすことで社会にインパクトを与えます。<br><br>唯一重視しているのは、価値観を共有できること。目標も、働き方も、各自が裁量と責任を持って、自由に働いています。私たちに少しでも興味を持って頂いた方は、フォームよりお問い合わせください。まずは、お互いを知ることからはじめましょう。</p>
+            <p class="contact-info-text">
+              私たちThe Hearthは、感性に満ちた豊かな社会の実現を目指す企業です。<br>
+              Purpose に共感したメンバーが集まり、それぞれの専門性を活かし、相乗効果をもたらすことで社会にインパクトを与えます。<br>
+              <br>
+              私たちに少しでも興味を持って頂いた方は、フォームよりお問い合わせください。<br>
+              まずは、お互いを知ることからはじめましょう。
+            </p>
             <a href="#" class="contact-info-link">お問い合わせ →</a>
           </div>
           <div class="contact-info-block">

@@ -44,7 +44,7 @@ ${header('/about', true)}
 <main class="about-page">
   <section class="page-hero page-hero--dark">
     <div class="page-hero-bg">
-      <h1 class="page-hero-title fade-up delay-1">About Us</h1>
+      <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=1920&q=85" alt="About" loading="eager">
       <div class="page-hero-overlay"></div>
     </div>
     <div class="page-hero-inner">
@@ -55,38 +55,31 @@ ${header('/about', true)}
   </section>
 
   <section class="company-purpose">
-          <p class="company-purpose-desc">私たちThe Hearthは、感性に満ちた豊かな社会の実現を目指す企業です。Purpose に共感したメンバーが集まり、それぞれの専門性を活かし、<br>相乗効果をもたらすことで社会にインパクトを与えます。<br><br>唯一重視しているのは、価値観を共有できること。目標も、働き方も、各自が裁量と責任を持って、自由に働いています。<br>私たちに少しでも興味を持って頂いた方は、フォームよりお問い合わせください。<br>まずは、お互いを知ることからはじめましょう。</p>
+    <div class="section-inner">
       <div class="company-purpose-grid">
         <div class="company-purpose-text fade-up">
-          <span class="section-eyebrow">Our Vision</span>
+          <span class="section-eyebrow">Our Purpose</span>
           <h2 class="company-purpose-title">人と社会のつながりに<br>芸術を通わせ、<br>未来へつなげる原動力をつくる。</h2>
-          <p class="company-purpose-desc">The Hearth は、芸術体験を「飾り」ではなく、組織・医療・地域を支える実装として扱います。脳科学、音楽、空間設計、対話設計を横断して、社会に届く形へ変えていきます。</p>
+          <p class="company-purpose-desc">The Hearth は、芸術体験を実装的に扱い、組織や地域、医療の現場に届く形で価値をつくります。私たちは体験設計・音環境設計・対話設計を統合し、持続可能な実装を目指します。</p>
         </div>
         <div class="company-stats fade-up delay-2">
           <div class="company-stat"><div class="company-stat-num" data-target="1">0</div><div class="company-stat-unit">年</div><div class="company-stat-label">創業年数</div></div>
           <div class="company-stat"><div class="company-stat-num" data-target="130">0</div><div class="company-stat-unit">回</div><div class="company-stat-label">出演回数</div></div>
           <div class="company-stat"><div class="company-stat-num" data-target="25">0</div><div class="company-stat-unit">回</div><div class="company-stat-label">ワークショップ開催</div></div>
           <div class="company-stat"><div class="company-stat-num" data-target="300">0</div><div class="company-stat-unit">回</div><div class="company-stat-label">施設訪問</div></div>
-  <section class="company-officers">
+        </div>
       </div>
     </div>
   </section>
-          <h2 class="section-title-en fade-up delay-1">Members</h2>
-          <p class="section-title-jp fade-up delay-2">メンバー</p>
+
+  <section class="company-overview">
     <div class="section-inner">
       <div class="section-head">
-      <div class="officers-grid">${membersHTML}</div>
-            <tr><th>メンバー</th><td>8名 (業務委託・インターンも含む)</td></tr>
-            <tr><th>事業内容</th><td>ソリューション・アート・サイエンスを軸にした社会課題解決</td></tr>
-          </tbody>
-  <section class="company-overview">
-      </div>
-    </div>
-  </section>
+        <div class="section-head-left">
           <h2 class="section-title-en fade-up delay-1">Overview</h2>
           <p class="section-title-jp fade-up delay-2">会社概要</p>
-    <div class="section-inner">
-      <div class="section-head">
+        </div>
+      </div>
       <div class="company-table-wrap fade-up">
         <table class="company-table">
           <tbody>
@@ -99,6 +92,13 @@ ${header('/about', true)}
           </tbody>
         </table>
       </div>
+    </div>
+  </section>
+
+  <section class="company-officers">
+    <div class="section-inner">
+      <div class="section-head">
+        <div class="section-head-left">
           <h2 class="section-title-en fade-up delay-1">Members</h2>
           <p class="section-title-jp fade-up delay-2">メンバー</p>
         </div>
@@ -119,18 +119,16 @@ ${header('/about', true)}
     </div>
   </section>
 
-  <section class="solution-cta-block">
-    <div class="section-inner">
-      <div class="solution-cta-inner fade-up">
-        <div>
-          <span class="contact-eyebrow">Contact Us</span>
-          <h2 class="contact-title">まずは目的に合うページからご覧ください。</h2>
-          <p class="contact-sub">Solutions、Cases、Science の各ページから、必要な情報に直接アクセスできます。</p>
-        </div>
-        <div class="contact-actions">
-          <a href="/solutions" class="btn-primary">Solutions</a>
-          <a href="/contact" class="btn-secondary">お問い合わせ</a>
-        </div>
+  <section id="contact-banner">
+    <div class="contact-banner-inner">
+      <div class="contact-banner-text fade-up">
+        <span class="contact-eyebrow">Contact Us</span>
+        <h2 class="contact-title">プロジェクトのご相談は<br>お気軽にどうぞ</h2>
+        <p class="contact-sub">お問い合わせ内容を確認後、担当者より折り返しご連絡させていただきます。</p>
+      </div>
+      <div class="contact-actions fade-up delay-2">
+        <a href="/contact" class="btn-primary">お問い合わせ</a>
+        <a href="/reports" class="btn-secondary">レポートを見る</a>
       </div>
     </div>
   </section>
