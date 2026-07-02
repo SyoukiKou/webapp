@@ -50,9 +50,13 @@ ${header('/solutions', true)}
       <div class="page-hero-overlay"></div>
     </div>
     <div class="page-hero-inner">
-      <span class="page-hero-eyebrow fade-up">Solution Detail</span>
+      <span class="page-hero-eyebrow fade-up">Clinical LP</span>
       <h1 class="page-hero-title fade-up delay-1">${page.pageTitle}</h1>
       <p class="page-hero-lead fade-up delay-2">${page.heroLead}</p>
+      <div class="contact-actions fade-up delay-3">
+        <a href="/contact" class="btn-primary">臨床相談をする</a>
+        <a href="/download" class="btn-secondary">資料を見る</a>
+      </div>
     </div>
   </section>
 
@@ -60,11 +64,11 @@ ${header('/solutions', true)}
     <div class="section-inner">
       <div class="service-intro-grid">
         <div class="service-intro-text fade-up">
-          <span class="section-eyebrow">Overview</span>
-          <h2 class="service-intro-title">${page.introTitle}</h2>
+          <span class="section-eyebrow">Why It Matters</span>
+          <h2 class="service-intro-title">${page.challengeTitle}</h2>
         </div>
         <div class="service-intro-desc fade-up delay-2">
-          <p>${page.introBody}</p>
+          <p>${page.challengeBody}</p>
         </div>
       </div>
     </div>
@@ -74,9 +78,9 @@ ${header('/solutions', true)}
     <div class="section-inner">
       <div class="service-digital-grid">
         <div class="service-digital-content fade-up">
-          <span class="section-eyebrow">Why This Solution</span>
-          <h2 class="service-digital-title">${page.challengeTitle}</h2>
-          <p class="service-digital-desc">${page.challengeBody}</p>
+          <span class="section-eyebrow">What KOMOREBI Does</span>
+          <h2 class="service-digital-title">${page.introTitle}</h2>
+          <p class="service-digital-desc">${page.introBody}</p>
         </div>
         <div class="service-digital-img fade-up delay-2">
           <img src="${page.heroImage}" alt="${page.pageTitle}" loading="lazy">
@@ -89,8 +93,8 @@ ${header('/solutions', true)}
     <div class="section-inner">
       <div class="section-head">
         <div class="section-head-left">
-          <span class="section-eyebrow fade-up">Use Cases</span>
-          <h2 class="section-title-en fade-up delay-1">活用イメージ</h2>
+          <span class="section-eyebrow fade-up">Core Elements</span>
+          <h2 class="section-title-en fade-up delay-1">環境制御の中核</h2>
         </div>
       </div>
       <div class="service-domain-grid">
@@ -103,8 +107,8 @@ ${header('/solutions', true)}
     <div class="section-inner">
       <div class="section-head">
         <div class="section-head-left">
-          <span class="section-eyebrow fade-up">Track Record</span>
-          <h2 class="section-title-en fade-up delay-1">導入・活動実績</h2>
+          <span class="section-eyebrow fade-up">Implementation</span>
+          <h2 class="section-title-en fade-up delay-1">導入と検証の進め方</h2>
         </div>
       </div>
       <div class="service-menu-list">
@@ -113,16 +117,36 @@ ${header('/solutions', true)}
     </div>
   </section>
 
+  <section class="service-digital">
+    <div class="section-inner">
+      <div class="service-digital-grid">
+        <div class="service-digital-content fade-up">
+          <span class="section-eyebrow">Clinical Fit</span>
+          <h2 class="service-digital-title">現場に合わせて始められるか</h2>
+          <p class="service-digital-desc">既存病棟への負荷を抑えながら、試験導入から継続運用へ移れるように、設置条件と運用条件を先に整理します。</p>
+        </div>
+        <div class="service-digital-desc fade-up delay-2">
+          <ul class="service-digital-list">
+            <li><i class="fas fa-check"></i> 既存設備を活かす前提で、設置負荷を最小化</li>
+            <li><i class="fas fa-check"></i> 電源・通信・スペースの条件を先に確認</li>
+            <li><i class="fas fa-check"></i> 試験導入から共同研究まで段階的に設計</li>
+            <li><i class="fas fa-check"></i> 安全性と運用ルールを合わせて整理</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section id="contact-banner">
     <div class="contact-banner-inner">
       <div class="contact-banner-text fade-up">
         <span class="contact-eyebrow">Contact Us</span>
-        <h2 class="contact-title">ご相談はお気軽にどうぞ</h2>
-        <p class="contact-sub">課題や目的に合わせて、最適な実施プランをご提案します。</p>
+        <h2 class="contact-title">臨床現場での試験導入・共同研究についてご相談ください</h2>
+        <p class="contact-sub">医療安全と検証計画を前提に、導入可否を一緒に整理します。</p>
       </div>
       <div class="contact-actions fade-up delay-2">
-        <a href="/contact" class="btn-primary">お問い合わせ</a>
-        <a href="/solutions" class="btn-secondary">ソリューション一覧へ</a>
+        <a href="/contact" class="btn-primary">臨床相談をする</a>
+        <a href="/download" class="btn-secondary">資料を見る</a>
       </div>
     </div>
   </section>
