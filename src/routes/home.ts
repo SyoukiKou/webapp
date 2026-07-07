@@ -183,7 +183,7 @@ app.get('/', (c) => {
 
     <!-- ===== PURPOSE / OUR VISION ===== -->
     <section id="purpose" aria-label="パーパス">
-      <div class="purpose-bg-text" aria-hidden="true">Communication Design</div>
+      <div class="purpose-bg-text" aria-hidden="true">The Hearth</div>
       <div class="section-inner purpose-inner">
         <span class="purpose-label fade-up">The Hearth's Purpose</span>
         <div class="purpose-body">
