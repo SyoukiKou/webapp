@@ -1,5 +1,5 @@
 import { Hono } from 'hono'
-import { header, footer, pageScripts, heroSlides, reportsData, reportCategories, newsData } from '../components/layout.js'
+import { header, footer, pageScripts, heroSlides, newsData } from '../components/layout.js'
 
 const app = new Hono()
 
@@ -23,40 +23,7 @@ app.get('/', (c) => {
     </button>
   `).join('')
 
-  const latestReports = [...reportsData]
-    .sort((a, b) => {
-      const dateDiff = b.publishedAt.localeCompare(a.publishedAt)
-      if (dateDiff !== 0) return dateDiff
-      return Number(b.id) - Number(a.id)
-    })
-    .slice(0, 3)
-
-  const reportsHTML = latestReports.map((report, i) => `
-    <article class="work-item${report.featured ? ' work-featured' : ''}" data-category="${report.category}">
-      <a href="/reports/${report.slug}" class="work-link">
-        <div class="work-img-wrap">
-          <img src="${report.img}" alt="${report.title}" class="work-img" loading="lazy">
-          <div class="work-hover-overlay">
-            <div class="work-hover-inner">
-              <div class="work-hover-label">Read Report</div>
-            </div>
-          </div>
-        </div>
-        <div class="work-info">
-          <div class="work-client">${report.client} / ${report.year}</div>
-          <h3 class="work-title">${report.title}</h3>
-          <div class="work-tags-row">
-            ${report.tags.map(t => `<span class="work-tag">${t}</span>`).join('')}
-          </div>
-        </div>
-      </a>
-    </article>
-  `).join('')
-
-  const reportFilterTabsHTML = reportCategories
-    .filter(cat => cat.key !== 'all')
-    .map(cat => `<button class="filter-tab" data-filter="${cat.key}" role="tab" aria-selected="false">${cat.label}</button>`)
-    .join('')
+  // Reports section disabled - temporarily made private
 
   const newsHTML = newsData.slice(0, 5).map(n => `
     <a href="/news/${n.slug}" class="news-item">
@@ -282,34 +249,6 @@ app.get('/', (c) => {
       </div>
     </section>
 
-    <!-- ===== REPORTS ===== -->
-    <section id="reports" aria-label="研究レポート">
-      <div class="section-inner">
-        <div class="section-head">
-          <div class="section-head-left">
-            <h2 class="section-title-en fade-up delay-1">Reports</h2>
-            <p class="section-title-jp fade-up delay-2">研究レポート</p>
-          </div>
-          <a href="/reports" class="view-all-btn fade-up delay-2">
-            View All Reports
-            <svg class="arrow-icon" viewBox="0 0 24 8" fill="none">
-              <path d="M0 4H22M19 1L22 4L19 7" stroke="currentColor" stroke-width="1"/>
-            </svg>
-          </a>
-        </div>
-
-        <!-- Filter Tabs -->
-        <div class="filter-tabs fade-up" role="tablist" aria-label="カテゴリフィルター">
-          <button class="filter-tab active" data-filter="all" role="tab" aria-selected="true">All</button>
-          ${reportFilterTabsHTML}
-        </div>
-
-        <!-- Reports Grid -->
-        <div class="reports-grid" id="reportsGrid">
-          ${reportsHTML}
-        </div>
-      </div>
-    </section>
 
     <!-- ===== NEWS ===== -->
     <section id="news" aria-label="ニュース">
@@ -343,7 +282,6 @@ app.get('/', (c) => {
         </div>
         <div class="contact-actions fade-up delay-2">
           <a href="/contact" class="btn-primary">お問い合わせ</a>
-          <a href="/reports" class="btn-secondary">レポートを見る</a>
         </div>
       </div>
     </section>

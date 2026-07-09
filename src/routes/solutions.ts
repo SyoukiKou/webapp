@@ -2,7 +2,6 @@ import { Hono } from 'hono'
 import { header, footer, pageHead, pageScripts, createProductSchema } from '../components/layout.js'
 import { serviceDetailPages } from '../data/service-pages/index.js'
 import type { ServiceDetailPage } from '../data/service-pages/types.js'
-import { reportsData } from '../../data/reports.js'
 
 const app = new Hono()
 
@@ -696,6 +695,9 @@ function renderServiceDetailPage(page: ServiceDetailPage): string {
 
 function renderSolutionPage(page: SolutionPage): string {
   const serviceCardsHTML = renderServiceCards(page.services)
+  // Reports section disabled - reports are temporarily made private
+  const relatedReportCardsHTML = ''
+  /*
   const relatedReportCardsHTML = reportsData
     .slice(0, 3)
     .map((report) => `
@@ -706,6 +708,7 @@ function renderSolutionPage(page: SolutionPage): string {
       </a>
     `)
     .join('')
+  */
 
   return pageHead({
     title: `${page.title} | Solutions`,
@@ -779,6 +782,8 @@ ${header('/solutions', true)}
     </div>
   </section>
 
+  <!-- Reports section disabled - temporarily made private -->
+  <!--
   <section class="solution-reports-block">
     <div class="section-inner">
       <div class="section-head">
@@ -793,6 +798,7 @@ ${header('/solutions', true)}
       </div>
     </div>
   </section>
+  -->
 
   <section class="solution-cta-block">
     <div class="section-inner">

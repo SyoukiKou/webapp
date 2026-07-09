@@ -1,21 +1,11 @@
 import { Hono } from 'hono'
 import { header, footer, pageHead, pageScripts } from '../components/layout.js'
-import { reportsData } from '../../data/reports.js'
 
 const app = new Hono()
 
 app.get('/science', (c) => {
-  const reportCardsHTML = [...reportsData]
-    .sort((a, b) => b.publishedAt.localeCompare(a.publishedAt))
-    .map((report, index) => `
-      <a href="/reports/${report.slug}" class="science-report-card fade-up delay-${Math.min(index + 1, 3)}">
-        <div class="science-report-card-meta">${report.publishedAt} / ${report.client}</div>
-        <h3 class="science-report-card-title">${report.title}</h3>
-        <p class="science-report-card-desc">${report.summary}</p>
-        <div class="science-report-card-tags">${report.tags.map((tag) => `<span>${tag}</span>`).join('')}</div>
-      </a>
-    `)
-    .join('')
+  // Reports section disabled - reports are temporarily made private
+  const reportCardsHTML = ''
 
   return c.html(`${pageHead({
     title: 'Science & Reports',
@@ -58,6 +48,8 @@ ${header('/science', true)}
     </div>
   </section>
 
+  <!-- Reports section disabled - temporarily made private -->
+  <!--
   <section class="science-reports-block">
     <div class="section-inner">
       <div class="section-head">
@@ -70,6 +62,7 @@ ${header('/science', true)}
       <div class="science-report-grid">${reportCardsHTML}</div>
     </div>
   </section>
+  -->
 
   <section class="solution-cta-block">
     <div class="section-inner">

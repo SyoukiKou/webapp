@@ -1,7 +1,7 @@
 import { Hono } from 'hono'
 import { handle } from '@hono/node-server/vercel'
 import { serveStatic } from '@hono/node-server/serve-static'
-import { header, footer, pageHead, pageScripts, newsData, reportsData } from '../src/components/layout.js'
+import { header, footer, pageHead, pageScripts, newsData } from '../src/components/layout.js'
 
 // ルートファイルをインポート
 import homeRoutes from '../src/routes/home.js'
@@ -63,7 +63,7 @@ app.get('/sitemap.xml', (c) => {
     { path: '/solutions/reporting', priority: '0.8' },
     { path: '/solutions/creative-bar', priority: '0.8' },
     { path: '/solutions/otomo', priority: '0.8' },
-    { path: '/reports', priority: '0.8' },
+    // { path: '/reports', priority: '0.8' },  // Reports temporarily disabled
     { path: '/news', priority: '0.8' },
     { path: '/about', priority: '0.7' },
     { path: '/site-policy', priority: '0.5' },
@@ -74,11 +74,7 @@ app.get('/sitemap.xml', (c) => {
     priority: '0.7',
     lastmod: item.date.replace(/\./g, '-')
   }))
-  const reportPages = reportsData.map((item) => ({
-    path: `/reports/${item.slug}`,
-    priority: '0.7',
-    lastmod: item.publishedAt,
-  }))
+  const reportPages = []  // Reports temporarily disabled
   const urls = [...pages, ...newsPages, ...reportPages]
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>\n` +
