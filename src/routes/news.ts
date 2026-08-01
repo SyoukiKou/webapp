@@ -59,6 +59,10 @@ ${pageScripts({ includeApp: false, includePages: true })}`, 404)
     url: `https://thehearth.jp/news/${news.slug}`
   })
 
+  const articleBody = news.contentHtml
+    ? news.contentHtml
+    : `<p>${news.description}</p>`
+
   return c.html(`${pageHead({
     title: news.title,
     description: news.description,
@@ -84,7 +88,7 @@ ${header('/news', true)}
     <div class="news-detail-content">
       <div class="section-inner">
         <div class="news-detail-body fade-up">
-          <p>${news.description}</p>
+          ${articleBody}
         </div>
         ${news.link ? `<div class="news-detail-article-link fade-up delay-1"><a href="${news.link}" target="_blank" rel="noopener noreferrer" class="news-external-link">View Detail</a></div>` : ''}
         

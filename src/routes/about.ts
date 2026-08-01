@@ -4,9 +4,9 @@ import { header, footer, pageHead, pageScripts } from '../components/layout.js'
 const app = new Hono()
 
 const members = [
-  { role: '代表', name: '黄 松毅', img: '/static/koushoki.jpeg' },
-  { role: '執行責任者', name: '上杉 未宇', img: '/static/miu.webp' },
-  { role: 'ディレクター', name: '大塚 康平', img: '/static/otuka.jpg' }
+  { role: '代表', name: '上杉 未宇', img: '/static/miu.webp' },
+  { role: 'ディレクター', name: '大塚 康平', img: '/static/otuka.jpg' },
+  { role: '創業者', name: '黄 松毅', img: '/static/koushoki.jpeg' }
 ]
 
 const history = [
@@ -85,7 +85,7 @@ ${header('/about', true)}
             <tr><th>正式名称</th><td>The Hearth</td></tr>
             <tr><th>所在地</th><td>本社<br>〒163-0604<br>東京都新宿区西新宿1丁目25ー1<br><br>アトリエ・スタジオ・研究所<br>〒194-0001<br>東京都町田市つくし野2丁目33<br></td></tr>
             <tr><th>設立</th><td>2025年9月7日</td></tr>
-            <tr><th>代表</th><td>黄松毅</td></tr>
+            <tr><th>代表</th><td>上杉未宇</td></tr>
             <tr><th>メンバー</th><td>8名 (業務委託・インターンも含む)</td></tr>
             <tr><th>事業内容</th><td>ソリューション・アート・サイエンスを軸にした社会課題解決</td></tr>
           </tbody>
