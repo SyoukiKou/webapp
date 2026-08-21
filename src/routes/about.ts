@@ -6,7 +6,9 @@ const app = new Hono()
 const members = [
   { role: '代表', name: '上杉 未宇', img: '/static/miu.webp' },
   { role: 'ディレクター', name: '大塚 康平', img: '/static/otuka.jpg' },
+  { role: 'Creative Techonologist', name: '三輪 万裕子', img: '/static/mercy.jpg' },
   { role: '創業者', name: '黄 松毅', img: '/static/koushoki.jpeg' }
+
 ]
 
 const history = [
