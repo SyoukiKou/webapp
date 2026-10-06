@@ -1,5 +1,14 @@
 export const newsData = [
   {
+    "id": 17,
+    "slug": "levwell-kaigo-feature-202609",
+    "date": "2026.09.03",
+    "category": "Press",
+    "title": "介護職向け情報サイト「レバウェル介護」にて、The Hearthの高齢者施設への出張演奏が紹介されました。",
+    "description": "介護職向け情報サイト「レバウェル介護」の記事『彩りを届ける出張サービス！ケアと施設の魅力を高める組織』にて、The Hearthの高齢者施設への出張演奏が紹介されました。プロの演奏家が施設へ伺い、生の音色と心通うコミュニケーションを届ける取り組みや、事前準備から当日の進行までThe Hearthが担うことで施設スタッフの皆様の負担を抑えられる点を取り上げていただいています。",
+    "link": "https://job.kiracare.jp/note/article/65526/"
+  },
+  {
     "id": 16,
     "slug": "leadership-change-20260801",
     "date": "2026.08.01",
