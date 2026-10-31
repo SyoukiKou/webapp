@@ -1,5 +1,14 @@
 export const newsData = [
   {
+    "id": 18,
+    "slug": "keido-interview-202610",
+    "date": "2026.10.29",
+    "category": "Press",
+    "title": "経営者インタビューメディア「経道（KEIDO）」にて、The Hearthが取材されました。",
+    "description": "「経営の道を極めるメディア」経道（KEIDO）の記事『AI時代に芸術の可能性を――The Hearthが目指す、感性を生かした社会変革』にて、黄松毅への取材記事が掲載されました。ソリューション・アート・サイエンスの3軸で芸術の力による社会課題・企業課題の解決に取り組むThe Hearthの事業や、分野を横断した若手芸術家コミュニティの運営、ロジックだけでなく感性を大切にする組織づくり、芸術とマインドフルネスを組み合わせたワークショップなど今後の展望について取り上げていただいています。",
+    "link": "https://kei-do.com/interview2/04003/"
+  },
+  {
     "id": 17,
     "slug": "levwell-kaigo-feature-202609",
     "date": "2026.09.03",
