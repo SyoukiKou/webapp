@@ -1,37 +1,24 @@
 {
   "name": "The Hearth",
   "short_name": "The Hearth",
-  "description": "芸術体験の創造を通じて、これからの社会をデザインしています。",
+  "description": "芸術体験の実装を通じて、社会課題の解決に取り組んでいます。",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#ffffff",
-  "orientation": "portrait-primary",
   "icons": [
     {
-      "src": "/favicon.png",
-      "sizes": "32x32",
-      "type": "image/png"
-    },
-    {
-      "src": "/favicon-16x16.png",
-      "sizes": "16x16",
-      "type": "image/png"
-    },
-    {
-      "src": "/apple-touch-icon.png",
-      "sizes": "180x180",
+      "src": "/icon-192.png",
+      "sizes": "192x192",
       "type": "image/png",
       "purpose": "any"
-    }
-  ],
-  "screenshots": [
+    },
     {
-      "src": "/static/logo.png",
+      "src": "/icon-512.png",
+      "sizes": "512x512",
       "type": "image/png",
-      "sizes": "540x720",
-      "form_factor": "narrow"
+      "purpose": "any"
     }
   ]
 }

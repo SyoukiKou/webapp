@@ -8,6 +8,7 @@ export const liveBgmPage: ServiceDetailPage = {
   cardImage: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=1200&q=80&auto=format&fit=crop',
   cardTags: ['音楽生成', '生体データ', 'コンディショニング'],
   pageTitle: '環境・生体連動音楽生成システム',
+  seoTitle: '環境・生体連動音楽生成システム｜睡眠・集中・リラックスを支える音楽',
   description: '環境データと生体情報をもとに音楽を生成し、睡眠支援・集中力向上・リラックスなど、目的に応じた状態へ体験者を導くサービス。',
   heroImage: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=1920&q=85&auto=format&fit=crop',
   heroLead: '環境と身体の状態を読み取り、その時に最適な音楽へ自動的に組み替える。',

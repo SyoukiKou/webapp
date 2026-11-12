@@ -8,6 +8,7 @@ export const raePage: ServiceDetailPage = {
   cardImage: '/static/rae_photo.jpg',
   cardTags: ['メンタルヘルス', 'チームビルディング', 'ウェルビーイング'],
   pageTitle: 'Regulative Art Experience',
+  seoTitle: '音楽と対話のメンタルヘルス研修「Regulative Art Experience」',
   description: '音楽体験と対話を通じて、組織のメンタルヘルス施策を支援するプログラム。',
   heroImage: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=1920&q=85&auto=format&fit=crop',
   heroLead: 'AIの最適解に依存しない、次世代のアートベース・リーダーシップを育てる。',

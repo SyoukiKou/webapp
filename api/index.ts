@@ -1,7 +1,7 @@
 import { Hono } from 'hono'
 import { handle } from '@hono/node-server/vercel'
 import { serveStatic } from '@hono/node-server/serve-static'
-import { header, footer, pageHead, pageScripts, newsData } from '../src/components/layout.js'
+import { header, footer, pageHead, pageScripts, newsData, SITE_URL } from '../src/components/layout.js'
 
 // ルートファイルをインポート
 import homeRoutes from '../src/routes/home.js'
@@ -13,10 +13,13 @@ import contactRoutes from '../src/routes/contact.js'
 import komorebiRoutes from '../src/routes/komorebi.js'
 import sitePolicyRoutes from '../src/routes/site-policy.js'
 
-// 正規URL（sitemap / robots / リダイレクト先はここに統一）
+// 正規URL（sitemap / robots / リダイレクト先は SITE_URL に統一）
 // Vercel 内部ではリクエストが http で届くため、リクエストURLから組み立てない
-const SITE_URL = 'https://thehearth.jp'
-const CANONICAL_HOST = 'thehearth.jp'
+const CANONICAL_HOST = new URL(SITE_URL).hostname
+
+// ページはデプロイ時にしか変わらないので CDN にキャッシュさせる
+// （Vercel の CDN キャッシュはデプロイごとにリセットされる）
+const PAGE_CACHE_CONTROL = 'public, max-age=0, s-maxage=86400, stale-while-revalidate=604800'
 
 const app = new Hono()
 
@@ -34,29 +37,22 @@ app.use('*', async (c, next) => {
   const isGet = c.req.method === 'GET' || c.req.method === 'HEAD'
   if (c.res.status === 404 && isGet && url.pathname !== '/' && url.pathname.endsWith('/')) {
     c.res = c.redirect(`${url.pathname.replace(/\/+$/, '')}${url.search}`, 301)
+    return
+  }
+
+  if (c.res.status === 200 && isGet && !c.res.headers.has('Cache-Control')) {
+    c.res.headers.set('Cache-Control', PAGE_CACHE_CONTROL)
   }
 })
 
 // Static files (Node.js version for Vercel)
 app.use('/static/*', serveStatic({ root: 'public' }))
 
-// Favicon
-app.get('/favicon.ico', (c) => {
-  return new Response(null, { status: 204 })
-})
-
-// Favicon PNG（logo.pngをファビコンとして提供）
-app.get('/favicon.png', (c) => {
-  return c.redirect('/static/logo.png', 301)
-})
-
-app.get('/favicon-16x16.png', (c) => {
-  return c.redirect('/static/logo.png', 301)
-})
-
-app.get('/apple-touch-icon.png', (c) => {
-  return c.redirect('/static/logo.png', 301)
-})
+// Favicon・アイコン類（public/ 直下のファイル。通常は Vercel が静的配信し、ここはフォールバック）
+for (const file of ['/favicon.ico', '/favicon.png', '/apple-touch-icon.png', '/icon-192.png', '/icon-512.png', '/site.webmanifest']) {
+  app.get(file, serveStatic({ root: 'public' }))
+}
+app.get('/favicon-16x16.png', (c) => c.redirect('/favicon.png', 301))
 
 // robots.txt
 app.get('/robots.txt', (c) => {
@@ -67,8 +63,8 @@ app.get('/robots.txt', (c) => {
 // sitemap.xml
 app.get('/sitemap.xml', (c) => {
   const origin = SITE_URL
-  const today = new Date().toISOString().split('T')[0]
-  const pages = [
+  // lastmod は実際の更新日が分かるもの（ニュース）だけに付ける
+  const pages: Array<{ path: string; priority: string; lastmod?: string }> = [
     { path: '/', priority: '1.0' },
     { path: '/solutions', priority: '0.9' },
     { path: '/solutions/business', priority: '0.8' },
@@ -94,16 +90,15 @@ app.get('/sitemap.xml', (c) => {
     priority: '0.7',
     lastmod: item.date.replace(/\./g, '-')
   }))
-  const reportPages = []  // Reports temporarily disabled
+  const reportPages: typeof pages = []  // Reports temporarily disabled
   const urls = [...pages, ...newsPages, ...reportPages]
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>\n` +
     `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n` +
     urls.map((item) => {
-      const lastmod = 'lastmod' in item ? item.lastmod : today
+      const lastmodTag = item.lastmod ? `\n    <lastmod>${item.lastmod}</lastmod>` : ''
       return `  <url>
-    <loc>${origin}${item.path}</loc>
-    <lastmod>${lastmod}</lastmod>
+    <loc>${origin}${item.path}</loc>${lastmodTag}
     <priority>${item.priority}</priority>
   </url>`
     }).join('\n') +

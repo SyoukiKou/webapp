@@ -5,9 +5,8 @@ const app = new Hono()
 
 app.get('/site-policy', (c) => {
   return c.html(`${pageHead({
-    title: 'Site Policy',
+    title: 'サイトポリシー',
     description: 'The Hearthのサイトポリシーです。サイトの利用条件、著作権、個人情報の取り扱い、免責事項などを掲載しています。',
-    ogImage: 'https://thehearth.jp/static/logo.png',
     ogUrl: 'https://thehearth.jp/site-policy',
     canonical: 'https://thehearth.jp/site-policy'
   })}

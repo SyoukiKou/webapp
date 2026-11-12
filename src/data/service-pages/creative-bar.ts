@@ -7,6 +7,7 @@ export const creativeBarPage: ServiceDetailPage = {
   cardImage: 'https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?w=1200&q=80&auto=format&fit=crop',
   cardTags: ['交流設計', '創造性', '体験企画'],
   pageTitle: 'Creative Bar',
+  seoTitle: 'Creative Bar｜音楽と対話から発想が生まれる体験プログラム',
   description: '音楽と対話をきっかけに、アイデアが自然に生まれる場をデザインするプログラム。',
   heroImage: 'https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=1920&q=85&auto=format&fit=crop',
   heroLead: 'お酒のある場に限らず、気軽に会話と発想が生まれる創造的な空間をつくる。',

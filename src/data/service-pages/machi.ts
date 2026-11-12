@@ -7,6 +7,7 @@ export const machiPage: ServiceDetailPage = {
   cardImage: 'https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=1200&q=80&auto=format&fit=crop',
   cardTags: ['まちづくり', '都市ウェルビーイング', '地域連携'],
   pageTitle: 'まちづくり×芸術',
+  seoTitle: 'まちづくり×芸術｜音楽とサウンドスケープで街の価値を高める',
   description: '都市空間に芸術体験を実装し、街のウェルビーイングを高める取り組み。',
   heroImage: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=1920&q=85&auto=format&fit=crop',
   heroLead: '都市に音の風景をデザインし、まちの価値を拡張する。',

@@ -7,6 +7,7 @@ export const reportingPage: ServiceDetailPage = {
   cardImage: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80&auto=format&fit=crop',
   cardTags: ['効果検証', 'レポート', '改善提案'],
   pageTitle: '効果検証・レポーティング',
+  seoTitle: '効果検証・レポーティング｜芸術体験施策の効果測定と分析',
   description: '芸術体験施策の効果を可視化し、継続判断と改善実行につなげる分析支援。',
   heroImage: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1920&q=85&auto=format&fit=crop',
   heroLead: '体験価値を、意思決定できるデータへ変える。',

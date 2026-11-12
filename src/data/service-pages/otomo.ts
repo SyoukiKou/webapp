@@ -7,6 +7,7 @@ export const otomoPage: ServiceDetailPage = {
   cardImage: 'https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=1200&q=80&auto=format&fit=crop',
   cardTags: ['キャリア相談', '音楽と仕事', 'パラレルキャリア'],
   pageTitle: 'otomo',
+  seoTitle: 'otomo｜音楽を続けながら働く人のためのキャリア相談',
   description: '音楽を続けながら働きたい人のためのキャリア相談サービス。パラレルキャリアの実践者と一緒に、進路や働き方を整理します。',
   heroImage: 'https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=1920&q=85&auto=format&fit=crop',
   heroLead: '好きなことを諦めずに、仕事と両立する道を一緒に考える。',

@@ -12,19 +12,24 @@
      LOADING SCREEN
      ============================================ */
   const loadingEl = document.getElementById('loading');
+  let loadingHidden = false;
 
   function hideLoading() {
-    if (!loadingEl) return;
+    if (!loadingEl || loadingHidden) return;
+    loadingHidden = true;
     loadingEl.classList.add('fade-out');
     setTimeout(() => {
       loadingEl.style.display = 'none';
     }, 750);
   }
 
+  // 全画像の読み込み完了を待つと表示が遅れるため、最大でも約1秒で閉じる
+  const LOADING_MAX_WAIT = 1000;
   if (document.readyState === 'complete') {
     setTimeout(hideLoading, 400);
   } else {
     window.addEventListener('load', () => setTimeout(hideLoading, 400));
+    setTimeout(hideLoading, LOADING_MAX_WAIT);
   }
 
   if (!isHome) return;

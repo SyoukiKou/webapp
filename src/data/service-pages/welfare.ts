@@ -7,6 +7,7 @@ export const welfarePage: ServiceDetailPage = {
   cardImage: 'https://images.unsplash.com/photo-1584515933487-779824d29309?w=1200&q=80&auto=format&fit=crop',
   cardTags: ['高齢者施設', '回想療法', '情緒安定'],
   pageTitle: '高齢者施設×芸術',
+  seoTitle: '高齢者施設への出張演奏｜入居者とスタッフの心を支える音楽体験',
   description: '福祉現場に芸術体験を導入し、入居者様とスタッフ双方の心の健康を支援。',
   heroImage: 'https://images.unsplash.com/photo-1584515933487-779824d29309?w=1920&q=85&auto=format&fit=crop',
   heroLead: '入居者様とスタッフのウェルビーイングを同時に支える。',

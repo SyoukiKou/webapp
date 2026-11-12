@@ -38,8 +38,8 @@ app.get('/about', (c) => {
   `).join('')
 
   return c.html(`${pageHead({
-    title: 'About Us',
-    description: 'The Hearthのビジョン、メンバー、会社概要をご覧いただけます。',
+    title: '会社概要・メンバー',
+    description: '芸術で社会課題を解決するThe Hearthの会社概要。パーパス、メンバー、沿革、所在地（東京都新宿区・町田市）をご紹介します。',
     ogUrl: 'https://thehearth.jp/about',
     canonical: 'https://thehearth.jp/about'
   })}
@@ -47,7 +47,7 @@ ${header('/about', true)}
 <main class="about-page">
   <section class="page-hero page-hero--dark">
     <div class="page-hero-bg">
-      <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=1920&q=85" alt="About" loading="eager">
+      <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=1920&q=85" alt="The Hearthについて" loading="eager">
       <div class="page-hero-overlay"></div>
     </div>
     <div class="page-hero-inner">

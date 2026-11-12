@@ -5,9 +5,8 @@ const app = new Hono()
 
 app.get('/contact', (c) => {
   return c.html(`${pageHead({
-    title: 'Contact',
-    description: 'ご相談、お問い合わせはこちらから。お問い合わせ内容を確認後、担当者より折り返しご連絡させていただきます。',
-    ogImage: 'https://thehearth.jp/static/logo.png',
+    title: 'お問い合わせ',
+    description: 'The Hearthへのご相談・お問い合わせ、資料請求、採用に関するお問い合わせはこちらから。内容を確認後、担当者より折り返しご連絡いたします。',
     ogUrl: 'https://thehearth.jp/contact',
     canonical: 'https://thehearth.jp/contact'
   })}
@@ -22,9 +21,9 @@ ${header('/contact')}
   <section class="contact-section">
     <div class="section-inner">
       <div class="contact-grid">
-        <div class="contact-form-wrap fade-up">
+        <div class="contact-form-wrap fade-up" id="contact-form">
           <!-- Google Form Embed -->
-          <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScOh-Zm04sLeCGzF93Gm7JLYUgmVkB02ttbC4uQQ0HGlXN4eA/viewform?embedded=true" width="100%" height="1600" frameborder="0" marginheight="0" marginwidth="0" scrolling="no" style="border: none;">読み込み中…</iframe>
+          <iframe title="お問い合わせフォーム" src="https://docs.google.com/forms/d/e/1FAIpQLScOh-Zm04sLeCGzF93Gm7JLYUgmVkB02ttbC4uQQ0HGlXN4eA/viewform?embedded=true" width="100%" height="1600" frameborder="0" marginheight="0" marginwidth="0" scrolling="no" style="border: none;">読み込み中…</iframe>
         </div>
         <div class="contact-info fade-up delay-2">
           <div class="contact-info-block">
@@ -40,7 +39,7 @@ ${header('/contact')}
               私たちに少しでも興味を持って頂いた方は、フォームよりお問い合わせください。<br>
               まずは、お互いを知ることからはじめましょう。
             </p>
-            <a href="#" class="contact-info-link">お問い合わせ →</a>
+            <a href="#contact-form" class="contact-info-link">お問い合わせ →</a>
           </div>
           <div class="contact-info-block">
             <h3 class="contact-info-heading">SNS</h3>

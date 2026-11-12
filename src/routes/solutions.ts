@@ -10,6 +10,8 @@ type SolutionKey = 'business' | 'medical' | 'research' | 'culture'
 type SolutionPage = {
   key: SolutionKey
   title: string
+  // <title> 用（検索キーワードを含む日本語）
+  seoTitle: string
   label: string
   lead: string
   challengeTitle: string
@@ -27,6 +29,7 @@ const solutionPages: SolutionPage[] = [
   {
     key: 'business',
     title: 'For Business',
+    seoTitle: '企業・組織向け｜アートを活用したメンタルヘルス・組織開発研修',
     label: '企業・組織向け',
     lead: '感性とレジリエンスを鍛える、アートベースの研修・空間設計を提案します。',
     challengeTitle: '論理ベースの研修だけでは、予測不能な環境を生き抜く力は育ちにくい',
@@ -42,7 +45,7 @@ const solutionPages: SolutionPage[] = [
       '研修単発ではなく、継続運用できる設計に落とし込める'
     ],
     services: ['rae', 'live-bgm', 'reporting'],
-    ctaPrimary: '/download',
+    ctaPrimary: '/contact',
     ctaPrimaryLabel: '資料を請求する',
     ctaSecondary: '/contact'
     ,
@@ -51,6 +54,7 @@ const solutionPages: SolutionPage[] = [
   {
     key: 'medical',
     title: 'For Medical',
+    seoTitle: '医療・福祉向け｜ICUのせん妄予防と環境介入・高齢者施設での芸術体験',
     label: '医療・福祉向け',
     lead: 'KOMOREBI を中心に、臨床実証と試験導入を見据えた環境介入を提案します。',
     challengeTitle: '患者の回復とスタッフ負荷の両方に効く、病室環境を設計する',
@@ -68,13 +72,14 @@ const solutionPages: SolutionPage[] = [
     services: ['komorebi', 'welfare', 'reporting'],
     ctaPrimary: '/contact',
     ctaPrimaryLabel: '臨床デモを相談する',
-    ctaSecondary: '/download'
+    ctaSecondary: '/contact'
     ,
-    ctaSecondaryLabel: '資料を確認する'
+    ctaSecondaryLabel: '資料を請求する'
   },
   {
     key: 'research',
     title: 'For R&D',
+    seoTitle: '研究・共創パートナー向け｜芸術×脳科学の共同研究と効果検証',
     label: '研究・共創パートナー向け',
     lead: '仮説設計から検証、プロトタイピングまで進める共創・共同研究の入口です。',
     challengeTitle: '研究を、現場に届くかたちまでつなぐ',
@@ -86,12 +91,12 @@ const solutionPages: SolutionPage[] = [
     ],
     evidence: [
       '仮説から実証までの流れを一貫して設計できる',
-      'Science ページで論点やレポートを公開している',
+      // 'Science ページで論点やレポートを公開している',  // Science ページ非公開中
       '大学・企業・現場の共通言語を整えられる'
     ],
     services: ['reporting', 'komorebi', 'rae'],
-    ctaPrimary: '/science',
-    ctaPrimaryLabel: 'Science を見る',
+    ctaPrimary: '/solutions/reporting',
+    ctaPrimaryLabel: '効果検証・レポーティングを見る',
     ctaSecondary: '/contact'
     ,
     ctaSecondaryLabel: '共同研究を相談する'
@@ -99,6 +104,7 @@ const solutionPages: SolutionPage[] = [
   {
     key: 'culture',
     title: 'For Culture',
+    seoTitle: '一般・個人向け｜気軽に参加できる音楽と対話の芸術体験',
     label: '一般・個人向け',
     lead: '参加しやすい体験と読みやすいメディアで、芸術の入口をひらきます。',
     challengeTitle: '芸術を、もっと近くにする',
@@ -125,6 +131,7 @@ const solutionPages: SolutionPage[] = [
 const solutionMap = new Map<SolutionKey, SolutionPage>(solutionPages.map((page) => [page.key, page]))
 
 type SolutionSection = {
+  key: SolutionKey
   title: string
   subtitle: string
   slugs: string[]
@@ -132,21 +139,25 @@ type SolutionSection = {
 
 const solutionSections: SolutionSection[] = [
   {
+    key: 'business',
     title: 'Business',
     subtitle: '企業・組織',
     slugs: ['rae', 'live-bgm']
   },
   {
+    key: 'culture',
     title: 'Culture & Consumer',
     subtitle: '社会・個人',
     slugs: ['machi', 'creative-bar', 'otomo']
   },
   {
+    key: 'medical',
     title: 'Medical & Healthcare',
     subtitle: '医療・福祉機関',
     slugs: ['komorebi', 'welfare']
   },
   {
+    key: 'research',
     title: 'R&D',
     subtitle: '研究開発・アカデミア',
     slugs: ['reporting']
@@ -181,6 +192,14 @@ function renderServiceCards(serviceSlugs: string[]): string {
 function renderSolutionSections(): string {
   return solutionSections.map((section) => {
     const cardsHTML = renderServiceCards(section.slugs)
+    const categoryPage = solutionMap.get(section.key)
+    const categoryLinkHTML = categoryPage ? `
+          <a href="/solutions/${categoryPage.key}" class="view-all-btn fade-up delay-2">
+            ${categoryPage.label}の詳細
+            <svg class="arrow-icon" viewBox="0 0 24 8" fill="none">
+              <path d="M0 4H22M19 1L22 4L19 7" stroke="currentColor" stroke-width="1"/>
+            </svg>
+          </a>` : ''
 
     return `
       <div class="solution-category-block">
@@ -188,7 +207,7 @@ function renderSolutionSections(): string {
           <div class="section-head-left">
             <h2 class="section-title-en fade-up delay-1">${section.title}</h2>
             <p class="section-title-jp fade-up delay-2">${section.subtitle}</p>
-          </div>
+          </div>${categoryLinkHTML}
         </div>
         <div class="service-domain-grid">
           ${cardsHTML}
@@ -231,11 +250,15 @@ function renderDetailShell(page: ServiceDetailPage, contentHTML: string): string
   const pagePath = `/solutions/${page.slug}`
 
   return `${pageHead({
-    title: page.pageTitle,
+    title: page.seoTitle || page.pageTitle,
     description: page.description,
     ogImage: page.heroImage,
     ogUrl: `https://thehearth.jp${pagePath}`,
     canonical: `https://thehearth.jp${pagePath}`,
+    breadcrumbs: [
+      { name: 'Solutions', path: '/solutions' },
+      { name: page.pageTitle, path: pagePath }
+    ],
     structuredData: createProductSchema({
       name: page.pageTitle,
       description: page.description,
@@ -356,7 +379,7 @@ function renderTrainingServiceDetailPage(page: ServiceDetailPage): string {
       <h1 class="page-hero-title fade-up delay-1">${page.pageTitle}</h1>
       <p class="page-hero-lead fade-up delay-2">${page.heroLead}</p>
       <div class="contact-actions fade-up delay-3">
-        <a href="/download" class="btn-primary">資料を請求する</a>
+        <a href="/contact" class="btn-primary">資料を請求する</a>
         <a href="/contact" class="btn-secondary">導入相談をする</a>
       </div>
     </div>
@@ -447,7 +470,7 @@ function renderTrainingServiceDetailPage(page: ServiceDetailPage): string {
         <p class="contact-sub">感性を鍛える研修として、導入目的に合わせてご提案します。</p>
       </div>
       <div class="contact-actions fade-up delay-2">
-        <a href="/download" class="btn-primary">資料を請求する</a>
+        <a href="/contact" class="btn-primary">資料を請求する</a>
         <a href="/contact" class="btn-secondary">導入相談をする</a>
       </div>
     </div>
@@ -469,7 +492,7 @@ function renderMedicalServiceDetailPage(page: ServiceDetailPage): string {
       <p class="page-hero-lead fade-up delay-2">${page.heroLead}</p>
       <div class="contact-actions fade-up delay-3">
         <a href="/contact" class="btn-primary">臨床デモを申し込む</a>
-        <a href="/download" class="btn-secondary">資料をダウンロード</a>
+        <a href="/contact" class="btn-secondary">資料を請求する</a>
       </div>
     </div>
   </section>
@@ -560,7 +583,7 @@ function renderMedicalServiceDetailPage(page: ServiceDetailPage): string {
       </div>
       <div class="contact-actions fade-up delay-2">
         <a href="/contact" class="btn-primary">臨床デモを相談する</a>
-        <a href="/download" class="btn-secondary">資料を確認する</a>
+        <a href="/contact" class="btn-secondary">資料を請求する</a>
       </div>
     </div>
   </section>`
@@ -711,11 +734,14 @@ function renderSolutionPage(page: SolutionPage): string {
   */
 
   return pageHead({
-    title: `${page.title} | Solutions`,
-    description: page.lead,
+    title: page.seoTitle,
+    description: `${page.lead}${page.challengeBody}`,
     ogUrl: `https://thehearth.jp/solutions/${page.key}`,
     canonical: `https://thehearth.jp/solutions/${page.key}`,
-    ogType: 'article',
+    breadcrumbs: [
+      { name: 'Solutions', path: '/solutions' },
+      { name: page.label, path: `/solutions/${page.key}` }
+    ],
     structuredData: createProductSchema({
       name: `${page.title} | ${page.label}`,
       description: page.lead,
@@ -834,9 +860,8 @@ app.get('/solutions', (c) => {
   `).join('')
 
   return c.html(`${pageHead({
-    title: 'Service',
-    description: '体験価値の創造を通じて、企業や社会の課題解決に貢献します。リアル・デジタルを統合したコミュニケーションデザイン。',
-    ogImage: 'https://thehearth.jp/static/logo.png',
+    title: 'ソリューション一覧｜芸術体験による研修・医療・福祉・まちづくり',
+    description: 'The Hearthのソリューション一覧。音楽と対話のメンタルヘルス研修、ICU向け環境介入デバイスKOMOREBI、高齢者施設への出張演奏、まちづくり、効果検証まで、芸術体験を企業・医療・地域の現場に実装します。',
     ogUrl: 'https://thehearth.jp/solutions',
     canonical: 'https://thehearth.jp/solutions'
   })}
@@ -844,7 +869,7 @@ ${header('/solutions', true)}
 <main>
   <section class="page-hero page-hero--dark">
     <div class="page-hero-bg">
-      <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1920&q=85" alt="Service" loading="eager">
+      <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1920&q=85" alt="ソリューション" loading="eager">
       <div class="page-hero-overlay"></div>
     </div>
     <div class="page-hero-inner">

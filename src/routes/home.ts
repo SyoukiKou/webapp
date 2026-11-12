@@ -1,5 +1,19 @@
 import { Hono } from 'hono'
-import { header, footer, pageScripts, heroSlides, newsData } from '../components/layout.js'
+import { header, footer, pageScripts, heroSlides, newsData, headAssetLinks, organizationSchema, jsonLdScript, SITE_URL, DEFAULT_OG_IMAGE } from '../components/layout.js'
+
+const HOME_TITLE = 'The Hearth | 芸術で社会課題を解決する'
+const HOME_DESCRIPTION = 'The Hearthは、音楽を中心とした芸術体験を企業研修・医療・高齢者福祉・まちづくりの現場に実装し、メンタルヘルスやウェルビーイングの課題解決に取り組んでいます。'
+
+// サイト名を検索結果に正しく出すための WebSite 構造化データ
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": `${SITE_URL}/#website`,
+  "name": "The Hearth",
+  "url": `${SITE_URL}/`,
+  "inLanguage": "ja",
+  "publisher": { "@id": `${SITE_URL}/#organization` }
+}
 
 const app = new Hono()
 
@@ -57,41 +71,30 @@ app.get('/', (c) => {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Hearth | 芸術で社会課題を解決する</title>
-  <meta name="description" content="芸術体験の実装を通じて、これからの社会をデザインしています。">
-  <link rel="canonical" href="https://thehearth.jp">
+  <title>${HOME_TITLE}</title>
+  <meta name="description" content="${HOME_DESCRIPTION}">
+  <link rel="canonical" href="${SITE_URL}">
 
   <!-- Open Graph (OG) Tags -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="The Hearth | 芸術で社会課題を解決する">
-  <meta property="og:description" content="芸術体験の実装を通じて、これからの社会をデザインしています。">
-  <meta property="og:url" content="https://thehearth.jp">
-  <meta property="og:image" content="https://thehearth.jp/static/logo.png">
+  <meta property="og:title" content="${HOME_TITLE}">
+  <meta property="og:description" content="${HOME_DESCRIPTION}">
+  <meta property="og:url" content="${SITE_URL}">
+  <meta property="og:image" content="${DEFAULT_OG_IMAGE}">
   <meta property="og:site_name" content="The Hearth">
   <meta property="og:locale" content="ja_JP">
 
   <!-- Twitter Card Tags -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="The Hearth">
-  <meta name="twitter:description" content="芸術体験の実装を通じて、これからの社会をデザインしています。">
-  <meta name="twitter:image" content="https://thehearth.jp/static/logo.png">
-
-  <!-- Favicon & Icons -->
-  <link rel="icon" type="image/png" href="/favicon.png" sizes="32x32">
-  <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
-  <link rel="manifest" href="/site.webmanifest">
-  <meta name="theme-color" content="#ffffff">
+  <meta name="twitter:title" content="${HOME_TITLE}">
+  <meta name="twitter:description" content="${HOME_DESCRIPTION}">
+  <meta name="twitter:image" content="${DEFAULT_OG_IMAGE}">
+${headAssetLinks}
 
   <!-- Structured Data (JSON-LD) -->
-  <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"Organization","@id":"https://thehearth.jp","name":"The Hearth","url":"https://thehearth.jp","logo":"https://thehearth.jp/static/logo.png","description":"芸術体験の実装を通じて、これからの社会をデザインしています。","sameAs":["https://x.com/syiaviolin","https://www.instagram.com/syiaviolin/","https://www.facebook.com/syiaviolin/"],"address":{"@type":"PostalAddress","streetAddress":"西新宿1丁目25ー1","addressLocality":"新宿区","addressRegion":"東京都","postalCode":"163-0604","addressCountry":"JP"},"contactPoint":{"@type":"ContactPoint","contactType":"Customer Service","email":"info@thehearth.jp"}}
-  </script>
+  ${jsonLdScript(organizationSchema(HOME_DESCRIPTION))}
+  ${jsonLdScript(websiteSchema)}
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@300;400;600&family=Inter:ital,wght@0,200;0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="/static/style.css">
   ${gaScript}
 </head>
@@ -121,7 +124,7 @@ app.get('/', (c) => {
       <div class="hero-content" id="heroContent">
         <div class="hero-content-inner">
           <div class="hero-eyebrow" id="heroLabel">Music</div>
-          <h1 class="hero-title" id="heroTitle">Marunouchi Street Music</h1>
+          <p class="hero-title" id="heroTitle">Marunouchi Street Music</p>
           <p class="hero-subtitle" id="heroSubtitle">芸術あふれる街づくり</p>
           <div class="hero-client" id="heroClient">丸の内仲通り</div>
           <a href="/solutions" class="hero-cta">View Solutions <span>→</span></a>
@@ -172,11 +175,11 @@ app.get('/', (c) => {
             社会の持続可能性を担保する次世代のインフラとして再定義し、<br>
             科学的エビデンスに基づく社会実装を通じて、人と社会に創造の原動力を生み出します。
           </p>
-          <h2 class="purpose-title fade-up delay-2">
+          <h1 class="purpose-title fade-up delay-2">
             予測不能な世界に、感性という羅針盤を。<br>
             芸術を次世代のインフラとして社会実装し、<br>
             人間の主体性を未来へつなぐ。
-          </h2>
+          </h1>
         </div>
         <div class="purpose-bottom fade-up delay-3">
           <a href="/solutions" class="purpose-link">
@@ -213,7 +216,7 @@ app.get('/', (c) => {
         </div>
 
         <div class="service-cards-grid">
-          <a href="/solutions" class="service-card fade-up">
+          <a href="/solutions/rae" class="service-card fade-up">
             <div class="service-card-icon"><i class="fas fa-hands-helping"></i></div>
             <div class="service-card-body">
               <h3 class="service-card-name">Regulative Art Experience</h3>
@@ -221,7 +224,7 @@ app.get('/', (c) => {
             </div>
             <span class="service-card-arrow">→</span>
           </a>
-          <a href="/solutions" class="service-card fade-up delay-1">
+          <a href="/solutions/creative-bar" class="service-card fade-up delay-1">
             <div class="service-card-icon"><i class="fas fa-music"></i></div>
             <div class="service-card-body">
               <h3 class="service-card-name">Creative Bar</h3>
@@ -229,7 +232,7 @@ app.get('/', (c) => {
             </div>
             <span class="service-card-arrow">→</span>
           </a>
-          <a href="/solutions" class="service-card fade-up delay-3">
+          <a href="/solutions/komorebi" class="service-card fade-up delay-3">
             <div class="service-card-icon"><i class="fas fa-desktop"></i></div>
             <div class="service-card-body">
               <h3 class="service-card-name">KOMOREBI</h3>
@@ -237,7 +240,7 @@ app.get('/', (c) => {
             </div>
             <span class="service-card-arrow">→</span>
           </a>
-          <a href="/solutions" class="service-card fade-up delay-2">
+          <a href="/solutions/live-bgm" class="service-card fade-up delay-2">
             <div class="service-card-icon"><i class="fas fa-chart-line"></i></div>
             <div class="service-card-body">
               <h3 class="service-card-name">環境・生体連動音楽生成システム</h3>

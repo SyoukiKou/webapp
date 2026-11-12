@@ -54,7 +54,6 @@ ${pageScripts({ includeApp: false, includePages: true })}`, 404)
   const articleSchema = createArticleSchema({
     headline: news.title,
     description: news.description,
-    image: 'https://thehearth.jp/static/logo.png',
     datePublished: news.date.replace(/\./g, '-'),
     url: `https://thehearth.jp/news/${news.slug}`
   })
@@ -67,9 +66,12 @@ ${pageScripts({ includeApp: false, includePages: true })}`, 404)
     title: news.title,
     description: news.description,
     ogType: 'article',
-    ogImage: 'https://thehearth.jp/static/logo.png',
     ogUrl: `https://thehearth.jp/news/${news.slug}`,
     canonical: `https://thehearth.jp/news/${news.slug}`,
+    breadcrumbs: [
+      { name: 'News', path: '/news' },
+      { name: news.title, path: `/news/${news.slug}` }
+    ],
     structuredData: articleSchema
   })}
 ${header('/news', true)}
@@ -132,9 +134,8 @@ app.get('/news', (c) => {
     </a>`).join('')
 
   return c.html(`${pageHead({
-    title: 'News',
-    description: 'The Hearthの最新情報・ニュースリリース。受賞実績、新サービス、プロジェクト情報などをお届けします。',
-    ogImage: 'https://thehearth.jp/static/logo.png',
+    title: 'ニュース・メディア掲載情報',
+    description: 'The Hearthの最新情報・ニュースリリース。メディア掲載、受賞・採択実績、新サービス、イベント出演などのお知らせをお届けします。',
     ogUrl: 'https://thehearth.jp/news',
     canonical: 'https://thehearth.jp/news'
   })}

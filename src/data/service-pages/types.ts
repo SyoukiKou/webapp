@@ -6,6 +6,8 @@ export type ServiceDetailPage = {
   cardImage: string
   cardTags: string[]
   pageTitle: string
+  // <title> 用。検索されやすい日本語キーワードを含める（未指定なら pageTitle）
+  seoTitle?: string
   description: string
   heroImage: string
   heroLead: string

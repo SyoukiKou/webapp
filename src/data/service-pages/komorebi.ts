@@ -8,6 +8,7 @@ export const komorebiPage: ServiceDetailPage = {
   cardImage: '/static/komorebi.jpeg',
   cardTags: ['医療・福祉', '環境介入', 'ICU'],
   pageTitle: 'KOMOREBI',
+  seoTitle: 'KOMOREBI｜ICUのせん妄予防を支援する環境介入デバイス',
   description: 'KOMOREBIは、ICUの光・音・香り・気流を統合制御し、せん妄予防と回復に向いた病室環境づくりを支援する環境介入デバイスです。',
   heroImage: 'https://images.unsplash.com/photo-1585435557343-3b092031d8d8?w=1920&q=85&auto=format&fit=crop',
   heroLead: 'せん妄は、発症してから抑えるのでは遅い。KOMOREBIは、空間そのものを使って未然に整えるための医療インフラです。',
