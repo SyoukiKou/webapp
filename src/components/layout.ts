@@ -9,7 +9,8 @@ import { newsData as newsDataRaw } from '../../data/news.js'
 export const heroSlides = heroSlidesRaw
 export const reportsData = reportsDataRaw
 export const reportCategories = reportCategoriesRaw
-export const newsData = newsDataRaw
+// hidden: true のニュースは一覧・詳細・API すべてから除外
+export const newsData = newsDataRaw.filter(n => !('hidden' in n && n.hidden))
 
 // ============================================
 // ヘッダー HTML

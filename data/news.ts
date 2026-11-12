@@ -20,6 +20,8 @@ export const newsData = [
   {
     "id": 16,
     "slug": "leadership-change-20260801",
+    // 一時的に非表示（false にすると再表示）
+    "hidden": true,
     "date": "2026.08.01",
     "category": "News",
     "title": "代表交代のお知らせ",
