@@ -131,7 +131,6 @@ ${header('/about', true)}
       </div>
       <div class="contact-actions fade-up delay-2">
         <a href="/contact" class="btn-primary">お問い合わせ</a>
-        <a href="/reports" class="btn-secondary">レポートを見る</a>
       </div>
     </div>
   </section>

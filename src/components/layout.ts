@@ -18,7 +18,7 @@ export const newsData = newsDataRaw.filter(n => !('hidden' in n && n.hidden))
 export function header(currentPath: string = '/', useTransparentHeader: boolean = false): string {
   const navItems = [
     { href: '/solutions', label: 'Solutions' },
-    { href: '/reports',  label: 'Reports' },
+    // { href: '/reports',  label: 'Reports' },  // Reports temporarily disabled
     { href: '/news',    label: 'News' },
     { href: '/about', label: 'About' },
     { href: '/contact', label: 'Contact' },
@@ -109,7 +109,6 @@ export function footer(): string {
         </div>
         <nav class="footer-nav-simple">
           <a href="/solutions" class="footer-nav-link">Solutions</a>
-          <a href="/reports" class="footer-nav-link">Reports</a>
           <a href="/news" class="footer-nav-link">News</a>
           <a href="/about" class="footer-nav-link">About</a>
           <a href="/contact" class="footer-nav-link">Contact</a>

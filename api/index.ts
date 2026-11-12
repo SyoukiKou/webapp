@@ -9,12 +9,33 @@ import reportsRoutes from '../src/routes/reports.js'
 import newsRoutes from '../src/routes/news.js'
 import solutionsRoutes from '../src/routes/solutions.js'
 import aboutRoutes from '../src/routes/about.js'
-import companyRoutes from './routes/company.js'
 import contactRoutes from '../src/routes/contact.js'
 import komorebiRoutes from '../src/routes/komorebi.js'
 import sitePolicyRoutes from '../src/routes/site-policy.js'
 
+// 正規URL（sitemap / robots / リダイレクト先はここに統一）
+// Vercel 内部ではリクエストが http で届くため、リクエストURLから組み立てない
+const SITE_URL = 'https://thehearth.jp'
+const CANONICAL_HOST = 'thehearth.jp'
+
 const app = new Hono()
+
+// www → 正規ドメイン、末尾スラッシュ → スラッシュなし に 301 で統一
+app.use('*', async (c, next) => {
+  const url = new URL(c.req.url)
+
+  if (url.hostname === `www.${CANONICAL_HOST}`) {
+    const path = url.pathname === '/' ? '/' : url.pathname.replace(/\/+$/, '')
+    return c.redirect(`${SITE_URL}${path}${url.search}`, 301)
+  }
+
+  await next()
+
+  const isGet = c.req.method === 'GET' || c.req.method === 'HEAD'
+  if (c.res.status === 404 && isGet && url.pathname !== '/' && url.pathname.endsWith('/')) {
+    c.res = c.redirect(`${url.pathname.replace(/\/+$/, '')}${url.search}`, 301)
+  }
+})
 
 // Static files (Node.js version for Vercel)
 app.use('/static/*', serveStatic({ root: 'public' }))
@@ -39,14 +60,13 @@ app.get('/apple-touch-icon.png', (c) => {
 
 // robots.txt
 app.get('/robots.txt', (c) => {
-  const origin = new URL(c.req.url).origin
-  const body = `User-agent: *\nAllow: /\nSitemap: ${origin}/sitemap.xml\n`
+  const body = `User-agent: *\nAllow: /\nSitemap: ${SITE_URL}/sitemap.xml\n`
   return c.text(body)
 })
 
 // sitemap.xml
 app.get('/sitemap.xml', (c) => {
-  const origin = new URL(c.req.url).origin
+  const origin = SITE_URL
   const today = new Date().toISOString().split('T')[0]
   const pages = [
     { path: '/', priority: '1.0' },
@@ -103,7 +123,8 @@ app.route('/', reportsRoutes)
 app.route('/', newsRoutes)
 app.route('/', solutionsRoutes)
 app.route('/', aboutRoutes)
-app.route('/', companyRoutes)
+// /company は /about と重複するため統合（api/routes/company.ts は現在未使用）
+app.get('/company', (c) => c.redirect('/about', 301))
 app.route('/', contactRoutes)
 app.route('/', komorebiRoutes)
 app.route('/', sitePolicyRoutes)

@@ -4,7 +4,7 @@ import { footer, pageHead, pageScripts } from '../components/layout.js'
 const app = new Hono()
 
 app.get('/komorebi', (c) => {
-  return c.redirect('/service/komorebi', 301)
+  return c.redirect('/solutions/komorebi', 301)
 })
 
 export default app
